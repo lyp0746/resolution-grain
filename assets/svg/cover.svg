@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1414" width="1000" height="1414">
+<rect width="1000" height="1414" fill="#f7f4ec"/>
+<rect x="0" y="0" width="1000" height="10" fill="#b8862f"/>
+<!-- 刻度：同一份预算的两种花法（密的短、疏的长） -->
+<g stroke="#d8cfbc" stroke-width="1.2" opacity="0.85">
+<line x1="700" y1="470" x2="700" y2="620"/><line x1="724" y1="470" x2="724" y2="600"/>
+<line x1="748" y1="470" x2="748" y2="620"/><line x1="772" y1="470" x2="772" y2="600"/>
+<line x1="796" y1="470" x2="796" y2="620"/><line x1="820" y1="470" x2="820" y2="600"/>
+<line x1="844" y1="470" x2="844" y2="620"/><line x1="868" y1="470" x2="868" y2="600"/>
+</g>
+<g stroke="#c9bda3" stroke-width="1.2" opacity="0.9">
+<line x1="700" y1="740" x2="700" y2="820"/><line x1="742" y1="740" x2="742" y2="820"/>
+<line x1="784" y1="740" x2="784" y2="820"/><line x1="826" y1="740" x2="826" y2="820"/>
+</g>
+<line x1="72" y1="640" x2="880" y2="640" stroke="#e2dac9" stroke-width="1"/>
+<line x1="72" y1="664" x2="820" y2="664" stroke="#e2dac9" stroke-width="1"/>
+<line x1="72" y1="688" x2="760" y2="688" stroke="#e2dac9" stroke-width="1"/>
+<line x1="72" y1="712" x2="700" y2="712" stroke="#e2dac9" stroke-width="1"/>
+<style>text{font-family:"Times New Roman","SimSun",serif}</style>
+<text x="72" y="120" font-size="19" fill="#8a6d2f" letter-spacing="3">有限系统的取舍　THE TRADEOFFS OF FINITE SYSTEMS</text>
+<text x="72" y="330" font-size="92" font-weight="700" fill="#1c1c1c">分辨的预算</text>
+<line x1="76" y1="382" x2="600" y2="382" stroke="#b8862f" stroke-width="2"/>
+<text x="76" y="450" font-size="28" fill="#3a3a3a">省力如何改变理解，核实如何追上</text>
+<text x="76" y="960" font-size="22" fill="#6b6255" letter-spacing="1">THE BUDGET OF RESOLUTION</text>
+<text x="76" y="1000" font-size="17" fill="#8a8378">How Saving Effort Changes Understanding,</text>
+<text x="76" y="1028" font-size="17" fill="#8a8378">and How Verification Catches Up</text>
+<text x="72" y="1150" font-size="30" fill="#1c1c1c">李毅芃　著</text>
+<text x="72" y="1370" font-size="16" fill="#8a6d2f">2026 · CC BY 4.0</text>
+</svg>
