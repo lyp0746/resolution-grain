@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below. 若使用本作，请按下述格式引用。"
 type: book
-title: "分辨的预算：为什么越省力分得越粗，而核实总是慢半拍 / The Budget of Resolution: Why Saving Effort Makes Us Coarser, and Why Verification Always Lags"
+title: "粗码：为什么越省力分得越粗，而核实总是慢半拍 / Coarse Codes: Why Saving Effort Makes Us Coarser, and Why Verification Always Lags"
 abstract: >-
   本书从一个率—失真问题出发：在失真与码率的交换里取驻点，得到分辨率 v*=(T+λ)/(2w)。
   由此把"两类人"降为一条曲线上的两个点，并把同一个式子推到三层：个人层是可追踪的四个旋钮；

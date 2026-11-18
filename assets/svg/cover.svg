@@ -18,10 +18,10 @@
 <line x1="72" y1="712" x2="700" y2="712" stroke="#e2dac9" stroke-width="1"/>
 <style>text{font-family:"Times New Roman","SimSun",serif}</style>
 <text x="72" y="120" font-size="19" fill="#8a6d2f" letter-spacing="3">有限系统的取舍　THE TRADEOFFS OF FINITE SYSTEMS</text>
-<text x="72" y="330" font-size="92" font-weight="700" fill="#1c1c1c">分辨的预算</text>
+<text x="72" y="360" font-size="150" font-weight="700" fill="#1c1c1c" letter-spacing="6">粗码</text>
 <line x1="76" y1="382" x2="600" y2="382" stroke="#b8862f" stroke-width="2"/>
 <text x="76" y="450" font-size="28" fill="#3a3a3a">为什么越省力分得越粗，而核实总是慢半拍</text>
-<text x="76" y="960" font-size="22" fill="#6b6255" letter-spacing="1">THE BUDGET OF RESOLUTION</text>
+<text x="76" y="960" font-size="22" fill="#6b6255" letter-spacing="1">COARSE CODES</text>
 <text x="76" y="1000" font-size="16" fill="#8a8378">Why Saving Effort Makes Us Coarser,</text>
 <text x="76" y="1026" font-size="16" fill="#8a8378">and Why Verification Always Lags</text>
 <text x="72" y="1150" font-size="30" fill="#1c1c1c">李毅芃　著</text>
