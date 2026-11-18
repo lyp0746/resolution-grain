@@ -842,3 +842,25 @@ if __name__ == "__main__":
     fig_c06_two_outlets()
     fig_c01_age_vs_edu()
     fig_c02_four_cells()
+
+# ---------------------------------------------------------------- 第 19 章（2026-11-18 补）
+def fig_c19_pi() -> None:
+    """套利净收益 Π 的两种轨迹：跳（越过 1 不回落）与赛跑（贴着 1 走）。全部示意。"""
+    t = np.linspace(0, 10, 400)
+    jump = 0.95 + 0.65 / (1 + np.exp(-(t - 4.2) * 3.0))          # 一次阶跃，过 1 后停住
+    race = 1.02 + 0.05 * np.sin(t * 2.0) - 0.12 * np.exp(-t / 2.2)  # 贴 1 锯齿
+
+    fig, ax = plt.subplots(figsize=(5.4, 2.7))
+    ax.axhline(1.0, color=C_GREY, lw=0.9, ls=":")
+    ax.plot(t, jump, color=C_ALT, lw=2.0, label="跳：越过 1 之后不回落")
+    ax.plot(t, race, color=C_MAIN, lw=2.0, label="赛跑：贴着 1 走，斜率≈0")
+    ax.annotate("一次越过", xy=(4.55, 1.32), xytext=(5.6, 1.62), fontsize=7.5, color=C_ALT,
+                arrowprops=dict(arrowstyle="-", lw=0.7, color=C_ALT))
+    ax.annotate("斜率是判据", xy=(8.2, 1.06), xytext=(7.0, 0.66), fontsize=7.5, color=C_MAIN,
+                arrowprops=dict(arrowstyle="-", lw=0.7, color=C_MAIN))
+    ax.set_xlabel("时间（示意）")
+    ax.set_ylabel("套利净收益 Π（示意）")
+    ax.set_ylim(0.5, 1.9)
+    ax.set_xlim(0, 10)
+    ax.legend(fontsize=7.0, frameon=False, loc="upper left", bbox_to_anchor=(0.0, 1.02))
+    save(fig, "c19_pi_race")

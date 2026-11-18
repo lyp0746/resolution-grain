@@ -462,6 +462,17 @@ def build_part_summary(part):
 _IX_PATH = os.path.join(OUTPUT, ".indexmap.json")
 
 
+def _extra_terms(terms):
+    """术语表只收概念；人名、地名另放一份小词表（analysis/index_terms.txt）。"""
+    p = os.path.join(HERE, "analysis", "index_terms.txt")
+    if os.path.exists(p):
+        for line in open(p, encoding="utf-8"):
+            t = line.strip()
+            if t and not t.startswith("#") and t not in terms:
+                terms.append(t)
+    return terms
+
+
 def load_terms():
     """从各书的术语装置取词条（能复用就复用，不另建词表）。
 
@@ -502,12 +513,12 @@ def load_terms():
                     if cells:
                         push(cells[0])
                 if terms:
-                    return terms
+                    return _extra_terms(terms)
         for m in re.finditer(r'<div class="define"><span class="bt">(.*?)</span>', raw, re.S):
             push(m.group(1))
         if terms:
-            return terms
-    return terms
+            return _extra_terms(terms)
+    return _extra_terms(terms)
 
 
 def compute_indexmap(pdf_path, max_hits=6):
