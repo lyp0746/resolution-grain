@@ -1,145 +1,146 @@
-# 粗码（resolution-grain）
+# 粗码 · Coarse Codes
 
-> **DOI**：10.5281/zenodo.24339910（概念 DOI：10.5281/zenodo.24339909）
-> **副题**：为什么越省力分得越粗，而核实为何总是追不上
-> **状态**：在建。数据层已完备，正文未起笔。
-> 结构服从 `_series/spec/skeleton.md`（v2 冻结版）：**7 部分 × 4 章 = 28 章**（上限），正文 150,000—180,000 汉字。
+**为什么越省力分得越粗，而核实为何总是追不上**
+*How Saving Effort Reshapes Resolution, and Why Verification Trails Behind*
 
----
-
-## 这本书在讲什么
-
-一句话：**同一份省力，在宽环境里表现为隧道视野，在窄环境里表现为糊成一片。**
-
-> 书名定为《粗码》，副题“为什么越省力分得越粗，而核实为何总是追不上”。
-> 目录 slug 仍为 `resolution-grain`（改名只影响路径，发布前一并处理）。
-
-从那里出发，全书走三层：
-
-- **个人层**：分辨率 `v` 是 `(T+λ)/(2w)`——带宽价格、认知成本、在意程度三者的驻点。
-- **群体层**：`w` 下降 → 码变粗 → 标签（"摆拍""剧本""伪人"）替代叙事，因为**粗码是最便宜的码**。
-- **社会层**：共情资源 `E_t`、核实延迟 `τ`、替代供给 `ρ`、惩罚可见度 `p`、技术弹性 `κ`——五条能算的序列，一条算不出的（`α`）。
-
-**它不主张自己是一个新原理。** 第一性方程是 Sims (2003) 理性疏忽在社会规则上的应用；
-新颖性收在一个诚实的位置：**不是新原理，是新应用**（规则、分类、代际）。
+> **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
+> **已归档版本**：DOI [10.5281/zenodo.24339910](https://doi.org/10.5281/zenodo.24339910)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
+> **本仓库状态**：2026-11-18 定稿；7 部分 × 4 章 = 28 章；印刷版 **491 页**
+> **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
 
 ---
 
-## 目录契约
+## 一、这本书在讲什么 ｜ What this book is about
+
+同一份力气，花在两个地方，会得到两种完全不同的结果。时间紧、睡得少、后果重的时候，人不是变懒了，
+而是把有限的码率换了一种花法：环境宽的时候缩支撑，只剩一条隧道；环境窄的时候缩刻度，糊成一片。
+
+> **不是「他分得粗」，而是「他的预算只买得起这种粗」。**
+> 全书从一个驻点式出发，推到个人、群体、社会三层，再在文明层放四根外接立柱；
+> 最后说清一件事：**位置算得出来，时刻算不出来**。
+
+*The same effort, spent in two different places, buys two entirely different results. Under time pressure,
+sleep debt and high stakes, people do not become lazy — they spend a limited code budget differently.
+The book starts from one first-order condition and carries it through the individual, the group and the society.*
+
+**核心式子 ｜ The core**
 
 ```
-source/       book.json + front_* + ch01..ch24 + appendix_a..f + back_*
-assets/       css / svg / charts
-analysis/     推导、审计、协议、图件脚本（核心资产）
-data/         raw（本地缓存，不入版本）/ derived / MANIFEST*.tsv / DIGEST*.md
-docs/         变量表、源登记簿、需求单、事件台账、术语表、缺口补法、工作日志
-scripts/      collect/（采集器）+ build.sh / release.sh / validate.sh
-versions/     CHANGELOG.md
-output/       build 产物（gitignore）
-release/      组装产物（gitignore）
+v* = (T + λ) / (2w)        分辨率是「工夫 + 疲劳」与「错了有多疼」的驻点
+δ  = Δ / 2^R               覆盖面翻倍，精度减半（一份预算，两个出口）
 ```
-
-**纪律**：`source/` 是唯一正文来源；`output/`、`release/` 永不手改；
-`data/raw/` 是本地缓存（不入版本），但每个文件在 `MANIFEST*.tsv` 里都有 URL、字节数与 SHA256——
-**删了能照账重新拿回来**，这是这个仓库能被核对的唯一理由。
 
 ---
 
-## 核心资产（`analysis/INDEX.md` 是唯一入口）
+## 二、读数 ｜ By the numbers
 
-| 文件 | 内容 |
+| 项 / Item | 值 / Value |
 |---|---|
-| `MODEL-v2.md` | 第一性、个体/群体/社会三层方程、两个 `v` 的统一、与理性疏忽的关系 |
-| `AGENTS-DERIVATION.md`（在仓根） | **唯一公设清单 P1—P5** + 五条推导纪律 + 检查表 |
-| `DERIVATION.md` | 推导链全图、可识别性审计、事后拟合清单 |
-| `REWALK.md` | 从率—失真重走一遍：删掉什么、留下什么、六条符号预言 |
-| `DATA-AUDIT.md` | 每个符号在盘上有没有量、13 条不可核、9 个缺口 |
-| `BOOK-PLAN.md` | 体裁判断、六部参照作品、24 章骨架、证据分配、中性叙事红线 |
-| `ROADMAP.md` | 接下来做什么：三类材料、六个发散点、五个质量装置、90 天排期 |
-| `GAPS-NOW.md` | **现状盘点**：卡写作的五件；`v` 的档案代理（HS/ICD 块数）；三处模型层真问题 |
-| `ANCHORS.md` | 文献锚点 40 条：同构/支持/修正/反驳 × 我们必须改的说法 |
-| `SUBSUMPTION.md` | **统摄检验（总）**：12 条学说里 8 条可推；三个新领域（分期/标志性事件/人生转折）；§6b 分科验收 |
-| `SUBSUMPTION-SOC.md` | **社会学统摄**：11 学说，**6 可推**／3 对应／2 不能（戈夫曼、埃利亚斯、格兰诺维特可推） |
-| `SUBSUMPTION-MAP.md` | **推导树 + 十三门总表**：七门可推、六门遗落领域（语言/法/医/军/音乐/AI） |
-| `APPENDIX-A6-NETWORK.md` | **A.6 内生网络**：`p_ij` 双通道（相遇/监督）、联立系统七小节、同质性选择的两面 |
-| `SUBSUMPTION-PSYCH.md` | **心理学统摄**：米尔格拉姆（阈值效应）／阿希／人格稳定性／PTG-PTSD（倒 U 推导）／刻意练习 |
-| `DERIVATION-REPLICATOR.md` | **群体更新从 P1+P3 推出**（不需第六公设）：选择速度∝收益差；极化阈值 `γ*=δ` |
-| `CHAPTER-16.md` | **第 16 章详细大纲**（新增的社会学章）：三种执行方式、戈夫曼双轨、埃利亚斯内化、`C∝v` |
-| `FINDINGS-PASS2.md` | **第二轮通读发现**：`E_t` 是 `w` 与 `γ` 的乘数；`τ`=层级（首测不支持）；`γ` 变号 |
-| `INDEX.md` | **analysis 的唯一入口**：按骨架/可判定性/统摄/案例/写作装置/脚本/归档分七类 |
-| `data/DATA-LEDGER.md`（在 `data/`） | **已删原始数据的账**：2.18 GB → 80 MB，八项的 URL+SHA256+理由 |
-| `FIRST-PRINCIPLE.md` | **第一性的数学形态**：一条分布泛函统一三层；势博弈；群体心理转变的三机制；经济学四处接口 |
-| `FORMAL-GAPS.md` | **数学还差什么**：九个结构性缺口、补法、顺序（G1 规则=划分是支点） |
-| `FOUR-TYPES.md` | **回到最初的问题**：不是四种人，是四种分配 regime（环境×预算 2×2），含三组实证与判决检验 |
-| `CASE-TANGSONG.md` | **唐宋之变**：四段的合法性划分、七人五型、`γ` 与 `C`、事件算子、分期粒度实证 |
-| `CASE-BIOGRAPHY.md` | **传记法**：四栏模板、高骈示范、七人候选（含冯道这个“变的是后世的码”的反例） |
-| `CASE-NAMED-ERAS.md` | **命名时代**：镀金/咆哮/改革开放三个名字与数据对表；`γ` 形状解释名字的扩散 |
-| `CASE-EXTENSION.md` | **可移植性**：三条判据、五步流程、五个候选段；`C` 的三因子分解（规模×性质×频率）|
-| `CASE-USSR.md` | **迟滞的极端案例**（正文第 20 章）：“亡”与“收尸”的间隔可从 P3+P4 推出；四条可测预言 |
-| `CASE-PERIODS.md` | **十七个争议历史段**：三条判据定位，每段只检验一条推导 |
-| `CASE-FIGURES.md` | **名人矩阵**：按五型排（收窄/崩塌/重锚/加细/换码/抢占），古今中外 |
-| `CASE-CONTENTION.md` | **把“争议”算出来**：跨国叙事距离 = 1−Jaccard；甲午 en–ja 距离 0.984 |
-| `CASE-APPLIED.md` | **当代四现象 + MBTI**：热潮的先糊后跳、债市两种定价、法国 `w↓` 与德州 `w↑` 成对 |
-| `EDUCATION.md` | **教育学的四对挂接**：皮亚杰/维果茨基/马顿/布卢姆；过拟合＝高 `w` 下的最优码 |
-| `COUNTEREXAMPLES.md` | 24 章各一条**真**反例：推翻什么、怎么处理 |
-| `SCENES.md` | 24 个场景：8 条已成型、10 条有线索、6 条待作者 |
-| `make_figures.py` | 八张书用图（统一视觉语言，300 dpi + SVG） |
-| `CLAIMS-AUDIT.md` | 43 条断言的逐条裁决（支持/部分/推翻/不可核） |
-| `PROTOCOL-gradients.md` | 2×2×2 组内实验协议（n=96，未执行） |
-| `SELF-PROTOCOL.md` | n=1 自观察三件套（两周） |
-| `BOUNDARY-MAP.md` | 统摄降为分域的模板 |
-| `MEMORY-INDEX.md` | 27 轮对话档案的去向（只记结构，不复述原句） |
+| 结构 Structure | 7 部分 28 章；正文 264 节 ＋ 附录 46 节 |
+| 正文 Body text | **253,832** 汉字 |
+| 表／图 Tables / figures | **119** 表 ／ **42** 图 |
+| 印刷版 Print edition | **491** 页（A4，含封面与四级目录书签） |
+| 证据分级 Evidence grades | A（官方可复现）／B（稳定公开估计）／C（稀疏·构造·思辨） |
+| 可检验预言 Testable predictions | **21** 条台账（附录 F.7，各带推翻条件与现状） |
+| 空白 Gaps | **9** 处（第 26 章：缺实验／缺数据／缺概念） |
+| 降为情景 Claims demoted | **13** 条查不到公开出处的断言（附录 F.1） |
+| 索引 Index | 85 条（概念／人名／地名／章名） |
 
 ---
 
-## 能复现的六条序列
+## 三、骨架 ｜ Structure
 
-| 量 | 读数 | 脚本 |
+| 部分 Part | 章 Chapters | 主提问 Question |
 |---|---|---|
-| `τ` 美国侧 | 21,063 条，中位 6 天，P90 26，7.8% 超 30 天（重尾） | `scripts/collect/derive_tau.py` |
-| `τ` 中国侧 | 47 个反转事件；2016—2022 中位 4.4 天（全 ≤13 天）；2023—2026 出现长尾（最长 143 天） | `analysis/derive_tau_china_v2.py` |
-| `E_t` | WVS 234 国×波（中国 5 波） | `analysis/ess8_age_vs_edu.py` |
-| `π_L` | 人民日报 130,186 篇（2021-01→2026-04）+ 微博正文（2026-11→） | `scripts/collect/digest_labels.py` |
-| `ρ` / `p` / `κ` | 核查产能 1,963→934；处置可见度 2.68%→1.73%→2.68%；AI 占谣言类 0→18.8%→25.9% | `analysis/derive_gaps.py` |
-| 财富份额 | WID 世界/中国/美国 1820—2024 | `scripts/collect/derive_wid.py` |
-| **粗码的失真** | 标题只有正文 2.2—2.5% 的码率；限定词保留 **0.3—1.3%** | `analysis/derive_code_rate.py` |
-| **Shepard 检验** | 群体宽度异质性 k 与梯度尾部指数 b 同向：1.31→1.69 | `data/derived/shepard_check.csv` |
-| **分期粒度检验** | 跨度↑⇒段粗，r=**+0.879**（n=45）；五代粒度差 5 倍 | `analysis/test_periodization.py` |
-| **「厌倦」的模型** | 冲击卷积→阈值→权重反转→迟滞；翻转落在 950.8（示意，非拟合） | `analysis/sim_yanduan.py` |
-| **叙事距离** | 甲午 en–ja 0.984、ja–zh 0.928、en–ko 0.817；其余事件 0.91—0.95 | `analysis/test_narrative_distance.py` |
+| 一 形状 | 1—4 | 为什么「两种人」是一个错误的起点？ |
+| 二 第一性 | 5—8 | 一个式子能推出多少东西？ |
+| 三 个人 | 9—12 | 一个人的分辨率可以被追踪吗？ |
+| 四 群体 | 13—16 | 标签为什么会替代叙事？ |
+| 五 社会 | 17—20 | 六条序列能撑起多少断言？ |
+| 六 历史 | 21—24 | 这套公设能落到具体年代与人吗？ |
+| 七 边界 | 25—28 | 这本书在哪里停？ |
+
+六个核心（看见／记住／跟上／选择／讲述／临界）各落一章；六个标签读成**两条原理＋四个接触面**：
+原理一＝预算下的划分极小化（P1、P2，带出 P3、P4）；原理二＝账可外置、权重可为负（P6）；
+接触面＝价格、切法、群体、账。**P5 不是公设**，是「世界会变」这句描述世界的话。
 
 ---
 
-## 命令
+## 四、怎么读 ｜ How to read
+
+- **通识轨**：正文一路读下去；公式只在第 5 章出现一次，之后都可用文字替代。
+- **同行轨**：附录 A（形式化）、附录 F（缺口与预言台账）、`front_hardcore`（硬核轨）。
+- **三种读者可以停的地方**：第 5 章的三行推导、第 7 章与理性疏忽的关系、附录 A。
+
+*Two tracks: the body for general readers; appendices A and F plus `front_hardcore` for specialists.
+The formal core is three lines in chapter 5; everything after it can be read in words.*
+
+---
+
+## 五、诚实纪律 ｜ Honesty discipline
+
+1. **结论强度 ≤ 证据强度**；每个数字带 A/B/C，等级写在表注与图注里，不逐句挂。
+2. **不可测就说不可测**：第 26 章单列九处空白，附录 F 记十三条查不到出处的断言与七条降级。
+3. **失败与反例写在正文**，不放进脚注；**并置不是检验**（把两套理论放一张表上只说明它有位置）。
+4. **反身性写「方向＋条件」**，不写宿命；凡需要第七个公设才讲得通的话，降为情景或删。
+
+*Conclusion strength never exceeds evidence strength; what cannot be measured is said to be unmeasurable;
+failures and counterexamples are reported in the body; juxtaposition is not a test.*
+
+---
+
+## 六、仓库里有什么 ｜ What is in this repo
+
+```
+source/    正文唯一来源（book.json / parts.json / front_* / ch01–ch28 / appendix_a–f / back_*）
+assets/    css（paper / ereader / book）· svg · charts · knowledge-map.html（3D 交互版）
+analysis/  推导、审计、协议、图件脚本（`INDEX.md` 是唯一入口）
+data/      raw（本地缓存，不入版本，账在 MANIFEST*.tsv）· derived · DIGEST*.md
+docs/      变量表、源登记簿、需求单、事件台账、工作日志
+scripts/   collect/（采集器）+ build.sh / release.sh / selfcheck.sh
+archive/   过程日志与已归档的计划文档（logs/）
+versions/  CHANGELOG.md
+output/    build 产物（gitignore）      release/  组装产物（gitignore）
+```
+
+**构建 ｜ Build**
 
 ```bash
 PY="/mnt/d/0_Code/Iris Series/.venv/Scripts/python.exe"
-
-"$PY" analysis/derive_tau_china_v2.py     # 中国侧 τ（两批合并）
-"$PY" analysis/derive_gaps.py             # ρ / p / κ
-"$PY" scripts/collect/derive_wid.py       # WID 财富份额
-"$PY" scripts/collect/digest_labels.py    # 标签密度 × 精度
-"$PY" scripts/collect/fetch_piyao.py      # 前向采集（每周一次）
-
-"$PY" build_book.py --pdf                 # 书面世后：HTML + A4 PDF
-bash scripts/build.sh                     # 全量：audit → 印刷 → 电子版 → EPUB → Markdown
+bash scripts/selfcheck.sh          # 六项自查：结构／引用／目录／密度／产物／标签
+"$PY" build_book.py --pdf          # 印刷版 → output/book.pdf
+"$PY" build_book.py --ereader --pdf
+"$PY" build_epub.py && "$PY" build_markdown.py
+"$PY" analysis/make_theory_map.py  # 图 4.3 知识图谱、图 7.2 理论地图、3D 交互版
 ```
 
 ---
 
-## 三条边界（写进正文，不只写在这里）
+## 七、数据与可核性 ｜ Data and verifiability
 
-1. **结论强度 ≤ 证据强度。** 43 条断言里，支持 9、部分 6、推翻 6、不可核 13、概念/未测 9。
-   不可核的那 13 条**不许当论据**。
-2. **不可做的六件事**（第 22 章单列）：人群的分辨率分布、塔西佗阈值、每轮套利的共情折损、
-   学习率、负荷→成本系数、身份动员收益——都要实验室或面板，一个独立研究者做不了。
-3. **代际冲突与性别对立只作背景**：不点人群、不给频率、不做因果，合计不超过 1,500 字。
+- 定量结论都标了**快照日**（本版冻结于 2026-11-18）；原始文件的抓取时间（UTC）与 SHA256 在 `data/MANIFEST*.tsv`。
+- 原始数据不入版本；派生读数在 `data/derived/`，由脚本生成，不手改。
+- 主要公开来源：PolitiFact（21,063 条核实记录）、Seshat 古政体编码集（398 政体）、
+  eCFR／Federal Register（266 个节级修订间隔）、历法采纳（125 国）、ESS／WVS、OEWN 义项清单（12.4 万条）。
 
 ---
 
-## 尚未完成
+## 八、系列 ｜ The series
 
-- 正文 28 章（0/28）
-- 前置 6 件、后置 4 件、附录 A–F
-- `CITATION.cff` 的 DOI（未注册）
-- `inventory.tsv` 未收录：**这本书目前不计入系列的 9 册**，发布前才登记，届时件数会变——这是作者的保留决定。
+《有限系统的取舍》九本书 ＋ 十五篇工作论文 ＋ 一部合集（共 24 件，以 `../inventory.tsv` 为准）。
+本书是**第十册**，按作者决定：**不进入 `inventory.tsv`、不进合集**；归档记录见
+`_zenodo/published_resolution-grain.json` 与 `_zenodo/REGISTRY.md`「未入册」一节。
+
+*Item 10 of the series The Tradeoffs of Finite Systems. By the author's decision it is **not** counted
+in `inventory.tsv` and **not** included in the 24-item collection.*
+
+---
+
+**引用 ｜ Cite**
+
+> 李毅芃（2026）.《粗码：为什么越省力分得越粗，而核实为何总是追不上》. Zenodo.
+> https://doi.org/10.5281/zenodo.24339910
+
+*Li, Y. (2026). Coarse Codes: How Saving Effort Reshapes Resolution, and Why Verification Trails Behind. Zenodo.*
+
+**许可 ｜ License**：正文与图表 CC BY 4.0；代码 MIT（见 `LICENSE`、`LICENSE-MIT`）。
