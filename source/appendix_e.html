@@ -81,3 +81,28 @@
 <p><b>怎么用。</b>读一篇论文时，用这六问扫一遍，不超过十分钟；读一个学派时，先用第二问把它的分母找出来。<b>若六问里有三问答不上，那篇东西不必读完</b>：不是因为它不好，是因为它还没把自己的位置说清。</p>
 
 <p>这一节不给"新范式"，只给一张网。<b>网的好处是可以兜住不熟悉的东西；坏处是它漏掉的，你永远不知道。</b>所以它必须与第 26 章那张"九处空白"一起读：一张纸负责进门，一张表负责告诉你门里哪几间是空的。</p>
+
+<h3>E.7　一个能跑的小程序：估公开表现与私下响应的散度</h3>
+
+<p><b>式子。</b><i>D</i><sub>KL</sub>(<i>A</i>‖<i>K</i>) ＝ Σ<sub>c</sub> <i>A</i>(<i>c</i>)·log[<i>A</i>(<i>c</i>)／<i>K</i>(<i>c</i>)]，<i>c</i> 是同一套题里的类别；<i>A</i> 取公开（实名）条件的响应分布，<i>K</i> 取匿名条件（第 13 章那段）。<b>三个条件缺一不可</b>：同一批人、同一套题、两条件只差“会不会被看见”。</p>
+
+<p><b>最小实现。</b>给定两张计数表（同一类别轴上），先平滑再加 1（否则零概率会把散度打爆），报三个数：散度、它的自助区间、以及<b>平滑前的零格子数</b>——第三个是“这个估计靠不靠得住”的信号。</p>
+
+<pre style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:8.6pt;line-height:1.5;background:#f8f8f4;border-left:3px solid #cfcfcf;padding:8px 10px;">import numpy as np
+def dkl(a, k, alpha=0.5, B=2000, seed=0):
+    a, k = np.asarray(a, float), np.asarray(k, float)
+    empty = int((a == 0).sum() + (k == 0).sum())
+    a, k = a + alpha, k + alpha
+    a, k = a / a.sum(), k / k.sum()
+    d = float(np.sum(a * np.log(a / k)))
+    rng = np.random.default_rng(seed)
+    n = (a * 2).astype(int)            # 用平滑后的比例当重抽样参数，仅为给量级
+    bs = []
+    for _ in range(B):
+        ai = rng.dirichlet(a * 50); ki = rng.dirichlet(k * 50)
+        bs.append(float(np.sum(ai * np.log(ai / ki))))
+    return d, (float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))), empty</pre>
+
+<p><b>四个坑。</b>① <b>零格子</b>：类别越多、样本越小，零越多；零一多，散度就没意义，先报零格数。② <b>轴要对齐</b>：两条件必须用同一套类别，否则量的是“分类不同”不是“表现不同”。③ <b>样本量</b>：每类中位数 ≥5 才勉强；不够就把尾类并掉，并报并了多少。④ <b>它不告诉你“为什么”</b>：散度大可以是 <i>γ</i> 高（怕被罚），也可以是题目难度不同（选择效应），这两件要用第 11 章那条“只动一样”的操纵分开。</p>
+
+<p><b>否证线。</b>若同一批人在“实名／匿名”之间随机切换（同一天内、同一套题、切换顺序随机），散度仍显著大于零，那“散度来自 <i>γ</i>”这条要降级——因为它可能是题目本身的随机性。<b>指针：</b>定义在正文第 13 章，读法与两个边界也在那里；这一节只给可跑的形状。</p>

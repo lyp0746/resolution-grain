@@ -845,22 +845,54 @@ if __name__ == "__main__":
 
 # ---------------------------------------------------------------- 第 19 章（2026-11-18 补）
 def fig_c19_pi() -> None:
-    """套利净收益 Π 的两种轨迹：跳（越过 1 不回落）与赛跑（贴着 1 走）。全部示意。"""
-    t = np.linspace(0, 10, 400)
-    jump = 0.95 + 0.65 / (1 + np.exp(-(t - 4.2) * 3.0))          # 一次阶跃，过 1 后停住
-    race = 1.02 + 0.05 * np.sin(t * 2.0) - 0.12 * np.exp(-t / 2.2)  # 贴 1 锯齿
+    """跳／赛跑（左，构造）＋核实时滞逐年（右，实测）。
 
-    fig, ax = plt.subplots(figsize=(5.4, 2.7))
-    ax.axhline(1.0, color=C_GREY, lw=0.9, ls=":")
-    ax.plot(t, jump, color=C_ALT, lw=2.0, label="跳：越过 1 之后不回落")
-    ax.plot(t, race, color=C_MAIN, lw=2.0, label="赛跑：贴着 1 走，斜率≈0")
-    ax.annotate("一次越过", xy=(4.55, 1.32), xytext=(5.6, 1.62), fontsize=7.5, color=C_ALT,
-                arrowprops=dict(arrowstyle="-", lw=0.7, color=C_ALT))
-    ax.annotate("斜率是判据", xy=(8.2, 1.06), xytext=(7.0, 0.66), fontsize=7.5, color=C_MAIN,
-                arrowprops=dict(arrowstyle="-", lw=0.7, color=C_MAIN))
-    ax.set_xlabel("时间（示意）")
-    ax.set_ylabel("套利净收益 Π（示意）")
-    ax.set_ylim(0.5, 1.9)
-    ax.set_xlim(0, 10)
-    ax.legend(fontsize=7.0, frameon=False, loc="upper left", bbox_to_anchor=(0.0, 1.02))
+    右幅数据：data/derived/tau_politifact.csv（21,063 条；取 0<lag<=365），按年份算中位。
+    边界：右幅只说明“核查端变快了”，不说明“追上了”——后者要看攻防存量，本书没有序列。
+    """
+    import csv
+    import statistics as st
+    from collections import defaultdict
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.2, 2.9))
+
+    # 左：两条构造轨迹
+    t = np.linspace(0, 10, 400)
+    jump = 0.95 + 0.65 / (1 + np.exp(-(t - 4.2) * 3.0))
+    race = 1.02 + 0.05 * np.sin(t * 2.0) - 0.12 * np.exp(-t / 2.2)
+    ax1.axhline(1.0, color=C_GREY, lw=0.9, ls=":")
+    ax1.plot(t, jump, color=C_ALT, lw=1.9, label="跳：过 1 不回落")
+    ax1.plot(t, race, color=C_MAIN, lw=1.9, label="赛跑：贴着 1 走")
+    ax1.set_xlabel("时间（示意）")
+    ax1.set_ylabel("套利净收益 Π（示意）")
+    ax1.set_ylim(0.5, 1.9)
+    ax1.legend(fontsize=6.6, frameon=False, loc="upper left")
+    ax1.set_title("（a）判据的形状", fontsize=8.5, color=C_MAIN, loc="left")
+
+    # 右：实测核实时滞（中位／年）
+    by = defaultdict(list)
+    path = ROOT / "data" / "derived" / "tau_politifact.csv"
+    with open(path, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            try:
+                y, lag = int(r["year"]), float(r["lag_days"])
+            except Exception:
+                continue
+            if 0 < lag <= 365:
+                by[y].append(lag)
+    years = sorted(y for y in by if len(by[y]) >= 300)
+    med = [st.median(by[y]) for y in years]
+    ax2.plot(years, med, color=C_MAIN, lw=1.9, marker="o", ms=3)
+    ax2.set_ylabel("核实时滞的中位（天）")
+    ax2.set_xlabel("年份")
+    ax2.set_ylim(0, max(med) * 1.35)
+    ax2.set_title("（b）实测：核查端确实变快了", fontsize=8.5, color=C_MAIN, loc="left")
+    ax2.annotate("2016：7 天", xy=(2016, 7), xytext=(2010.5, 10.5), fontsize=6.4, color=C_ALT,
+                 arrowprops=dict(arrowstyle="-", lw=0.6, color=C_ALT))
+    ax2.annotate("2022：4 天", xy=(2022, 4), xytext=(2018.5, 1.6), fontsize=6.4, color=C_ALT,
+                 arrowprops=dict(arrowstyle="-", lw=0.6, color=C_ALT))
+
+    ax2.set_xticks(years[::3])
+    ax2.set_xticklabels([str(y) for y in years[::3]])
+    fig.tight_layout()
     save(fig, "c19_pi_race")
