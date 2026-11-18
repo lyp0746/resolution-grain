@@ -845,34 +845,27 @@ if __name__ == "__main__":
 
 # ---------------------------------------------------------------- 第 19 章（2026-11-18 补）
 def fig_c19_pi() -> None:
-    """跳／赛跑（左，构造）＋核实时滞逐年（右，实测）。
-
-    右幅数据：data/derived/tau_politifact.csv（21,063 条；取 0<lag<=365），按年份算中位。
-    边界：右幅只说明“核查端变快了”，不说明“追上了”——后者要看攻防存量，本书没有序列。
-    """
+    """(a) 跳／赛跑的构造形状；(b) 核实时滞逐年（实测）；(c) 同期信任（ESS，实测）。"""
     import csv
     import statistics as st
     from collections import defaultdict
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.2, 2.9))
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(7.4, 2.7))
 
-    # 左：两条构造轨迹
     t = np.linspace(0, 10, 400)
     jump = 0.95 + 0.65 / (1 + np.exp(-(t - 4.2) * 3.0))
     race = 1.02 + 0.05 * np.sin(t * 2.0) - 0.12 * np.exp(-t / 2.2)
     ax1.axhline(1.0, color=C_GREY, lw=0.9, ls=":")
-    ax1.plot(t, jump, color=C_ALT, lw=1.9, label="跳：过 1 不回落")
-    ax1.plot(t, race, color=C_MAIN, lw=1.9, label="赛跑：贴着 1 走")
+    ax1.plot(t, jump, color=C_ALT, lw=1.8, label="跳：过 1 不回落")
+    ax1.plot(t, race, color=C_MAIN, lw=1.8, label="赛跑：贴着 1 走")
     ax1.set_xlabel("时间（示意）")
     ax1.set_ylabel("套利净收益 Π（示意）")
     ax1.set_ylim(0.5, 1.9)
-    ax1.legend(fontsize=6.6, frameon=False, loc="upper left")
-    ax1.set_title("（a）判据的形状", fontsize=8.5, color=C_MAIN, loc="left")
+    ax1.legend(fontsize=6.2, frameon=False, loc="upper left")
+    ax1.set_title("（a）判据的形状", fontsize=8.2, color=C_MAIN, loc="left")
 
-    # 右：实测核实时滞（中位／年）
     by = defaultdict(list)
-    path = ROOT / "data" / "derived" / "tau_politifact.csv"
-    with open(path, encoding="utf-8") as fh:
+    with open(ROOT / "data" / "derived" / "tau_politifact.csv", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             try:
                 y, lag = int(r["year"]), float(r["lag_days"])
@@ -882,17 +875,30 @@ def fig_c19_pi() -> None:
                 by[y].append(lag)
     years = sorted(y for y in by if len(by[y]) >= 300)
     med = [st.median(by[y]) for y in years]
-    ax2.plot(years, med, color=C_MAIN, lw=1.9, marker="o", ms=3)
+    ax2.plot(years, med, color=C_MAIN, lw=1.8, marker="o", ms=3)
     ax2.set_ylabel("核实时滞的中位（天）")
     ax2.set_xlabel("年份")
-    ax2.set_ylim(0, max(med) * 1.35)
-    ax2.set_title("（b）实测：核查端确实变快了", fontsize=8.5, color=C_MAIN, loc="left")
-    ax2.annotate("2016：7 天", xy=(2016, 7), xytext=(2010.5, 10.5), fontsize=6.4, color=C_ALT,
-                 arrowprops=dict(arrowstyle="-", lw=0.6, color=C_ALT))
-    ax2.annotate("2022：4 天", xy=(2022, 4), xytext=(2018.5, 1.6), fontsize=6.4, color=C_ALT,
-                 arrowprops=dict(arrowstyle="-", lw=0.6, color=C_ALT))
-
+    ax2.set_ylim(0, max(med) * 1.4)
     ax2.set_xticks(years[::3])
     ax2.set_xticklabels([str(y) for y in years[::3]])
+    ax2.set_title("（b）实测：核查端变快了", fontsize=8.2, color=C_MAIN, loc="left")
+
+    th = defaultdict(list)
+    with open(ROOT / "data" / "derived" / "ess_country_round.csv", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            try:
+                th[int(r["year"])].append(float(r["E"]))
+            except Exception:
+                continue
+    ys = sorted(th)
+    mv = [st.mean(th[y]) for y in ys]
+    ax3.plot(ys, mv, color=C_ALT, lw=1.8, marker="s", ms=3)
+    ax3.set_ylabel("人际信任（ESS 年均）")
+    ax3.set_xlabel("年份")
+    ax3.set_ylim(0.3, 0.7)
+    ax3.set_xticks(ys[::3])
+    ax3.set_xticklabels([str(y) for y in ys[::3]])
+    ax3.set_title("（c）同期：信任没有跟着升", fontsize=8.2, color=C_ALT, loc="left")
+
     fig.tight_layout()
     save(fig, "c19_pi_race")
