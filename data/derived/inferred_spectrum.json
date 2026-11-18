@@ -1,0 +1,500 @@
+{
+ "source": "sc_dataset.xlsx",
+ "n_polity": 397,
+ "decomposition": {
+  "text": {
+   "total": {
+    "n": 205,
+    "coef": 2.01,
+    "t": 2.55
+   },
+   "observed": {
+    "n": 205,
+    "coef": 0.2,
+    "t": 0.21
+   },
+   "inferred": {
+    "n": 205,
+    "coef": 1.81,
+    "t": 3.22
+   }
+  },
+  "met": {
+   "total": {
+    "n": 203,
+    "coef": 2.89,
+    "t": 3.91
+   },
+   "observed": {
+    "n": 203,
+    "coef": -0.71,
+    "t": -0.85
+   },
+   "inferred": {
+    "n": 203,
+    "coef": 3.6,
+    "t": 2.92
+   }
+  },
+  "law": {
+   "total": {
+    "n": 200,
+    "coef": 0.63,
+    "t": 1.16
+   },
+   "observed": {
+    "n": 200,
+    "coef": 0.24,
+    "t": 0.54
+   },
+   "inferred": {
+    "n": 200,
+    "coef": 0.39,
+    "t": 1.13
+   }
+  },
+  "bur": {
+   "total": {
+    "n": 206,
+    "coef": 0.18,
+    "t": 0.36
+   },
+   "observed": {
+    "n": 206,
+    "coef": -0.68,
+    "t": -1.39
+   },
+   "inferred": {
+    "n": 206,
+    "coef": 0.86,
+    "t": 2.81
+   }
+  },
+  "prof": {
+   "total": {
+    "n": 204,
+    "coef": 0.61,
+    "t": 1.66
+   },
+   "observed": {
+    "n": 204,
+    "coef": -0.22,
+    "t": -0.73
+   },
+   "inferred": {
+    "n": 204,
+    "coef": 0.82,
+    "t": 2.69
+   }
+  }
+ },
+ "spectrum": [
+  {
+   "var": "Store of wealth",
+   "ss": "other",
+   "positives": 216,
+   "inferred_share": 0.542
+  },
+  {
+   "var": "Enclosures",
+   "ss": "specialized buildings: polity owned",
+   "positives": 207,
+   "inferred_share": 0.502
+  },
+  {
+   "var": "Geometrical",
+   "ss": "information",
+   "positives": 158,
+   "inferred_share": 0.5
+  },
+  {
+   "var": "Precious metals",
+   "ss": "other",
+   "positives": 196,
+   "inferred_share": 0.49
+  },
+  {
+   "var": "Area",
+   "ss": "information",
+   "positives": 232,
+   "inferred_share": 0.466
+  },
+  {
+   "var": "Volume",
+   "ss": "information",
+   "positives": 245,
+   "inferred_share": 0.457
+  },
+  {
+   "var": "Couriers",
+   "ss": "other",
+   "positives": 224,
+   "inferred_share": 0.438
+  },
+  {
+   "var": "Mines or quarries",
+   "ss": "specialized buildings: polity owned",
+   "positives": 261,
+   "inferred_share": 0.433
+  },
+  {
+   "var": "Weight",
+   "ss": "information",
+   "positives": 248,
+   "inferred_share": 0.423
+  },
+  {
+   "var": "Philosophy",
+   "ss": "information",
+   "positives": 161,
+   "inferred_share": 0.422
+  },
+  {
+   "var": "Practical literature",
+   "ss": "information",
+   "positives": 201,
+   "inferred_share": 0.418
+  },
+  {
+   "var": "General postal service",
+   "ss": "other",
+   "positives": 34,
+   "inferred_share": 0.412
+  },
+  {
+   "var": "food storage sites",
+   "ss": "specialized buildings: polity owned",
+   "positives": 250,
+   "inferred_share": 0.412
+  },
+  {
+   "var": "Length",
+   "ss": "information",
+   "positives": 263,
+   "inferred_share": 0.411
+  },
+  {
+   "var": "Mnemonic devices",
+   "ss": "information",
+   "positives": 115,
+   "inferred_share": 0.409
+  },
+  {
+   "var": "Trading emporia",
+   "ss": "specialized buildings: polity owned",
+   "positives": 110,
+   "inferred_share": 0.4
+  },
+  {
+   "var": "Lists tables and classifications",
+   "ss": "information",
+   "positives": 234,
+   "inferred_share": 0.389
+  },
+  {
+   "var": "Professional Lawyers",
+   "ss": "law",
+   "positives": 85,
+   "inferred_share": 0.388
+  },
+  {
+   "var": "Ceremonial site",
+   "ss": "specialized buildings: polity owned",
+   "positives": 265,
+   "inferred_share": 0.385
+  },
+  {
+   "var": "Courts",
+   "ss": "law",
+   "positives": 159,
+   "inferred_share": 0.377
+  },
+  {
+   "var": "Knowledge/information buildings",
+   "ss": "specialized buildings: polity owned",
+   "positives": 217,
+   "inferred_share": 0.373
+  },
+  {
+   "var": "Bridges",
+   "ss": "specialized buildings: polity owned",
+   "positives": 191,
+   "inferred_share": 0.361
+  },
+  {
+   "var": "markets",
+   "ss": "specialized buildings: polity owned",
+   "positives": 217,
+   "inferred_share": 0.359
+  },
+  {
+   "var": "Time",
+   "ss": "information",
+   "positives": 268,
+   "inferred_share": 0.354
+  },
+  {
+   "var": "Merit promotion",
+   "ss": "bureaucracy characteristics",
+   "positives": 81,
+   "inferred_share": 0.346
+  },
+  {
+   "var": "Fiction",
+   "ss": "information",
+   "positives": 171,
+   "inferred_share": 0.345
+  },
+  {
+   "var": "irrigation systems",
+   "ss": "specialized buildings: polity owned",
+   "positives": 245,
+   "inferred_share": 0.335
+  },
+  {
+   "var": "Debt and credit structures",
+   "ss": "other",
+   "positives": 153,
+   "inferred_share": 0.333
+  },
+  {
+   "var": "Calendar",
+   "ss": "information",
+   "positives": 234,
+   "inferred_share": 0.329
+  },
+  {
+   "var": "drinking water supply systems",
+   "ss": "specialized buildings: polity owned",
+   "positives": 101,
+   "inferred_share": 0.327
+  },
+  {
+   "var": "Scientific literature",
+   "ss": "information",
+   "positives": 164,
+   "inferred_share": 0.323
+  },
+  {
+   "var": "Postal stations",
+   "ss": "other",
+   "positives": 103,
+   "inferred_share": 0.32
+  },
+  {
+   "var": "Burial site",
+   "ss": "specialized buildings: polity owned",
+   "positives": 269,
+   "inferred_share": 0.316
+  },
+  {
+   "var": "Specialized government buildings",
+   "ss": "bureaucracy characteristics",
+   "positives": 227,
+   "inferred_share": 0.308
+  },
+  {
+   "var": "Roads",
+   "ss": "specialized buildings: polity owned",
+   "positives": 247,
+   "inferred_share": 0.308
+  },
+  {
+   "var": "Tokens",
+   "ss": "other",
+   "positives": 89,
+   "inferred_share": 0.303
+  },
+  {
+   "var": "Foreign coins",
+   "ss": "other",
+   "positives": 138,
+   "inferred_share": 0.29
+  },
+  {
+   "var": "Canals",
+   "ss": "specialized buildings: polity owned",
+   "positives": 138,
+   "inferred_share": 0.29
+  },
+  {
+   "var": "Professional priesthood",
+   "ss": "professions",
+   "positives": 237,
+   "inferred_share": 0.283
+  },
+  {
+   "var": "Professional military officers",
+   "ss": "professions",
+   "positives": 192,
+   "inferred_share": 0.281
+  },
+  {
+   "var": "Nonwritten records",
+   "ss": "information",
+   "positives": 281,
+   "inferred_share": 0.278
+  },
+  {
+   "var": "Entertainment buildings",
+   "ss": "specialized buildings: polity owned",
+   "positives": 113,
+   "inferred_share": 0.274
+  },
+  {
+   "var": "History",
+   "ss": "information",
+   "positives": 182,
+   "inferred_share": 0.264
+  },
+  {
+   "var": "Judges",
+   "ss": "law",
+   "positives": 162,
+   "inferred_share": 0.253
+  },
+  {
+   "var": "Ports",
+   "ss": "specialized buildings: polity owned",
+   "positives": 168,
+   "inferred_share": 0.25
+  },
+  {
+   "var": "Examination system",
+   "ss": "bureaucracy characteristics",
+   "positives": 44,
+   "inferred_share": 0.25
+  },
+  {
+   "var": "Utilitarian public buildings",
+   "ss": "specialized buildings: polity owned",
+   "positives": 292,
+   "inferred_share": 0.25
+  },
+  {
+   "var": "Religious literature",
+   "ss": "information",
+   "positives": 226,
+   "inferred_share": 0.239
+  },
+  {
+   "var": "Professional soldiers",
+   "ss": "professions",
+   "positives": 201,
+   "inferred_share": 0.234
+  },
+  {
+   "var": "Special purpose sites",
+   "ss": "specialized buildings: polity owned",
+   "positives": 282,
+   "inferred_share": 0.23
+  },
+  {
+   "var": "Sacred Texts",
+   "ss": "information",
+   "positives": 195,
+   "inferred_share": 0.221
+  },
+  {
+   "var": "Full-time bureaucrats",
+   "ss": "bureaucracy characteristics",
+   "positives": 236,
+   "inferred_share": 0.216
+  },
+  {
+   "var": "Articles",
+   "ss": "other",
+   "positives": 304,
+   "inferred_share": 0.207
+  },
+  {
+   "var": "Formal legal code",
+   "ss": "law",
+   "positives": 207,
+   "inferred_share": 0.203
+  },
+  {
+   "var": "Communal buildings",
+   "ss": "specialized buildings: polity owned",
+   "positives": 315,
+   "inferred_share": 0.187
+  },
+  {
+   "var": "Occupational complexity",
+   "ss": "professions",
+   "positives": 23,
+   "inferred_share": 0.174
+  },
+  {
+   "var": "Special purpose house",
+   "ss": "specialized buildings: polity owned",
+   "positives": 246,
+   "inferred_share": 0.171
+  },
+  {
+   "var": "Symbolic buildings",
+   "ss": "specialized buildings: polity owned",
+   "positives": 211,
+   "inferred_share": 0.166
+  },
+  {
+   "var": "Indigenous coins",
+   "ss": "other",
+   "positives": 153,
+   "inferred_share": 0.131
+  },
+  {
+   "var": "Paper currency",
+   "ss": "other",
+   "positives": 32,
+   "inferred_share": 0.125
+  },
+  {
+   "var": "Script",
+   "ss": "information",
+   "positives": 256,
+   "inferred_share": 0.09
+  },
+  {
+   "var": "Written records",
+   "ss": "information",
+   "positives": 270,
+   "inferred_share": 0.078
+  },
+  {
+   "var": "Non-phonetic writing",
+   "ss": "information",
+   "positives": 67,
+   "inferred_share": 0.075
+  },
+  {
+   "var": "Other site",
+   "ss": "specialized buildings: polity owned",
+   "positives": 48,
+   "inferred_share": 0.062
+  },
+  {
+   "var": "Phonetic alphabetic writing",
+   "ss": "information",
+   "positives": 168,
+   "inferred_share": 0.06
+  },
+  {
+   "var": "Symbolic building",
+   "ss": "specialized buildings: polity owned",
+   "positives": 79,
+   "inferred_share": 0.038
+  }
+ ],
+ "spectrum_summary": {
+  "n": 66,
+  "median": 0.312,
+  "p90": 0.435,
+  "p10": 0.128
+ },
+ "evidence_density": {
+  "n_polity": 396,
+  "within_nga_rho": -0.135,
+  "mean_infshare": 0.258
+ }
+}

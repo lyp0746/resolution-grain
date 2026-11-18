@@ -1,0 +1,97 @@
+{
+ "n_rows": 1494,
+ "n_polity": 373,
+ "share_writing": 0.485,
+ "prop_coded_mean": 77.6,
+ "T_A_time": {
+  "n": 521,
+  "clusters": 216,
+  "coef": {
+   "writing": 5.989,
+   "lpop": 0.716,
+   "aged": 0.007
+  },
+  "t": {
+   "writing": 804.45,
+   "lpop": 1.68,
+   "aged": 1.47
+  }
+ },
+ "T_A_time_all": {
+  "n": 521,
+  "clusters": 216,
+  "coef": {
+   "writing": 8.982,
+   "lpop": 0.835,
+   "aged": 0.012
+  },
+  "t": {
+   "writing": 805.69,
+   "lpop": 1.88,
+   "aged": 1.62
+  }
+ },
+ "T_B_density": {
+  "n": 521,
+  "clusters": 216,
+  "coef": {
+   "writing": 5.989,
+   "PropCoded": 0.002,
+   "lpop": 0.715,
+   "aged": 0.007
+  },
+  "t": {
+   "writing": 811.43,
+   "PropCoded": 0.13,
+   "lpop": 1.68,
+   "aged": 1.48
+  }
+ },
+ "T_B_density_only": {
+  "n": 559,
+  "clusters": 224,
+  "coef": {
+   "PropCoded": -0.001,
+   "lpop": 0.377,
+   "aged": 0.008
+  },
+  "t": {
+   "PropCoded": -0.06,
+   "lpop": 1.26,
+   "aged": 1.65
+  }
+ },
+ "T_C_density_on_writing": {
+  "n": 521,
+  "clusters": 216,
+  "coef": {
+   "writing": -0.029,
+   "lpop": 0.092,
+   "aged": 0.02
+  },
+  "t": {
+   "writing": -1.07,
+   "lpop": 1.06,
+   "aged": 1.07
+  }
+ },
+ "T_D_years": {
+  "n": 368,
+  "clusters": 179,
+  "coef": {
+   "yrs_since_w": 0.022,
+   "lpop": 0.246,
+   "aged": 0.022
+  },
+  "t": {
+   "yrs_since_w": 1.52,
+   "lpop": 0.63,
+   "aged": 1.52
+  }
+ },
+ "verdict": {
+  "coef_without_density": 5.989,
+  "coef_with_density": 5.989,
+  "drop_share": 0.0
+ }
+}

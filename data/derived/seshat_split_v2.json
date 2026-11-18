@@ -1,0 +1,61 @@
+{
+  "source": "Seshat axial_dataset.05.2018.csv",
+  "n_transitions": 402,
+  "first_appearance_order": {
+    "n_nga": 10,
+    "B_before_A": 1,
+    "A_before_B": 5,
+    "same_year": 4,
+    "detail": {
+      "Cambodian Basin": {
+        "A_first": 200,
+        "B_first": 200
+      },
+      "Crete": {
+        "A_first": -1900,
+        "B_first": -1400
+      },
+      "Galilee": {
+        "A_first": -1600,
+        "B_first": -1600
+      },
+      "Kachi Plain": {
+        "A_first": -2500,
+        "B_first": -2500
+      },
+      "Kansai": {
+        "A_first": -300,
+        "B_first": 200
+      },
+      "Konya Plain": {
+        "A_first": -1600,
+        "B_first": -1400
+      },
+      "Latium": {
+        "A_first": -1000,
+        "B_first": -1000
+      },
+      "Middle Yellow River Valley": {
+        "A_first": -1800,
+        "B_first": -1600
+      },
+      "Susiana": {
+        "A_first": -3900,
+        "B_first": -2200
+      },
+      "Upper Egypt": {
+        "A_first": -3400,
+        "B_first": -3600
+      }
+    }
+  },
+  "corr_dA_dB_same_transition": -0.135,
+  "corr_dB_t_with_dA_next": -0.027,
+  "jump_sync": {
+    "share_any_dB_jump": 0.162,
+    "share_dB_jump_given_dA_jump": 0.432,
+    "permutation_mean": 0.16,
+    "permutation_p_two_sided": 0.0
+  },
+  "caveat": "两组指标来自同一批专家编码，且样本仅 10 个 NGA；相关不能当因果，只能当'两条线是否同拍'的粗检。"
+}

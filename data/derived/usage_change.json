@@ -1,0 +1,128 @@
+[
+ {
+  "tag": "CCOHA 1810—1860 vs 1960—2010",
+  "n": 7943,
+  "median_change": 0.2925,
+  "spearman_change_vs_freq": -0.106,
+  "p_freq": 0.0,
+  "spearman_change_vs_senses": -0.063,
+  "p_senses": 0.0,
+  "ols": [
+   {
+    "term": "截距",
+    "coef": 0.38545,
+    "p": 0.0
+   },
+   {
+    "term": "Zipf 频次",
+    "coef": -0.01714,
+    "p": 0.0
+   },
+   {
+    "term": "WordNet 义项数",
+    "coef": 0.00039,
+    "p": 0.27185
+   },
+   {
+    "term": "词长",
+    "coef": 0.00051,
+    "p": 0.48775
+   }
+  ],
+  "bins": [
+   {
+    "senses": "0—0",
+    "n": 250,
+    "mean_change": 0.348
+   },
+   {
+    "senses": "1—1",
+    "n": 1189,
+    "mean_change": 0.3246
+   },
+   {
+    "senses": "2—2",
+    "n": 1441,
+    "mean_change": 0.3278
+   },
+   {
+    "senses": "3—4",
+    "n": 2213,
+    "mean_change": 0.3234
+   },
+   {
+    "senses": "5—9",
+    "n": 1988,
+    "mean_change": 0.3145
+   },
+   {
+    "senses": "10—99",
+    "n": 862,
+    "mean_change": 0.3144
+   }
+  ]
+ },
+ {
+  "tag": "BNC(英) vs COCA(美)",
+  "n": 25109,
+  "median_change": 0.2255,
+  "spearman_change_vs_freq": -0.359,
+  "p_freq": 0.0,
+  "spearman_change_vs_senses": -0.264,
+  "p_senses": 0.0,
+  "ols": [
+   {
+    "term": "截距",
+    "coef": 0.6046,
+    "p": 0.0
+   },
+   {
+    "term": "Zipf 频次",
+    "coef": -0.06011,
+    "p": 0.0
+   },
+   {
+    "term": "WordNet 义项数",
+    "coef": -0.00316,
+    "p": 0.0
+   },
+   {
+    "term": "词长",
+    "coef": -0.01538,
+    "p": 0.0
+   }
+  ],
+  "bins": [
+   {
+    "senses": "0—0",
+    "n": 1666,
+    "mean_change": 0.4249
+   },
+   {
+    "senses": "1—1",
+    "n": 5510,
+    "mean_change": 0.2704
+   },
+   {
+    "senses": "2—2",
+    "n": 4797,
+    "mean_change": 0.2554
+   },
+   {
+    "senses": "3—4",
+    "n": 6045,
+    "mean_change": 0.2456
+   },
+   {
+    "senses": "5—9",
+    "n": 5095,
+    "mean_change": 0.2308
+   },
+   {
+    "senses": "10—99",
+    "n": 1996,
+    "mean_change": 0.2108
+   }
+  ]
+ }
+]

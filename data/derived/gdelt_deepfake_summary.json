@@ -1,0 +1,62 @@
+{
+  "source": "gdelt_deepfake_full.json",
+  "is_full_series": true,
+  "query": "\"deepfake\"",
+  "resolution": "day",
+  "n_points": 677,
+  "date_min": "2024-11-26",
+  "date_max": "2026-11-15",
+  "calendar_days": 720,
+  "missing_days": 43,
+  "mean": 0.02082,
+  "median": 0.0147,
+  "max": 0.2057,
+  "top10_spikes": [
+    {
+      "date": "2026-01-13",
+      "value": 0.2057
+    },
+    {
+      "date": "2026-02-28",
+      "value": 0.2052
+    },
+    {
+      "date": "2026-11-13",
+      "value": 0.1535
+    },
+    {
+      "date": "2026-01-12",
+      "value": 0.1448
+    },
+    {
+      "date": "2025-03-05",
+      "value": 0.1429
+    },
+    {
+      "date": "2026-10-27",
+      "value": 0.1353
+    },
+    {
+      "date": "2025-10-01",
+      "value": 0.1162
+    },
+    {
+      "date": "2026-01-09",
+      "value": 0.1106
+    },
+    {
+      "date": "2025-10-02",
+      "value": 0.1043
+    },
+    {
+      "date": "2025-03-04",
+      "value": 0.0966
+    }
+  ],
+  "yearly_mean": {
+    "2024": 0.01718,
+    "2025": 0.01855,
+    "2026": 0.02396
+  },
+  "note_even_full": "GDELT 的 Volume Intensity 是'占全部报道的比例'，不是绝对篇数；中文覆盖弱，缺日不等于零报道。"
+}

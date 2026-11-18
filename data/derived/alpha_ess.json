@@ -1,0 +1,52 @@
+{
+  "source": "ESS 2002-2023 combined (11 rounds), ppltrst/10",
+  "n_countries": 39,
+  "n_country_rounds": 283,
+  "n_transitions": 244,
+  "share_declining": 0.402,
+  "alpha_all_declines": {
+    "n": 98,
+    "alpha": -2.061,
+    "se": 0.586,
+    "ci95": [
+      -3.209,
+      -0.912
+    ],
+    "r2": 0.114
+  },
+  "alpha_by_half": [
+    {
+      "n": 51,
+      "alpha": -1.101,
+      "se": 0.66,
+      "ci95": [
+        -2.394,
+        0.192
+      ],
+      "r2": 0.054
+    },
+    {
+      "n": 47,
+      "alpha": -3.499,
+      "se": 1.006,
+      "ci95": [
+        -5.471,
+        -1.527
+      ],
+      "r2": 0.212
+    }
+  ],
+  "drift_test_noselection": {
+    "n": 244,
+    "b_linear": 0.12,
+    "se_linear": 0.091,
+    "c_quadratic": -0.113,
+    "se_quadratic": 0.088,
+    "note": "加速耗竭要求 c<0（E 越低，下降越快）；不显著即不支持"
+  },
+  "per_country_mean_range": [
+    0.229,
+    0.706
+  ],
+  "caveat": "ESS 是重复横截面，不是面板；国家均值受样本构成变化影响；ppltrst 为单题 0—10；未加权（权重变量存在但未用）。"
+}

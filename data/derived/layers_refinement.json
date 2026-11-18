@@ -1,0 +1,38 @@
+{
+ "n": 200000,
+ "rho": 0.9,
+ "rate_accounting": {
+  "k": 4,
+  "H_A": 2.0,
+  "H_B": 2.0,
+  "H_AB": 3.226,
+  "identity_error": 0.0,
+  "mutual_information": 0.774,
+  "overlap_share_of_one_layer": 0.387
+ },
+ "refinement": {
+  "D_k4": 0.14,
+  "D_k16": 0.0224,
+  "ratio_D4_over_D16": 6.25,
+  "theory_ratio": 16.0,
+  "note": "等概率标量量化在 4→16 时理论比是 (16/4)^2=16；偏离来自高分辨率区间的常数未到渐近"
+ },
+ "overlap_by_correlation": [
+  {
+   "rho": 0.0,
+   "mutual_information_bits": 0.0
+  },
+  {
+   "rho": 0.5,
+   "mutual_information_bits": 0.151
+  },
+  {
+   "rho": 0.9,
+   "mutual_information_bits": 0.778
+  },
+  {
+   "rho": 0.99,
+   "mutual_information_bits": 1.412
+  }
+ ]
+}

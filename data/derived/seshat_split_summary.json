@@ -1,0 +1,67 @@
+{
+  "source": "Seshat axial_dataset.05.2018.csv",
+  "groups": {
+    "A_formal": [
+      "8. Formal legal code",
+      "9. General applicability of law",
+      "10. Constraint on executive",
+      "11. Full-time bureaucrats",
+      "12. Impeachment"
+    ],
+    "B_moralizing": [
+      "1. Moralistic punishment",
+      "2. Moralizing norms",
+      "3. Promotion of prosociality",
+      "4. Omniscient supernatural beings",
+      "5. Rulers not gods",
+      "6. Equating elites and commoners",
+      "7. Equating rulers and commoners"
+    ]
+  },
+  "first_appearance": {
+    "A": {
+      "n_nga": 10,
+      "earliest": -3900,
+      "median": -1700.0
+    },
+    "B": {
+      "n_nga": 10,
+      "earliest": -3600,
+      "median": -1500.0
+    }
+  },
+  "n_centuries": -53,
+  "span": [
+    -5300,
+    1800
+  ],
+  "crosscorr_dA_dB": {
+    "-8": -0.205,
+    "-7": -0.207,
+    "-6": -0.203,
+    "-5": -0.201,
+    "-4": -0.203,
+    "-3": -0.202,
+    "-2": -0.207,
+    "-1": -0.221,
+    "0": -0.218,
+    "1": -0.221,
+    "2": -0.207,
+    "3": -0.202,
+    "4": -0.203,
+    "5": -0.201,
+    "6": -0.203,
+    "7": -0.207,
+    "8": -0.205
+  },
+  "best_lag_centuries": -5,
+  "best_corr": -0.201,
+  "within_nga_B_leads_A": {
+    "0": -0.135,
+    "1": -0.027,
+    "2": -0.037,
+    "3": 0.229,
+    "4": -0.109
+  },
+  "caveat": "两组指标都来自同一批专家编码，相关可能来自编码习惯而非历史过程；世纪网格是插值后的近似，滞后以世纪为单位。"
+}

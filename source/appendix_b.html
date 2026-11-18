@@ -1,0 +1,41 @@
+<h2 class="chapter">附录 B　数据与复现</h2>
+
+<p>本书所有数字，都要能在这一页找到“哪个文件、哪个脚本、哪一天”。<b>找不到的，正文里就不该出现。</b></p>
+
+<h3 id="apB-1">B.1　六条可复现的序列</h3>
+
+<table>
+<caption class="cap">表 B.1　六条序列与它们的出处</caption>
+<thead><tr><th>量</th><th>读数</th><th>脚本</th><th>等级</th></tr></thead>
+<tbody>
+<tr><td>核实延迟（美国侧）</td><td>21,063 条，中位 7 天（原始口径 6 天），P90 27，7.8% 超 30 天</td><td><code>scripts/collect/derive_tau.py</code></td><td>A</td></tr>
+<tr><td>核实延迟（中国侧）</td><td>47 个事件；1 / 9 / 143 天三类</td><td><code>analysis/derive_tau_china_v2.py</code></td><td>C</td></tr>
+<tr><td>共情的权重 <i>θ</i></td><td>234 个国-波（WVS <i>A165</i>）；中国五轮 52—64%</td><td><code>analysis/ess8_age_vs_edu.py</code></td><td>A/B</td></tr>
+<tr><td>标签的密度</td><td>三语料：0.011% / 0.104% / 0.294%</td><td><code>scripts/collect/digest_labels.py</code></td><td>B</td></tr>
+<tr><td>供给／惩罚／技术</td><td>1,963→934；2.68→1.73→2.68%；0→18.8→25.9%</td><td><code>analysis/derive_gaps.py</code></td><td>B/C</td></tr>
+<tr><td>码率（标题/正文）</td><td>2.2—2.5%；限定词保留 0.3—0.7%</td><td><code>analysis/derive_code_rate.py</code></td><td>B</td></tr>
+</tbody>
+</table>
+
+<h3 id="apB-2">B.2　两处一手的检验</h3>
+
+<table>
+<caption class="cap">表 B.2　本书做过、且是认真做的两次检验</caption>
+<thead><tr><th>检验</th><th>数据</th><th>结果</th></tr></thead>
+<tbody>
+<tr><td>码宽异质性与泛化梯度尾形</td><td>133 人、7 个刺激水平（他人公开数据）</td><td>方向一致（r=−0.23），斜率不足（−0.18 vs −0.5）</td></tr>
+<tr><td>分期粒度与回望跨度</td><td>45 部分期方案（系列内另一本整理）</td><td>r=+0.88；<b>“用途”半个预测失败（p=0.33）</b></td></tr>
+</tbody>
+</table>
+
+<h3 id="apB-3">B.3　原始数据的账</h3>
+
+<p>本书的原始快照清单在 <code>data/MANIFEST*.tsv</code>（每条含 URL、抓取时间、状态码、字节数、SHA256）。</p>
+
+<p><b>已经删除的原始数据在 <code>data/DATA-LEDGER.md</code>。</b>删除的原则是：<b>先把欠的分析做完，把账记全，再删；只留派生读数。</b>八项共 2.18 GB 的原始快照已删，盘上保留 80 MB。<b>凭账可重新取得</b>——这是本书能被核对的前提。</p>
+
+<p><b>一处必须说的限制。</b>有两个脚本（<code>derive_code_rate.py</code>、<code>derive_gaps.py</code>）现在需要先重取一份 240 MB 的语料才能重跑；它们的产出已落盘。<b>也就是说：结论可核，路径不可即刻重走。</b></p>
+
+<h3 id="apB-4">B.4　快照日</h3>
+
+<p>统计类数据：2026 年 11 月 15—16 日。新闻类：2026 年 11 月 16 日。<b>凡正文出现“现在”，除另有注明，都是这两天。</b></p>

@@ -1,0 +1,378 @@
+{
+ "n_polity": 373,
+ "n_nga": 35,
+ "n_with_writing": 254,
+ "n_with_years": 0,
+ "T1_main": {
+  "k_all": {
+   "n": 208,
+   "coef": {
+    "writing": 15.713,
+    "lpop": 7.987,
+    "lterr": 4.043
+   },
+   "t": {
+    "writing": 4.15,
+    "lpop": 4.01,
+    "lterr": 2.8
+   }
+  },
+  "k_text": {
+   "n": 208,
+   "coef": {
+    "writing": 2.998,
+    "lpop": 0.8,
+    "lterr": 0.56
+   },
+   "t": {
+    "writing": 4.2,
+    "lpop": 2.86,
+    "lterr": 1.87
+   }
+  },
+  "k_met": {
+   "n": 208,
+   "coef": {
+    "writing": 0.439,
+    "lpop": -0.011,
+    "lterr": 0.111
+   },
+   "t": {
+    "writing": 4.43,
+    "lpop": -0.25,
+    "lterr": 2.69
+   }
+  },
+  "levels": {
+   "n": 208,
+   "coef": {
+    "writing": 1.849,
+    "lpop": 2.933,
+    "lterr": 1.104
+   },
+   "t": {
+    "writing": 1.48,
+    "lpop": 5.66,
+    "lterr": 2.21
+   }
+  },
+  "k_law": {
+   "n": 208,
+   "coef": {
+    "writing": 0.24,
+    "lpop": 0.46,
+    "lterr": 0.204
+   },
+   "t": {
+    "writing": 0.61,
+    "lpop": 2.48,
+    "lterr": 1.75
+   }
+  },
+  "k_bur": {
+   "n": 208,
+   "coef": {
+    "writing": 0.589,
+    "lpop": 0.454,
+    "lterr": 0.064
+   },
+   "t": {
+    "writing": 2.39,
+    "lpop": 3.96,
+    "lterr": 0.64
+   }
+  },
+  "k_prof": {
+   "n": 208,
+   "coef": {
+    "writing": 0.867,
+    "lpop": 0.192,
+    "lterr": 0.224
+   },
+   "t": {
+    "writing": 1.99,
+    "lpop": 1.49,
+    "lterr": 1.28
+   }
+  }
+ },
+ "T1_observed_writing": {
+  "k_all": {
+   "n": 208,
+   "coef": {
+    "writing_obs": 16.925,
+    "lpop": 7.42,
+    "lterr": 3.699
+   },
+   "t": {
+    "writing_obs": 5.39,
+    "lpop": 4.52,
+    "lterr": 2.99
+   }
+  },
+  "k_text": {
+   "n": 208,
+   "coef": {
+    "writing_obs": 3.04,
+    "lpop": 0.705,
+    "lterr": 0.51
+   },
+   "t": {
+    "writing_obs": 6.6,
+    "lpop": 3.41,
+    "lterr": 2.31
+   }
+  },
+  "k_met": {
+   "n": 208,
+   "coef": {
+    "writing_obs": 0.377,
+    "lpop": -0.02,
+    "lterr": 0.11
+   },
+   "t": {
+    "writing_obs": 3.88,
+    "lpop": -0.43,
+    "lterr": 2.59
+   }
+  },
+  "levels": {
+   "n": 208,
+   "coef": {
+    "writing_obs": 2.228,
+    "lpop": 2.849,
+    "lterr": 1.044
+   },
+   "t": {
+    "writing_obs": 2.33,
+    "lpop": 5.39,
+    "lterr": 2.29
+   }
+  },
+  "k_law": {
+   "n": 208,
+   "coef": {
+    "writing_obs": 0.824,
+    "lpop": 0.41,
+    "lterr": 0.151
+   },
+   "t": {
+    "writing_obs": 2.43,
+    "lpop": 2.22,
+    "lterr": 1.26
+   }
+  },
+  "k_bur": {
+   "n": 208,
+   "coef": {
+    "writing_obs": 0.693,
+    "lpop": 0.429,
+    "lterr": 0.046
+   },
+   "t": {
+    "writing_obs": 2.98,
+    "lpop": 4.17,
+    "lterr": 0.49
+   }
+  },
+  "k_prof": {
+   "n": 208,
+   "coef": {
+    "writing_obs": 0.896,
+    "lpop": 0.163,
+    "lterr": 0.208
+   },
+   "t": {
+    "writing_obs": 2.81,
+    "lpop": 1.33,
+    "lterr": 1.3
+   }
+  }
+ },
+ "T2_years": {
+  "k_all": {
+   "n": 0,
+   "coef": {
+    "years_since_write": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "years_since_write": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_text": {
+   "n": 0,
+   "coef": {
+    "years_since_write": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "years_since_write": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_met": {
+   "n": 0,
+   "coef": {
+    "years_since_write": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "years_since_write": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "levels": {
+   "n": 0,
+   "coef": {
+    "years_since_write": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "years_since_write": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_law": {
+   "n": 0,
+   "coef": {
+    "years_since_write": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "years_since_write": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_bur": {
+   "n": 0,
+   "coef": {
+    "years_since_write": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "years_since_write": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_prof": {
+   "n": 0,
+   "coef": {
+    "years_since_write": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "years_since_write": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  }
+ },
+ "T2_log_years": {
+  "k_all": {
+   "n": 0,
+   "coef": {
+    "log_years": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "log_years": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_text": {
+   "n": 0,
+   "coef": {
+    "log_years": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "log_years": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_met": {
+   "n": 0,
+   "coef": {
+    "log_years": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "log_years": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "levels": {
+   "n": 0,
+   "coef": {
+    "log_years": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "log_years": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_law": {
+   "n": 0,
+   "coef": {
+    "log_years": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "log_years": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_bur": {
+   "n": 0,
+   "coef": {
+    "log_years": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "log_years": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  },
+  "k_prof": {
+   "n": 0,
+   "coef": {
+    "log_years": 0.0,
+    "lpop": 0.0,
+    "lterr": 0.0
+   },
+   "t": {
+    "log_years": NaN,
+    "lpop": NaN,
+    "lterr": NaN
+   }
+  }
+ }
+}

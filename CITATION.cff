@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below. 若使用本作，请按下述格式引用。"
+type: book
+title: "粗码：省力如何改变理解，核实如何追上 / Coarse Codes: How Saving Effort Changes Understanding, and How Verification Catches Up"
+abstract: >-
+  本书从一个率—失真问题出发：在失真与码率的交换里取驻点，得到分辨率 v*=(T+λ)/(2w)。
+  由此把"两类人"降为一条曲线上的两个点，并把同一个式子推到三层：个人层是可追踪的四个旋钮；
+  群体层是标签如何替代叙事（粗码是最便宜的码）；社会层是共情资源、核实延迟、替代供给、
+  惩罚可见度与技术弹性五条序列。全书六部分二十四章，附推导、数据复现、稳健性、可证伪登记簿、
+  工具模板与证据缺口。所有数字标 A/B/C 等级，13 条查不到出处的断言逐条列出并降为情景，
+  六件做不到的事单列一章。结论强度不超过证据强度。
+authors:
+  - family-names: "李"
+    given-names: "毅芃"
+    alias: "Li Yipeng"
+    email: "1610369302@qq.com"
+    affiliation: "独立研究者 / Independent Researcher"
+date-released: "2026-11-16"
+version: "0.1-wip"
+license: CC-BY-4.0
+keywords:
+  - "粗码"
+  - "分辨率"
+  - "码率—失真"
+  - "理性疏忽"
+  - "分类标签"
+  - "核实延迟"
+  - "证据等级"
+  - "可证伪"

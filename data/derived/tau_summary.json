@@ -1,0 +1,38 @@
+{
+  "n": 21063,
+  "snapshot_source": "kaggle:rmisra/politifact-fact-check-dataset",
+  "median": 6,
+  "p25": 2,
+  "p75": 13,
+  "p90": 26,
+  "p99": 123,
+  "share_gt_30d": 0.0779,
+  "share_gt_365d": 0.0052,
+  "by_year_median": {
+    "2007": 8,
+    "2008": 2,
+    "2009": 2,
+    "2010": 6,
+    "2011": 9,
+    "2012": 8,
+    "2013": 8,
+    "2014": 6,
+    "2015": 6,
+    "2016": 5,
+    "2017": 6,
+    "2018": 6,
+    "2019": 6,
+    "2020": 4,
+    "2021": 4,
+    "2022": 4
+  },
+  "by_verdict_median": {
+    "false": 5,
+    "half-true": 7,
+    "mostly-false": 7,
+    "mostly-true": 7,
+    "pants-fire": 4,
+    "true": 7
+  },
+  "caveat": "PolitiFact 只核查其选中的声明，存在选择偏差；τ 是'被核查者'的延迟，不是全语料的延迟。"
+}

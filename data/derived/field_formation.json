@@ -1,0 +1,112 @@
+[
+ {
+  "field": "分子生物学",
+  "label": "成形",
+  "query": "molecular biology",
+  "volume_2024": 2088,
+  "growth_2000_2015": 0.0131,
+  "growth_2015_2024": 0.0567,
+  "volatility": 1.861,
+  "canon_gini": 0.339
+ },
+ {
+  "field": "流行病学",
+  "label": "成形",
+  "query": "epidemiology",
+  "volume_2024": 12172,
+  "growth_2000_2015": 0.0674,
+  "growth_2015_2024": 0.0569,
+  "volatility": 0.839,
+  "canon_gini": 0.451
+ },
+ {
+  "field": "有机合成",
+  "label": "成形",
+  "query": "organic synthesis",
+  "volume_2024": 791,
+  "growth_2000_2015": 0.071,
+  "growth_2015_2024": 0.1301,
+  "volatility": 2.311,
+  "canon_gini": 0.232
+ },
+ {
+  "field": "凝聚态",
+  "label": "成形",
+  "query": "condensed matter",
+  "volume_2024": 299,
+  "growth_2000_2015": 0.123,
+  "growth_2015_2024": 0.096,
+  "volatility": 1.948,
+  "canon_gini": 0.369
+ },
+ {
+  "field": "气候影响",
+  "label": "成形",
+  "query": "climate change",
+  "volume_2024": 15102,
+  "growth_2000_2015": 0.2026,
+  "growth_2015_2024": 0.1849,
+  "volatility": 0.464,
+  "canon_gini": 0.199
+ },
+ {
+  "field": "营养学",
+  "label": "有争议",
+  "query": "nutrition",
+  "volume_2024": 17778,
+  "growth_2000_2015": 0.0678,
+  "growth_2015_2024": 0.1017,
+  "volatility": 0.815,
+  "canon_gini": 0.269
+ },
+ {
+  "field": "意识研究",
+  "label": "有争议",
+  "query": "consciousness",
+  "volume_2024": 3490,
+  "growth_2000_2015": 0.0569,
+  "growth_2015_2024": 0.094,
+  "volatility": 1.115,
+  "canon_gini": 0.375
+ },
+ {
+  "field": "迷幻药",
+  "label": "有争议",
+  "query": "psychedelic",
+  "volume_2024": 639,
+  "growth_2000_2015": 0.1114,
+  "growth_2015_2024": 0.3644,
+  "volatility": 3.057,
+  "canon_gini": 0.325
+ },
+ {
+  "field": "精神病分类",
+  "label": "有争议",
+  "query": "psychiatric classification",
+  "volume_2024": 9,
+  "growth_2000_2015": 0.0968,
+  "growth_2015_2024": -0.0315,
+  "volatility": 11.337,
+  "canon_gini": 0.843
+ },
+ {
+  "field": "微塑料",
+  "label": "前范式",
+  "query": "microplastics",
+  "volume_2024": 3807,
+  "growth_2000_2015": 0.3261,
+  "growth_2015_2024": 0.5614,
+  "volatility": 0.972,
+  "canon_gini": 0.177
+ },
+ {
+  "field": "肠道菌群",
+  "label": "前范式",
+  "query": "gut microbiome",
+  "volume_2024": 4683,
+  "growth_2000_2015": 0.4303,
+  "growth_2015_2024": 0.3042,
+  "volatility": 1.384,
+  "canon_gini": 0.224
+ }
+]

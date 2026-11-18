@@ -1,0 +1,18 @@
+# 第一批采集任务 — 列：id	kind	url	ext	note
+# kind: json / csv / html ; ext: 保存扩展名
+wb_tfr_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	json	中国总和生育率
+wb_tfr_usa	json	https://api.worldbank.org/v2/country/USA/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	json	美国总和生育率
+wb_tfr_jpn	json	https://api.worldbank.org/v2/country/JPN/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	json	日本总和生育率
+wb_tfr_kor	json	https://api.worldbank.org/v2/country/KOR/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	json	韩国总和生育率
+wb_net_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/IT.NET.USER.ZS?format=json&per_page=200	json	互联网普及率（平台化的前置条件）
+wb_gdppc_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/NY.GDP.PCAP.CD?format=json&per_page=200	json	人均GDP（λ 的背景变量）
+wb_urb_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=200	json	城镇化率
+owid_fertility	csv	https://ourworldindata.org/grapher/children-per-woman-un.csv	csv	整理版生育率长序列
+owid_population	csv	https://ourworldindata.org/grapher/population.csv	csv	人口长序列
+eurostat_pop	json	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_gind?format=JSON&lang=EN	json	欧洲人口（对照用）
+wiki_pv_zhongguoren	json	https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/zh.wikipedia/all-access/user/%E4%B8%AD%E5%9B%BD%E4%BA%BA/monthly/2016010100/2026010100	json	页面浏览量代理演示（"中国人"条目）
+gdelt_deepfake	json	https://api.gdeltproject.org/api/v2/doc/doc?query=%22deepfake%22&mode=timelinevol&format=json&timespan=24m	json	新闻量时间线（高精度伪装的可用代理）
+gallup_media_trust	html	https://news.gallup.com/poll/695762/trust-media-new-low.aspx	html	28% 断言的原文快照（核验用，非统计序列）
+owid_maddison	csv	https://ourworldindata.org/grapher/gdp-per-capita-maddison.csv	csv	Maddison 长序列（公元1年—2018）
+owid_democracy	csv	https://ourworldindata.org/grapher/electoral-democracy-index.csv	csv	选举民主指数（1789—2024）
+owid_pop_lr	csv	https://ourworldindata.org/grapher/population-long-run-with-projections.csv	csv	长周期人口

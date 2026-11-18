@@ -1,0 +1,4 @@
+zip	source_path	bytes	sha256	zip_entries	extracted_to	extracted_files	note
+2sxfp-osfstorage-archive.zip	C:\Users\16103\Downloads\2sxfp-osfstorage-archive.zip	112678	bf97a0abec1b3d0312207515dd05ddf372a97a4b3376bab4205f5a58d60a36fe	9	data/raw/osf/2sxfp	9	知觉与范畴泛化梯度（STAI-T、泛化指数）
+k36ba-osfstorage-archive.zip	C:\Users\16103\Downloads\k36ba-osfstorage-archive.zip	3392225	c92b47a3f643cd31320d5dc448c74a7c84b6108dacb6750e0a1ab195ba976ffa	9	data/raw/osf/k36ba	9	概念性恐惧泛化（IUS/STAI-T/BIS、SCR/FPS）；5 个嵌套 zip 保持原样，分析时用 zipfile 就地读
+h8cjb-osfstorage-archive.zip	C:\Users\16103\Downloads\h8cjb-osfstorage-archive.zip	117528	817677bd7f5895156f196dd5842e2a75d6f0d5bea54a5294afc5c74efd3e1bcf	1	data/raw/osf/h8cjb	1	情感一致性泛化（Alcala 2025）

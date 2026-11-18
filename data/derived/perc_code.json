@@ -1,0 +1,179 @@
+{
+ "thresholds": {
+  "ring_rewired": 0.823,
+  "square_20x20": 0.538,
+  "random_regular_d4": 0.288
+ },
+ "scan": {
+  "ring_rewired": [
+   {
+    "sigma": 0.0,
+    "p": 1.0,
+    "giant": 1.0
+   },
+   {
+    "sigma": 0.15,
+    "p": 0.778,
+    "giant": 0.645
+   },
+   {
+    "sigma": 0.3,
+    "p": 0.553,
+    "giant": 0.057
+   },
+   {
+    "sigma": 0.45,
+    "p": 0.417,
+    "giant": 0.025
+   },
+   {
+    "sigma": 0.6,
+    "p": 0.356,
+    "giant": 0.016
+   },
+   {
+    "sigma": 0.8,
+    "p": 0.31,
+    "giant": 0.013
+   },
+   {
+    "sigma": 1.0,
+    "p": 0.272,
+    "giant": 0.01
+   }
+  ],
+  "square_20x20": [
+   {
+    "sigma": 0.0,
+    "p": 1.0,
+    "giant": 1.0
+   },
+   {
+    "sigma": 0.15,
+    "p": 0.783,
+    "giant": 0.875
+   },
+   {
+    "sigma": 0.3,
+    "p": 0.546,
+    "giant": 0.588
+   },
+   {
+    "sigma": 0.45,
+    "p": 0.424,
+    "giant": 0.186
+   },
+   {
+    "sigma": 0.6,
+    "p": 0.365,
+    "giant": 0.105
+   },
+   {
+    "sigma": 0.8,
+    "p": 0.307,
+    "giant": 0.055
+   },
+   {
+    "sigma": 1.0,
+    "p": 0.283,
+    "giant": 0.057
+   }
+  ],
+  "random_regular_d4": [
+   {
+    "sigma": 0.0,
+    "p": 1.0,
+    "giant": 1.0
+   },
+   {
+    "sigma": 0.15,
+    "p": 0.792,
+    "giant": 0.882
+   },
+   {
+    "sigma": 0.3,
+    "p": 0.545,
+    "giant": 0.677
+   },
+   {
+    "sigma": 0.45,
+    "p": 0.421,
+    "giant": 0.507
+   },
+   {
+    "sigma": 0.6,
+    "p": 0.354,
+    "giant": 0.368
+   },
+   {
+    "sigma": 0.8,
+    "p": 0.308,
+    "giant": 0.342
+   },
+   {
+    "sigma": 1.0,
+    "p": 0.279,
+    "giant": 0.347
+   }
+  ]
+ },
+ "degree_scan": [
+  {
+   "degree": 2,
+   "p_c": 0.634,
+   "sigma_star": 0.27
+  },
+  {
+   "degree": 3,
+   "p_c": 0.394,
+   "sigma_star": 0.41
+  },
+  {
+   "degree": 4,
+   "p_c": 0.287,
+   "sigma_star": 0.47
+  },
+  {
+   "degree": 6,
+   "p_c": 0.191,
+   "sigma_star": 0.47
+  },
+  {
+   "degree": 8,
+   "p_c": 0.139,
+   "sigma_star": 0.48
+  }
+ ],
+ "code_space": [
+  {
+   "vocab_size": 80,
+   "mean_overlap_threshold": 0.25,
+   "giant": 0.005
+  },
+  {
+   "vocab_size": 100,
+   "mean_overlap_threshold": 0.25,
+   "giant": 0.007
+  },
+  {
+   "vocab_size": 120,
+   "mean_overlap_threshold": 0.25,
+   "giant": 0.162
+  },
+  {
+   "vocab_size": 140,
+   "mean_overlap_threshold": 0.25,
+   "giant": 1.0
+  },
+  {
+   "vocab_size": 160,
+   "mean_overlap_threshold": 0.25,
+   "giant": 1.0
+  },
+  {
+   "vocab_size": 200,
+   "mean_overlap_threshold": 0.25,
+   "giant": 1.0
+  }
+ ]
+}

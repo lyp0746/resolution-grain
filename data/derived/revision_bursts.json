@@ -1,0 +1,144 @@
+{
+ "federal_register_rules": {
+  "years": [
+   1995,
+   2024
+  ],
+  "n_years": 30,
+  "first": 4747,
+  "last": 3248,
+  "trend_per_year": -60.8,
+  "resid_cv": 0.0543,
+  "resid_lag1_autocorr": 0.295,
+  "dispersion_var_over_mean": 83.5
+ },
+ "ecfr_section_gaps": {
+  "n_parts": 19,
+  "n_gaps": 266,
+  "mean_years": 4.11,
+  "sd_years": 2.73,
+  "cv": 0.66,
+  "burstiness_B": -0.202,
+  "per_part": {
+   "1": {
+    "n_sections": 252,
+    "n_gaps": 43,
+    "median": 4.0,
+    "mean": 3.44
+   },
+   "2": {
+    "n_sections": 7,
+    "n_gaps": 2,
+    "median": 5.5,
+    "mean": 5.5
+   },
+   "4": {
+    "n_sections": 10,
+    "n_gaps": 6,
+    "median": 5.0,
+    "mean": 5.0
+   },
+   "5": {
+    "n_sections": 3,
+    "n_gaps": 9,
+    "median": 3.0,
+    "mean": 3.33
+   },
+   "7": {
+    "n_sections": 17,
+    "n_gaps": 2,
+    "median": 6.5,
+    "mean": 6.5
+   },
+   "10": {
+    "n_sections": 31,
+    "n_gaps": 25,
+    "median": 5.0,
+    "mean": 4.28
+   },
+   "11": {
+    "n_sections": 10,
+    "n_gaps": 3,
+    "median": 5.0,
+    "mean": 4.33
+   },
+   "12": {
+    "n_sections": 45,
+    "n_gaps": 19,
+    "median": 7.0,
+    "mean": 6.11
+   },
+   "14": {
+    "n_sections": 43,
+    "n_gaps": 9,
+    "median": 6.0,
+    "mean": 4.56
+   },
+   "16": {
+    "n_sections": 15,
+    "n_gaps": 7,
+    "median": 1.0,
+    "mean": 2.57
+   },
+   "17": {
+    "n_sections": 34,
+    "n_gaps": 7,
+    "median": 7.0,
+    "mean": 6.14
+   },
+   "20": {
+    "n_sections": 75,
+    "n_gaps": 23,
+    "median": 6.0,
+    "mean": 4.87
+   },
+   "25": {
+    "n_sections": 24,
+    "n_gaps": 6,
+    "median": 4.5,
+    "mean": 4.17
+   },
+   "50": {
+    "n_sections": 15,
+    "n_gaps": 3,
+    "median": 1.0,
+    "mean": 3.0
+   },
+   "73": {
+    "n_sections": 131,
+    "n_gaps": 17,
+    "median": 4.0,
+    "mean": 4.53
+   },
+   "101": {
+    "n_sections": 50,
+    "n_gaps": 25,
+    "median": 3.0,
+    "mean": 4.04
+   },
+   "117": {
+    "n_sections": 61,
+    "n_gaps": 23,
+    "median": 1.0,
+    "mean": 2.3
+   },
+   "201": {
+    "n_sections": 75,
+    "n_gaps": 22,
+    "median": 1.0,
+    "mean": 3.73
+   },
+   "211": {
+    "n_sections": 60,
+    "n_gaps": 15,
+    "median": 1.0,
+    "mean": 4.2
+   }
+  }
+ },
+ "verdict": {
+  "aggregate": "平滑（去趋势后残差 CV 很小、自相关高）",
+  "unit": "比随机更规则（B<0）",
+  "reading": "闸口不在改版记录里可见：成文制度的时刻由排班与预算定，不由阈值定"
+ }
+}

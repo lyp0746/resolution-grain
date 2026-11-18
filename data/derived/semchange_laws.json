@@ -1,0 +1,33 @@
+{
+ "note": "dev 真值（37 词/语种）；非新证据，只检验两条律在此数据上是否同向",
+ "rows": [
+  {
+   "lang": "english",
+   "n": 37,
+   "spearman_change_vs_freq": -0.0,
+   "p_freq": 0.9989,
+   "spearman_change_vs_senses": 0.422,
+   "p_senses": 0.0092,
+   "binary_mean_freq_changed": 4.42,
+   "binary_mean_freq_stable": 4.5
+  },
+  {
+   "lang": "german",
+   "n": 48,
+   "spearman_change_vs_freq": 0.202,
+   "p_freq": 0.1784
+  },
+  {
+   "lang": "latin",
+   "n": 40,
+   "spearman_change_vs_freq": 0.138,
+   "p_freq": 0.4298
+  },
+  {
+   "lang": "swedish",
+   "n": 31,
+   "spearman_change_vs_freq": 0.034,
+   "p_freq": 0.8584
+  }
+ ]
+}

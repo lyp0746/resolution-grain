@@ -1,0 +1,82 @@
+{
+  "source": "WVS per-country (kaggle), OWID fertility/maddison/democracy, Bing clusters, Gallup snapshot",
+  "A_P7_trust_vs_tfr": {
+    "n": 233,
+    "pooled_corr": -0.236,
+    "within_country_corr": 0.264,
+    "tfr_coef_on_E_ctrl_lgdp": -0.065,
+    "se": 0.42,
+    "n_with_gdp": 232
+  },
+  "B_gender_attitudes": {
+    "c001": {
+      "by_wave": {
+        "2": [
+          1.72,
+          17
+        ],
+        "3": [
+          1.838,
+          52
+        ],
+        "4": [
+          1.675,
+          37
+        ],
+        "5": [
+          1.849,
+          57
+        ],
+        "6": [
+          1.79,
+          60
+        ]
+      }
+    },
+    "d059": {
+      "by_wave": {
+        "3": [
+          2.455,
+          50
+        ],
+        "4": [
+          2.398,
+          37
+        ],
+        "5": [
+          2.605,
+          58
+        ],
+        "6": [
+          2.411,
+          60
+        ]
+      }
+    }
+  },
+  "C_china_tongbao_lag": {
+    "n": 17,
+    "median": 0.0,
+    "p25": -2.0,
+    "p75": 0.0,
+    "share_negative": 0.412,
+    "share_0_3": 0.588
+  },
+  "D_vdem_punctuation": {
+    "n_changes": 16428,
+    "mean_abs": 0.0187,
+    "kurtosis": 58.18,
+    "share_top10pct_of_total_change": 0.599,
+    "share_ge_0.02": 0.215
+  },
+  "E_gallup_age": {
+    "n_hits": 9,
+    "samples": [
+      "ease sample sizes. In the most recent three-year period, spanning 2023 to 2025, 43% of adults aged 65 and older trust the media, compared with no more than 28% in",
+      "all four groups has gradually declined &mdash; but less so among Americans aged 65 and older. ###Embeddable### Democrats of all ages express more trust than Repub",
+      "n the media, compared with 59% of Democrats aged 50 to 64 and 69% of those aged 65 and older. Across age groups, independents report less trust in the mass media",
+      "s do, but substantially higher than Republicans. Among independents, those aged 65 and older are the most likely to say they have confidence in the media. Republi",
+      "edia, 2001-2025 % Great deal/Fair amount % Not very much % None at all 2001 39% 43% 18% 2002 49% 39% 12% 2003 44% 41% 15% 2004 31% 46% 22% 2005 31% 53% 16% 2007 33"
+    ]
+  }
+}

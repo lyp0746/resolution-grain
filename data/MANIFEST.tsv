@@ -1,0 +1,28 @@
+task_id	kind	url	fetched_at_utc	status	bytes	sha256	note
+wb_tfr_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	2026-11-15T14:15:22Z	ERR	0		ReadTimeout
+wb_tfr_usa	json	https://api.worldbank.org/v2/country/USA/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	2026-11-15T14:18:35Z	200	14958	3352fbaa0626a0e95c7eb3b5b69f77d62a547b8ad006d7fc81cdb67a64c60354	美国总和生育率
+owid_fertility	csv	https://ourworldindata.org/grapher/children-per-woman-un.csv	2026-11-15T14:20:31Z	200	504624	9043a1bf4f21969b81953bdffee871fc87ae7f25bbed245bdb18699b6f59402e	整理版生育率长序列
+owid_population	csv	https://ourworldindata.org/grapher/population.csv	2026-11-15T14:20:34Z	200	1594182	6e72d4ffe8f0e940df60c90b13c8ad6eda85043b995b244e8b3e20b1e833b541	人口长序列
+eurostat_pop	json	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_gind?format=JSON&lang=EN	2026-11-15T14:20:39Z	200	965707	313b4f7f6f3292fb34d9c13652f0bdf8143780ebad802f959fdc3604c7724cbf	欧洲人口（对照用）
+wiki_pv_zhongguoren	json	https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/zh.wikipedia/all-access/user/%E4%B8%AD%E5%9B%BD%E4%BA%BA/monthly/2016010100/2026010100	2026-11-15T14:20:51Z	200	17798	42b434a49acf1f772abad217334352c40c51ddabb76852faba870489bdd076bc	页面浏览量代理演示（"中国人"条目）
+gallup_media_trust	html	https://news.gallup.com/poll/695762/trust-media-new-low.aspx	2026-11-15T14:20:59Z	200	139086	4cfcd0603940a44e56478bdb83ee102076bdf0283c610516ebf0a3f9648f4345	28% 断言的原文快照（核验用，非统计序列）
+gdelt_deepfake	json	https://api.gdeltproject.org/api/v2/doc/doc?query=%22deepfake%22&mode=timelinevol&format=json&timespan=24m	2026-11-15T14:21:09Z	429	444	44c03f8dd984184218c90dc7e64aed9e6e2d8b17426feb5aa7933b3c44df64c6	新闻量时间线（高精度伪装的可用代理） | HTTP 429
+wb_tfr_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	2026-11-15T14:21:54Z	200	14407	7b05f4d009f79fc32223218c0f69350859b5274aceaba2205b988fc6f511fc30	中国总和生育率
+wb_tfr_jpn	json	https://api.worldbank.org/v2/country/JPN/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	2026-11-15T14:21:58Z	200	14336	cbe7838fcca5b3374797ca233f762ac88c9b861548bceb4db9f1e10ba1278f0b	日本总和生育率
+wb_tfr_kor	json	https://api.worldbank.org/v2/country/KOR/indicator/SP.DYN.TFRT.IN?format=json&per_page=200	2026-11-15T14:22:00Z	200	14780	a18a76ea8a42bcbe443d97fad439d6b81f9d26007d6448ef0c3bbf3aaf814031	韩国总和生育率
+wb_net_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/IT.NET.USER.ZS?format=json&per_page=200	2026-11-15T14:22:50Z	200	15010	0cbe1cbf196ee9c93ded8cd8779aa6f4c58a90213d52d1440a2c9e9b3c533bb3	互联网普及率（平台化的前置条件）
+wb_gdppc_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/NY.GDP.PCAP.CD?format=json&per_page=200	2026-11-15T14:22:53Z	200	14342	8ded9ec9b221849cdf27225bdb089fde2358f217eef636ae1efa90ba1a4b8a98	人均GDP（λ 的背景变量）
+wb_urb_chn	json	https://api.worldbank.org/v2/country/CHN/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=200	2026-11-15T14:23:01Z	200	15334	50028f27ad5360e76be4a21d02935ede0a596ba4e56226a4a958fe3a59a26029	城镇化率
+gdelt_deepfake	json	https://api.gdeltproject.org/api/v2/doc/doc?query=%22deepfake%22&mode=timelinevol&format=json&timespan=24m	2026-11-15T14:23:49Z	429	444	44c03f8dd984184218c90dc7e64aed9e6e2d8b17426feb5aa7933b3c44df64c6	新闻量时间线（高精度伪装的可用代理） | HTTP 429
+owid_maddison	csv	https://ourworldindata.org/grapher/gdp-per-capita-maddison.csv	2026-11-15T15:03:55Z	200	567430	0545ad6ca37529206af49f9f964f17af927e8c154c1fe8d3813c523e0d2f43f8	Maddison 长序列（公元1年—2018）
+owid_democracy	csv	https://ourworldindata.org/grapher/electoral-democracy-index.csv	2026-11-15T15:03:57Z	200	1115469	b10099af07ae1c4900edb9e7cd8d2d3876bbca5b3bb1bae69e70932fcdb4bd7e	选举民主指数（1789—2024）
+owid_pop_lr	csv	https://ourworldindata.org/grapher/population-long-run-with-projections.csv	2026-11-15T15:04:00Z	200	2228238	54ff41f14147e0e866c7791bb02b86d0ff9ce365ec7923a007b17bc2e0e43c2a	长周期人口
+
+seshat_sc	xlsx	https://github.com/datasets/seshat	2026-11-15T23:09:00Z	200	1012995	a548793743b949fe473c2936e5473beec6a867fbd65626c5ec58da4bd6b1b1ad	Seshat 社会复杂度公开导出（95 变量×398 政体×30 NGA）；A9 的数据
+seshat_agri	csv	https://github.com/datasets/seshat	2026-11-15T23:09:00Z	200	217744	a09eaa327b493bd0bd5c1f37ccc84663140e980d5585328eefdec733d62e0307	Seshat 农业变量集
+seshat_axial	csv	https://github.com/datasets/seshat	2026-11-15T23:09:00Z	200	20629	05b3f9dab347b1152bd88cc84fc3061b0f477b95e6e764597d2661d612741936	Seshat 轴心时代（道德化规范 vs 形式化法律）
+seshat_mr	csv	https://github.com/datasets/seshat	2026-11-15T23:09:00Z	200	27785	c802c5ebe0f64e885ac042192d3899193e695cbe647b8822922b916f96419241	Seshat 道德化宗教变量集
+seshat_polycrisis	csv	https://github.com/datasets/seshat	2026-11-15T23:09:00Z	200	267858	9f7b50a31f249bc0421c96dd958519b6e4d8aa3af56aaceb6aa1215fafc04368	Seshat 危机—后果面板
+seshat_equinox	zip	https://zenodo.org/api/records/6642230/files/seshatdb/Equinox_Data-v.1.zip/content	2026-11-18T12:00:00Z	200	3591457	bf38dd49dcec9881e4f1ba9651e11bd60fd4400450b301e5b579553386729e14	Seshat 官方 Equinox 包（135 变量×373 政体；A11 的数据；CC-BY；DOI 10.5281/zenodo.6642230）
+ecfr_fr	json	https://www.federalregister.gov/api/v1/documents.json ＋ https://www.ecfr.gov/api/versioner/v1/versions/title-21.json	2026-11-18T13:00:00Z	200	521100	（逐文件见 data/raw/ecfr_fr/SHA256SUMS）	51 个 JSON 缓存：每年最终规则计数（fr_rule_YYYY）与 21 CFR 各部分修订史（ecfr_title21_part*.json）；A15 的数据
+wiki_gregorian	txt	https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&titles=List%20of%20adoption%20dates%20of%20the%20Gregorian%20calendar%20by%20country	2026-11-18T14:00:00Z	200	34353	ce24a92448f27246d7d7a832a6160f94d21c5a42fb44191ad19df278bc316313	历法采纳年份表（125 国）的 wikitext；A16 的数据；CC-BY-SA，仅用于分布形状

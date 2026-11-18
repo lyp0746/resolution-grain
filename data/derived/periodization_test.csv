@@ -1,0 +1,46 @@
+﻿source,genre,scope,tradition,n_boundaries,span_years,seg_years
+AP 世界史（2011 框架）,curriculum,world,global,4,1314.0,438.0
+AP 世界史：现代（课程框架）,curriculum,world,global,4,700.0,233.33333333333334
+Acton《剑桥近代史》,reference,region,european,5,365.0,91.25
+Bentley & Ziegler《传统与相遇》第6版,survey,world,global,5,1414.0,353.5
+Britannica《欧洲史》条目,reference,region,european,7,1469.0,244.83333333333334
+Bulliet《大地与人民》第6版,survey,world,global,4,914.0,304.6666666666667
+Coffin & Stacey《西方文明》第17版,survey,region,european,7,1438.0,239.66666666666666
+Davies《欧洲史》,survey,region,european,7,1469.0,244.83333333333334
+Hobsbawm《年代四部曲》,argument,region,european,4,125.0,41.666666666666664
+Judge & Langdon《联系：世界史》第3版,survey,world,global,4,914.0,304.6666666666667
+Kishlansky《西方文明》第7版,survey,region,european,7,1438.0,239.66666666666666
+Langer《世界史百科全书》第5版,reference,world,european,7,1469.0,244.83333333333334
+McKay《西方社会史》第11版,survey,region,european,7,1469.0,244.83333333333334
+McNeill《世界史》第4版,survey,world,global,4,914.0,304.6666666666667
+Noble《西方文明：超越边界》第7版,survey,region,european,7,1438.0,239.66666666666666
+Palmer/Colton《现代世界史》第11版,survey,region,european,5,445.0,111.25
+Perry《西方文明简史》第11版,survey,region,european,7,1469.0,244.83333333333334
+Roberts《企鹅世界史》第6版,survey,world,european,4,445.0,148.33333333333334
+Spielvogel《世界史》第8版,survey,world,european,4,445.0,148.33333333333334
+Spielvogel《西方文明史简编》第9版,survey,region,european,7,1469.0,244.83333333333334
+Spodek《世界的历史》第4版,survey,world,global,4,900.0,300.0
+Stavrianos《全球史》第7版,survey,world,global,4,914.0,304.6666666666667
+Stearns《世界文明：全球视角》第7版,survey,world,global,4,914.0,304.6666666666667
+Wikipedia《List of time periods》,reference,world,other,4,1438.0,479.3333333333333
+《中国大百科全书·世界历史》,reference,world,china,6,1469.0,293.8
+《中外历史纲要（下）》人教版,curriculum,world,china,7,491.0,81.83333333333333
+《剑桥世界史》,reference,world,global,3,1250.0,625.0
+《基尔瓦编年》,chronicle,region,african,3,548.0,274.0
+人教版《世界历史》九年级,curriculum,world,china,6,445.0,89.0
+北师大版《世界历史》九年级,curriculum,world,china,4,445.0,148.33333333333334
+华东师大版《世界历史》九年级,curriculum,world,china,4,445.0,148.33333333333334
+司马光《资治通鉴》,chronicle,region,east_asian_premodern,10,1362.0,151.33333333333334
+司马迁《史记》,chronicle,nation,east_asian_premodern,3,80.0,40.0
+吴于廑、齐世荣《世界史》六卷本,survey,world,china,3,445.0,222.5
+周一良、吴于廑《世界通史》,survey,world,china,3,305.0,152.5
+塔巴里《历代先知与帝王史》,chronicle,world,islamic,5,293.0,73.25
+岳麓版《世界历史》九年级,curriculum,world,china,4,445.0,148.33333333333334
+拉施特《史集》,chronicle,world,islamic,3,696.0,348.0
+瓜曼·波马《新编年史》,chronicle,region,americas,3,177.0,88.5
+白寿彝《中国通史》,survey,nation,china,3,109.0,54.5
+苏联科学院《世界通史》十卷本（中译）,reference,world,china,3,277.0,138.5
+范文澜《中国通史简编》,survey,nation,china,7,2132.0,355.3333333333333
+萨阿贡《佛罗伦萨抄本》,chronicle,region,americas,3,58.0,29.0
+萨阿迪《苏丹史》,chronicle,region,african,3,127.0,63.5
+钱穆《国史大纲》,survey,nation,china,3,2132.0,1066.0

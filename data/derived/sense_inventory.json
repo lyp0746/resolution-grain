@@ -1,0 +1,75 @@
+{
+ "inventory": {
+  "lemmas_2019": 156124,
+  "lemmas_2024": 159960,
+  "shared": 156052,
+  "added": 3908,
+  "dropped": 72
+ },
+ "n_analysis": 124147,
+ "any_change_rate": 0.0027,
+ "ols_rel_change": [
+  {
+   "term": "截距",
+   "coef": 0.002838,
+   "se": 0.000443,
+   "p": 0.0
+  },
+  {
+   "term": "Zipf 频次",
+   "coef": 0.000287,
+   "se": 0.000105,
+   "p": 0.0063
+  },
+  {
+   "term": "2019 义项数",
+   "coef": 0.000101,
+   "se": 9.8e-05,
+   "p": 0.303
+  },
+  {
+   "term": "词长",
+   "coef": -0.000191,
+   "se": 2.4e-05,
+   "p": 0.0
+  }
+ ],
+ "spearman": {
+  "change_vs_freq": 0.024,
+  "p_freq": 0.0,
+  "change_vs_senses": 0.052,
+  "p_senses": 0.0
+ },
+ "bins": [
+  {
+   "senses": "1—1",
+   "n": 98719,
+   "change_rate": 0.001,
+   "median_zipf": 2.9
+  },
+  {
+   "senses": "2—2",
+   "n": 15297,
+   "change_rate": 0.004,
+   "median_zipf": 3.03
+  },
+  {
+   "senses": "3—4",
+   "n": 7203,
+   "change_rate": 0.008,
+   "median_zipf": 3.5
+  },
+  {
+   "senses": "5—9",
+   "n": 2483,
+   "change_rate": 0.015,
+   "median_zipf": 4.3
+  },
+  {
+   "senses": "10—99",
+   "n": 445,
+   "change_rate": 0.061,
+   "median_zipf": 5.0
+  }
+ ]
+}

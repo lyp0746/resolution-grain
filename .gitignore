@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# 构建产物（可由 build_book.py / scripts/build.sh 重新生成）
+/output/
+/release/
+
+# 原始数据缓存：不入版本，但每个文件在 MANIFEST*.tsv 里有 URL 与 SHA256
+/data/raw/
+
+# 本地草稿
+/_temp/

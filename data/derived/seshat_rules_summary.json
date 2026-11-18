@@ -1,0 +1,65 @@
+{
+  "source": "Seshat axial_dataset.05.2018.csv",
+  "n_rows": 428,
+  "n_nga": 10,
+  "year_min": -5300,
+  "year_max": 1800,
+  "index_range": [
+    0.0,
+    10.5
+  ],
+  "first_appearance": {
+    "8. Formal legal code": {
+      "n_nga_first": 10,
+      "earliest_year": -2700,
+      "median_first_year": -1050.0
+    },
+    "9. General applicability of law": {
+      "n_nga_first": 10,
+      "earliest_year": -3100,
+      "median_first_year": -900.0
+    },
+    "10. Constraint on executive": {
+      "n_nga_first": 10,
+      "earliest_year": -3100,
+      "median_first_year": -1000.0
+    },
+    "11. Full-time bureaucrats": {
+      "n_nga_first": 10,
+      "earliest_year": -3900,
+      "median_first_year": -1700.0
+    }
+  },
+  "n_transitions": 418,
+  "mean_change_per_century": 0.154,
+  "sd_change_per_century": 0.767,
+  "share_abs_change_ge_1": 0.1986,
+  "top10pct_share_of_positive_change": 0.259,
+  "top_centuries_by_abs_change_in_mean_index": [
+    {
+      "century": 500,
+      "delta": 1.55
+    },
+    {
+      "century": -2000,
+      "delta": 1.208
+    },
+    {
+      "century": 200,
+      "delta": 1.144
+    },
+    {
+      "century": -1000,
+      "delta": 1.007
+    },
+    {
+      "century": 400,
+      "delta": 0.85
+    },
+    {
+      "century": -1600,
+      "delta": 0.839
+    }
+  ],
+  "caveat": "Seshat 的指标是专家编码的 0/0.5/1，且观测按世纪对齐；'跃变'是本数据集内的增量，不等于历史上没有更慢的过程。"
+}

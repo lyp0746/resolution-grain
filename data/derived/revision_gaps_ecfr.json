@@ -1,0 +1,144 @@
+{
+ "per_part": {
+  "1": {
+   "n_sections": 252,
+   "n_gaps": 43,
+   "median": 4,
+   "mean": 3.44,
+   "cv": 0.64
+  },
+  "2": {
+   "n_sections": 7,
+   "n_gaps": 2,
+   "median": 5.5,
+   "mean": 5.5,
+   "cv": 0.82
+  },
+  "4": {
+   "n_sections": 10,
+   "n_gaps": 6,
+   "median": 5.0,
+   "mean": 5,
+   "cv": 0.6
+  },
+  "5": {
+   "n_sections": 3,
+   "n_gaps": 9,
+   "median": 3,
+   "mean": 3.33,
+   "cv": 0.47
+  },
+  "7": {
+   "n_sections": 17,
+   "n_gaps": 2,
+   "median": 6.5,
+   "mean": 6.5,
+   "cv": 0.08
+  },
+  "10": {
+   "n_sections": 31,
+   "n_gaps": 25,
+   "median": 5,
+   "mean": 4.28,
+   "cv": 0.59
+  },
+  "11": {
+   "n_sections": 10,
+   "n_gaps": 3,
+   "median": 5,
+   "mean": 4.33,
+   "cv": 0.58
+  },
+  "12": {
+   "n_sections": 45,
+   "n_gaps": 19,
+   "median": 7,
+   "mean": 6.11,
+   "cv": 0.31
+  },
+  "14": {
+   "n_sections": 43,
+   "n_gaps": 9,
+   "median": 6,
+   "mean": 4.56,
+   "cv": 0.59
+  },
+  "16": {
+   "n_sections": 15,
+   "n_gaps": 7,
+   "median": 1,
+   "mean": 2.57,
+   "cv": 1.06
+  },
+  "17": {
+   "n_sections": 34,
+   "n_gaps": 7,
+   "median": 7,
+   "mean": 6.14,
+   "cv": 0.34
+  },
+  "20": {
+   "n_sections": 75,
+   "n_gaps": 23,
+   "median": 6,
+   "mean": 4.87,
+   "cv": 0.42
+  },
+  "25": {
+   "n_sections": 24,
+   "n_gaps": 6,
+   "median": 4.5,
+   "mean": 4.17,
+   "cv": 0.59
+  },
+  "50": {
+   "n_sections": 15,
+   "n_gaps": 3,
+   "median": 1,
+   "mean": 3,
+   "cv": 0.94
+  },
+  "73": {
+   "n_sections": 131,
+   "n_gaps": 17,
+   "median": 4,
+   "mean": 4.53,
+   "cv": 0.73
+  },
+  "101": {
+   "n_sections": 50,
+   "n_gaps": 25,
+   "median": 3,
+   "mean": 4.04,
+   "cv": 0.65
+  },
+  "117": {
+   "n_sections": 61,
+   "n_gaps": 23,
+   "median": 1,
+   "mean": 2.3,
+   "cv": 0.71
+  },
+  "201": {
+   "n_sections": 75,
+   "n_gaps": 22,
+   "median": 1.0,
+   "mean": 3.73,
+   "cv": 0.88
+  },
+  "211": {
+   "n_sections": 60,
+   "n_gaps": 15,
+   "median": 1,
+   "mean": 4.2,
+   "cv": 0.82
+  }
+ },
+ "pooled": {
+  "n": 266,
+  "mean": 4.11,
+  "sd": 2.73,
+  "cv": 0.66,
+  "B": -0.202
+ }
+}

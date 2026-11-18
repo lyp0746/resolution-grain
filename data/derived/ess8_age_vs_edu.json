@@ -1,0 +1,29 @@
+{
+  "source": "ESS round 8 (kg_ess8.zip)",
+  "n_rows": 43959,
+  "trust": {
+    "n": 43852,
+    "r2_country_only": 0.0936,
+    "r2_plus_age": 0.0937,
+    "r2_plus_edu": 0.1119,
+    "age_coef_std_alone": -0.009,
+    "age_coef_std_with_edu": 0.0019,
+    "edu_coef_std_with_age": 0.1405,
+    "delta_r2_age": 8e-05,
+    "delta_r2_edu": 0.01821,
+    "age_shrink_pct_when_edu_added": null
+  },
+  "gender_egal": {
+    "n": 43488,
+    "r2_country_only": 0.1203,
+    "r2_plus_age": 0.1222,
+    "r2_plus_edu": 0.1626,
+    "age_coef_std_alone": -0.0444,
+    "age_coef_std_with_edu": -0.0283,
+    "edu_coef_std_with_age": 0.2093,
+    "delta_r2_age": 0.00196,
+    "delta_r2_edu": 0.04041,
+    "age_shrink_pct_when_edu_added": 36.2
+  },
+  "note": "教育是 μ 的粗代理；单轮数据无法区分队列效应与年龄效应；系数为全样本标准化后的 OLS，含国家固定效应。"
+}

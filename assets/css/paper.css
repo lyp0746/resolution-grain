@@ -1,0 +1,252 @@
+/* ============================================================
+ * 出版级排版 —— 正式书稿版式（Print）
+ * 字体体系：
+ *   正文（中文宋体 + 西文 Times），标题（微软雅黑/Arial 无衬线）。
+ * 明确不使用思源（Source Han / Noto）系列，避免“网页化”观感。
+ * 页面：A4 单栏、30/35/32/35mm 边距、12.5pt、1.76 倍行距。
+ * ============================================================ */
+@page {
+  size: A4;
+  margin: 26mm 30mm 28mm 30mm;   /* 上 右 下 左（v3） */
+}
+@page :first { margin: 0; }   /* 封面满版出血 */
+
+* { box-sizing: border-box; }
+
+body {
+  /* 西文 Times + 中文宋体，构成衬线正文 */
+  font-family: "Times New Roman", "SimSun", "Songti SC", "STSong", "NSimSun", Georgia, serif;
+  font-size: 11.8pt;
+  line-height: 1.8;
+  color: #1a1a1a;
+  margin: 0 auto;
+  max-width: 150mm;          /* 31mm 边距下的行宽 */
+  padding: 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  hyphens: none;
+}
+
+/* ------------------------------ 标题层级 ------------------------------ */
+h1, h2, h3, h4, h5 {
+  /* 中文黑体 + 西文 Arial，标题字体 */
+  font-family: "Microsoft YaHei", "Heiti SC", "SimHei", "Arial", "Helvetica Neue", sans-serif;
+  color: #1a1a1a;
+  line-height: 1.28;
+  text-align: left;
+  break-after: avoid;
+}
+h1 { font-size: 17pt; font-weight: 700; margin: 0 0 10px; }
+h2 {
+  font-size: 14.5pt; font-weight: 700;
+  margin: 30px 0 12px; padding: 0 0 5px 0;
+  border-bottom: 0.9px solid #333;
+}
+h3 { font-size: 12.8pt; font-weight: 700; margin: 21px 0 8px; color: #1f1f1f; }
+h4 { font-size: 1em; font-weight: 700; margin: 16px 0 6px; color: #262626; }
+h4.arg { font-size: 1em; font-weight: 700; color: #333; margin: 14px 0 5px; }
+h5 { font-size: 1em; font-weight: 600; margin: 10px 0 4px; color: #333; }
+
+/* ------------------------------ 扉页 ------------------------------ */
+.title-page { break-after: page; padding-top: 26mm; }
+.book-title { font-family: "Microsoft YaHei", "SimHei", sans-serif;
+  font-size: 26pt; font-weight: 700; line-height: 1.3; letter-spacing: 1px; }
+.book-subtitle { font-family: "Microsoft YaHei", "SimHei", sans-serif;
+  font-size: 14pt; color: #444; margin: 10px 0 26px; }
+.author { text-align: left; font-size: 13pt; margin: 8px 0 2px;
+          font-family: "Microsoft YaHei", "SimHei", Arial, sans-serif; }
+.aff { text-align: left; font-size: 9pt; color: #555; margin: 0 0 18px; }
+
+/* ------------------------------ 摘要 ------------------------------ */
+/* 摘要独立页（去扉页空白页） */
+.abstract-page { break-after: page; padding-top: 6mm; }
+.abstract-page .abstract { margin: 0; }
+
+.abstract {
+  background: #f6f6f4; border: 1px solid #e0e0e0; border-left: 3px solid #2E86AB;
+  padding: 12px 16px; font-size: 9.6pt; line-height: 1.55; margin: 18px 0 12px;
+}
+.abstract .abt { font-weight: 700; font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+.en, .en-abstract {
+  background: #fafafa; border: 1px solid #e6e6e6;
+  padding: 11px 15px; font-size: 9pt; line-height: 1.5; margin: 10px 0 16px; color: #222;
+}
+.kw { font-size: 9pt; margin-top: 8px; color: #333; }
+
+/* ------------------------------ 正文 ------------------------------ */
+p { margin: 0 0 9.5px; }
+p.lead { font-size: 13pt; color: #222; }
+ul, ol { margin: 8px 0; padding-left: 20px; }
+li { margin: 4px 0; }
+code { font-family: "Courier New", Consolas, monospace; font-size: 9pt;
+       background: #f4f4f4; padding: 0 3px; }
+pre.code { font-family: "Courier New", Consolas, monospace; font-size: 8.4pt;
+       line-height: 1.42; background: #f6f7f9; border: 1px solid #e2e6ec;
+       border-left: 3px solid #3a6ea5; border-radius: 4px;
+       padding: 8px 12px; margin: 10px 0; white-space: pre-wrap;
+       overflow-wrap: anywhere; color: #222; }
+sup { font-size: 0.7em; }
+
+/* ------------------------------ 三线表 ------------------------------ */
+table.nat {
+  border-collapse: collapse; width: 100%; margin: 10px 0 4px;
+  font-size: 8.8pt; line-height: 1.35;
+  border-top: 1.4px solid #222; border-bottom: 1.4px solid #222;
+}
+table.nat th, table.nat td {
+  border: 0; border-bottom: 0.5px solid #e0e0e0;
+  padding: 5px 7px; text-align: center; vertical-align: top;
+  /* 长 token（脚本路径 / API 代码 / URL）必须可断行，否则表格的 min-content
+     会超出页面内容盒，触发 Chrome 打印时的整体缩放（封面一并缩水）。 */
+  overflow-wrap: anywhere; word-break: break-word;
+}
+table.nat tr:first-child th, table.nat tr:first-child td {
+  border-bottom: 1px solid #222; background: #ececec; font-weight: 700;
+}
+table.nat tr:last-child td { border-bottom: 0; }
+table.nat tr { break-inside: avoid; page-break-inside: avoid; }
+table.nat td.l, table.nat th.l { text-align: left; }
+caption.cap { caption-side: top; text-align: left; font-size: 9pt;
+              font-weight: 700; color: #1a1a1a; padding: 4px 0 6px; }
+.datasrc { font-size: 8.4pt; color: #555; line-height: 1.45;
+           border-left: 2px solid #cfcfcf; background: #f7f7f5;
+           padding: 5px 9px; margin: 2px 0 14px; }
+
+/* ------------------------------ 图 ------------------------------ */
+img.fig { width: 100%; display: block; margin: 12px 0 4px; border: 0; }
+svg.fig-svg { width: 100%; display: block; margin: 12px 0 4px; }
+.cap { font-size: 9pt; color: #1a1a1a; margin: 2px 0 14px; line-height: 1.45; }
+.cap b:first-child { font-weight: 700; }
+
+img.fig + .cap, svg.fig-svg + .cap { margin-top: 7px; }
+
+
+/* 文献表：引用 / 延伸阅读两栏 */
+.refs p.refh { font-weight: 700; font-size: 9pt; letter-spacing: .5px; color: #333;
+  margin: 8px 0 3px; padding-bottom: 2px; border-bottom: 0.6px solid #cfcfcf; }
+
+/* ------------------------------ 公式 ------------------------------ */
+.mblock { text-align: center; margin: 12px 0; font-size: 11pt; }
+.eq { display: flex; align-items: baseline; justify-content: center;
+      margin: 12px 0; font-size: 10.8pt; break-inside: avoid; page-break-inside: avoid; }
+.eq .body { flex: 0 1 auto; }
+.eq .num { flex: 0 0 auto; margin-left: auto; color: #333; font-size: 9.5pt;
+           font-family: "Times New Roman", "SimSun", serif; }
+
+/* ------------------------------ 框 ------------------------------ */
+.define, .scenario, .warning, .case, .note, .box {
+  padding: 10px 14px; margin: 12px 0; font-size: 9.6pt; line-height: 1.5;
+  break-inside: avoid;
+}
+.define { background: #f4f8fb; border-left: 3px solid #2E86AB; }
+.scenario { background: #f7fafc; border-left: 3px solid #7aa8c4; }
+.warning { background: #fbf7ef; border-left: 3px solid #B26B00; }
+.case { background: #fbfbfb; border: 1px solid #e2e2e2; border-top: 1.5px solid #6b6b6b; }
+.note { background: #f7f7f7; border-left: 3px solid #b5b5b5; }
+.box { background: #fafafa; border: 1px solid #e4e4e4; }
+.define .bt, .scenario .bt, .warning .bt, .case .ct, .box .t {
+  display: block; font-weight: 700; margin-bottom: 5px;
+  font-family: "Microsoft YaHei", "SimHei", sans-serif;
+}
+.warning .bt { color: #A83A00; }
+.case .code { font-family: Arial, sans-serif; color: #777; font-size: 8.6pt; font-weight: 400; }
+
+/* ---- 目录：右侧页码列 ---- */
+.toc .l1, .toc .l2, .toc .l3, .toc .l4 {
+  display: flex; align-items: baseline; flex-wrap: nowrap;
+}
+.toc .l1 > a, .toc .l2 > a, .toc .l3 > a, .toc .l4 > a { flex: 0 1 auto; min-width: 0; }
+.toc .folio {
+  margin-left: auto; padding-left: 10px; flex: 0 0 auto; white-space: nowrap;
+  color: #555; font-size: .9em; font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------ 其他 ------------------------------ */
+.foot { font-size: 8pt; color: #666; border-top: 1px solid #ccc;
+        margin-top: 26px; padding-top: 6px; }
+.pb { break-after: page; }
+.small { font-size: 9pt; }
+.todo-data { color: #c0392b; background: #fdecec; padding: 0 4px;
+             font-size: 0.92em; border-radius: 2px; }
+
+/* ---- 部分扉页 / 部分小结（spec v2 §1） ---- */
+.part-page { break-before: page; }
+.part-intro {
+  max-width: 132mm; margin: 7mm auto 0;
+  font-size: 13pt; line-height: 1.9; color: #2b2b2b; text-align: justify;
+}
+.part-intro p { margin: 0 0 .55em; text-indent: 2em; }
+.part-summary {
+  max-width: 132mm; margin: 9mm auto 2mm; padding: 4mm 0 0;
+  border-top: 0.8px solid #9a9a9a; font-size: 9.6pt; line-height: 1.9;
+}
+.part-summary .bt {
+  display: block; font-weight: 700; letter-spacing: 1px;
+  margin-bottom: .35em; color: #4a4a4a;
+}
+.part-summary p { margin: 0 0 .45em; text-indent: 2em; }
+
+
+/* ---- 部分扉页 v4：上图下文，互不重叠 ---- */
+.part-page{
+  position: relative; width: 100%; height: 243mm;
+  margin: 0; padding: 0; overflow: hidden;
+  break-before: page; break-after: page; background: #0e1117;
+}
+.part-art{ position:absolute; left:0; top:0; width:100%; height:54%; object-fit:cover; display:block; }
+.part-body{ position:absolute; left:13mm; right:13mm; top:57%; bottom:13mm; }
+.part-kicker{
+  font-family:"Helvetica Neue",Arial,sans-serif; font-size:8pt; letter-spacing:3px;
+  color:#b8862f; text-transform:uppercase; margin:0 0 3.5mm;
+}
+h1.part-title{
+  break-before: auto; text-align:left; padding:0; border:0;
+  font-family:"Microsoft YaHei","Heiti SC","SimHei",sans-serif;
+  font-size:16.5pt; font-weight:600; letter-spacing:0.4px;
+  color:#f6f2e8; margin:0 0 4mm; line-height:1.35;
+}
+.part-intro{ color:#c2c7d0; font-size:9.2pt; line-height:1.76; text-align:justify; }
+.part-intro p{ margin:0 0 .5em; text-indent:2em; }
+
+/* v4: nature-benchmark */
+
+
+/* ---- 章前扉页 ---- */
+.chapter-opener{break-before:page;break-after:page;height:235mm;padding:26mm 8mm 0;box-sizing:border-box;}
+.co-kicker{font-family:Arial,sans-serif;font-size:8pt;letter-spacing:3px;color:#b8862f;}
+.co-num{font-family:"Times New Roman",serif;font-size:54pt;line-height:1;color:#e7e0d0;margin:6mm 0 2mm;}
+.co-title{break-before:auto;font-family:"Microsoft YaHei","SimHei",sans-serif;font-size:22pt;font-weight:600;color:#1f1f1f;border:0;padding:0;margin:0 0 10mm;line-height:1.35;}
+.co-quote{font-size:12.5pt;line-height:2;color:#3a3a3a;border-left:2.5pt solid #b8862f;padding-left:6mm;margin:0 0 12mm;font-style:italic;}
+.co-map span{display:block;font-size:9pt;letter-spacing:2px;color:#888;margin-bottom:3mm;}
+.co-map ol{margin:0;padding-left:5mm;font-size:9.6pt;line-height:1.8;color:#444;}
+.co-map li{margin:0 0 1.2mm;}
+
+
+/* 部分导语独立成页 */
+.part-intro-page{break-before:page;break-after:page;padding:34mm 12mm 0;box-sizing:border-box;min-height:235mm;}
+.part-intro-page .part-intro{max-width:132mm;margin:0 auto;color:#2b2b2b;font-size:12pt;line-height:1.9;}
+
+
+/* ---- v5 部分扉页 / 章前扉页：干净排版，不依赖图片 ---- */
+.part-page{background:#fbfaf7;height:235mm;padding:0;position:relative;overflow:hidden;border:0;}
+.part-page::before{content:"";position:absolute;left:0;top:0;width:100%;height:6mm;background:#b8862f;}
+.part-art{display:none;}
+.part-body{position:static;padding:52mm 14mm 0;box-sizing:border-box;}
+.part-kicker{color:#b8862f;font-size:8.5pt;letter-spacing:4px;margin-bottom:8mm;}
+h1.part-title{color:#1a1a1a;font-size:24pt;line-height:1.3;letter-spacing:1px;margin:0 0 8mm;font-weight:600;}
+.part-page .part-title::after{content:"";display:block;width:36mm;height:1.2pt;background:#b8862f;margin-top:9mm;}
+.chapter-opener{height:235mm;padding:30mm 0 0;position:relative;}
+.chapter-opener::before{content:"";position:absolute;left:0;top:0;width:100%;height:2.2pt;background:#b8862f;}
+.co-kicker{color:#b8862f;font-size:8.5pt;letter-spacing:4px;}
+.co-num{font-size:64pt;color:#efe8d8;margin:8mm 0 0;}
+.co-title{font-size:24pt;line-height:1.35;margin:0 0 9mm;color:#1a1a1a;font-weight:600;}
+.co-quote{font-size:11.5pt;line-height:1.95;color:#333;border-left:1.6pt solid #b8862f;padding-left:7mm;margin:0 0 10mm;font-style:normal;}
+.co-map span{font-size:8.5pt;letter-spacing:3px;color:#999;margin-bottom:4mm;}
+.co-map ul{margin:0;padding:0;list-style:none;columns:2;column-gap:10mm;font-size:8.8pt;line-height:1.9;color:#444;}
+.co-map li{margin:0 0 1.2mm;break-inside:avoid;}
+
+.part-page{width:auto;margin:0;height:235mm;padding:0;box-sizing:border-box;overflow:hidden;}
+.part-body{padding:55mm 12mm 0;}
+
+.part-big{position:absolute;right:16mm;bottom:10mm;font-family:"Times New Roman",serif;font-size:150pt;line-height:1;color:#efe8d8;letter-spacing:-4px;z-index:0;}
+.part-body{position:relative;z-index:1;}

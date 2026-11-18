@@ -1,0 +1,15 @@
+# 公开数据集采集 — 列：id	platform	ref	path	note
+# platform: kaggle / hf ; ref: kaggle=owner/slug, hf=repo ; path: hf 内的文件名（kaggle 留空）
+kg_politifact	kaggle	rmisra/politifact-fact-check-dataset		PolitiFact 声明—核查记录（τ、判定）
+kg_hotlists	kaggle	showlcw/china-trending-topics-hourly-weibo-douyin-baidu		微博/抖音/百度小时榜（π_L）
+kg_weibo_hot	kaggle	chanemo/weibo-hot-searchlabeled		微博热搜（π_L，MIT）
+hf_weibo_hot	hf	LZYFirecn/weibo-hot-search	weibo_data_2025-05-12_20-40-checkpoint.csv	热搜单文件示例（仓库为逐小时 CSV）
+kg_ess	kaggle	aashkval/european-social-survey-2002-2023-round-1-11		ESS 1–11 轮（2002—2023，个人级信任/态度）
+kg_wvs	kaggle	fernandol/world-values-survey		WVS（个人/国家级价值观与信任）
+kg_ess8	kaggle	pascalbliem/european-social-survey-ess-8-ed21-201617		ESS 第8轮（2016—17，个人级，31 国）
+kg_news2016	kaggle	noxmoon/chinese-official-daily-news-since-2016		官方日报新闻（2016 起，带日期）
+kg_rmrb	kaggle	concyclics/renmindaily		人民日报语料（长跨度，CC0）
+kg_weibo2023	kaggle	matt0922/weibo-unemployment-discourse-2023		微博帖文 2023（178MB）
+kg_socialnet	kaggle	yangzhou32/socialnet-weibo-version-1		微博假新闻识别（68MB，含帖子与标签）
+kg_weibo2024	kaggle	loriali0808/2024weibo		2024 微博样本（6.9MB）
+kg_weibotext	kaggle	abc159835/weibo-posts-dataset-for-text-classification		微博文本分类样本（6.9MB）

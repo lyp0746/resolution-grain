@@ -1,0 +1,50 @@
+# 数据源登记簿 v0.1 — 列：id	source	owner	content	variables	coverage	grain	access	license	url	grade	note
+# access: open_api / open_csv / open_html / registration / purchase / closed / scrape_cautious
+# 本表只登记"来源"，不代表已取得；取用结果见 data/MANIFEST.tsv
+wb_wdi	World Bank WDI	World Bank	生育率、互联网普及、人均GDP、城镇化	E_t下游, λ背景, d	1960–	国家-年	open_api	CC BY 4.0	https://api.worldbank.org/v2/	A	生育率代码是 SP.DYN.TFRT.IN（不是 SH.*）
+un_wpp	World Population Prospects	UN DESA	生育、人口结构、老龄化	E_t下游	1950–2100	国家-年	open_csv	CC BY 3.0	https://population.un.org/wpp/	A	
+owid	Our World in Data	Gapminder/OWID	整理版长序列	多变量	1800–	国家-年	open_csv	CC BY 4.0	https://ourworldindata.org/grapher/	A	二次整理，引用需回溯原始源
+nbs	国家统计局	国家统计局	中国宏观、人口、就业	λ背景, 生育	年度/月度	国家-省	open_api?	政府公开	https://data.stats.gov.cn/	B	本机 SSL 失败，需代理或手工下载
+eurostat	Eurostat	EU	人口、劳动、时间利用	λ, E_t对照	1990–	国家-年	open_api	CC BY 4.0	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/	A	
+oecd_data	OECD Data Explorer	OECD	工时、时间利用、社会支出	λ	1970–	国家-年	open_api	CC BY 4.0	https://sdmx.oecd.org/	A	
+wvs	World Values Survey	WVS Association	人际信任、制度信任、价值观	E_t, θ_t	1981–2022（7波）	个体/国家	registration	需同意条款	https://www.worldvaluessurvey.org/	A	七波是拟合 α 的唯一公开长序列
+ess	European Social Survey	ESS ERIC	信任、移民态度、媒体使用	E_t, θ_t	2002–	个体/国家	registration	CC BY-NC-SA	https://www.europeansocialsurvey.org/	A	两年一波，间隔比 WVS 短
+asianbarometer	Asian Barometer	台大	亚洲制度信任	θ_t	2001–	个体/国家	registration	受限	http://www.asianbarometer.org/	B	
+cgss	中国综合社会调查	人大	社会态度、信任、媒介使用	E_t, θ_t, μ	2003–2021	个体	registration	学术用途	http://cgss.ruc.edu.cn/	A	"世代信任下降"的核心证据在此，需申请
+cfps	中国家庭追踪调查	北大	家庭、健康、时间使用	λ, E_t	2010–	个体/家庭	registration	学术用途	https://www.isss.pku.edu.cn/cfps/	A	睡眠/健康→λ 的首选
+charls	CHARLS	北大	健康、睡眠、慢性病	λ	2011–	个体	registration	学术用途	http://charls.pku.edu.cn/	A	45岁以上，不能代表青年
+piaac	PIAAC	OECD	成人读写/算术/问题解决	μ	2011–2023	个体/国家	registration	受限	https://www.oecd.org/piaac/	A	μ 的最直接代理
+pisa	PISA	OECD	15岁素养	μ	2000–	学生/国家	registration	受限	https://www.oecd.org/pisa/	A	只覆盖在校生
+gss	General Social Survey	NORC	美国信任、媒体使用	E_t, θ_t	1972–	个体	open_download	公开	https://gss.norc.org/	A	美国对照的免费首选
+gdelt	GDELT 2.0	GDELT Project	全球新闻事件、主题、语调	π_L, τ, 舆论量	2015–	15分钟	open_api	CC BY	https://api.gdeltproject.org/api/v2/doc/doc	A	中文分词弱，用引号/英文；限速极严，需 ≥5s 间隔
+gdelt_gkg	GDELT GKG	GDELT Project	实体、主题、情感	π_L	2015–	15分钟	open_bigquery	CC BY	A	需 BigQuery 或 torrent 全量
+mediacloud	MediaCloud	MediaCloud	新闻语料库、议题追踪	π_L, ρ	2008–	文章级	registration	受限	https://www.mediacloud.org/	B	需申请 key
+politifact	PolitiFact	Poynter	事实核查记录、判定	τ, E_t	2007–	条目级	scrape_cautious	受限	https://www.politifact.com/	B	可算"发布—核查"时滞
+snopes	Snopes	Snopes	事实核查	τ	1994–	条目级	scrape_cautious	受限	https://www.snopes.com/	B	
+piyao	中国互联网联合辟谣平台	网信办	辟谣条目	τ, ρ	2016–	条目级	scrape_cautious	政府公开	https://www.piyao.org.cn/	B	可测官方通报时滞
+cac	国家网信办	网信办	专项治理通报、处置量	p, ρ	2019–	通报级	open_html	政府公开	https://www.cac.gov.cn/	B	"清朗"行动计数，口径逐年变
+weibo_hotsearch	微博热搜存档（第三方）	多家	热搜词条、在位时长	π_L	2013–	分钟级	purchase	不明	C	无官方存档；第三方存档完整性未知
+baidu_index	百度指数	百度	关键词搜索量	π_L, E_t	2011–	日	closed	无公开API	C	仅界面；需商务授权
+douyin	抖音开放平台	字节跳动	视频、互动	π_L, φ	—	视频级	purchase	严格	C	研究需机构合作
+x_api	X API	X	帖子、转发	π_L	2006–	帖子级	purchase	付费	C	免费档已取消
+arctic_shift	Arctic Shift (Reddit)	社区	帖子、评论	π_L	2005–	帖子级	open_dump	公开	C	Pushshift 关闭后的替代，覆盖有缺口
+wiki_pv	Wikimedia Pageviews	Wikimedia	条目浏览量	π_L	2015–	条目/日	open_api	CC0	https://wikimedia.org/api/rest_v1/	A	只对"有独立条目"的概念可用
+google_trends	Google Trends	Google	搜索热度	π_L	2004–	周/日	closed	C	抽样+归一化，跨查询不可比
+datareportal	Digital Reports	Kepios	各国社媒使用、屏幕时间	λ, μ	2019–	国家-年	open_html	CC BY	B	年度报告，口径自报
+faceforensics	FaceForensics++	TUM	深度伪造检测基准	φ	2019–	视频	registration	研究用途	A	检测准确率→伪造成本代理
+dfdc	Deepfake Detection Challenge	Meta	同上	φ	2020	视频	registration	研究用途	A	
+ai_index	AI Index Report	Stanford HAI	AI 采用、模型能力	κ	2017–	年度	open_pdf	CC BY	B	技术弹性 κ 的可用代理
+reuters_dnr	Digital News Report	Reuters Institute	新闻信任、平台使用	θ_t, μ	2012–	国家-年	open_pdf	CC BY	B	跨国可比；不含中国大陆
+edelman	Trust Barometer	Edelman	制度信任	θ_t	2001–	国家-年	open_html	受限	B	企业委托，方法论有争议
+wgi	Worldwide Governance Indicators	World Bank	法治、监管质量	d	1996–	国家-年	open_api	CC BY	A	国家年粒度
+reporters_lab	Duke Reporters' Lab	Duke	事实核查机构清单	ρ	2014–	机构级	open_html	CC BY	B	ρ 的组织供给代理
+pew	Pew Research Center	Pew	美国媒体信任、代际差异	θ_t	1985–	调查	open_download	公开	https://www.pewresearch.org/	B	CSV 常需表单，新闻稿可直接引
+gallup	Gallup	Gallup	媒体信任 28%	θ_t	1972–	调查	open_html	受限	https://news.gallup.com/	B	微观数据付费；新闻稿可核百分比
+nber_w35618	NBER WP 35618	NBER	人口—资本—增长	E_t下游	—	研究	open_pdf	公开	https://www.nber.org/papers/w35618	B	"2100 GDP −10%"类断言需回原文核
+seshat	Seshat Global History Databank	Seshat Project	古政体的农业、道德化规范、军事革命等编码	规则谱, d, k_R	−10000–2001	政体/时段	open_csv	CC BY-NC-SA	https://github.com/datasets/seshat	A	"古代"一侧的唯一大规模可比编码集
+maddison	Maddison Project	GGDC	人均 GDP 长序列	λ 的极长期背景	1–2022	国家-年	open_csv	CC BY	https://ourworldindata.org/grapher/gdp-per-capita-maddison	A	2018/2020 版口径不同，须注版本
+vdem	V-Dem	V-Dem Institute	选举民主、自由民主指数	d（脱嵌度）	1789–2025	国家-年	open_csv	CC BY-SA	https://ourworldindata.org/grapher/electoral-democracy-index	A	236 年，现代制度期的完整覆盖
+ess	European Social Survey	ESS ERIC	人际信任、制度信任、教育、年龄	E_t, θ_t, μ	2002–2023（11 轮）	个体	registration/开放镜像	CC BY-NC-SA	https://www.europeansocialsurvey.org/	A	完整版 182MB 下载中断；已落第 8 轮（44,387 人）
+wvs_country	WVS 国家×波次聚合	WVS Association	234 个国家-波次 × 1,891 变量	E_t, θ_t 的跨国长序列	1981–2020（波次 1–6）	国家-波次	open_download	学术用途	https://www.worldvaluessurvey.org/	A	缺中国大陆；拟合 α 的唯一公开长序列
+bing_news	Bing News RSS	Bing	带日期的中文新闻索引	事件日, τ	索引 2016–2026	条目	open_api（RSS）	受限	https://www.bing.com/news/search	A	唯一稳定的中文带日期索引；摘要常直书通报日
+gdelt_manual	GDELT Volume Intensity	GDELT Project	关键词的日度公共可见度	φ, κ, 事件对齐	2024-11–2026-11	日	open_api（本人代取）	CC BY	https://api.gdeltproject.org/api/v2/doc/doc	A	本机 429；由作者代取后落盘

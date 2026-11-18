@@ -1,0 +1,13 @@
+# 反转事件四元组模板 — 制表符分隔
+# 规则：一个事件一行；日期一律 YYYY-MM-DD；查不到就留空，不要猜。
+# 字段说明：
+#   event_id             自编，如 e001
+#   event_name           短名，便于回查
+#   first_exposure_date  首次曝光：视频/帖子/报道第一次大规模出现的日期
+#   official_response    首次官方回应：警方/政府/机构/平台第一次表态的日期
+#   rebuttal_date        首次辟谣或调查结论：确认摆拍/造假/造谣的日期（含"通报"）
+#   platform_action      平台处置日期：封号/下架/标注（查不到留空）
+#   url_exposure         曝光侧链接（原始帖或首篇报道）
+#   url_official         官方/辟谣侧链接
+#   note                 一句话说明（谁拍的、怎么反转、有无争议）
+event_id	event_name	first_exposure_date	official_response_date	rebuttal_date	platform_action_date	url_exposure	url_official	note

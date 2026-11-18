@@ -1,0 +1,537 @@
+{
+ "source": "sc_dataset.xlsx",
+ "n_polity": 398,
+ "n_nga": 30,
+ "main": {
+  "k_text": {
+   "n": 205,
+   "nga": 28,
+   "r2": 0.531,
+   "coef": {
+    "writing": 2.008,
+    "lpop": 1.296,
+    "lterr": 0.073
+   },
+   "se": {
+    "writing": 0.788,
+    "lpop": 0.216,
+    "lterr": 0.276
+   },
+   "t": {
+    "writing": 2.55,
+    "lpop": 6.0,
+    "lterr": 0.26
+   }
+  },
+  "k_met": {
+   "n": 203,
+   "nga": 28,
+   "r2": 0.485,
+   "coef": {
+    "writing": 2.886,
+    "lpop": 0.706,
+    "lterr": -0.144
+   },
+   "se": {
+    "writing": 0.738,
+    "lpop": 0.29,
+    "lterr": 0.288
+   },
+   "t": {
+    "writing": 3.91,
+    "lpop": 2.43,
+    "lterr": -0.5
+   }
+  },
+  "levels": {
+   "n": 205,
+   "nga": 28,
+   "r2": 0.557,
+   "coef": {
+    "writing": -0.648,
+    "lpop": 3.537,
+    "lterr": 0.622
+   },
+   "se": {
+    "writing": 1.92,
+    "lpop": 0.419,
+    "lterr": 0.597
+   },
+   "t": {
+    "writing": -0.34,
+    "lpop": 8.45,
+    "lterr": 1.04
+   }
+  },
+  "k_law": {
+   "n": 200,
+   "nga": 27,
+   "r2": 0.325,
+   "coef": {
+    "writing": 0.632,
+    "lpop": 0.807,
+    "lterr": -0.138
+   },
+   "se": {
+    "writing": 0.544,
+    "lpop": 0.16,
+    "lterr": 0.167
+   },
+   "t": {
+    "writing": 1.16,
+    "lpop": 5.04,
+    "lterr": -0.83
+   }
+  },
+  "k_bur": {
+   "n": 206,
+   "nga": 28,
+   "r2": 0.369,
+   "coef": {
+    "writing": 0.183,
+    "lpop": 0.614,
+    "lterr": -0.002
+   },
+   "se": {
+    "writing": 0.5,
+    "lpop": 0.194,
+    "lterr": 0.153
+   },
+   "t": {
+    "writing": 0.36,
+    "lpop": 3.17,
+    "lterr": -0.01
+   }
+  },
+  "k_prof": {
+   "n": 204,
+   "nga": 28,
+   "r2": 0.252,
+   "coef": {
+    "writing": 0.607,
+    "lpop": 0.207,
+    "lterr": 0.26
+   },
+   "se": {
+    "writing": 0.365,
+    "lpop": 0.184,
+    "lterr": 0.215
+   },
+   "t": {
+    "writing": 1.66,
+    "lpop": 1.13,
+    "lterr": 1.21
+   }
+  }
+ },
+ "main_observed_only": {
+  "k_text": {
+   "n": 205,
+   "nga": 28,
+   "r2": 0.381,
+   "coef": {
+    "writing": 0.197,
+    "lpop": 1.312,
+    "lterr": 0.232
+   },
+   "se": {
+    "writing": 0.935,
+    "lpop": 0.286,
+    "lterr": 0.291
+   },
+   "t": {
+    "writing": 0.21,
+    "lpop": 4.58,
+    "lterr": 0.8
+   }
+  },
+  "k_met": {
+   "n": 203,
+   "nga": 28,
+   "r2": 0.269,
+   "coef": {
+    "writing": -0.709,
+    "lpop": 1.091,
+    "lterr": 0.337
+   },
+   "se": {
+    "writing": 0.835,
+    "lpop": 0.307,
+    "lterr": 0.297
+   },
+   "t": {
+    "writing": -0.85,
+    "lpop": 3.55,
+    "lterr": 1.13
+   }
+  },
+  "levels": {
+   "n": 205,
+   "nga": 28,
+   "r2": 0.557,
+   "coef": {
+    "writing": -0.648,
+    "lpop": 3.537,
+    "lterr": 0.622
+   },
+   "se": {
+    "writing": 1.92,
+    "lpop": 0.419,
+    "lterr": 0.597
+   },
+   "t": {
+    "writing": -0.34,
+    "lpop": 8.45,
+    "lterr": 1.04
+   }
+  },
+  "k_law": {
+   "n": 200,
+   "nga": 27,
+   "r2": 0.283,
+   "coef": {
+    "writing": 0.243,
+    "lpop": 0.618,
+    "lterr": 0.057
+   },
+   "se": {
+    "writing": 0.451,
+    "lpop": 0.144,
+    "lterr": 0.145
+   },
+   "t": {
+    "writing": 0.54,
+    "lpop": 4.28,
+    "lterr": 0.39
+   }
+  },
+  "k_bur": {
+   "n": 206,
+   "nga": 28,
+   "r2": 0.319,
+   "coef": {
+    "writing": -0.681,
+    "lpop": 0.695,
+    "lterr": 0.001
+   },
+   "se": {
+    "writing": 0.488,
+    "lpop": 0.196,
+    "lterr": 0.177
+   },
+   "t": {
+    "writing": -1.39,
+    "lpop": 3.54,
+    "lterr": 0.0
+   }
+  },
+  "k_prof": {
+   "n": 204,
+   "nga": 28,
+   "r2": 0.273,
+   "coef": {
+    "writing": -0.217,
+    "lpop": 0.57,
+    "lterr": 0.094
+   },
+   "se": {
+    "writing": 0.297,
+    "lpop": 0.2,
+    "lterr": 0.241
+   },
+   "t": {
+    "writing": -0.73,
+    "lpop": 2.85,
+    "lterr": 0.39
+   }
+  }
+ },
+ "naive": {
+  "k_text": {
+   "n": 374,
+   "nga": 30,
+   "r2": 0.525,
+   "coef": {
+    "const": 0.75,
+    "writing": 5.706
+   },
+   "se": {
+    "const": 0.077,
+    "writing": 0.42
+   },
+   "t": {
+    "const": 9.78,
+    "writing": 13.58
+   }
+  },
+  "k_met": {
+   "n": 363,
+   "nga": 30,
+   "r2": 0.622,
+   "coef": {
+    "const": 0.971,
+    "writing": 4.932
+   },
+   "se": {
+    "const": 0.21,
+    "writing": 0.349
+   },
+   "t": {
+    "const": 4.62,
+    "writing": 14.15
+   }
+  },
+  "levels": {
+   "n": 357,
+   "nga": 30,
+   "r2": 0.372,
+   "coef": {
+    "const": 5.67,
+    "writing": 9.568
+   },
+   "se": {
+    "const": 0.52,
+    "writing": 0.818
+   },
+   "t": {
+    "const": 10.91,
+    "writing": 11.7
+   }
+  },
+  "k_law": {
+   "n": 352,
+   "nga": 29,
+   "r2": 0.4,
+   "coef": {
+    "const": 0.111,
+    "writing": 2.268
+   },
+   "se": {
+    "const": 0.053,
+    "writing": 0.199
+   },
+   "t": {
+    "const": 2.09,
+    "writing": 11.38
+   }
+  },
+  "k_bur": {
+   "n": 360,
+   "nga": 30,
+   "r2": 0.395,
+   "coef": {
+    "const": 0.32,
+    "writing": 1.803
+   },
+   "se": {
+    "const": 0.106,
+    "writing": 0.186
+   },
+   "t": {
+    "const": 3.01,
+    "writing": 9.7
+   }
+  },
+  "k_prof": {
+   "n": 359,
+   "nga": 30,
+   "r2": 0.375,
+   "coef": {
+    "const": 0.473,
+    "writing": 1.79
+   },
+   "se": {
+    "const": 0.129,
+    "writing": 0.15
+   },
+   "t": {
+    "const": 3.67,
+    "writing": 11.91
+   }
+  }
+ },
+ "placebo_coins": {
+  "k_text": {
+   "n": 203,
+   "nga": 28,
+   "r2": 0.602,
+   "coef": {
+    "writing": 1.785,
+    "lpop": 0.959,
+    "lterr": 0.366
+   },
+   "se": {
+    "writing": 0.518,
+    "lpop": 0.207,
+    "lterr": 0.173
+   },
+   "t": {
+    "writing": 3.45,
+    "lpop": 4.64,
+    "lterr": 2.12
+   }
+  },
+  "k_met": {
+   "n": 201,
+   "nga": 28,
+   "r2": 0.446,
+   "coef": {
+    "writing": 1.172,
+    "lpop": 0.597,
+    "lterr": 0.168
+   },
+   "se": {
+    "writing": 0.647,
+    "lpop": 0.233,
+    "lterr": 0.292
+   },
+   "t": {
+    "writing": 1.81,
+    "lpop": 2.56,
+    "lterr": 0.58
+   }
+  },
+  "levels": {
+   "n": 203,
+   "nga": 28,
+   "r2": 0.581,
+   "coef": {
+    "writing": 1.023,
+    "lpop": 3.081,
+    "lterr": 0.795
+   },
+   "se": {
+    "writing": 0.875,
+    "lpop": 0.377,
+    "lterr": 0.437
+   },
+   "t": {
+    "writing": 1.17,
+    "lpop": 8.17,
+    "lterr": 1.82
+   }
+  },
+  "k_law": {
+   "n": 199,
+   "nga": 27,
+   "r2": 0.362,
+   "coef": {
+    "writing": 0.719,
+    "lpop": 0.622,
+    "lterr": -0.002
+   },
+   "se": {
+    "writing": 0.391,
+    "lpop": 0.168,
+    "lterr": 0.129
+   },
+   "t": {
+    "writing": 1.84,
+    "lpop": 3.71,
+    "lterr": -0.01
+   }
+  },
+  "k_bur": {
+   "n": 204,
+   "nga": 28,
+   "r2": 0.404,
+   "coef": {
+    "writing": 0.337,
+    "lpop": 0.509,
+    "lterr": 0.08
+   },
+   "se": {
+    "writing": 0.244,
+    "lpop": 0.165,
+    "lterr": 0.143
+   },
+   "t": {
+    "writing": 1.39,
+    "lpop": 3.08,
+    "lterr": 0.56
+   }
+  },
+  "k_prof": {
+   "n": 202,
+   "nga": 28,
+   "r2": 0.269,
+   "coef": {
+    "writing": 0.342,
+    "lpop": 0.167,
+    "lterr": 0.304
+   },
+   "se": {
+    "writing": 0.381,
+    "lpop": 0.143,
+    "lterr": 0.169
+   },
+   "t": {
+    "writing": 0.9,
+    "lpop": 1.17,
+    "lterr": 1.81
+   }
+  }
+ },
+ "permutation_within_nga": {
+  "k_text": {
+   "coef": 2.008,
+   "p_two_sided": 0.0,
+   "null_sd": 0.333
+  },
+  "k_met": {
+   "coef": 2.886,
+   "p_two_sided": 0.0,
+   "null_sd": 0.251
+  },
+  "levels": {
+   "coef": -0.648,
+   "p_two_sided": 0.3517,
+   "null_sd": 0.685
+  },
+  "k_law": {
+   "coef": 0.632,
+   "p_two_sided": 0.005,
+   "null_sd": 0.225
+  },
+  "k_bur": {
+   "coef": 0.183,
+   "p_two_sided": 0.295,
+   "null_sd": 0.181
+  },
+  "k_prof": {
+   "coef": 0.607,
+   "p_two_sided": 0.0,
+   "null_sd": 0.175
+  }
+ },
+ "elasticity_pop": {
+  "k_text": 0.113,
+  "k_met": 0.051,
+  "levels": 0.128,
+  "k_law": 0.234,
+  "k_bur": 0.133,
+  "k_prof": 0.045
+ },
+ "median_by_writing": {
+  "0.0": {
+   "k_text": 1.0,
+   "k_met": 0.0,
+   "k_law": 0.0,
+   "k_bur": 0.0,
+   "levels": 5.0,
+   "k_prof": 0.0,
+   "Polity Population": 1500.0,
+   "Polity territory": 1500.0
+  },
+  "1.0": {
+   "k_text": 8.0,
+   "k_met": 7.0,
+   "k_law": 3.0,
+   "k_bur": 2.0,
+   "levels": 15.0,
+   "k_prof": 3.0,
+   "Polity Population": 2500000.0,
+   "Polity territory": 455000.0
+  }
+ }
+}
