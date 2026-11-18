@@ -532,12 +532,24 @@ def compute_indexmap(pdf_path, max_hits=6):
     except Exception:
         pass
     last = len(doc) + 1
+    # 术语表与索引本身不算正文命中：用书签定位它们的起始页，作为上界
+    try:
+        for lvl, title, page in doc.get_toc():
+            if title and ("术语表" in title or "索引" == title.strip()):
+                last = min(last, page)
+                break
+    except Exception:
+        pass
     out = {}
     for t in terms:
+        # 一个词条可能写成“粗码 / 细码”“切点成本 b”：拆成可检索的键
+        keys = [k.strip() for k in re.split(r"[／/]", t)]
+        keys += [re.sub(r"\s*[A-Za-zα-ωΑ-Ω⟨⟩∗′].*$", "", k).strip() for k in keys]
+        keys = [k for k in dict.fromkeys(keys) if len(k) >= 2]
         pages = []
         for i in range(first - 1, max(first, last - 1)):
             try:
-                if doc[i].search_for(t):
+                if any(doc[i].search_for(k) for k in keys):
                     pages.append(i + 1)
             except Exception:
                 continue

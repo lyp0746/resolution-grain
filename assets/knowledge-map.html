@@ -1,65 +1,367 @@
 <!doctype html>
-<meta charset="utf-8">
-<title>《分辨的预算》知识图谱</title>
+<html lang="zh-CN"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《分辨的预算》· 知识图谱（3D）与理论地图</title>
 <style>
- body{margin:0;background:#0f1720;color:#e8eef5;font:14px/1.5 -apple-system,"Noto Sans SC",sans-serif}
- header{padding:14px 18px 6px}
- h1{font-size:16px;margin:0 0 4px;font-weight:600}
- .sub{color:#8ba0b5;font-size:12px}
- #wrap{position:relative}
- canvas{display:block;width:100vw;height:calc(100vh - 64px);cursor:grab}
- .tip{position:fixed;pointer-events:none;background:#1b2836;border:1px solid #2c3f52;
-      padding:6px 9px;border-radius:6px;font-size:12px;opacity:0;transition:opacity .12s}
- .legend{position:fixed;left:18px;bottom:14px;color:#8ba0b5;font-size:12px}
+ :root{--ink:#1f3b57;--alt:#b5651d;--grey:#8c8c8c;--line:#e2dccd;--wash:#faf8f3}
+ html,body{margin:0;background:#fbfaf7;color:#1c1c1c;
+   font:14px/1.65 "Noto Sans SC","Microsoft YaHei",-apple-system,sans-serif}
+ header{padding:20px 24px 4px}
+ h1{font-size:18px;margin:0 0 4px;font-weight:600;color:var(--ink)}
+ .sub{color:#6b6255;font-size:12.5px;max-width:960px}
+ .bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 24px 6px}
+ .bar button{font:12.5px/1 inherit;padding:6px 11px;border:1px solid var(--line);background:#fff;
+   color:#3a3a3a;border-radius:999px;cursor:pointer}
+ .bar button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+ .bar .hint{color:#8c8c8c;font-size:12px;margin-left:6px}
+ #stage{padding:0 18px 8px;position:relative}
+ canvas{width:100%;height:600px;display:block;background:#fff;border:1px solid var(--line);
+   border-radius:12px;cursor:grab;touch-action:none}
+ .tip{position:fixed;pointer-events:none;background:#fff;border:1px solid var(--line);
+   border-radius:8px;padding:8px 11px;font-size:12.5px;box-shadow:0 6px 20px rgba(30,40,50,.14);
+   opacity:0;transition:opacity .1s;max-width:280px;z-index:9}
+ .tip b{color:var(--ink)}
+ .row{display:flex;gap:22px;padding:6px 24px 26px;flex-wrap:wrap;align-items:flex-start}
+ .row>div{flex:1 1 320px}
+ table{border-collapse:collapse;font-size:12px;width:100%;max-width:520px}
+ td,th{padding:4px 6px;text-align:center;border:1px solid #e6e1d6}
+ th{background:#f2eee4;color:var(--ink);font-weight:600}
+ .diag{outline:1.5px solid #b5651d;outline-offset:-1.5px}
+ .lg{color:#6b6255;font-size:12.5px;line-height:1.85}
+ .lg b{color:var(--ink)}
+ section#tm{padding:8px 24px 34px;border-top:1px solid var(--line);margin-top:8px}
+ h2{font-size:16px;color:var(--ink);margin:18px 0 4px;font-weight:600}
+ #tm .sub{margin:0 0 10px}
+ svg.tm{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:12px}
+ #tmtab td,#tmtab th{text-align:left;font-size:12px;padding:5px 8px}
+ #tmtab th{white-space:nowrap}
 </style>
-<header><h1>《分辨的预算》· 知识图谱</h1>
-<div class="sub">拖动节点可移动；悬停看名字；滚轮缩放。边＝正文中的一次交叉引用。</div></header>
-<div id="wrap"><canvas id="c"></canvas><div class="tip" id="tip"></div></div>
-<div class="legend">大圆＝章（点越大被引越多）；小方＝附录 A 的节</div>
+<header>
+ <h1>分辨的预算 · 知识图谱（3D）</h1>
+ <div class="sub">28 章按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 15 章；一条线＝正文里的一次交叉引用。
+  可拖动旋转、滚轮缩放、悬停高亮；按部过滤，或只看跨部引用——线太密时先过滤。</div>
+</header>
+<div class="bar">
+ <button data-f="all" class="on">全部 250 条</button>
+ <button data-f="cross">只看跨部</button>
+ <button data-f="within">只看部内</button>
+ <span style="width:14px"></span>
+ <button id="spin" class="on">自动旋转</button>
+ <button id="reset">复位</button>
+ <span class="hint">拖动＝旋转 ／ 滚轮＝缩放 ／ 双击＝复位</span>
+</div>
+<div id="stage"><canvas id="c3"></canvas></div>
+<div class="tip" id="tip"></div>
+
+<div class="row">
+ <div>
+   <div style="font-size:13px;color:var(--ink);font-weight:600;margin:6px 0">部×部：边数（投影表）</div>
+   <table id="mat"></table>
+ </div>
+ <div class="lg">
+   <b>怎么读</b><br>
+   · 螺旋的纵轴是书序：越靠下越靠后；同一圈的章在侧面上彼此引用最多——那是“部内互引”。<br>
+   · 长斜线是跨部引用：它们集中在几章身上（第 4、5、6、10、20 章），这就是“枢纽”。<br>
+   · 部×部矩阵的对角线是部内、其余是跨部；跨部只在少数几格，说明七部不是并列的。<br>
+   · <b>点的大小＝度</b>（被引＋引用），不是重要性；颜色只有一种，避免七个颜色互抢。
+ </div>
+</div>
+
+<section id="tm">
+ <h2>理论地图（3D）· 十条极限，各退回一支既有理论</h2>
+ <p class="sub">中心＝本书的模型；五个量各一条刻度（一致性 γ／网络 A／换码 C／外置 ν／预算 R,Δ），
+  每条刻度上挂两枚极限，每枚末端是一支既有理论。<b>悬停看“接洽点”</b>——哪个量退化成对方的哪个量，
+  像 c→∞ 退回伽利略变换那样，是等式不是比喻。橙色＝唯一退不回去的一条（ν&lt;0）。</p>
+ <div class="bar" style="padding:6px 0 10px">
+  <button data-s="all" class="on">全部 10 条</button>
+  <button data-s="一致性 γ">一致性 γ</button><button data-s="网络 A">网络 A</button>
+  <button data-s="换码 C">换码 C</button><button data-s="外置 ν">外置 ν</button>
+  <button data-s="预算 R, Δ">预算 R, Δ</button>
+  <span style="width:10px"></span>
+  <button id="tspin" class="on">自动旋转</button>
+  <span class="hint">拖动＝旋转 ／ 滚轮＝缩放</span>
+ </div>
+ <svg class="tm" id="tmsvg" viewBox="0 0 980 620" preserveAspectRatio="xMidYMid meet"></svg>
+ <div class="lg" style="margin-top:10px">图上只标极限条件（如 γ→0）；<b>悬停看“退化到哪支理论＋接洽点”</b>，下表把十条一次列全。</div>
+ <table id="tmtab" style="margin-top:6px;max-width:980px"></table>
+</section>
+
 <script>
-const DATA = {"nodes": [{"id": "ch1", "degree": 12, "x": 0.398, "y": 0.2959, "label": "两类人的说法从哪里来"}, {"id": "ch2", "degree": 16, "x": -0.0482, "y": 0.7135, "label": "一条曲线上的两个点"}, {"id": "ch3", "degree": 23, "x": 0.1118, "y": 0.2031, "label": "省力为什么改变分辨率"}, {"id": "ch4", "degree": 33, "x": 0.1478, "y": -0.2135, "label": "赌注、边界与阅读合约"}, {"id": "ch5", "degree": 28, "x": -0.3093, "y": 0.0961, "label": "率与失真：一条式子的出生"}, {"id": "ch6", "degree": 29, "x": -0.0592, "y": 0.3243, "label": "预算的两种花法"}, {"id": "ch7", "degree": 14, "x": 0.0832, "y": 0.3963, "label": "它与理性疏忽的关系"}, {"id": "ch8", "degree": 26, "x": -0.1745, "y": 0.1918, "label": "它推不出的三件事"}, {"id": "ch9", "degree": 16, "x": 0.2252, "y": 0.4651, "label": "看见：四个旋钮"}, {"id": "ch10", "degree": 29, "x": -0.0274, "y": 0.1582, "label": "记住：码的折旧"}, {"id": "ch11", "degree": 14, "x": -0.0021, "y": 0.5101, "label": "跟上：带宽、睡眠与利害"}, {"id": "ch12", "degree": 21, "x": -0.2089, "y": 0.4207, "label": "一个人能不能改自己"}, {"id": "ch13", "degree": 20, "x": -0.403, "y": 0.45, "label": "粗码是最便宜的码"}, {"id": "ch14", "degree": 18, "x": -0.621, "y": 0.2717, "label": "标签的实证：十三万篇"}, {"id": "ch15", "degree": 8, "x": -0.76, "y": 0.0209, "label": "注意力与榜单的形状"}, {"id": "ch16", "degree": 26, "x": -0.0775, "y": -0.0367, "label": "规则如何被维护"}, {"id": "ch17", "degree": 15, "x": -0.5843, "y": 0.1527, "label": "共情是折现的影子价格"}, {"id": "ch18", "degree": 15, "x": -0.3592, "y": 0.2656, "label": "核实有一笔时差"}, {"id": "ch19", "degree": 10, "x": -0.4748, "y": 0.6469, "label": "供给、惩罚与技术"}, {"id": "ch20", "degree": 20, "x": 0.287, "y": 0.2258, "label": "临界不是阈值"}, {"id": "ch21", "degree": 10, "x": -0.01, "y": -0.2527, "label": "分期：时代是怎么被切的"}, {"id": "ch22", "degree": 13, "x": 0.4936, "y": 0.0016, "label": "转型：合法性划分怎么换"}, {"id": "ch23", "degree": 13, "x": -0.3593, "y": -0.2122, "label": "争议：同一段历史的两套码"}, {"id": "ch24", "degree": 21, "x": 0.329, "y": -0.08, "label": "人：一个人变的是哪个量"}, {"id": "ch25", "degree": 12, "x": -0.5187, "y": -0.1777, "label": "三种口径"}, {"id": "ch26", "degree": 20, "x": 0.2266, "y": 0.0042, "label": "九处空白"}, {"id": "ch27", "degree": 28, "x": -0.1692, "y": -0.1278, "label": "代价由谁承担"}, {"id": "ch28", "degree": 13, "x": -0.1491, "y": -0.3361, "label": "一句话带走"}, {"id": "apA0", "degree": 1, "x": 0.321, "y": -0.8127, "label": "apA0"}, {"id": "apA1", "degree": 3, "x": 0.4449, "y": 0.7211, "label": "apA1"}, {"id": "apA2", "degree": 0, "x": -0.2387, "y": -0.4135, "label": "apA2"}, {"id": "apA3", "degree": 1, "x": 0.5268, "y": -0.6845, "label": "apA3"}, {"id": "apA4", "degree": 0, "x": -0.1154, "y": -0.4632, "label": "apA4"}, {"id": "apA5", "degree": 2, "x": 0.1785, "y": 0.9312, "label": "apA5"}, {"id": "apA6", "degree": 2, "x": -0.159, "y": -0.7093, "label": "apA6"}, {"id": "apA7", "degree": 3, "x": -0.3608, "y": -0.54, "label": "apA7"}, {"id": "apA8", "degree": 1, "x": 0.6813, "y": -0.5363, "label": "apA8"}, {"id": "apA9", "degree": 3, "x": 0.2101, "y": -0.6058, "label": "apA9"}, {"id": "apA10", "degree": 3, "x": 0.709, "y": 0.2174, "label": "apA10"}, {"id": "apA11", "degree": 3, "x": -0.6222, "y": -0.58, "label": "apA11"}, {"id": "apA12", "degree": 1, "x": -1.0, "y": -0.429, "label": "apA12"}, {"id": "apA13", "degree": 2, "x": 0.8885, "y": 0.0065, "label": "apA13"}, {"id": "apA14", "degree": 3, "x": -0.0305, "y": -0.7419, "label": "apA14"}, {"id": "apA15", "degree": 2, "x": 0.7517, "y": -0.349, "label": "apA15"}, {"id": "apA16", "degree": 1, "x": 0.8285, "y": 0.6113, "label": "apA16"}], "edges": [{"source": "ch1", "target": "ch2"}, {"source": "ch1", "target": "ch3"}, {"source": "ch1", "target": "ch4"}, {"source": "ch1", "target": "ch6"}, {"source": "ch1", "target": "ch9"}, {"source": "ch1", "target": "ch10"}, {"source": "ch1", "target": "ch11"}, {"source": "ch1", "target": "ch18"}, {"source": "ch1", "target": "ch26"}, {"source": "ch1", "target": "ch27"}, {"source": "ch2", "target": "ch3"}, {"source": "ch2", "target": "ch5"}, {"source": "ch2", "target": "ch6"}, {"source": "ch2", "target": "ch8"}, {"source": "ch2", "target": "ch10"}, {"source": "ch2", "target": "ch26"}, {"source": "ch3", "target": "ch2"}, {"source": "ch3", "target": "ch6"}, {"source": "ch3", "target": "ch8"}, {"source": "ch3", "target": "ch9"}, {"source": "ch3", "target": "ch11"}, {"source": "ch3", "target": "ch12"}, {"source": "ch4", "target": "ch1"}, {"source": "ch4", "target": "ch3"}, {"source": "ch4", "target": "ch5"}, {"source": "ch4", "target": "ch6"}, {"source": "ch4", "target": "ch7"}, {"source": "ch4", "target": "ch8"}, {"source": "ch4", "target": "ch9"}, {"source": "ch4", "target": "ch10"}, {"source": "ch4", "target": "ch11"}, {"source": "ch4", "target": "ch16"}, {"source": "ch4", "target": "ch20"}, {"source": "ch4", "target": "ch22"}, {"source": "ch4", "target": "ch23"}, {"source": "ch4", "target": "ch24"}, {"source": "ch4", "target": "ch26"}, {"source": "ch4", "target": "ch27"}, {"source": "ch4", "target": "ch28"}, {"source": "ch4", "target": "apA0"}, {"source": "ch4", "target": "apA3"}, {"source": "ch4", "target": "apA6"}, {"source": "ch4", "target": "apA7"}, {"source": "ch4", "target": "apA8"}, {"source": "ch4", "target": "apA14"}, {"source": "ch4", "target": "apA15"}, {"source": "ch5", "target": "ch2"}, {"source": "ch5", "target": "ch3"}, {"source": "ch5", "target": "ch4"}, {"source": "ch5", "target": "ch6"}, {"source": "ch5", "target": "ch8"}, {"source": "ch5", "target": "ch10"}, {"source": "ch5", "target": "ch11"}, {"source": "ch5", "target": "ch12"}, {"source": "ch5", "target": "ch14"}, {"source": "ch5", "target": "ch16"}, {"source": "ch5", "target": "ch20"}, {"source": "ch5", "target": "ch26"}, {"source": "ch5", "target": "ch27"}, {"source": "ch5", "target": "apA7"}, {"source": "ch6", "target": "ch2"}, {"source": "ch6", "target": "ch3"}, {"source": "ch6", "target": "ch5"}, {"source": "ch6", "target": "ch8"}, {"source": "ch6", "target": "ch9"}, {"source": "ch6", "target": "ch13"}, {"source": "ch6", "target": "ch16"}, {"source": "ch6", "target": "ch20"}, {"source": "ch6", "target": "ch23"}, {"source": "ch6", "target": "ch24"}, {"source": "ch6", "target": "ch27"}, {"source": "ch6", "target": "apA1"}, {"source": "ch6", "target": "apA5"}, {"source": "ch7", "target": "ch2"}, {"source": "ch7", "target": "ch3"}, {"source": "ch7", "target": "ch4"}, {"source": "ch7", "target": "ch5"}, {"source": "ch7", "target": "ch6"}, {"source": "ch7", "target": "ch8"}, {"source": "ch7", "target": "ch16"}, {"source": "ch7", "target": "ch19"}, {"source": "ch7", "target": "ch20"}, {"source": "ch7", "target": "ch23"}, {"source": "ch7", "target": "ch26"}, {"source": "ch7", "target": "ch27"}, {"source": "ch7", "target": "apA1"}, {"source": "ch8", "target": "ch2"}, {"source": "ch8", "target": "ch9"}, {"source": "ch8", "target": "ch10"}, {"source": "ch8", "target": "ch14"}, {"source": "ch8", "target": "ch17"}, {"source": "ch8", "target": "ch18"}, {"source": "ch8", "target": "ch20"}, {"source": "ch8", "target": "ch26"}, {"source": "ch9", "target": "ch2"}, {"source": "ch9", "target": "ch3"}, {"source": "ch9", "target": "ch6"}, {"source": "ch9", "target": "ch8"}, {"source": "ch9", "target": "ch12"}, {"source": "ch9", "target": "ch13"}, {"source": "ch9", "target": "ch24"}, {"source": "ch10", "target": "ch1"}, {"source": "ch10", "target": "ch2"}, {"source": "ch10", "target": "ch3"}, {"source": "ch10", "target": "ch6"}, {"source": "ch10", "target": "ch8"}, {"source": "ch10", "target": "ch9"}, {"source": "ch10", "target": "ch12"}, {"source": "ch10", "target": "ch13"}, {"source": "ch10", "target": "ch16"}, {"source": "ch10", "target": "ch20"}, {"source": "ch10", "target": "ch24"}, {"source": "ch10", "target": "ch25"}, {"source": "ch10", "target": "ch26"}, {"source": "ch10", "target": "ch27"}, {"source": "ch11", "target": "ch2"}, {"source": "ch11", "target": "ch3"}, {"source": "ch11", "target": "ch6"}, {"source": "ch11", "target": "ch8"}, {"source": "ch11", "target": "ch12"}, {"source": "ch11", "target": "ch18"}, {"source": "ch11", "target": "ch25"}, {"source": "ch12", "target": "ch2"}, {"source": "ch12", "target": "ch3"}, {"source": "ch12", "target": "ch4"}, {"source": "ch12", "target": "ch5"}, {"source": "ch12", "target": "ch6"}, {"source": "ch12", "target": "ch8"}, {"source": "ch12", "target": "ch9"}, {"source": "ch12", "target": "ch10"}, {"source": "ch12", "target": "ch11"}, {"source": "ch12", "target": "ch14"}, {"source": "ch12", "target": "ch16"}, {"source": "ch12", "target": "ch24"}, {"source": "ch12", "target": "ch27"}, {"source": "ch13", "target": "ch3"}, {"source": "ch13", "target": "ch5"}, {"source": "ch13", "target": "ch6"}, {"source": "ch13", "target": "ch8"}, {"source": "ch13", "target": "ch10"}, {"source": "ch13", "target": "ch12"}, {"source": "ch13", "target": "ch14"}, {"source": "ch13", "target": "ch15"}, {"source": "ch13", "target": "ch16"}, {"source": "ch13", "target": "ch27"}, {"source": "ch14", "target": "ch5"}, {"source": "ch14", "target": "ch6"}, {"source": "ch14", "target": "ch8"}, {"source": "ch14", "target": "ch10"}, {"source": "ch14", "target": "ch13"}, {"source": "ch14", "target": "ch15"}, {"source": "ch14", "target": "ch16"}, {"source": "ch14", "target": "ch25"}, {"source": "ch15", "target": "ch5"}, {"source": "ch15", "target": "ch13"}, {"source": "ch15", "target": "ch14"}, {"source": "ch15", "target": "ch16"}, {"source": "ch15", "target": "ch27"}, {"source": "ch16", "target": "ch3"}, {"source": "ch16", "target": "ch5"}, {"source": "ch16", "target": "ch6"}, {"source": "ch16", "target": "ch10"}, {"source": "ch16", "target": "ch11"}, {"source": "ch16", "target": "ch13"}, {"source": "ch16", "target": "ch20"}, {"source": "ch16", "target": "ch27"}, {"source": "ch16", "target": "apA6"}, {"source": "ch16", "target": "apA7"}, {"source": "ch16", "target": "apA10"}, {"source": "ch17", "target": "ch5"}, {"source": "ch17", "target": "ch6"}, {"source": "ch17", "target": "ch8"}, {"source": "ch17", "target": "ch9"}, {"source": "ch17", "target": "ch13"}, {"source": "ch17", "target": "ch16"}, {"source": "ch17", "target": "ch25"}, {"source": "ch17", "target": "ch27"}, {"source": "ch18", "target": "ch3"}, {"source": "ch18", "target": "ch14"}, {"source": "ch18", "target": "ch15"}, {"source": "ch18", "target": "ch17"}, {"source": "ch18", "target": "ch22"}, {"source": "ch18", "target": "ch25"}, {"source": "ch18", "target": "ch26"}, {"source": "ch18", "target": "ch27"}, {"source": "ch19", "target": "ch3"}, {"source": "ch19", "target": "ch5"}, {"source": "ch19", "target": "ch8"}, {"source": "ch19", "target": "ch10"}, {"source": "ch19", "target": "ch12"}, {"source": "ch19", "target": "ch13"}, {"source": "ch19", "target": "ch14"}, {"source": "ch19", "target": "ch17"}, {"source": "ch19", "target": "ch18"}, {"source": "ch20", "target": "ch10"}, {"source": "ch20", "target": "ch11"}, {"source": "ch20", "target": "ch13"}, {"source": "ch20", "target": "ch16"}, {"source": "ch20", "target": "apA5"}, {"source": "ch20", "target": "apA10"}, {"source": "ch20", "target": "apA16"}, {"source": "ch21", "target": "ch5"}, {"source": "ch21", "target": "ch6"}, {"source": "ch21", "target": "ch10"}, {"source": "ch21", "target": "ch14"}, {"source": "ch21", "target": "ch20"}, {"source": "ch21", "target": "ch22"}, {"source": "ch21", "target": "ch25"}, {"source": "ch22", "target": "ch4"}, {"source": "ch22", "target": "ch9"}, {"source": "ch22", "target": "ch10"}, {"source": "ch22", "target": "ch16"}, {"source": "ch22", "target": "ch20"}, {"source": "ch22", "target": "ch21"}, {"source": "ch22", "target": "ch24"}, {"source": "ch22", "target": "ch26"}, {"source": "ch23", "target": "ch6"}, {"source": "ch23", "target": "ch14"}, {"source": "ch23", "target": "ch16"}, {"source": "ch23", "target": "ch17"}, {"source": "ch23", "target": "ch21"}, {"source": "ch23", "target": "ch24"}, {"source": "ch23", "target": "ch26"}, {"source": "ch23", "target": "apA11"}, {"source": "ch23", "target": "apA12"}, {"source": "ch24", "target": "ch3"}, {"source": "ch24", "target": "ch4"}, {"source": "ch24", "target": "ch8"}, {"source": "ch24", "target": "ch10"}, {"source": "ch24", "target": "ch12"}, {"source": "ch24", "target": "ch16"}, {"source": "ch24", "target": "ch20"}, {"source": "ch24", "target": "ch21"}, {"source": "ch24", "target": "ch22"}, {"source": "ch24", "target": "ch23"}, {"source": "ch24", "target": "ch27"}, {"source": "ch24", "target": "apA10"}, {"source": "ch24", "target": "apA13"}, {"source": "ch24", "target": "apA15"}, {"source": "ch25", "target": "ch4"}, {"source": "ch25", "target": "ch5"}, {"source": "ch25", "target": "ch14"}, {"source": "ch25", "target": "ch17"}, {"source": "ch25", "target": "ch18"}, {"source": "ch26", "target": "ch4"}, {"source": "ch26", "target": "ch8"}, {"source": "ch26", "target": "ch20"}, {"source": "ch26", "target": "ch22"}, {"source": "ch26", "target": "ch27"}, {"source": "ch26", "target": "apA1"}, {"source": "ch26", "target": "apA9"}, {"source": "ch26", "target": "apA13"}, {"source": "ch27", "target": "ch3"}, {"source": "ch27", "target": "ch5"}, {"source": "ch27", "target": "ch8"}, {"source": "ch27", "target": "ch10"}, {"source": "ch27", "target": "ch13"}, {"source": "ch27", "target": "ch16"}, {"source": "ch27", "target": "ch17"}, {"source": "ch27", "target": "ch18"}, {"source": "ch27", "target": "ch20"}, {"source": "ch27", "target": "ch26"}, {"source": "ch27", "target": "apA9"}, {"source": "ch27", "target": "apA11"}, {"source": "ch27", "target": "apA14"}, {"source": "ch28", "target": "ch3"}, {"source": "ch28", "target": "ch4"}, {"source": "ch28", "target": "ch8"}, {"source": "ch28", "target": "ch17"}, {"source": "ch28", "target": "ch18"}, {"source": "ch28", "target": "ch20"}, {"source": "ch28", "target": "ch25"}, {"source": "ch28", "target": "ch26"}, {"source": "ch28", "target": "ch27"}, {"source": "ch28", "target": "apA9"}, {"source": "ch28", "target": "apA11"}, {"source": "ch28", "target": "apA14"}]};
-const cv = document.getElementById('c'), ctx = cv.getContext('2d'), tip = document.getElementById('tip');
-let W, H, scale = 1, ox = 0, oy = 0, drag = null, hover = null;
-function resize(){ const r = devicePixelRatio || 1; W = cv.clientWidth; H = cv.clientHeight;
-  cv.width = W * r; cv.height = H * r; ctx.setTransform(r,0,0,r,0,0); draw(); }
-addEventListener('resize', resize);
-const N = DATA.nodes.map(n => ({...n}));
-const byId = Object.fromEntries(N.map(n => [n.id, n]));
-const E = DATA.edges.map(e => ({s: byId[e.source], t: byId[e.target]}));
-function tx(x){ return (x * 160 + W/2) * scale + ox; }
-function ty(y){ return (y * 160 + H/2) * scale + oy; }
-function draw(){
-  ctx.clearRect(0,0,W,H);
-  ctx.strokeStyle = 'rgba(140,165,190,0.28)'; ctx.lineWidth = 0.7;
-  for(const e of E){ if(!e.s||!e.t) continue; ctx.beginPath(); ctx.moveTo(tx(e.s.x),ty(e.s.y)); ctx.lineTo(tx(e.t.x),ty(e.t.y)); ctx.stroke(); }
-  for(const n of N){
-    const X = tx(n.x), Y = ty(n.y);
-    if(n.id.startsWith('ch')){
-      const r = (5 + Math.min(14, Math.sqrt(n.degree)*3.2)) * Math.max(0.7, Math.min(1.6, scale));
-      ctx.fillStyle = (hover===n) ? '#e8b06a' : '#4a86c5'; ctx.beginPath(); ctx.arc(X,Y,r,0,7); ctx.fill();
-      if(scale > 0.75){ ctx.fillStyle='rgba(232,238,245,0.85)'; ctx.font='11px sans-serif'; ctx.textAlign='center';
-        ctx.fillText(n.id.slice(2), X, Y - r - 4); }
-    } else {
-      const s = 4.5 * Math.max(0.7, Math.min(1.6, scale));
-      ctx.fillStyle = '#a8763f'; ctx.fillRect(X-s/2, Y-s/2, s, s);
-    }
-  }
-}
-function pick(mx,my){
-  let best=null, bd=1e9;
-  for(const n of N){ const d=(tx(n.x)-mx)**2+(ty(n.y)-my)**2; if(d<bd){bd=d;best=n;} }
-  return bd < 500 ? best : null;
-}
-cv.addEventListener('mousemove', ev=>{
-  const r = cv.getBoundingClientRect(), mx = ev.clientX-r.left, my = ev.clientY-r.top;
-  if(drag){ drag.node.x += (mx-drag.x)/160/scale; drag.node.y += (my-drag.y)/160/scale; drag.x=mx; drag.y=my; draw(); return; }
-  const h = pick(mx,my); hover = h;
-  if(h){ const label = h.label || h.id; tip.textContent = label; tip.style.left=(mx+14)+'px'; tip.style.top=(my+10)+'px'; tip.style.opacity=1; cv.style.cursor='pointer'; }
-  else { tip.style.opacity=0; cv.style.cursor='grab'; }
-  draw();
+const D = {"nodes": [{"id": "ch1", "degree": 12, "part": 1, "label": "两类人的说法从哪里来"}, {"id": "ch2", "degree": 16, "part": 1, "label": "一条曲线上的两个点"}, {"id": "ch3", "degree": 23, "part": 1, "label": "省力为什么改变分辨率"}, {"id": "ch4", "degree": 27, "part": 1, "label": "赌注、边界与阅读合约"}, {"id": "ch5", "degree": 28, "part": 2, "label": "率与失真：一条式子的出生"}, {"id": "ch6", "degree": 27, "part": 2, "label": "预算的两种花法"}, {"id": "ch7", "degree": 14, "part": 2, "label": "它与理性疏忽的关系"}, {"id": "ch8", "degree": 26, "part": 2, "label": "它推不出的三件事"}, {"id": "ch9", "degree": 19, "part": 3, "label": "看见：四个旋钮"}, {"id": "ch10", "degree": 29, "part": 3, "label": "记住：码的折旧"}, {"id": "ch11", "degree": 14, "part": 3, "label": "跟上：带宽、睡眠与利害"}, {"id": "ch12", "degree": 21, "part": 3, "label": "一个人能不能改自己"}, {"id": "ch13", "degree": 20, "part": 4, "label": "粗码是最便宜的码"}, {"id": "ch14", "degree": 18, "part": 4, "label": "标签的实证：十三万篇"}, {"id": "ch15", "degree": 8, "part": 4, "label": "注意力与榜单的形状"}, {"id": "ch16", "degree": 23, "part": 4, "label": "规则如何被维护"}, {"id": "ch17", "degree": 16, "part": 5, "label": "共情是折现的影子价格"}, {"id": "ch18", "degree": 15, "part": 5, "label": "核实有一笔时差"}, {"id": "ch19", "degree": 10, "part": 5, "label": "供给、惩罚与技术"}, {"id": "ch20", "degree": 17, "part": 5, "label": "临界不是阈值"}, {"id": "ch21", "degree": 10, "part": 6, "label": "分期：时代是怎么被切的"}, {"id": "ch22", "degree": 13, "part": 6, "label": "转型：合法性划分怎么换"}, {"id": "ch23", "degree": 11, "part": 6, "label": "争议：同一段历史的两套码"}, {"id": "ch24", "degree": 18, "part": 6, "label": "人：一个人变的是哪个量"}, {"id": "ch25", "degree": 12, "part": 7, "label": "三种口径"}, {"id": "ch26", "degree": 18, "part": 7, "label": "九处空白"}, {"id": "ch27", "degree": 25, "part": 7, "label": "代价由谁承担"}, {"id": "ch28", "degree": 10, "part": 7, "label": "一句话带走"}], "edges": [{"source": "ch1", "target": "ch2"}, {"source": "ch1", "target": "ch3"}, {"source": "ch1", "target": "ch4"}, {"source": "ch1", "target": "ch6"}, {"source": "ch1", "target": "ch9"}, {"source": "ch1", "target": "ch10"}, {"source": "ch1", "target": "ch11"}, {"source": "ch1", "target": "ch18"}, {"source": "ch1", "target": "ch26"}, {"source": "ch1", "target": "ch27"}, {"source": "ch2", "target": "ch3"}, {"source": "ch2", "target": "ch5"}, {"source": "ch2", "target": "ch6"}, {"source": "ch2", "target": "ch8"}, {"source": "ch2", "target": "ch10"}, {"source": "ch2", "target": "ch26"}, {"source": "ch3", "target": "ch2"}, {"source": "ch3", "target": "ch6"}, {"source": "ch3", "target": "ch8"}, {"source": "ch3", "target": "ch9"}, {"source": "ch3", "target": "ch11"}, {"source": "ch3", "target": "ch12"}, {"source": "ch4", "target": "ch1"}, {"source": "ch4", "target": "ch3"}, {"source": "ch4", "target": "ch5"}, {"source": "ch4", "target": "ch6"}, {"source": "ch4", "target": "ch7"}, {"source": "ch4", "target": "ch8"}, {"source": "ch4", "target": "ch9"}, {"source": "ch4", "target": "ch10"}, {"source": "ch4", "target": "ch11"}, {"source": "ch4", "target": "ch16"}, {"source": "ch4", "target": "ch20"}, {"source": "ch4", "target": "ch22"}, {"source": "ch4", "target": "ch23"}, {"source": "ch4", "target": "ch24"}, {"source": "ch4", "target": "ch26"}, {"source": "ch4", "target": "ch27"}, {"source": "ch4", "target": "ch28"}, {"source": "ch5", "target": "ch2"}, {"source": "ch5", "target": "ch3"}, {"source": "ch5", "target": "ch4"}, {"source": "ch5", "target": "ch6"}, {"source": "ch5", "target": "ch8"}, {"source": "ch5", "target": "ch10"}, {"source": "ch5", "target": "ch11"}, {"source": "ch5", "target": "ch12"}, {"source": "ch5", "target": "ch14"}, {"source": "ch5", "target": "ch16"}, {"source": "ch5", "target": "ch20"}, {"source": "ch5", "target": "ch26"}, {"source": "ch5", "target": "ch27"}, {"source": "ch6", "target": "ch2"}, {"source": "ch6", "target": "ch3"}, {"source": "ch6", "target": "ch5"}, {"source": "ch6", "target": "ch8"}, {"source": "ch6", "target": "ch9"}, {"source": "ch6", "target": "ch13"}, {"source": "ch6", "target": "ch16"}, {"source": "ch6", "target": "ch20"}, {"source": "ch6", "target": "ch23"}, {"source": "ch6", "target": "ch24"}, {"source": "ch6", "target": "ch27"}, {"source": "ch7", "target": "ch2"}, {"source": "ch7", "target": "ch3"}, {"source": "ch7", "target": "ch4"}, {"source": "ch7", "target": "ch5"}, {"source": "ch7", "target": "ch6"}, {"source": "ch7", "target": "ch8"}, {"source": "ch7", "target": "ch16"}, {"source": "ch7", "target": "ch17"}, {"source": "ch7", "target": "ch19"}, {"source": "ch7", "target": "ch20"}, {"source": "ch7", "target": "ch23"}, {"source": "ch7", "target": "ch26"}, {"source": "ch7", "target": "ch27"}, {"source": "ch8", "target": "ch2"}, {"source": "ch8", "target": "ch9"}, {"source": "ch8", "target": "ch10"}, {"source": "ch8", "target": "ch14"}, {"source": "ch8", "target": "ch17"}, {"source": "ch8", "target": "ch18"}, {"source": "ch8", "target": "ch20"}, {"source": "ch8", "target": "ch26"}, {"source": "ch9", "target": "ch2"}, {"source": "ch9", "target": "ch3"}, {"source": "ch9", "target": "ch4"}, {"source": "ch9", "target": "ch5"}, {"source": "ch9", "target": "ch6"}, {"source": "ch9", "target": "ch8"}, {"source": "ch9", "target": "ch12"}, {"source": "ch9", "target": "ch13"}, {"source": "ch9", "target": "ch24"}, {"source": "ch9", "target": "ch26"}, {"source": "ch10", "target": "ch1"}, {"source": "ch10", "target": "ch2"}, {"source": "ch10", "target": "ch3"}, {"source": "ch10", "target": "ch6"}, {"source": "ch10", "target": "ch8"}, {"source": "ch10", "target": "ch9"}, {"source": "ch10", "target": "ch12"}, {"source": "ch10", "target": "ch13"}, {"source": "ch10", "target": "ch16"}, {"source": "ch10", "target": "ch20"}, {"source": "ch10", "target": "ch24"}, {"source": "ch10", "target": "ch25"}, {"source": "ch10", "target": "ch26"}, {"source": "ch10", "target": "ch27"}, {"source": "ch11", "target": "ch2"}, {"source": "ch11", "target": "ch3"}, {"source": "ch11", "target": "ch6"}, {"source": "ch11", "target": "ch8"}, {"source": "ch11", "target": "ch12"}, {"source": "ch11", "target": "ch18"}, {"source": "ch11", "target": "ch25"}, {"source": "ch12", "target": "ch2"}, {"source": "ch12", "target": "ch3"}, {"source": "ch12", "target": "ch4"}, {"source": "ch12", "target": "ch5"}, {"source": "ch12", "target": "ch6"}, {"source": "ch12", "target": "ch8"}, {"source": "ch12", "target": "ch9"}, {"source": "ch12", "target": "ch10"}, {"source": "ch12", "target": "ch11"}, {"source": "ch12", "target": "ch14"}, {"source": "ch12", "target": "ch16"}, {"source": "ch12", "target": "ch24"}, {"source": "ch12", "target": "ch27"}, {"source": "ch13", "target": "ch3"}, {"source": "ch13", "target": "ch5"}, {"source": "ch13", "target": "ch6"}, {"source": "ch13", "target": "ch8"}, {"source": "ch13", "target": "ch10"}, {"source": "ch13", "target": "ch12"}, {"source": "ch13", "target": "ch14"}, {"source": "ch13", "target": "ch15"}, {"source": "ch13", "target": "ch16"}, {"source": "ch13", "target": "ch27"}, {"source": "ch14", "target": "ch5"}, {"source": "ch14", "target": "ch6"}, {"source": "ch14", "target": "ch8"}, {"source": "ch14", "target": "ch10"}, {"source": "ch14", "target": "ch13"}, {"source": "ch14", "target": "ch15"}, {"source": "ch14", "target": "ch16"}, {"source": "ch14", "target": "ch25"}, {"source": "ch15", "target": "ch5"}, {"source": "ch15", "target": "ch13"}, {"source": "ch15", "target": "ch14"}, {"source": "ch15", "target": "ch16"}, {"source": "ch15", "target": "ch27"}, {"source": "ch16", "target": "ch3"}, {"source": "ch16", "target": "ch5"}, {"source": "ch16", "target": "ch6"}, {"source": "ch16", "target": "ch10"}, {"source": "ch16", "target": "ch11"}, {"source": "ch16", "target": "ch13"}, {"source": "ch16", "target": "ch20"}, {"source": "ch16", "target": "ch27"}, {"source": "ch17", "target": "ch5"}, {"source": "ch17", "target": "ch6"}, {"source": "ch17", "target": "ch8"}, {"source": "ch17", "target": "ch9"}, {"source": "ch17", "target": "ch13"}, {"source": "ch17", "target": "ch16"}, {"source": "ch17", "target": "ch25"}, {"source": "ch17", "target": "ch27"}, {"source": "ch18", "target": "ch3"}, {"source": "ch18", "target": "ch14"}, {"source": "ch18", "target": "ch15"}, {"source": "ch18", "target": "ch17"}, {"source": "ch18", "target": "ch22"}, {"source": "ch18", "target": "ch25"}, {"source": "ch18", "target": "ch26"}, {"source": "ch18", "target": "ch27"}, {"source": "ch19", "target": "ch3"}, {"source": "ch19", "target": "ch5"}, {"source": "ch19", "target": "ch8"}, {"source": "ch19", "target": "ch10"}, {"source": "ch19", "target": "ch12"}, {"source": "ch19", "target": "ch13"}, {"source": "ch19", "target": "ch14"}, {"source": "ch19", "target": "ch17"}, {"source": "ch19", "target": "ch18"}, {"source": "ch20", "target": "ch10"}, {"source": "ch20", "target": "ch11"}, {"source": "ch20", "target": "ch13"}, {"source": "ch20", "target": "ch16"}, {"source": "ch21", "target": "ch5"}, {"source": "ch21", "target": "ch6"}, {"source": "ch21", "target": "ch10"}, {"source": "ch21", "target": "ch14"}, {"source": "ch21", "target": "ch20"}, {"source": "ch21", "target": "ch22"}, {"source": "ch21", "target": "ch25"}, {"source": "ch22", "target": "ch4"}, {"source": "ch22", "target": "ch9"}, {"source": "ch22", "target": "ch10"}, {"source": "ch22", "target": "ch16"}, {"source": "ch22", "target": "ch20"}, {"source": "ch22", "target": "ch21"}, {"source": "ch22", "target": "ch24"}, {"source": "ch22", "target": "ch26"}, {"source": "ch23", "target": "ch6"}, {"source": "ch23", "target": "ch14"}, {"source": "ch23", "target": "ch16"}, {"source": "ch23", "target": "ch17"}, {"source": "ch23", "target": "ch21"}, {"source": "ch23", "target": "ch24"}, {"source": "ch23", "target": "ch26"}, {"source": "ch24", "target": "ch3"}, {"source": "ch24", "target": "ch4"}, {"source": "ch24", "target": "ch8"}, {"source": "ch24", "target": "ch10"}, {"source": "ch24", "target": "ch12"}, {"source": "ch24", "target": "ch16"}, {"source": "ch24", "target": "ch20"}, {"source": "ch24", "target": "ch21"}, {"source": "ch24", "target": "ch22"}, {"source": "ch24", "target": "ch23"}, {"source": "ch24", "target": "ch27"}, {"source": "ch25", "target": "ch4"}, {"source": "ch25", "target": "ch5"}, {"source": "ch25", "target": "ch14"}, {"source": "ch25", "target": "ch17"}, {"source": "ch25", "target": "ch18"}, {"source": "ch26", "target": "ch4"}, {"source": "ch26", "target": "ch8"}, {"source": "ch26", "target": "ch20"}, {"source": "ch26", "target": "ch22"}, {"source": "ch26", "target": "ch27"}, {"source": "ch27", "target": "ch3"}, {"source": "ch27", "target": "ch5"}, {"source": "ch27", "target": "ch8"}, {"source": "ch27", "target": "ch10"}, {"source": "ch27", "target": "ch13"}, {"source": "ch27", "target": "ch16"}, {"source": "ch27", "target": "ch17"}, {"source": "ch27", "target": "ch18"}, {"source": "ch27", "target": "ch20"}, {"source": "ch27", "target": "ch26"}, {"source": "ch28", "target": "ch3"}, {"source": "ch28", "target": "ch4"}, {"source": "ch28", "target": "ch8"}, {"source": "ch28", "target": "ch17"}, {"source": "ch28", "target": "ch18"}, {"source": "ch28", "target": "ch20"}, {"source": "ch28", "target": "ch25"}, {"source": "ch28", "target": "ch26"}, {"source": "ch28", "target": "ch27"}], "ap_edges": [{"source": "ch4", "target": "apA0"}, {"source": "ch4", "target": "apA3"}, {"source": "ch4", "target": "apA6"}, {"source": "ch4", "target": "apA7"}, {"source": "ch4", "target": "apA8"}, {"source": "ch4", "target": "apA14"}, {"source": "ch4", "target": "apA15"}, {"source": "ch4", "target": "apA19"}, {"source": "ch5", "target": "apA7"}, {"source": "ch6", "target": "apA1"}, {"source": "ch6", "target": "apA5"}, {"source": "ch7", "target": "apA1"}, {"source": "ch9", "target": "apA0"}, {"source": "ch16", "target": "apA6"}, {"source": "ch16", "target": "apA7"}, {"source": "ch16", "target": "apA10"}, {"source": "ch20", "target": "apA5"}, {"source": "ch20", "target": "apA10"}, {"source": "ch20", "target": "apA16"}, {"source": "ch20", "target": "apA18"}, {"source": "ch23", "target": "apA11"}, {"source": "ch23", "target": "apA12"}, {"source": "ch24", "target": "apA10"}, {"source": "ch24", "target": "apA13"}, {"source": "ch24", "target": "apA15"}, {"source": "ch26", "target": "apA1"}, {"source": "ch26", "target": "apA9"}, {"source": "ch26", "target": "apA13"}, {"source": "ch26", "target": "apA19"}, {"source": "ch27", "target": "apA9"}, {"source": "ch27", "target": "apA11"}, {"source": "ch27", "target": "apA14"}, {"source": "ch28", "target": "apA9"}, {"source": "ch28", "target": "apA11"}, {"source": "ch28", "target": "apA14"}], "matrix": [[7, 10, 10, 1, 2, 3, 6], [9, 7, 6, 6, 8, 3, 6], [11, 10, 7, 5, 2, 3, 6], [2, 9, 5, 10, 1, 0, 4], [2, 5, 5, 8, 3, 1, 5], [3, 4, 5, 5, 4, 8, 4], [5, 5, 1, 3, 9, 1, 5]]};
+const LIMITS = [["一致性 γ", "γ → 0", "Sims 的理性疏忽", "P3 的第二项消失：势函数退化为单人泛函，v*=(T+λ)/2w 原样回来", "一个人的最优码", "in"], ["一致性 γ", "γ → ∞", "制度锁定（诺斯那一支）", "全体同码、k*→1：“锁死”是 γ 的极限，不是一种文化", "身份／职业路径的锁死", "in"], ["网络 A", "网络＝完全图", "Granovetter 的阈值模型", "A_ij→1：平均场 γz>δ 成立，“阈值分布”是它的投影", "规范／共同语／正统", "in"], ["网络 A", "网络有 k 个分量", "偏好伪造与双稳（Kuran）", "分量之间 γ 不传导：各自成篇＝图不连通", "沉默的螺旋／突然崩盘", "in"], ["换码 C", "C → 0", "新古典的弹性世界", "带宽 2C→0：去程回程同一阈值，没有迟滞", "一次重新优化", "in"], ["换码 C", "C → ∞", "路径依赖（历史制度主义）", "带宽→∞：换码永不发生，码冻结", "制度惯性／旧账重做", "in"], ["外置 ν", "ν = 0", "庇古式外部性", "w_i = w_i(自己)：P6 的第二项消失，只剩“你受损但我不在乎”", "罚款／赔偿的常规读法", "in"], ["外置 ν", "ν < 0", "无对应——这是第二条原理本身", "w_i = w_i(自己) + ν·w_i(别人)：目标失去势结构，解跑到边界", "代价外置／粗码＋全责", "out"], ["预算 R, Δ", "R 固定、Δ → ∞", "快而省的启发式（Gigerenzer）", "δ = Δ/2^R → ∞：整段压粗，“匹配”取代“越细越好”", "口号／刻板印象／MBTI", "in"], ["预算 R, Δ", "R → ∞", "标准统计决策", "δ → 0：精度上限不再是理论问题，是预算问题", "法律条文／诊断标准", "in"]];
+const PART = ["一 形状","二 第一性","三 个人","四 群体","五 社会","六 历史","七 边界"];
+const chs = D.nodes.filter(n => n.id.startsWith('ch'));
+const idx = Object.fromEntries(chs.map((n, i) => [n.id, i]));
+const part = Object.fromEntries(chs.map(n => [n.id, n.part]));
+const deg = Object.fromEntries(chs.map(n => [n.id, n.degree]));
+const label = Object.fromEntries(chs.map(n => [n.id, n.label]));
+const maxDeg = Math.max(...Object.values(deg));
+
+/* ---------- 三维位置：一条下行螺旋 ---------- */
+const R = 152, TURN = 1.85, YSTEP = 26, H = 620;
+const P = chs.map((n, i) => {
+  const a = (i / chs.length) * Math.PI * 2 * TURN - Math.PI / 2;
+  return { id: n.id, o: i,
+           x: Math.cos(a) * R, y: (i - 13.5) * YSTEP, z: Math.sin(a) * R };
 });
-cv.addEventListener('mousedown', ev=>{ const r=cv.getBoundingClientRect(); const h=pick(ev.clientX-r.left, ev.clientY-r.top); if(h) drag={node:h,x:ev.clientX-r.left,y:ev.clientY-r.top}; });
-addEventListener('mouseup', ()=>drag=null);
-cv.addEventListener('wheel', ev=>{ ev.preventDefault(); scale *= ev.deltaY<0 ? 1.08 : 0.93; scale=Math.max(0.35, Math.min(3, scale)); draw(); }, {passive:false});
+const EDGES = D.edges.map(e => ({ a: idx[e.source], b: idx[e.target] }));
+
+const cv = document.getElementById('c3'), ctx = cv.getContext('2d'), tip = document.getElementById('tip');
+let yaw = 0.5, pitch = -0.30, zoom = 1, autorot = true, filter = 'all', hover = -1, drag = null;
+function resize(){ const r = devicePixelRatio || 1; const w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = w * r; cv.height = h * r; ctx.setTransform(r, 0, 0, r, 0, 0); draw(); }
+addEventListener('resize', resize);
+
+function viewW(){ return cv.clientWidth; }
+function project(p){
+  const cy = Math.cos(yaw), sy = Math.sin(yaw);
+  let x = p.x * cy - p.z * sy, z = p.x * sy + p.z * cy;
+  const cp = Math.cos(pitch), sp = Math.sin(pitch);
+  let y = p.y * cp - z * sp; z = p.y * sp + z * cp;
+  const f = 1100, s = f / (f + z + 330) * zoom;
+  return { x: cv.clientWidth / 2 + x * s, y: H / 2 + y * s, s, z };
+}
+
+function draw(){
+  const W = viewW();
+  ctx.clearRect(0, 0, W, H);
+  const pr = P.map(project);
+  const W2 = viewW();
+  // 螺旋导引线（很淡）
+  ctx.beginPath();
+  pr.forEach((q, i) => i ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y));
+  ctx.strokeStyle = 'rgba(200,195,182,0.55)'; ctx.lineWidth = 1; ctx.stroke();
+
+  // 边：按深度排序，远的先画
+  const list = EDGES.filter(e => {
+    if (filter === 'within') return part[chs[e.a].id] === part[chs[e.b].id];
+    if (filter === 'cross') return part[chs[e.a].id] !== part[chs[e.b].id];
+    return true;
+  });
+  list.sort((u, v) => (pr[u.a].z + pr[u.b].z) - (pr[v.a].z + pr[v.b].z));
+  list.forEach(e => {
+    const A = pr[e.a], B = pr[e.b];
+    const same = part[chs[e.a].id] === part[chs[e.b].id];
+    const hot = hover >= 0 && (e.a === hover || e.b === hover);
+    const depth = (A.z + B.z) / 2;
+    const alpha = hot ? 0.95 : (same ? 0.20 : 0.28) * (depth > 0 ? 0.55 : 1);
+    ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y);
+    ctx.strokeStyle = hot ? '#b5651d' : (same ? 'rgba(159,180,198,1)' : 'rgba(31,59,87,1)');
+    ctx.globalAlpha = hot ? 1 : alpha;
+    ctx.lineWidth = hot ? 2.2 : (same ? 0.7 : 0.95);
+    ctx.stroke();
+  });
+  ctx.globalAlpha = 1;
+
+  // 点
+  pr.forEach((q, i) => {
+    const n = chs[i], d = deg[n.id];
+    const r = (3.2 + 5.4 * Math.sqrt(d / maxDeg)) * Math.min(1.5, Math.max(0.8, q.s * 1.9));
+    const hot = i === hover;
+    ctx.beginPath(); ctx.arc(q.x, q.y, hot ? r + 2 : r, 0, 7);
+    ctx.fillStyle = hot ? '#b5651d' : '#1f3b57';
+    ctx.globalAlpha = q.z > 0 ? 0.55 : 1;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    if (hot || zoom > 1.25) {
+      ctx.font = '600 11px "Noto Sans SC",sans-serif';
+      ctx.fillStyle = hot ? '#8f4c12' : '#5c6672';
+      ctx.textAlign = 'left';
+      ctx.fillText(n.id.slice(2), q.x + r + 3, q.y - 3);
+    }
+  });
+
+  // 部名：该部四点的平均高度，强制最小间距，避免挤在一起
+  const lab = [];
+  for (let p = 1; p <= 7; p++) {
+    const ys = pr.filter((_, i) => chs[i].part === p).map(q => q.y);
+    if (ys.length) lab.push({ p, y: ys.reduce((a, b) => a + b, 0) / ys.length });
+  }
+  lab.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < lab.length; i++) {
+    if (lab[i].y - lab[i - 1].y < 26) lab[i].y = lab[i - 1].y + 26;
+  }
+  ctx.font = '11.5px "Noto Sans SC",sans-serif';
+  ctx.textAlign = 'left';
+  lab.forEach(o => {
+    ctx.fillStyle = 'rgba(150,143,130,0.95)';
+    ctx.fillText(PART[o.p - 1], 12, o.y + 4);
+    ctx.strokeStyle = 'rgba(214,208,196,0.9)'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.moveTo(12, o.y + 9); ctx.lineTo(64, o.y + 9); ctx.stroke();
+  });
+}
+
+/* ---------- 交互 ---------- */
+function nearest(mx, my){
+  let best = -1, bd = 1e9;
+  P.map(project).forEach((q, i) => {
+    const d = (q.x - mx) ** 2 + (q.y - my) ** 2;
+    if (d < bd) { bd = d; best = i; }
+  });
+  return bd < 260 ? best : -1;
+}
+cv.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY }; cv.setPointerCapture(e.pointerId); cv.style.cursor = 'grabbing'; });
+cv.addEventListener('pointerup', e => { drag = null; cv.style.cursor = 'grab'; });
+cv.addEventListener('pointermove', e => {
+  const r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+  if (drag) { yaw += (e.clientX - drag.x) * 0.008; pitch += (e.clientY - drag.y) * 0.005;
+    pitch = Math.max(-1.1, Math.min(0.7, pitch)); drag = { x: e.clientX, y: e.clientY }; draw(); return; }
+  const h = nearest(mx, my);
+  if (h !== hover) { hover = h; draw(); }
+  if (h >= 0) {
+    const n = chs[h];
+    tip.innerHTML = `<b>第 ${+n.id.slice(2)} 章</b>　${n.label}<br>被引＋引用：${n.degree} 次`;
+    tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY + 12) + 'px'; tip.style.opacity = 1;
+  } else tip.style.opacity = 0;
+});
+cv.addEventListener('wheel', e => { e.preventDefault(); zoom *= e.deltaY < 0 ? 1.08 : 0.93;
+  zoom = Math.max(0.55, Math.min(3.2, zoom)); draw(); }, { passive: false });
+cv.addEventListener('dblclick', () => reset());
+document.querySelectorAll('.bar button[data-f]').forEach(b => b.addEventListener('click', () => {
+  filter = b.dataset.f;
+  document.querySelectorAll('.bar button[data-f]').forEach(x => x.classList.toggle('on', x === b));
+  draw();
+}));
+document.getElementById('spin').addEventListener('click', e => {
+  autorot = !autorot; e.target.classList.toggle('on', autorot);
+});
+document.getElementById('reset').addEventListener('click', () => reset());
+function reset(){ yaw = 0.5; pitch = -0.30; zoom = 1; draw(); }
+(function loop(){ if (autorot) { yaw += 0.0016; draw(); } requestAnimationFrame(loop); })();
+
+/* ---------- 部×部矩阵 ---------- */
+const m = D.matrix, tb = document.getElementById('mat'), vmax = Math.max(...m.flat());
+let html = '<tr><th>引\被引</th>' + PART.map((p, i) => `<th>${i + 1}</th>`).join('') + '</tr>';
+m.forEach((row, i) => {
+  html += `<tr><th>${i + 1} ${PART[i].slice(0, 3)}</th>` + row.map((v, j) => {
+    const sh = v ? Math.round(248 - 125 * v / vmax) : 252;
+    return `<td style="background:rgb(${sh},${sh + 4},${sh + 10})"${i === j ? ' class="diag"' : ''}>${v || ''}</td>`;
+  }).join('') + '</tr>';
+});
+tb.innerHTML = html;
+
+/* ---------- 理论地图（3D，SVG 手写投影） ---------- */
+(function(){
+  const S = document.getElementById('tmsvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const COL = { '一致性 γ':'#6b7f3a', '网络 A':'#2E86AB', '换码 C':'#8c6d3f',
+                '外置 ν':'#b5651d', '预算 R, Δ':'#1f3b57' };
+  const SURF = ['一致性 γ','网络 A','换码 C','外置 ν','预算 R, Δ'];
+  let yaw = 0.55, pitch = -0.28, zoom = 1, spin = true, filt = 'all', drag = null, hover = -1;
+
+  // 位置：中心 → 五个量（向下排成一条竖列）→ 每量两枚叶子挂在两侧
+  const N = [{ x:0, y:-150, z:0, r:18, col:'#1f3b57', kind:'hub',
+               t1:'本书的模型', t2:'w·D+(T+λ)R+γD̄−H/β', lines:[] }];
+  const ED = [];
+  SURF.forEach((sf, si) => {
+    const hy = -80 + si * 95;
+    const hub = { x: 0, y: hy, z: 0, r: 10, col: COL[sf], kind:'surf', t1: sf, lines: [] };
+    N.push(hub); const hi = N.length - 1; ED.push([0, hi, COL[sf], 2.0]);
+    const items = LIMITS.map((it, k) => ({ it, k })).filter(o => o.it[0] === sf);
+    items.forEach((o, m) => {
+      const side = m % 2 ? 1 : -1;
+      const leaf = { x: side * (215 + m * 20), y: hy + (m % 2 ? -26 : 26), z: (m % 2 ? 40 : -40),
+                     r: 7, col: o.it[5] === 'out' ? '#b5651d' : COL[sf], kind: 'leaf',
+                     t1: o.it[1], t2: o.it[2], contact: o.it[3],
+                     lines: [o.it[1], '→ ' + o.it[2], '接洽：' + o.it[3], o.it[4]] };
+      N.push(leaf); ED.push([hi, N.length - 1, leaf.col, 0.9]);
+    });
+  });
+
+  const W = 980, H = 620;
+  function proj(p){
+    const cy = Math.cos(yaw), sy = Math.sin(yaw);
+    let x = p.x*cy - p.z*sy, z = p.x*sy + p.z*cy;
+    const cp = Math.cos(pitch), sp = Math.sin(pitch);
+    let y = p.y*cp - z*sp; z = p.y*sp + z*cp;
+    const f = 1400, s = f/(f + z + 210) * zoom;
+    return { x: W/2 + x*s, y: H/2 + y*s, s, z };
+  }
+  function E(t, a){ const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; }
+  function draw(){
+    S.innerHTML = '';
+    const P = N.map(proj);
+    // 边
+    ED.slice().sort((u, v) => (P[u[0]].z + P[u[1]].z) - (P[v[0]].z + P[v[1]].z)).forEach(([a, b, col, w]) => {
+      const A = P[a], B = P[b];
+      const hot = hover >= 0 && (a === hover || b === hover);
+      S.appendChild(E('line', { x1: A.x, y1: A.y, x2: B.x, y2: B.y, stroke: hot ? '#b5651d' : col,
+        'stroke-opacity': hot ? 1 : 0.30, 'stroke-width': hot ? 2.6 : w }));
+    });
+    // 点与字
+    P.forEach((q, i) => {
+      const n = N[i];
+      const hidden = filt !== 'all' && n.kind === 'leaf' && n.col !== COL[filt] && n.col !== '#b5651d';
+      if (hidden) return;
+      const r = n.r * q.s * (i === hover ? 1.25 : 1);
+      S.appendChild(E('circle', { cx: q.x, cy: q.y, r, fill: n.col,
+        'fill-opacity': n.kind === 'hub' ? 1 : 0.92, stroke: '#fff', 'stroke-width': 1.1 }));
+      if (true) {
+        const right = q.x >= W/2;
+        const t = E('text', { x: q.x + (right ? r + 4 : -(r + 4)), y: q.y + 4,
+          'text-anchor': right ? 'start' : 'end',
+          fill: n.kind === 'surf' ? n.col : (i === hover ? '#8f4c12' : '#4a4a4a'),
+          'font-size': n.kind === 'surf' ? 13 : (n.kind === 'hub' ? 14 : 12),
+          'font-weight': n.kind === 'leaf' ? 400 : 700 });
+        t.textContent = n.t1;
+        S.appendChild(t);
+        if (n.kind === 'leaf') {
+          const t2 = E('text', { x: right ? q.x + r + 4 : q.x - r - 4, y: q.y + 15,
+            'text-anchor': right ? 'start' : 'end', fill: '#9a9186', 'font-size': 8.6 });
+          t2.textContent = n.t2;
+          S.appendChild(t2);
+        }
+      }
+    });
+  }
+  function nearest(mx, my){
+    let best = -1, bd = 1e9;
+    N.map(proj).forEach((q, i) => {
+      const n = N[i];
+      if (filt !== 'all' && n.kind === 'leaf' && n.col !== COL[filt] && n.col !== '#b5651d') return;
+      const d = (q.x - mx) ** 2 + (q.y - my) ** 2;
+      if (d < bd) { bd = d; best = i; }
+    });
+    return bd < 320 ? best : -1;
+  }
+  const TIP = document.getElementById('tip');
+  S.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY }; S.setPointerCapture(e.pointerId); });
+  S.addEventListener('pointerup', () => { drag = null; });
+  S.addEventListener('pointermove', e => {
+    const r = S.getBoundingClientRect();
+    const mx = (e.clientX - r.left) * W / r.width, my = (e.clientY - r.top) * H / r.height;
+    if (drag) { yaw += (e.clientX - drag.x) * 0.008; pitch += (e.clientY - drag.y) * 0.005;
+      pitch = Math.max(-1.0, Math.min(0.6, pitch)); drag = { x: e.clientX, y: e.clientY }; draw(); return; }
+    const h = nearest(mx, my);
+    if (h !== hover) { hover = h; draw(); }
+    if (h >= 0 && N[h].lines.length) {
+      TIP.innerHTML = '<b>' + N[h].lines[0] + '</b><br>' + N[h].lines[1] +
+        '<br><span style="color:#6b6255">' + N[h].lines[2] + '</span><br>' +
+        '<span style="color:#8c8c8c">' + N[h].lines[3] + '</span>';
+      TIP.style.left = (e.clientX + 14) + 'px'; TIP.style.top = (e.clientY + 12) + 'px'; TIP.style.opacity = 1;
+    } else TIP.style.opacity = 0;
+  });
+  S.addEventListener('wheel', e => { e.preventDefault(); zoom *= e.deltaY < 0 ? 1.08 : 0.93;
+    zoom = Math.max(0.6, Math.min(2.6, zoom)); draw(); }, { passive: false });
+  document.querySelectorAll('button[data-s]').forEach(b => b.addEventListener('click', () => {
+    filt = b.dataset.s;
+    document.querySelectorAll('button[data-s]').forEach(x => x.classList.toggle('on', x === b));
+    draw();
+  }));
+  document.getElementById('tspin').addEventListener('click', e => { spin = !spin; e.target.classList.toggle('on', spin); });
+  (function loop(){ if (spin) { yaw += 0.0016; draw(); } requestAnimationFrame(loop); })();
+  draw();
+
+  // 表：把十二条的接洽点列全
+  const tb = document.getElementById('tmtab');
+  let html = '<tr><th>接触面</th><th>极限</th><th>退回到</th><th>接洽点（哪个量退化成对方的哪个量）</th><th>现实里</th></tr>';
+  LIMITS.forEach(it => {
+    const c = it[5] === 'out' ? '#b5651d' : COL[it[0]];
+    html += `<tr><td style="color:${c};font-weight:700">${it[0]}</td><td><b>${it[1]}</b></td><td>${it[2]}</td><td>${it[3]}</td><td style="color:#8c8c8c">${it[4]}</td></tr>`;
+  });
+  tb.innerHTML = html;
+})();
+
 resize();
 </script>
+</html>
