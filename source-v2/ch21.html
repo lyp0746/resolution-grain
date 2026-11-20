@@ -31,8 +31,8 @@
 <li>被标者博弈 <i>g</i>，让标签失真；</li>
 <li>标签者被俘获 <i>c</i>，让标签偏向被标者。</li>
 </ul>
-<div class="mblock">ȧ = <i>ηe</i>(1 − <i>a</i>) − (<i>g</i> + <i>c</i>)<i>a</i>　⇒　稳态 <i>a</i>* = <i>ηe</i> / (<i>ηe</i> + <i>g</i> + <i>c</i>)</div>
-<p>这是一个方向模型，不是精确预测。<b><i>a</i>* 是稳态，不是每一条标签的准确率；参数没有标定，只能比方向。</b> 但方向很有用：</p>
+<div class="eq"><span class="body"><math display="block"><mtext>ȧ</mtext><mspace width="0.17em"/><mo>=</mo><mspace width="0.17em"/><mi>η</mi><mi>e</mi><mo>(</mo><mn>1</mn><mspace width="0.17em"/><mo>−</mo><mspace width="0.17em"/><mi>a</mi><mo>)</mo><mspace width="0.17em"/><mo>−</mo><mspace width="0.17em"/><mo>(</mo><mi>g</mi><mspace width="0.17em"/><mo>+</mo><mspace width="0.17em"/><mi>c</mi><mo>)</mo><mi>a</mi><mspace width="0.17em"/><mo>⇒</mo><mspace width="0.17em"/><mtext>稳态</mtext><mspace width="0.17em"/><msup><mi>a</mi><mo>*</mo></msup><mspace width="0.17em"/><mo>=</mo><mspace width="0.17em"/><mi>η</mi><mi>e</mi><mspace width="0.17em"/><mo>/</mo><mspace width="0.17em"/><mo>(</mo><mi>η</mi><mi>e</mi><mspace width="0.17em"/><mo>+</mo><mspace width="0.17em"/><mi>g</mi><mspace width="0.17em"/><mo>+</mo><mspace width="0.17em"/><mi>c</mi><mo>)</mo></math></span></div>
+<p>这是一个方向模型，不是精确预测。<b><i>a</i>* 是稳态，不是每一条标签的准确率；参数没有标定，只能比方向。</b> 但方向很有用（图21.1）：</p>
 <figure>
 <img src="assets/charts/v2_fig_drift.png" alt="稳态准确率随投入与博弈；一个标签的一生" style="width:100%">
 <figcaption class="cap"><b>图21.1　漂移方程与标签的一生。</b>左：稳态准确率 <i>a</i>* 随核查投入 <i>e</i> 上升，但随着 <i>g</i>+<i>c</i>（博弈与俘获）上升而整体下移——<b>投入拉不到满分，因为分母里有两项不是它。</b> 右：一个标签的一生——刚出现时越用越准（<i>e</i> 的边际收益大），一旦它变得值钱，<i>g</i> 跟着上升，准确率先升后降。<b>拐点不在技术，在“它开始值钱”的那一刻。</b> 来源：本书示意（方程为骨架，曲线为示意），C 级。</figcaption>
@@ -45,7 +45,7 @@
 <p>参数之间还有一层依赖，写式子时容易漏：<b><i>g</i> 不是外生常数，它随“标签值多少钱”上升。</b> 一个没人看的标签，<i>g</i>≈0；一个决定融资成本的标签，<i>g</i> 很大。<b>于是“抬 <i>e</i>”这个动作有一个隐藏的对手：抬 <i>e</i> 让标签更准，更准让它更值钱，更值钱让它更值得博弈。</b> 这就是为什么单靠加投入，长期追不上。</p>
 
 <h3 id="sec21-3">21.3　四个维护条件</h3>
-<p>方程里的三个参数（<i>e</i>、<i>g</i>、<i>c</i>）不是天生的，它们由四个制度条件决定。四个条件都可以查。</p>
+<p>方程里的三个参数（<i>e</i>、<i>g</i>、<i>c</i>）不是天生的，它们由四个制度条件决定。四个条件都可以查（表21.1）。</p>
 <table class="nat">
 <caption class="cap">表21.1　四个维护条件：三种标签的对照</caption>
 <thead><tr><th style="width:14%">条件</th><th style="width:26%">含义</th><th style="width:20%">米其林</th><th style="width:20%">评级机构</th><th style="width:20%">平台 AI 标签</th></tr></thead>
@@ -66,7 +66,7 @@
 <p>四个把手里，最便宜的是第二个（公开）。<b>公开阈值不需要新机构、不需要立法，只需要一个决定。</b> 而它恰恰最少被做——因为公开之后要承担解释的责任。<b>所以“可核实性”这一项的落后，不是能力问题，是意愿问题</b>：它把“说错”的成本，从被标者身上搬回了标签者身上。</p>
 <p>最贵的是第四个（赔偿）。<b>它要立法、要判例、要有人执行</b>；而它的效果也最直接——把错的代价搬回标签者，<i>c</i> 与 <i>g</i> 同时下降。<b>四个把手因此有一个自然的顺序：先公开，再准入，然后付费，最后赔偿。</b> 每一步都比前一步贵，也比前一步更治本。</p>
 
-<p>表 21.1 把三个标签并排了；还有一张表更有用，它问的是：<b>四个条件各自失效时，先坏的是哪一种漂移。</b> 四个条件不是四个并列的开关，它们的失效各有指纹。</p>
+<p>表 21.1 把三个标签并排了；还有一张表更有用，它问的是：<b>四个条件各自失效时，先坏的是哪一种漂移。</b> 四个条件不是四个并列的开关，它们的失效各有指纹（表21.2）。</p>
 <table class="nat">
 <caption class="cap">表21.2　四个维护条件失效时，先坏的是哪一种漂移</caption>
 <thead><tr><th style="width:14%">条件</th><th style="width:26%">失效的样子</th><th style="width:24%">先坏的那种漂移</th><th style="width:36%">可查痕迹</th></tr></thead>

@@ -47,6 +47,8 @@ caption.cap { font-size: 10.5pt; padding: 6pt 0 8pt; }
 img.fig { margin: 14pt 0 6pt; }
 .cap { font-size: 10.5pt; line-height: 1.55; margin: 4pt 0 16pt; }
 .mblock, .eq { font-size: 12.5pt; margin: 14pt 0; }
+/* MathML 不能自动折行：B5 版心比 A4 窄，长式要缩，否则 Chrome 会把整册缩放 */
+.eq math { font-size: 0.90em; }
 
 /* 框 */
 .define, .scenario, .warning, .case, .note, .box {

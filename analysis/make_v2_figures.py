@@ -945,54 +945,72 @@ def fig_tipping():
 
 # ---------------------------------------------------------------- 7. stage (V2 Part I, ch01)
 def fig_stage():
-    """两行：上＝一件事五本账；下＝台阶 vs 衰减。版心按 6.4in 设计，印刷时不缩字。"""
-    fig = plt.figure(figsize=(6.4, 5.9))
-    gs = fig.add_gridspec(2, 1, height_ratios=[1.18, 1.0], hspace=0.30)
+    """两行：上＝一件事五本账（五个人）；下左＝台阶 vs 衰减；下右＝账积到忍受线。
+    版心按 6.4in 设计，印刷时不缩字。"""
+    fig = plt.figure(figsize=(6.4, 7.0))
+    gs = fig.add_gridspec(2, 2, height_ratios=[1.55, 1.0], hspace=0.46, wspace=0.26)
 
     # ---- top: five accounts pointing at one event
-    ax = fig.add_subplot(gs[0])
+    ax = fig.add_subplot(gs[0, :])
     ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
-    ax.text(0.0, 0.995, "一件事，五本账", fontsize=11, fontweight="bold", color=INK, va="top")
-    ax.text(0.0, 0.905, "同一只 agent 被删，各人按自己紧的那一项记它的错", fontsize=7.6, color=GRAY, va="top")
+    ax.text(0.0, 0.995, "一件事，五本账", fontsize=11.5, fontweight="bold", color=INK, va="top")
+    ax.text(0.0, 0.915, "同一台机器被删，五个人各按自己紧的那一项记它的错；中间那一格是空的",
+            fontsize=7.5, color=GRAY, va="top")
 
-    box(ax, 0.365, 0.335, 0.27, 0.185, "小满\n第七天被删", fc="#fdf6ec", ec=RED, fs=8.8, lw=1.3)
+    box(ax, 0.355, 0.395, 0.29, 0.190, "旧手机里的 ELIZA\n第七天被删",
+        fc="#fdf6ec", ec=RED, fs=8.4, lw=1.4)
 
     items = [
-        (0.035, 0.585, "老陈｜w", "它不赔钱", OCHRE),
-        (0.695, 0.585, "小林｜T", "它太慢", BLUE),
-        (0.035, 0.075, "阿伟｜R 与 D", "它不够像人", GRAY),
-        (0.695, 0.075, "小吴｜I(q)＋核实", "它把“像真的”\n当成“能信的”", GREEN),
+        (0.015, 0.700, "弗朗提努斯｜w", "它不赔钱", OCHRE, 0.155, 0.700, 0.378, 0.585),
+        (0.695, 0.700, "默里｜T 与引文", "它没有出处", BLUE, 0.845, 0.700, 0.622, 0.585),
+        (0.015, 0.400, "巴纳姆｜R 与 D", "它不够讨喜", GRAY, 0.305, 0.478, 0.357, 0.486),
+        (0.695, 0.400, "塞麦尔维斯｜分母", "像真的 ≠ 能信的", GREEN, 0.695, 0.478, 0.643, 0.486),
+        (0.335, 0.075, "柴门霍夫｜中心", "没人替它挨骂", "#6b46c1", 0.500, 0.225, 0.500, 0.395),
     ]
-    for x, y, head, body, col in items:
-        box(ax, x, y, 0.27, 0.185, f"{head}\n{body}", fc="white", ec=col, fs=7.2)
-    arrow(ax, 0.305, 0.585, 0.373, 0.525, color=OCHRE, lw=1.0)
-    arrow(ax, 0.695, 0.585, 0.627, 0.525, color=BLUE, lw=1.0)
-    arrow(ax, 0.305, 0.260, 0.373, 0.330, color=GRAY, lw=1.0)
-    arrow(ax, 0.695, 0.260, 0.627, 0.330, color=GREEN, lw=1.0)
-    ax.text(0.5, 0.272, "有 q，没有 w", ha="center", fontsize=7.6, color=RED)
-    ax.text(0.5, 0.015, "四个人说的都不是它，是自己的 q", ha="center", fontsize=7.4, color=GRAY)
+    for x, y, head, body, col, x1, y1, x2, y2 in items:
+        box(ax, x, y, 0.29, 0.155, f"{head}\n{body}", fc="white", ec=col, fs=7.0)
+        arrow(ax, x1, y1, x2, y2, color=col, lw=1.0)
+    ax.text(0.500, 0.012, "五个人说的都不是它，是自己的账", ha="center", fontsize=7.6, color=GRAY)
 
-    # ---- bottom: step vs decay
-    ax = fig.add_subplot(gs[1])
-    d = np.linspace(0, 10, 400)
-    step = 1 / (1 + np.exp(-(d - 6.2) * 2.2))
-    decay = 1 - np.exp(-d / 3.2)
-    ax.plot(d, step, color=RED, lw=1.9, label="台阶：账积到忍受线")
-    ax.plot(d, decay, color=GRAY, lw=1.5, ls="--", label="平滑衰减：每天掉一点")
-    ax.axvline(6.2, color=RED, ls=":", lw=0.8)
-    ax.annotate("按开关的那一天", (6.2, 0.42), xytext=(2.4, 0.28), fontsize=7.2, color=RED,
+    # ---- bottom-left: usage shape, step vs decay
+    ax = fig.add_subplot(gs[1, 0])
+    d = np.linspace(0, 10, 500)
+    step = 1 / (1 + np.exp((d - 6.2) * 3.0))
+    decay = np.exp(-d / 4.0)
+    ax.plot(d, step, color=RED, lw=1.9, label="台阶：一次按灭")
+    ax.plot(d, decay, color=GRAY, lw=1.5, ls="--", label="平滑衰减：每天少用一点")
+    ax.axvline(6.2, color=RED, ls=":", lw=0.9)
+    ax.annotate("按开关的那一天", (6.2, 0.50), xytext=(0.7, 0.28), fontsize=7.0, color=RED,
                 arrowprops=dict(arrowstyle="->", color=RED, lw=0.8))
-    ax.set_xlabel("天数", fontsize=7.8)
-    ax.set_ylabel("被删的概率", fontsize=7.8)
-    ax.set_title("弃养是台阶，不是衰减", fontsize=9.5, loc="left")
-    ax.legend(frameon=False, fontsize=7.0, loc="upper left")
-    ax.tick_params(labelsize=7)
-    ax.set_ylim(-0.03, 1.10)
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
-    ax.text(0.0, -0.40, "示意图，不是数据：两条曲线用来把“台阶”与“衰减”摆在一起。",
-            transform=ax.transAxes, ha="left", fontsize=6.6, color=GRAY)
+    ax.set_xlabel("天数", fontsize=7.6)
+    ax.set_ylabel("它还在多大程度上被使用", fontsize=7.4)
+    ax.set_title("两种形状，可查的东西不同", fontsize=9.0, loc="left")
+    ax.legend(frameon=False, fontsize=6.4, loc="upper right")
+    ax.tick_params(labelsize=6.8)
+    ax.set_ylim(-0.04, 1.32)
+    for s_ in ("top", "right"):
+        ax.spines[s_].set_visible(False)
 
+    # ---- bottom-right: the bill accumulates until it crosses one person's line
+    ax = fig.add_subplot(gs[1, 1])
+    bill = 2.2 * (d / 6.2) ** 2.2
+    ax.plot(d, bill, color=OCHRE, lw=1.9, label="账（谁付得最多）")
+    ax.axhline(2.2, color=RED, ls="--", lw=1.1, label="那个人的忍受线")
+    ax.axvline(6.2, color=RED, ls=":", lw=0.9)
+    ax.fill_between(d, bill, 2.2, where=bill >= 2.2, color=RED, alpha=0.10)
+    ax.annotate("账合上", (6.2, 2.2), xytext=(7.1, 3.4), fontsize=7.0, color=RED,
+                arrowprops=dict(arrowstyle="->", color=RED, lw=0.8))
+    ax.set_xlabel("天数", fontsize=7.6)
+    ax.set_ylabel("账积了多少（示意单位）", fontsize=7.4)
+    ax.set_title("台阶从哪来：账碰到忍受线", fontsize=9.0, loc="left")
+    ax.legend(frameon=False, fontsize=6.4, loc="upper left")
+    ax.tick_params(labelsize=6.8)
+    ax.set_ylim(0, 7.4)
+    for s_ in ("top", "right"):
+        ax.spines[s_].set_visible(False)
+
+    fig.text(0.01, 0.005, "示意图，不是数据：两幅曲线只用来把“台阶”与“衰减”、"
+             "以及“账积到忍受线”摆在一起。", fontsize=6.5, color=GRAY)
     save(fig, "v2_fig_stage")
 
 

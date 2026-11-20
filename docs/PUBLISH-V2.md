@@ -1,4 +1,4 @@
-# 发布准备（第二版，2026-11-20）
+# 发布准备（第二版，2026-11-21）
 
 > 这一页是**操作单**：把这一版推上 GitHub、发到 Zenodo 之前要跑的检查与要按的按钮。
 > 本轮**没有**执行任何网络操作（不推、不发、不预留 DOI）；下面每一步都可照抄。
@@ -9,9 +9,9 @@
 
 | 位置 | 内容 |
 |---|---|
-| `output-v2/` | 印刷版 PDF（635 页）、阅读版 PDF（794 页）、EPUB、两个 HTML、Markdown（51 个文件） |
+| `output-v2/` | 印刷版 PDF（642 页）、阅读版 PDF（807 页）、EPUB、两个 HTML、Markdown（51 个文件） |
 | `release-v2/` | 读者可见交付包：8 个主文件 ＋ `visuals/`（43 PNG ＋ 7 SVG ＋ 交互版）＋ README／修订说明／数据缺口／MANIFEST／SHA256SUMS（**64 个文件**） |
-| `.zenodo.json` | 完整 payload（**已更新到 2026-11-20**，描述含中英各八段） |
+| `.zenodo.json` | 完整 payload（**已更新到 2026-11-21**，描述含中英各八段） |
 | `_zenodo/desc/resolution-grain.html` ／ `desc_plain/resolution-grain.txt` | 两种描述视图（已更新） |
 
 **一处要知会**：`assets/knowledge-map.html` 已被重生成（33 章、255 条边），上一版发布包 `release/knowledge-map.html` 仍是 2026-11-18 的旧文件，未动。
@@ -41,7 +41,7 @@ assert z["description"].count("*")==0
 assert z["description"].startswith("<p><b>中文摘要。</b>")
 assert " / " in z["title"] and len(z["title"])>60
 assert z["license"]=="CC-BY-4.0" and z["keywords"] and z["creators"]
-assert z["version"]=="2026-11-20" and z["publication_date"]=="2026-11-20"
+assert z["version"]=="2026-11-21" and z["publication_date"]=="2026-11-21"
 print("五条通过")
 EOF
 ```
@@ -56,9 +56,9 @@ cd /d/0_Article/resolution-grain
 git add source-v2 analysis assets release-v2 README.md AGENTS.md AGENTS-DERIVATION.md         versions analysis/HANDOFF.md analysis/ROUND-PLAN-V2.md docs/PUBLISH-V2.md         build_book.py build_epub.py build_markdown.py analysis/make_v2_figures.py analysis/make_theory_map.py
 git status --short          # 确认没有 output-v2/ 与 data/raw/
 git commit -m "v2: 7 parts / 33 chapters; 319,900 chars; 169 tables / 43 figures; print 635 pages"
-git tag -a v2026-11-20 -m "Coarse Codes, second edition (2026-11-20)"
+git tag -a v2026-11-21 -m "Coarse Codes, second edition (2026-11-21)"
 git push origin main --tags
-gh release create v2026-11-20 release-v2/*    --title "粗码（第二版）/ Coarse Codes (2nd ed.)"    --notes-file "release-v2/修订说明.md"
+gh release create v2026-11-21 release-v2/*    --title "粗码（第二版）/ Coarse Codes (2nd ed.)"    --notes-file "release-v2/修订说明.md"
 ```
 
 **纪律**：`output-v2/` 与 `data/raw/` 不进版本；`release-v2/` 里每个文件都在 `MANIFEST.txt` 有字节数与哈希。
@@ -92,7 +92,7 @@ curl -s -X POST -H "Authorization: Bearer $TOKEN"   "https://zenodo.org/api/reco
 # ④ publisher 是 DOI 注册必填（用"独立出版 / Independently published"）
 ```
 
-**发布后立刻断言**：`license`、`keywords`、`creators` 非空；`description.count("*")==0`；`version` 与 `2026-11-20` 一致。
+**发布后立刻断言**：`license`、`keywords`、`creators` 非空；`description.count("*")==0`；`version` 与 `2026-11-21` 一致。
 
 ---
 

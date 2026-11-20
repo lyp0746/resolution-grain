@@ -4,8 +4,9 @@
 *How Saving Effort Reshapes Resolution, and Why Verification Trails Behind*
 
 > **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
-> **已归档版本**：2026-11-18，DOI [10.5281/zenodo.24390257](https://doi.org/10.5281/zenodo.24390257)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
-> **当前版本**：**2026-11-20**——7 部分 **33 章**；正文 **319,900 汉字**；169 表／43 图；印刷版 **635 页**（EPUB／网页版／Markdown 齐备）
+> **上一版本**：2026-11-20，DOI [10.5281/zenodo.24390257](https://doi.org/10.5281/zenodo.24390257)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
+> **本版 DOI**：[10.5281/zenodo.24393431](https://doi.org/10.5281/zenodo.24393431)（概念 DOI 10.5281/zenodo.24339909）
+> **当前版本**：**2026-11-21**——7 部分 **33 章**；正文 **323,420 汉字**；170 表／43 图；印刷版 **642 页**（EPUB／网页版／Markdown 齐备）
 > **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
 
 ---
@@ -38,9 +39,9 @@ v* = (T + λ) / (2w)        分辨率是「工夫 + 疲劳」与「错了有多�
 | 项 / Item | 值 / Value |
 |---|---|
 | 结构 Structure | 7 部分 33 章；正文 312 节 ＋ 附录 21 节 |
-| 正文 Body text | **319,900** 汉字（全书 353,661） |
+| 正文 Body text | **323,420** 汉字（全书 358,362） |
 | 表／图 Tables / figures | **169** 表 ／ **43** 图 |
-| 印刷版 Print edition | **635** 页（A4，含封面与四级目录书签） |
+| 印刷版 Print edition | **639** 页（A4，含封面与四级目录书签） |
 | 证据分级 Evidence grades | A（官方可复现）／B（稳定公开估计）／C（稀疏·构造·思辨） |
 | 可检验预言 Testable predictions | **21** 条台账（附录 F.7，各带推翻条件与现状） |
 | 空白 Gaps | **9** 处（第 26 章：缺实验／缺数据／缺概念） |
@@ -119,7 +120,7 @@ bash scripts/selfcheck.sh          # 六项自查：结构／引用／目录／�
 
 ## 七、数据与可核性 ｜ Data and verifiability
 
-- 定量结论都标了**快照日**（本版冻结于 2026-11-18）；原始文件的抓取时间（UTC）与 SHA256 在 `data/MANIFEST*.tsv`。
+- 定量结论都标了**快照日**（本版冻结于 2026-11-19）；原始文件的抓取时间（UTC）与 SHA256 在 `data/MANIFEST*.tsv`。
 - 原始数据不入版本；派生读数在 `data/derived/`，由脚本生成，不手改。
 - 主要公开来源：PolitiFact（21,063 条核实记录）、Seshat 古政体编码集（398 政体）、
   eCFR／Federal Register（266 个节级修订间隔）、历法采纳（125 国）、ESS／WVS、OEWN 义项清单（12.4 万条）。
@@ -140,7 +141,7 @@ in `inventory.tsv` and **not** included in the 24-item collection.*
 **引用 ｜ Cite**
 
 > 李毅芃（2026）.《粗码：为什么越省力分得越粗，而核实为何总是追不上》. Zenodo.
-> https://doi.org/10.5281/zenodo.24346704
+> https://doi.org/10.5281/zenodo.24393431
 
 *Li, Y. (2026). Coarse Codes: How Saving Effort Reshapes Resolution, and Why Verification Trails Behind. Zenodo.*
 

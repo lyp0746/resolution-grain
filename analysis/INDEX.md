@@ -63,6 +63,8 @@
 | **`V2-TEXT-CH09.md`** | **V2 第 9 章正文草稿：审美**：1874 巴黎展与勒鲁瓦的讥讽；`A=Cmp·Coh·W(Nov)`；压缩／连贯／新颖；康德、布尔迪厄、贡布里希；品味 `κ/A/γ`；正典与排除；谁付账 | 正文草稿（待迁入 `source/`） |
 | **`V2-TEXT-CH10.md`** | **V2 第 10 章正文草稿：创造与保留**：1973 贝尔实验室的管道；五种生成算子；选择链；活字印刷／《解体新书》；`H/C`；同化；暗面；为什么是这一个 | 正文草稿（待迁入 `source/`） |
 | `LINKAGE.md` | **四级数学的通透性诊断 + 六核心串法 + 二十四件接法 + 名言剖析示范**；G11 的三处内证也在这里 | 现行 |
+| **`REVIEW-FULL-2026-11-20.md`** | **通读检查报告（本轮审阅）**：六条意见逐条处置（图1.1 重绘五人／2.2 改成“六道工序”／公式改 MathML＋修式号／第二章补 24 件接口／符号取名去撞名／诗意与热点）；P0=0、P1=2（均可解释）；未修清单与验收命令 | 现行（2026-11-20） |
+| **`REVIEW-FULL-MACHINE.md`** | **通读机器明细**：每章汉字/节/表/图/段/题记/数据源/破折号；八段缺件；交叉引用有效性；禁词与版本史；重复段；符号频次；文风读数 | 生成（`audit_full_read.py`） |
 | `REVIEW-PASS1.md` | **审阅两轮**：第一轮七类硬缺陷（含位置）、结构对照、统摄计数虚高、对称性地基未验；**第二轮随机游走（2026-11-18）**：7 条 P1（快照承诺 0 落地、z 缺口自相矛盾、版次日期不一、贝叶斯桥缺、无文字社会 0 次、无预言台账、`B` 无区间）＋5 条 P2 | 现行 |
 | `DERIVATION-REPLICATOR.md` | 群体更新从 P1+P3 推出；极化阈值 `γ*=δ` | 现行 |
 | `APPENDIX-A6-NETWORK.md` | **A.6 内生网络**：`A` 与 `g` 的联立系统（七小节）；同质性选择是放大还是碎片化 | 现行 |
@@ -134,6 +136,9 @@
 | **`inventory_assets.py`** | **V1 资产盘点**：扫 `source/ch*.html`，产出 `analysis/results/v1_asset_scan.txt`（逐章题注／数据注）与 `v1_asset_counts.json`（逐章计数＋全书表图合计）；本文件不手改，看 `V1-ASSET-INVENTORY.md` 的判读 |
 | **`sim_love_curiosity.py`** | **爱与好奇最小验证**：variant（群体／摆动／五量）＋binary bridge（同化）＋threshold（品味）＋**VOI（二元决定峰位）**；输出 `analysis/results/sim_love_curiosity.json`；C 级构造，参数选择非估计 |
 | **`sim_field_energy.py`** | **场能最小模拟**：图上的 Ginzburg–Landau／Ising；扫 `h/γ`；输出 `analysis/results/sim_field_energy.json`（同化 vs 分相；C 级构造） |
+| **`audit_full_read.py`** | **通读审计**：全书 33 章的读数、八段缺件、章-节号/表图式引用、禁词与版本史、重复段、符号频次、文风；写 `REVIEW-FULL-MACHINE.md` | 生成 |
+| **`add_figrefs.py`** | **图表编号引用补全**：给正文补“（表 N.M）／（图 N.M）”，不跨表/图/节；`--check` 报告、`--apply` 就地改 | 工具 |
+| **`eq2mathml.py`** | **公式转 MathML**：把 `.mblock`/`.eq` 的手写 `<i>/<sub>/<sup>` 转成系列版式（`<math display="block">`），保留文字式；`--check` 预览、`--apply` 就地改 | 工具 |
 | **`check_v2_sources.py`** | **V2 收口检查（一条命令）**：汉字数／节数／表图号／图片存在／HTML 标签平衡／禁词／残留 `**` 与反引号；算 `source-v2/ch*.html` 全量。非零退出＝有问题 |
 | `make_v2_figures.py` | **V2 配图**：原理链（纵向）／参数地图（2×5）／舞台／审美／ν／VOI／创造七张 PNG；**前四张按 140 mm 版心画**（不按屏幕画） |
 | **`make_v2_param_cards.py`** | **V2 参数卡**：μ／v／w+T+λ／C／γ+A／I(q) 六张 PNG，给后续章节备用 |
