@@ -4,7 +4,7 @@
 *How Saving Effort Reshapes Resolution, and Why Verification Trails Behind*
 
 > **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
-> **已归档版本**：2026-11-18，DOI [10.5281/zenodo.24346704](https://doi.org/10.5281/zenodo.24346704)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
+> **已归档版本**：2026-11-18，DOI [10.5281/zenodo.24390257](https://doi.org/10.5281/zenodo.24390257)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
 > **当前版本**：**2026-11-20**——7 部分 **33 章**；正文 **319,900 汉字**；169 表／43 图；印刷版 **635 页**（EPUB／网页版／Markdown 齐备）
 > **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
 
