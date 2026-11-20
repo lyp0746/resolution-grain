@@ -1,5 +1,15 @@
 # 版本流水
 
+### 第一百一十二轮（2026-11-20）：发布——GitHub 一个 release 一个 tag，Zenodo 新版本
+
+- **版本一律用日期**：GitHub release 名 **2026-11-20**、tag **v2026-11-20**；Zenodo `version`/`publication_date` 均 2026-11-20。标题与描述中去掉“第二版／2nd ed.”。
+- **GitHub**：`main` 已推（含 4 个提交）；**只保留一个 tag**（旧 `v2026-11-18` 已删本地与远端）；旧 release 已删；新 release **2026-11-20** 挂 14 个资产（印刷版／阅读版 PDF、EPUB、两 HTML、Markdown＋分章 zip、可视化 zip、封面、README、修订说明、数据缺口、MANIFEST、SHA256SUMS）。
+- **About 更新**：描述改为 2026-11-20 版（33 章、635 页、18 条否证线、9 处空白），topics 17 个（新增 coarse-codes／semantics），homepage 指向概念 DOI。
+- **Zenodo 新版本**：记录 **24390257**，DOI **10.5281/zenodo.24390257**，概念 DOI **10.5281/zenodo.24339909** 不变；14 个文件；8 条关联标识保留。
+- **五条断言全过**：license（cc-by-4.0）／keywords（17）／creators／描述 `*` 计数 0／version=2026-11-20。
+- **踩坑两条（记下来）**：① 该草稿由 legacy schema 提供服务：PUT 只带部分 metadata 会**整段覆盖**，一次只写 `publisher` 就把 title／creators 全清空了——**改元数据必须整份重发**；② `publisher` 在该 schema 下写不进去，而 RDM 的 publish 要求它，**最后走 legacy 的 `deposit/depositions/{id}/actions/publish` 才发布成功**。
+- 本地备份：`_zenodo/published_resolution-grain-2026-11-20.json`。
+
 ### 第一百一十一轮（2026-11-20）：交付目录替换、CITATION 更新、本地提交与打标签
 
 - **版本一律用日期**：`.zenodo.json`／`CITATION.cff` 的 `version` 与 `publication_date` 均为 **2026-11-20**；文件名不带 v1/v2。
