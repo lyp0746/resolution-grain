@@ -11,3 +11,7 @@ __pycache__/
 
 # 本地草稿
 /_temp/
+
+# 第二版构建产物与发布包（派生产物，不入版本；gh release 直接上传）
+/output-v2/
+/release-v2/

@@ -1,0 +1,506 @@
+{
+ "meta": {
+  "status": "C-level constructed simulation; parameters are chosen, not estimated",
+  "n": 120,
+  "variants": 12,
+  "seeds": 10
+ },
+ "group": {
+  "design": "3x2: nu_in {0,1.5,3.0} x kappa_mean {0.1,1.0}; gamma=1.0, C=0.2, 10 seeds",
+  "rows": [
+   {
+    "nu_in": 0.0,
+    "kappa_mean": 0.1,
+    "homophily_mean": 0.003615891259382943,
+    "homophily_sd": 0.007383841716721212,
+    "frac_separated": 0.0,
+    "n_variants_mean": 12.0,
+    "max_share_mean": 0.09320833333333335
+   },
+   {
+    "nu_in": 0.0,
+    "kappa_mean": 1.0,
+    "homophily_mean": 0.00392543986508366,
+    "homophily_sd": 0.009823055109222519,
+    "frac_separated": 0.0,
+    "n_variants_mean": 12.0,
+    "max_share_mean": 0.08950000000000002
+   },
+   {
+    "nu_in": 1.5,
+    "kappa_mean": 0.1,
+    "homophily_mean": 0.1,
+    "homophily_sd": 0.31622776601683794,
+    "frac_separated": 0.1,
+    "n_variants_mean": 1.1,
+    "max_share_mean": 0.9499791666666667
+   },
+   {
+    "nu_in": 1.5,
+    "kappa_mean": 1.0,
+    "homophily_mean": 0.9233734984214564,
+    "homophily_sd": 0.04843963809977155,
+    "frac_separated": 1.0,
+    "n_variants_mean": 2.0,
+    "max_share_mean": 0.48745833333333327
+   },
+   {
+    "nu_in": 3.0,
+    "kappa_mean": 0.1,
+    "homophily_mean": 0.7,
+    "homophily_sd": 0.4830458915396479,
+    "frac_separated": 0.7,
+    "n_variants_mean": 1.7,
+    "max_share_mean": 0.65
+   },
+   {
+    "nu_in": 3.0,
+    "kappa_mean": 1.0,
+    "homophily_mean": 0.9002591066232754,
+    "homophily_sd": 0.31540839893045297,
+    "frac_separated": 0.9,
+    "n_variants_mean": 1.9,
+    "max_share_mean": 0.5497916666666667
+   }
+  ]
+ },
+ "swing": {
+  "design": "consensus-ish start; at t=50 raise gamma; novelty=1-max share; 10 seeds",
+  "note": "amplitude>0 means a transient; a sustained cycle would also show repeated peaks after t=50",
+  "rows": [
+   {
+    "gamma_before": 0.5,
+    "gamma_after": 0.8,
+    "lag": 0,
+    "amplitude_mean": 0.028749999999999942,
+    "half_life_median": 1.0
+   },
+   {
+    "gamma_before": 0.5,
+    "gamma_after": 0.8,
+    "lag": 5,
+    "amplitude_mean": 0.030333333333333344,
+    "half_life_median": 1.0
+   },
+   {
+    "gamma_before": 0.5,
+    "gamma_after": 2.0,
+    "lag": 0,
+    "amplitude_mean": -0.11208333333333335,
+    "half_life_median": 0.0
+   },
+   {
+    "gamma_before": 0.5,
+    "gamma_after": 2.0,
+    "lag": 5,
+    "amplitude_mean": 0.00033333333333335213,
+    "half_life_median": 0.5
+   }
+  ]
+ },
+ "swing_e4": {
+  "design": "E4: gamma_t = 1.0 + b*(novelty_{t-lag}-0.5), clip [0.05,4]; 600 steps; 10 seeds",
+  "note": "period = first autocorrelation peak after t=150; -1 = no peak",
+  "rows": [
+   {
+    "b": 1.0,
+    "lag": 5,
+    "period_median": 18.0,
+    "period_values": [
+     18,
+     28,
+     8,
+     24,
+     14,
+     18,
+     19,
+     38,
+     17,
+     17
+    ],
+    "amplitude_mean": 0.1043035840516168
+   },
+   {
+    "b": 1.0,
+    "lag": 10,
+    "period_median": 23.0,
+    "period_values": [
+     23,
+     39,
+     7,
+     22,
+     21,
+     23,
+     28,
+     38,
+     19,
+     37
+    ],
+    "amplitude_mean": 0.16875284197134488
+   },
+   {
+    "b": 2.0,
+    "lag": 5,
+    "period_median": 18.0,
+    "period_values": [
+     20,
+     18,
+     16,
+     18,
+     18,
+     17,
+     20,
+     19,
+     18,
+     18
+    ],
+    "amplitude_mean": 0.32266182836290314
+   },
+   {
+    "b": 2.0,
+    "lag": 10,
+    "period_median": 28.0,
+    "period_values": [
+     30,
+     27,
+     28,
+     29,
+     27,
+     28,
+     27,
+     27,
+     28,
+     30
+    ],
+    "amplitude_mean": 0.3767110119181341
+   }
+  ]
+ },
+ "trait": {
+  "design": "same 2x2; mu=circular mean, H=Herfindahl; descriptive, not a test",
+  "rows": [
+   {
+    "nu_in": 0.0,
+    "kappa_mean": 0.1,
+    "mu": 7.940034882537253,
+    "nu": 0.0,
+    "kappa": 0.1106248696683986,
+    "H": 0.0836775260416667,
+    "C": 0.2
+   },
+   {
+    "nu_in": 0.0,
+    "kappa_mean": 1.0,
+    "mu": 7.637066270005195,
+    "nu": 0.0,
+    "kappa": 1.100911296185299,
+    "H": 0.08346817708333337,
+    "C": 0.2
+   },
+   {
+    "nu_in": 1.5,
+    "kappa_mean": 0.1,
+    "mu": 5.399821442202972,
+    "nu": 1.5,
+    "kappa": 0.1106248696683986,
+    "H": 0.8999167100694445,
+    "C": 0.2
+   },
+   {
+    "nu_in": 1.5,
+    "kappa_mean": 1.0,
+    "mu": 5.416642403659706,
+    "nu": 1.5,
+    "kappa": 1.100911296185299,
+    "H": 0.45524369791666663,
+    "C": 0.2
+   }
+  ]
+ },
+ "assimilation": {
+  "design": "two groups, 4-bit codes; bridge p_out=0.05; 250 steps; 10 seeds",
+  "note": "cross_similarity 1 = same code; 0.5 = random; 0.05 = disjoint",
+  "rows": [
+   {
+    "nu_out": 0.0,
+    "C": 0.1,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9337500000000001,
+    "cross_similarity_sd": 0.05196486526704578
+   },
+   {
+    "nu_out": 0.0,
+    "C": 0.1,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7256666666666668,
+    "cross_similarity_sd": 0.12037800545585915
+   },
+   {
+    "nu_out": 0.0,
+    "C": 0.5,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9499166666666665,
+    "cross_similarity_sd": 0.05708106916299066
+   },
+   {
+    "nu_out": 0.0,
+    "C": 0.5,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7955,
+    "cross_similarity_sd": 0.08472194899773797
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.1,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9331666666666667,
+    "cross_similarity_sd": 0.053127205836558
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.1,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7449999999999999,
+    "cross_similarity_sd": 0.07928402607160825
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.5,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9591666666666667,
+    "cross_similarity_sd": 0.05497895220159426
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.5,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7640833333333333,
+    "cross_similarity_sd": 0.1561162761106819
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.1,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9570833333333333,
+    "cross_similarity_sd": 0.054750063419547225
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.1,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7574166666666666,
+    "cross_similarity_sd": 0.1298452604705565
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.5,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9641666666666667,
+    "cross_similarity_sd": 0.045133546692422
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.5,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7546666666666666,
+    "cross_similarity_sd": 0.11353957269560791
+   }
+  ]
+ },
+ "assimilation_strong": {
+  "design": "two groups, 4-bit codes; bridge p_out=0.2; 250 steps; 10 seeds",
+  "note": "cross_similarity 1 = same code; 0.5 = random; 0.05 = disjoint",
+  "rows": [
+   {
+    "nu_out": 0.0,
+    "C": 0.1,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9169166666666667,
+    "cross_similarity_sd": 0.03956758946160947
+   },
+   {
+    "nu_out": 0.0,
+    "C": 0.1,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7486666666666667,
+    "cross_similarity_sd": 0.09757412503601152
+   },
+   {
+    "nu_out": 0.0,
+    "C": 0.5,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9365833333333333,
+    "cross_similarity_sd": 0.0474397766374106
+   },
+   {
+    "nu_out": 0.0,
+    "C": 0.5,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.69375,
+    "cross_similarity_sd": 0.1320886638718735
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.1,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.915,
+    "cross_similarity_sd": 0.04603910039772821
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.1,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7135833333333333,
+    "cross_similarity_sd": 0.08162607645859682
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.5,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9310833333333333,
+    "cross_similarity_sd": 0.05488209865781757
+   },
+   {
+    "nu_out": 0.3,
+    "C": 0.5,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.70775,
+    "cross_similarity_sd": 0.12699339561908013
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.1,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9444166666666668,
+    "cross_similarity_sd": 0.05429834422139578
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.1,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7625833333333334,
+    "cross_similarity_sd": 0.10591055071656655
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.5,
+    "initial_gap": 1,
+    "cross_similarity_mean": 0.9424166666666667,
+    "cross_similarity_sd": 0.04591230570135653
+   },
+   {
+    "nu_out": 0.8,
+    "C": 0.5,
+    "initial_gap": 4,
+    "cross_similarity_mean": 0.7739166666666666,
+    "cross_similarity_sd": 0.11016055202395376
+   }
+  ]
+ },
+ "taste": {
+  "design": "threshold adoption on WS(6,0.15); 3 seeds; 100 steps; 10 seeds",
+  "note": "negative rho = high kappa / high degree adopt earlier",
+  "rows": [
+   {
+    "gamma": 0.5,
+    "C": 0.1,
+    "rho_kappa_mean": -0.5288732208737341,
+    "rho_degree_mean": 0.011286502698637898,
+    "rho_kappa_sd": 0.07873489069848956,
+    "rho_degree_sd": 0.09255240532222044
+   },
+   {
+    "gamma": 0.5,
+    "C": 0.5,
+    "rho_kappa_mean": -0.568387224508246,
+    "rho_degree_mean": -0.01334723872705334,
+    "rho_kappa_sd": 0.08288106313466775,
+    "rho_degree_sd": 0.09902010703324304
+   },
+   {
+    "gamma": 1.5,
+    "C": 0.1,
+    "rho_kappa_mean": -0.6040982750052837,
+    "rho_degree_mean": -0.004713994566220178,
+    "rho_kappa_sd": 0.05560618366797259,
+    "rho_degree_sd": 0.07372853514461226
+   },
+   {
+    "gamma": 1.5,
+    "C": 0.5,
+    "rho_kappa_mean": -0.6264160248024409,
+    "rho_degree_mean": -0.0025069985419699987,
+    "rho_kappa_sd": 0.05054653582229248,
+    "rho_degree_sd": 0.09669238304198868
+   }
+  ]
+ },
+ "taste_strong": {
+  "design": "A-isolation: BA(3), kappa=0.5 constant, exposure=count; 100 steps; 10 seeds",
+  "note": "negative rho = high degree adopts earlier; this is the strongest A test in this script",
+  "rows": [
+   {
+    "gamma": 0.5,
+    "C": 0.1,
+    "rho_degree_mean": -0.1663966731387757,
+    "rho_degree_sd": 0.06941651514241273
+   },
+   {
+    "gamma": 0.5,
+    "C": 0.5,
+    "rho_degree_mean": -0.19577794283148503,
+    "rho_degree_sd": 0.05030733545016241
+   },
+   {
+    "gamma": 1.5,
+    "C": 0.1,
+    "rho_degree_mean": -0.2931892247550115,
+    "rho_degree_sd": 0.07901180468957704
+   },
+   {
+    "gamma": 1.5,
+    "C": 0.5,
+    "rho_degree_mean": -0.3077394044982589,
+    "rho_degree_sd": 0.05277516691784895
+   }
+  ]
+ },
+ "voi": {
+  "design": "binary state/action, symmetric signal q=0.7; p grid 0.01..0.99",
+  "note": "VOI is zero at p=0/1; single-peaked; peak shifts with payoff asymmetry; no Wundt curve assumed",
+  "rows": [
+   {
+    "L_fn": 1.0,
+    "L_fp": 1.0,
+    "signal_accuracy": 0.7,
+    "peak_p": 0.5,
+    "decision_threshold": 0.5,
+    "max_voi": 0.19999999999999996
+   },
+   {
+    "L_fn": 5.0,
+    "L_fp": 1.0,
+    "signal_accuracy": 0.7,
+    "peak_p": 0.17,
+    "decision_threshold": 0.16666666666666666,
+    "max_voi": 0.32599999999999996
+   },
+   {
+    "L_fn": 1.0,
+    "L_fp": 5.0,
+    "signal_accuracy": 0.7,
+    "peak_p": 0.8300000000000001,
+    "decision_threshold": 0.8333333333333334,
+    "max_voi": 0.3260000000000005
+   },
+   {
+    "L_fn": 9.0,
+    "L_fp": 1.0,
+    "signal_accuracy": 0.7,
+    "peak_p": 0.09999999999999999,
+    "decision_threshold": 0.1,
+    "max_voi": 0.3599999999999999
+   }
+  ]
+ }
+}

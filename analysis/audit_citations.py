@@ -47,6 +47,9 @@ STOP = {
     # 数据集/产品名，不是引用（2026-11-18 加：Seshat 的各发布名）
     "Equinox", "CanonDat", "TSDat", "TSDat123", "PropCoded", "cliopatria",
     "Federal", "Register", "FederalRegister", "eCFR", "CFR", "API", "RULE",
+    # 非引用：产品名与记号（2026-11-19 加；均为正文里的物件或公式，不是文献）
+    "Google", "Linux", "Glass", "Glasshole", "Explorer", "UqUw", "UwUq",
+    "Julius", "Sextus", "Pierre", "Adam", "Christoph",
 }
 
 # 中文译名 → 拉丁姓（只收本书确实用到的）
@@ -116,6 +119,15 @@ def paras(s):
     return out
 
 
+NON_CITATION = ["比亚韦斯托克"]   # 地名，含“斯托克”；不是人名
+
+
+def strip_non_citation(t):
+    for w in NON_CITATION:
+        t = t.replace(w, "")
+    return t
+
+
 def latin_names(t):
     out = set()
     for m in re.finditer(r"[A-Z][A-Za-z'’\-]{2,}", t):
@@ -132,8 +144,12 @@ def body_citations(t):
     for m in re.finditer(
         r"([A-Z][A-Za-z'’\-]{2,}(?:\s*(?:&|与|、|和|,)\s*[A-Z][A-Za-z'’\-]{2,})*)"
         r"\s*[（(]\s*(\d{4})", t):
+        if m.group(1).split()[0] in STOP:      # 产品名／发行年份，不是引用
+            continue
         y.add((m.group(1), m.group(2)))
     for m in re.finditer(r"([A-Z][A-Za-z'’\-]{2,})\s+(\d{4})", t):
+        if m.group(1) in STOP:
+            continue
         y.add((m.group(1), m.group(2)))
     books = set(re.findall(r"《([^》]{1,30})》", t))
     return y, books
@@ -142,14 +158,21 @@ def body_citations(t):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--src", default="source", help="相对于仓根的源目录（V2 用 source-v2）")
+    ap.add_argument("--out", default=os.path.join("analysis", "CITATION-AUDIT.md"))
     args = ap.parse_args()
+    src = os.path.join(ROOT, args.src)
+    out = os.path.join(ROOT, args.out)
+    globals()["SRC"] = src
+    globals()["OUT"] = out
 
-    files = sorted(glob.glob(os.path.join(SRC, "ch*.html")))
+    files = sorted(glob.glob(os.path.join(src, "ch*.html")))
     core_p = os.path.join(SRC, "back_references.html")
     core = text_of(read(core_p)) if os.path.exists(core_p) else ""
     all_refs = core + "\n" + "\n".join(refs_block(read(p)) for p in files)
 
     rows_cite, rows_mech = [], []
+    first_seen = {}
     for p in files:
         name = os.path.basename(p)
         s = read(p)
@@ -180,8 +203,9 @@ def main():
             if len(bk) < 3:
                 continue
             missing.append(f"《{bk}》")
+        _t_no_place = strip_non_citation(t)
         for zh, lat in ZH2LATIN.items():
-            if zh in t and lat not in refs_t and zh not in refs_t and lat not in core:
+            if zh in _t_no_place and lat not in refs_t and zh not in refs_t and lat not in core:
                 missing.append(f"{zh}（→{lat}，本章文献无）")
         rows_cite.append((name, sorted(set(missing))))
 
@@ -189,12 +213,16 @@ def main():
         for q in paras(body):
             q = q.strip()
             n = len(CJK.findall(q))
-            if n == 0 or n > MECH_MIN:
-                continue
-            if q.endswith("：") or q.endswith(":"):   # 列表引导句
+            if n == 0:
                 continue
             hit = [t for t in TERMS if t in q]
-            if not hit:
+            # 首现段：不论长短都记（这才是“首现”）
+            for t_ in hit:
+                if t_ not in first_seen:
+                    first_seen[t_] = (name, n, q[:90])
+            if not hit or n > MECH_MIN:
+                continue
+            if q.endswith("：") or q.endswith(":"):   # 列表引导句
                 continue
             rows_mech.append((name, "、".join(hit), n, q[:90]))
 
@@ -217,6 +245,15 @@ def main():
         for name, term, n, head in rows_mech:
             f.write("| %s | %s | %d | %s… |\n" % (name, term, n, head.replace("|", "｜")))
         f.write("\n合计：**%d** 处\n" % len(rows_mech))
+        f.write("\n## 二b、只看首现段（真正的“一句话带过”候选）\n\n")
+        f.write("上表把**所有**短段都列出来，所以多数是回指。下面这张表只取每个机制名的**首次出现段**；\n"
+                "若首现段仍 < %d 字，才是需要动手的候选。\n\n" % MECH_MIN)
+        f.write("| 机制 | 章 | 首现段字数 | 段文 |\n|---|---|---|---|\n")
+        short = [(k, v) for k, v in sorted(first_seen.items()) if v[1] < MECH_MIN]
+        for k, (name, n, head) in short:
+            f.write("| %s | %s | %d | %s… |\n" % (k, name, n, head.replace("|", "｜")))
+        f.write("\n首现段候选：**%d** 处（机制名共 %d 个，正文里出现 %d 个）\n" % (len(short), len(TERMS), len(first_seen)))
+        print("首现段候选 %d（机制名 %d／正文出现 %d）" % (len(short), len(TERMS), len(first_seen)))
 
     print("wrote", OUT)
     print("引用缺口 %d / 机制疑点 %d" % (tot, len(rows_mech)))

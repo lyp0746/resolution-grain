@@ -26,14 +26,17 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SOURCE = os.path.join(HERE, "source")
+# 第二版（V2）用环境变量切换源目录与输出目录；不设时行为与第一版一致。
+SOURCE = os.environ.get("RG_SOURCE") or os.path.join(HERE, "source")
 CSS_DIR = os.path.join(HERE, "assets", "css")
-OUTPUT = os.path.join(HERE, "output")
+OUTPUT = os.environ.get("RG_OUTPUT") or os.path.join(HERE, "output")
+BACK_TITLE = "结语与附录"          # V1；V2 在 __main__ 里按是否存在 back_epilogue 改写
 DATA_DIR = os.path.join(HERE, "data")
 
 FRONT = [("题记", "front_epigraph.html", "epigraph"),
          ("前言　把“粗”变成一个可以算的量", "front_preface.html", "preface"),
          ("怎么读这本书：两条轨，三条路线", "front_quickstart.html", "quickstart"),
+         ("四个人，四张脸（故事轨）", "front_cast.html", "cast"),
          ("术语与符号", "front_terms.html", "terms"),
          ("路线图", "front_roadmap.html", "roadmap"),
          ("硬核入口：可跳过与不可跳过", "front_hardcore.html", "hardcore")]
@@ -281,6 +284,11 @@ def stamp_folios(pdf_path):
             toc = []
         chapters = [(p, t) for p, lvl, t in toc if re.search(r"第\s*\d+\s*章", t or "")]
         first_ch = min([p for p, _ in chapters], default=2)
+        # 附录与后置：页眉不能一直停在“第 28 章”。取“结语与附录”之后的
+        # 一级/二级书签（附录 A—F、参考文献、索引），按页选最近的一条。
+        back_start = min([p for p, lvl, t in toc if t and BACK_TITLE in t], default=10**9)
+        back_entries = [(p, t) for p, lvl, t in toc
+                        if p >= back_start and lvl in (1, 2) and (t or "").strip()]
         for i in range(1, n):                      # 第 1 页是封面，不盖
             page = doc[i]
             w, h = page.rect.width, page.rect.height
@@ -295,11 +303,17 @@ def stamp_folios(pdf_path):
             # 页眉：只在正文章内盖（扉页、部分页、目录不盖）
             if chapters and (i + 1) >= first_ch:
                 cur = None
-                for p, lvl, t in toc:
-                    if p > i + 1:
-                        break
-                    if re.search(r"第\s*\d+\s*章", t or ""):
+                if (i + 1) >= back_start:
+                    for p, t in back_entries:
+                        if p > i + 1:
+                            break
                         cur = t
+                else:
+                    for p, lvl, t in toc:
+                        if p > i + 1:
+                            break
+                        if re.search(r"第\s*\d+\s*章", t or ""):
+                            cur = t
                 # 扉页、部分页、章前扉页不盖页眉：一是书签正好压在本页且不是章，
                 # 二是本页正文太短（扉页只有章题、题记与结构，通常 < 260 字）
                 here = [(lvl, t) for p, lvl, t in toc if p == i + 1]
@@ -311,7 +325,7 @@ def stamp_folios(pdf_path):
                     for blk in page.get_text("dict")["blocks"]:
                         for line in blk.get("lines", []):
                             for sp in line.get("spans", []):
-                                if sp.get("size", 0) > 16 and "章" in (sp.get("text") or ""):
+                                if sp.get("size", 0) > 16 and ("章" in (sp.get("text") or "") or "附录" in (sp.get("text") or "")):
                                     big_title = True
                 except Exception:
                     pass
@@ -361,7 +375,7 @@ def build_toc(parts, pagemap=None):
             for num, label in subs:
                 if num not in used:
                     rows.append(f'<div class="l4"><a href="#sec{num.replace(".", "-")}">{label}</a></div>')
-    rows.append('<div class="l1">结语与附录</div>')
+    rows.append(f'<div class="l1">{BACK_TITLE}</div>')
     for title, fname, anchor in BACK:
         if os.path.exists(os.path.join(SOURCE, fname)):
             rows.append(f'<div class="l2"><a href="#{anchor}">{title}</a></div>')
@@ -551,23 +565,33 @@ def compute_indexmap(pdf_path, max_hits=6):
                 break
     except Exception:
         pass
+    # 先把每页文本抽一次（比逐词 search_for 快两个量级），再做“密度优先”的页码选择
+    texts = []
+    for i in range(first - 1, max(first, last - 1)):
+        try:
+            texts.append((i + 1, re.sub(r"\s+", "", doc[i].get_text())))
+        except Exception:
+            texts.append((i + 1, ""))
     out = {}
     for t in terms:
         # 一个词条可能写成“粗码 / 细码”“切点成本 b”：拆成可检索的键
         keys = [k.strip() for k in re.split(r"[／/]", t)]
         keys += [re.sub(r"\s*[A-Za-zα-ωΑ-Ω⟨⟩∗′].*$", "", k).strip() for k in keys]
-        keys = [k for k in dict.fromkeys(keys) if len(k) >= 2]
-        pages = []
-        for i in range(first - 1, max(first, last - 1)):
-            try:
-                if any(doc[i].search_for(k) for k in keys):
-                    pages.append(i + 1)
-            except Exception:
-                continue
-            if len(pages) >= max_hits:
-                break
-        if pages:
-            out[t] = pages
+        keys = [re.sub(r"\s+", "", k) for k in dict.fromkeys(keys) if len(k) >= 2]
+        if not keys:
+            continue
+        counts = []
+        for pg, tx in texts:
+            c = sum(tx.count(k) for k in keys)
+            if c:
+                counts.append((pg, c))
+        if not counts:
+            continue
+        # 密度优先：出现次数多的页优先；同时保证“首次出现页”在列
+        first_pg = counts[0][0]
+        ranked = [pg for pg, c in sorted(counts, key=lambda x: (-x[1], x[0]))][: max_hits]
+        pages = sorted(set([first_pg] + ranked))[: max_hits]
+        out[t] = pages
     doc.close()
     return out
 
@@ -611,7 +635,7 @@ def build(book, parts, ereader=False, pagemap=None, indexmap=None):
                     written.append(ch["no"])
         blocks.append(build_part_summary(part))
     if any(os.path.exists(os.path.join(SOURCE, f)) for _, f, _ in BACK):
-        blocks.append('<h1 class="part-title">结语与附录</h1>')
+        blocks.append(f'<h1 class="part-title">{BACK_TITLE}</h1>')
     _seen_back = set()
     for title, fname, anchor in BACK:
         f = os.path.join(SOURCE, fname)
@@ -798,6 +822,24 @@ def set_pdf_metadata(pdf_path):
 
 
 if __name__ == "__main__":
+    # 第二版：--src source-v2 --out output-v2（Windows 版 python 不继承 WSL 环境变量，故用参数）
+    if "--src" in sys.argv:
+        SOURCE = os.path.join(HERE, sys.argv[sys.argv.index("--src") + 1])
+        globals()["SOURCE"] = SOURCE
+    if "--out" in sys.argv:
+        OUTPUT = os.path.join(HERE, sys.argv[sys.argv.index("--out") + 1])
+        globals()["OUTPUT"] = OUTPUT
+        globals()["_PM_PATH"] = os.path.join(OUTPUT, ".pagemap.json")
+        globals()["_IX_PATH"] = os.path.join(OUTPUT, ".indexmap.json")
+        os.makedirs(OUTPUT, exist_ok=True)
+    if os.path.exists(os.path.join(SOURCE, "back_epilogue.html")):
+        back_title = "结语与附录"
+    elif os.path.exists(os.path.join(SOURCE, "back_glossary.html")):
+        back_title = "导读、术语表与附录"
+    else:
+        back_title = "附录与参考文献"
+    globals()["BACK_TITLE"] = back_title
+    print(f"  [src] {SOURCE}")
     ereader = "--ereader" in sys.argv
     book = load_json(os.path.join(SOURCE, "book.json"), {})
     parts = load_json(os.path.join(SOURCE, "parts.json"), [])

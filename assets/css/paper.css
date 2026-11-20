@@ -105,6 +105,12 @@ table.nat tr:first-child th, table.nat tr:first-child td {
 }
 table.nat tr:last-child td { border-bottom: 0; }
 table.nat tr { break-inside: avoid; page-break-inside: avoid; }
+/* 第二版（2026-11-19）：小表整块不拆；表与表注不分页。长表仍会自然跨页（thead 自动重复）。 */
+table.nat { break-inside: avoid; page-break-inside: avoid; }
+/* 长表（行数多于一页能放下时）允许跨页：否则整张表被推到下一页，留下整段空白。
+   行内不断（上面 table.nat tr 的规则），表头由 thead 自动重复。 */
+table.nat.tbl-flow { break-inside: auto; page-break-inside: auto; }
+table.nat + .datasrc { break-before: avoid; page-break-before: avoid; }
 table.nat td.l, table.nat th.l { text-align: left; }
 caption.cap { caption-side: top; text-align: left; font-size: 9pt;
               font-weight: 700; color: #1a1a1a; padding: 4px 0 6px; }
@@ -113,9 +119,14 @@ caption.cap { caption-side: top; text-align: left; font-size: 9pt;
            padding: 5px 9px; margin: 2px 0 14px; }
 
 /* ------------------------------ 图 ------------------------------ */
+/* 图与图注不许分页：2026-11-19 发现图 6.3 的图注被切到下一页 */
+figure { break-inside: avoid; page-break-inside: avoid; margin: 0; }
 img.fig { width: 100%; display: block; margin: 12px 0 4px; border: 0; }
 svg.fig-svg { width: 100%; display: block; margin: 12px 0 4px; }
-.cap { font-size: 9pt; color: #1a1a1a; margin: 2px 0 14px; line-height: 1.45; }
+.cap { font-size: 9pt; color: #1a1a1a; margin: 2px 0 14px; line-height: 1.45;
+       text-align: left; text-justify: none; }
+/* 图注与表注里的路径不许被两端对齐拉开：长串可断 */
+.cap code, .datasrc code { word-break: break-all; }
 .cap b:first-child { font-weight: 700; }
 
 img.fig + .cap, svg.fig-svg + .cap { margin-top: 7px; }
@@ -263,6 +274,17 @@ table.nat td.n, table.nat th.n { text-align: center; font-variant-numeric: tabul
 table.nat th { text-align: center; }
 /* 本册补充：式号右对齐时不留空档；公式行不跨页 */
 .eq, .mblock { break-inside: avoid; page-break-inside: avoid; }
+
+/* 部分导语的结句（第一百零一轮加）：一段画面，左侧一道细线，与正文隔开。 */
+.part-poem { display: block; margin: 7mm 0 0 0; padding-left: 5mm;
+             border-left: 1.1pt solid #b7791f; line-height: 1.95; }
+.part-poem + * { margin-top: 4mm; }
+
+/* 章首题记（第九十七轮加）：一行引文，左侧一道细线；右端出处用灰字。 */
+.epi { margin: 1.5mm 0 3.5mm 0; padding-left: 5mm; border-left: 1.1pt solid #b7791f;
+       font-size: 0.95em; break-inside: avoid; }
+.epi p { margin: 0 0 1mm 0; text-indent: 0; }
+.epi p + p { text-align: right; color: #718096; font-size: 0.88em; }
 .mblock { font-size: 10.8pt; }
 .eq .body i, .mblock i { font-style: italic; }
 .eq sub, .eq sup, .mblock sub, .mblock sup { font-size: 0.72em; }

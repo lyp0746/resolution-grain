@@ -39,7 +39,14 @@ import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
 ROOT = Path(__file__).resolve().parents[1]
+import sys as _sys
+SRC = ROOT / ("source-v2" if "--src" in _sys.argv and "source-v2" in _sys.argv else "source")
+if "--src" in _sys.argv:
+    SRC = ROOT / _sys.argv[_sys.argv.index("--src") + 1]
 OUT = ROOT / "assets" / "charts"
+if "--out" in _sys.argv:
+    OUT = ROOT / _sys.argv[_sys.argv.index("--out") + 1]
+    Path(OUT).mkdir(parents=True, exist_ok=True)
 SVG = ROOT / "assets" / "svg"
 DER = ROOT / "data" / "derived"
 C_MAIN, C_ALT, C_GREY = "#1f3b57", "#b5651d", "#8c8c8c"
@@ -50,13 +57,13 @@ plt.rcParams.update({
     "axes.unicode_minus": False, "figure.dpi": 300, "font.size": 9,
 })
 
-PART_NAMES = ["一 形状", "二 第一性", "三 个人", "四 群体", "五 社会", "六 历史", "七 边界"]
+PART_NAMES = ["一 舞台", "二 个人", "三 爱与好奇", "四 群体", "五 社会", "六 文明", "七 边界"]
 
 
 # ------------------------------------------------------------------ 解析
 def load_chapters() -> dict[int, dict]:
     out = {}
-    for p in sorted(ROOT.glob("source/ch*.html")):
+    for p in sorted(SRC.glob("ch*.html")):
         n = int(re.search(r"ch(\d+)", p.name).group(1))
         h = p.read_text(encoding="utf-8")
         title = re.sub(r"<[^>]+>", "", re.search(r"<h2[^>]*>(.*?)</h2>", h, flags=re.S).group(1)).strip()
@@ -65,11 +72,11 @@ def load_chapters() -> dict[int, dict]:
         refs, aps = set(), set()
         for m in re.finditer(r"第\s*(\d{1,2})\s*章", t):
             k = int(m.group(1))
-            if 1 <= k <= 28 and k != n:
+            if 1 <= k <= 33 and k != n:
                 refs.add(k)
         for m in re.finditer(r"(?<!\d)(\d{1,2})\.(\d{1,2})\s*节", t):
             k = int(m.group(1))
-            if 1 <= k <= 28 and k != n:
+            if 1 <= k <= 33 and k != n:
                 refs.add(k)
         for m in re.finditer(r"附录\s*A\.(\d{1,2})", t):
             aps.add(int(m.group(1)))
@@ -78,7 +85,7 @@ def load_chapters() -> dict[int, dict]:
 
 
 def parts_map() -> dict[int, int]:
-    p = json.loads((ROOT / "source" / "parts.json").read_text(encoding="utf-8"))
+    p = json.loads((SRC / "parts.json").read_text(encoding="utf-8"))
     mapping = {}
     for i, part in enumerate(p, 1):
         for ch in part.get("chapters", []):
@@ -91,7 +98,7 @@ def parts_map() -> dict[int, int]:
 
 # ------------------------------------------------------------------ 图 4.3
 def fig_kgraph(ch: dict[int, dict], pm: dict[int, int]) -> dict:
-    n_ch = 28
+    n_ch = 33
     deg = {n: 0 for n in range(1, n_ch + 1)}
     edges = []
     for n, d in ch.items():
@@ -137,8 +144,9 @@ def fig_kgraph(ch: dict[int, dict], pm: dict[int, int]) -> dict:
         ax.scatter([n], [0], s=s_, color=C_MAIN, zorder=4, edgecolor="white", linewidth=0.7)
         ax.text(n, -0.16, str(n), ha="center", va="top", fontsize=6.0, color=C_MAIN)
 
-    # ---- 只标图注点名的两个枢纽（第 4 章、第 20 章）
-    for n, dx in ((4, -1.6), (20, 1.6)):
+    # ---- 标出被引最多的两章（随数据变，不写死）
+    hubs2 = sorted(range(1, n_ch + 1), key=lambda n: -deg[n])[:2]
+    for n, dx in ((hubs2[0], -1.6), (hubs2[1], 1.6)):
         ax.annotate("第 %d 章　%s" % (n, ch[n]["title"][:9]), xy=(n, 0.06), xytext=(n + dx, 3.98),
                     ha="right" if dx < 0 else "left", va="center", fontsize=6.6, color=C_ALT,
                     arrowprops=dict(arrowstyle="-", lw=0.6, color=C_ALT, alpha=0.7,
@@ -153,7 +161,7 @@ def fig_kgraph(ch: dict[int, dict], pm: dict[int, int]) -> dict:
                        s=7, color=C_ALT, alpha=0.8, zorder=4, marker="o", lw=0)
     ax.text(0.35, -0.66, "→ 附录 A·%d 处" % tot_ap, fontsize=6.0, color=C_ALT, ha="left", va="center")
 
-    ax.set_xlim(0.2, 28.8)
+    ax.set_xlim(0.2, 33.8)
     ax.set_ylim(-1.45, 4.55)
     ax.set_axis_off()
 

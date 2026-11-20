@@ -37,9 +37,13 @@ def h3_labels(path: Path) -> list[str]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
+    ap.add_argument("--src", default="source", help="相对于仓根的源目录（V2 用 source-v2）")
     args = ap.parse_args()
+    src = ROOT / args.src
+    parts_path = src / "parts.json"
+    globals()["SRC"] = src
 
-    parts = json.loads(PARTS.read_text(encoding="utf-8"))
+    parts = json.loads(parts_path.read_text(encoding="utf-8"))
     diff = 0
     for part in parts:
         for ch in part.get("chapters", []):
@@ -59,8 +63,8 @@ def main() -> int:
                         print("   - ", x)
                 ch["sections"] = want
     if args.write and diff:
-        PARTS.write_text(json.dumps(parts, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-        print(f"written: {PARTS}  ({diff} 章有差异)")
+        parts_path.write_text(json.dumps(parts, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        print(f"written: {parts_path}  ({diff} 章有差异)")
     elif diff:
         print(f"{diff} 章有差异（未写回，加 --write）")
     else:

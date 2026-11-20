@@ -367,4 +367,14 @@ def main():
 
 
 if __name__ == "__main__":
+    import sys
+    if "--src" in sys.argv:
+        SOURCE = os.path.join(HERE, sys.argv[sys.argv.index("--src") + 1])
+        globals()["SOURCE"] = SOURCE
+    if "--out" in sys.argv:
+        OUTPUT = os.path.join(HERE, sys.argv[sys.argv.index("--out") + 1])
+        globals()["OUTPUT"] = OUTPUT
+        globals()["MD_DIR"] = os.path.join(OUTPUT, "markdown")
+        os.makedirs(OUTPUT, exist_ok=True)
+    print(f"  [src] {SOURCE}  [out] {OUTPUT}")
     main()

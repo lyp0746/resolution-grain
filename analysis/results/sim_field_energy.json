@@ -1,0 +1,146 @@
+{
+ "meta": {
+  "status": "C-level constructed simulation; parameters chosen, not estimated",
+  "grid": "20x20 periodic",
+  "steps": 2500,
+  "eta": 0.05,
+  "theta": 0.02,
+  "lam": 1.0,
+  "seeds": 5,
+  "note": "h high -> uniform; h low + double well -> phase separation; gamma coarsens domains"
+ },
+ "rows": [
+  {
+   "h": 0.0,
+   "gamma": 0.2,
+   "m_mean": 0.18168387911814118,
+   "var_mean": 0.6818232406139799,
+   "positive_fraction_mean": 0.5915000000000001,
+   "n_positive_domains_mean": 2.0,
+   "mean_domain_size_mean": 0.4161666666666667,
+   "extreme_fraction_mean": 0.8320000000000001,
+   "energy_mean": -2.256432824388047
+  },
+  {
+   "h": 0.0,
+   "gamma": 0.5,
+   "m_mean": 0.20191786945392748,
+   "var_mean": 0.006284665586990176,
+   "positive_fraction_mean": 0.6,
+   "n_positive_domains_mean": 0.6,
+   "mean_domain_size_mean": 0.6,
+   "extreme_fraction_mean": 0.9904999999999999,
+   "energy_mean": 0.35997073634234017
+  },
+  {
+   "h": 0.0,
+   "gamma": 1.0,
+   "m_mean": 0.20233288754019946,
+   "var_mean": 0.004750472258224473,
+   "positive_fraction_mean": 0.6,
+   "n_positive_domains_mean": 0.6,
+   "mean_domain_size_mean": 0.6,
+   "extreme_fraction_mean": 0.998,
+   "energy_mean": -1.137224708075967
+  },
+  {
+   "h": 0.03,
+   "gamma": 0.2,
+   "m_mean": 1.0069081422878838,
+   "var_mean": 0.008129639255424592,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 0.985,
+   "energy_mean": -9.967103571165207
+  },
+  {
+   "h": 0.03,
+   "gamma": 0.5,
+   "m_mean": 1.0096909249638588,
+   "var_mean": 0.006152978597732556,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 0.9960000000000001,
+   "energy_mean": -11.650297679644343
+  },
+  {
+   "h": 0.03,
+   "gamma": 1.0,
+   "m_mean": 1.011810154235112,
+   "var_mean": 0.004668269669704264,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 1.0,
+   "energy_mean": -13.150134348140506
+  },
+  {
+   "h": 0.1,
+   "gamma": 0.2,
+   "m_mean": 1.0401914399160124,
+   "var_mean": 0.007587639034634636,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 0.9964999999999999,
+   "energy_mean": -38.673894428146795
+  },
+  {
+   "h": 0.1,
+   "gamma": 0.5,
+   "m_mean": 1.0425046756271934,
+   "var_mean": 0.005845410132343203,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 0.9995,
+   "energy_mean": -40.32473416312625
+  },
+  {
+   "h": 0.1,
+   "gamma": 1.0,
+   "m_mean": 1.0443268585080863,
+   "var_mean": 0.004490811996788522,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 1.0,
+   "energy_mean": -41.83504968967884
+  },
+  {
+   "h": 0.3,
+   "gamma": 0.2,
+   "m_mean": 1.1212041320437671,
+   "var_mean": 0.00650367072232749,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 1.0,
+   "energy_mean": -125.32300358354239
+  },
+  {
+   "h": 0.3,
+   "gamma": 0.5,
+   "m_mean": 1.1227297354016386,
+   "var_mean": 0.005198836663690457,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 1.0,
+   "energy_mean": -126.88598583258943
+  },
+  {
+   "h": 0.3,
+   "gamma": 1.0,
+   "m_mean": 1.124020877710923,
+   "var_mean": 0.004108156266812141,
+   "positive_fraction_mean": 1.0,
+   "n_positive_domains_mean": 1.0,
+   "mean_domain_size_mean": 1.0,
+   "extreme_fraction_mean": 1.0,
+   "energy_mean": -128.40393333482677
+  }
+ ]
+}

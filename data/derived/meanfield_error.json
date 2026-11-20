@@ -1,0 +1,90 @@
+{
+  "n": 600,
+  "rows": [
+    {
+      "graph": "ER <k>=4",
+      "lambda_max": 5.36,
+      "mean_k": 4.08,
+      "ratio": 1.315,
+      "clustering": 0.006
+    },
+    {
+      "graph": "WS <k>=4 beta=0.0",
+      "lambda_max": 4.0,
+      "mean_k": 4.0,
+      "ratio": 1.0,
+      "clustering": 0.5
+    },
+    {
+      "graph": "WS <k>=4 beta=0.05",
+      "lambda_max": 4.19,
+      "mean_k": 4.0,
+      "ratio": 1.046,
+      "clustering": 0.4191
+    },
+    {
+      "graph": "WS <k>=4 beta=0.3",
+      "lambda_max": 4.38,
+      "mean_k": 4.0,
+      "ratio": 1.096,
+      "clustering": 0.167
+    },
+    {
+      "graph": "ER <k>=8",
+      "lambda_max": 9.14,
+      "mean_k": 7.97,
+      "ratio": 1.147,
+      "clustering": 0.0143
+    },
+    {
+      "graph": "WS <k>=8 beta=0.0",
+      "lambda_max": 8.0,
+      "mean_k": 8.0,
+      "ratio": 1.0,
+      "clustering": 0.6429
+    },
+    {
+      "graph": "WS <k>=8 beta=0.05",
+      "lambda_max": 8.09,
+      "mean_k": 8.0,
+      "ratio": 1.011,
+      "clustering": 0.5422
+    },
+    {
+      "graph": "WS <k>=8 beta=0.3",
+      "lambda_max": 8.32,
+      "mean_k": 8.0,
+      "ratio": 1.04,
+      "clustering": 0.233
+    },
+    {
+      "graph": "ER <k>=16",
+      "lambda_max": 17.33,
+      "mean_k": 16.3,
+      "ratio": 1.063,
+      "clustering": 0.0269
+    },
+    {
+      "graph": "WS <k>=16 beta=0.0",
+      "lambda_max": 16.0,
+      "mean_k": 16.0,
+      "ratio": 1.0,
+      "clustering": 0.7
+    },
+    {
+      "graph": "WS <k>=16 beta=0.05",
+      "lambda_max": 16.07,
+      "mean_k": 16.0,
+      "ratio": 1.005,
+      "clustering": 0.5947
+    },
+    {
+      "graph": "WS <k>=16 beta=0.3",
+      "lambda_max": 16.27,
+      "mean_k": 16.0,
+      "ratio": 1.017,
+      "clustering": 0.2609
+    }
+  ],
+  "note": "λmax/<k> 是平均场临界条件的误差倍率。误差源是度分布的不均匀（ER：<k> 越小倍率越大），不是聚类（WS：倍率≈1，聚类不抬高谱半径）。"
+}

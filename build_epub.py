@@ -316,4 +316,15 @@ def build_opf(book, parts, docs, images, cover_img):
 
 
 if __name__ == "__main__":
+    import sys
+    # 支持 --src／--out（与 build_book.py 一致），默认仍是第一版目录
+    if "--src" in sys.argv:
+        SOURCE = os.path.join(HERE, sys.argv[sys.argv.index("--src") + 1])
+        globals()["SOURCE"] = SOURCE
+    if "--out" in sys.argv:
+        OUTPUT = os.path.join(HERE, sys.argv[sys.argv.index("--out") + 1])
+        globals()["OUTPUT"] = OUTPUT
+        globals()["EPUB"] = os.path.join(OUTPUT, "book.epub")
+        os.makedirs(OUTPUT, exist_ok=True)
+    print(f"  [src] {SOURCE}  [out] {OUTPUT}")
     build()

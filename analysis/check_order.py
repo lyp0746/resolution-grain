@@ -39,9 +39,11 @@ def read(p):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--src", default="source", help="相对于仓根的源目录（V2 用 source-v2）")
     args = ap.parse_args()
+    src = os.path.join(ROOT, args.src)
 
-    files = sorted(glob.glob(os.path.join(SRC, "ch*.html")))
+    files = sorted(glob.glob(os.path.join(src, "ch*.html")))
     problems = []
 
     for p in files:
