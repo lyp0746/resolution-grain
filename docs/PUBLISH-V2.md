@@ -72,10 +72,10 @@ gh release create v2026-11-21 release-v2/*    --title "粗码（第二版）/ Co
 
 ```bash
 # 0) 取最新版本记录号（REGISTRY.md 里的会漂移）
-curl -s -H "Authorization: Bearer $TOKEN"   "https://zenodo.org/api/records/24346704/versions" | jq -r '.hits.hits[].metadata.version'
+curl -s -H "Authorization: Bearer $TOKEN"   "https://zenodo.org/api/records/24393431/versions" | jq -r '.hits.hits[].metadata.version'
 
 # 1) 开新版本草稿
-curl -s -X POST -H "Authorization: Bearer $TOKEN"   "https://zenodo.org/api/records/24346704/versions" -o draft.json
+curl -s -X POST -H "Authorization: Bearer $TOKEN"   "https://zenodo.org/api/records/24393431/versions" -o draft.json
 DRAFT=$(jq -r '.id' draft.json)
 
 # 2) 预留 DOI，并写进 CITATION.cff / README
