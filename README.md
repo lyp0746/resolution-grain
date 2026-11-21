@@ -5,7 +5,7 @@
 
 > **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
 > **上一版本**：2026-11-20，DOI [10.5281/zenodo.24390257](https://doi.org/10.5281/zenodo.24390257)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
-> **本版 DOI**：[10.5281/zenodo.24413260](https://doi.org/10.5281/zenodo.24413260)（V3，750 页；概念 DOI 10.5281/zenodo.24339909 不变）
+> **本版 DOI（待发布）**：V3 本地构建尚未上传 Zenodo；当前公开版本 DOI [10.5281/zenodo.24393431](https://doi.org/10.5281/zenodo.24393431)（642 页），概念 DOI 10.5281/zenodo.24339909 不变
 > **当前版本**：**2026-11-21**——**8 部分 38 章**；正文 **385,969 汉字**；192 表／48 图；印刷版 **750 页**（阅读版 943 页）（EPUB／网页版／Markdown 齐备）
 > **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
 
@@ -141,7 +141,7 @@ in `inventory.tsv` and **not** included in the 24-item collection.*
 **引用 ｜ Cite**
 
 > 李毅芃（2026）.《粗码：为什么越省力分得越粗，而核实为何总是追不上》. Zenodo.
-> https://doi.org/10.5281/zenodo.24413260
+> https://doi.org/10.5281/zenodo.24393431
 
 *Li, Y. (2026). Coarse Codes: How Saving Effort Reshapes Resolution, and Why Verification Trails Behind. Zenodo.*
 

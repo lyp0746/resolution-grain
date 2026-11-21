@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite it as below. 若使用本作，请按下述格式引用。本文件为 2026-11-21 V3；版本 DOI 10.5281/zenodo.24413260，概念 DOI 10.5281/zenodo.24339909。"
+message: "If you use this work, please cite it as below. 若使用本作，请按下述格式引用。本文件为 2026-11-21 V3 本地构建，待发布；当前公开版本 DOI 10.5281/zenodo.24393431（642 页），概念 DOI 10.5281/zenodo.24339909。"
 type: book
 title: "粗码：为什么越省力分得越粗，而核实为何总是追不上 / Coarse Codes: How Saving Effort Reshapes Resolution, and Why Verification Trails Behind"
 abstract: >-
@@ -19,7 +19,7 @@ authors:
 date-released: "2026-11-21"
 version: "2026-11-21"
 license: CC-BY-4.0
-doi: "10.5281/zenodo.24413260"
+doi: "10.5281/zenodo.24393431"
 concept-doi: "10.5281/zenodo.24339909"
 keywords:
   - "粗码"
