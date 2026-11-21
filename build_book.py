@@ -36,7 +36,7 @@ DATA_DIR = os.path.join(HERE, "data")
 FRONT = [("题记", "front_epigraph.html", "epigraph"),
          ("前言　把“粗”变成一个可以算的量", "front_preface.html", "preface"),
          ("怎么读这本书：两条轨，三条路线", "front_quickstart.html", "quickstart"),
-         ("四个人，四张脸（故事轨）", "front_cast.html", "cast"),
+         ("五个人，五张脸（故事轨）", "front_cast.html", "cast"),
          ("术语与符号", "front_terms.html", "terms"),
          ("路线图", "front_roadmap.html", "roadmap"),
          ("硬核入口：可跳过与不可跳过", "front_hardcore.html", "hardcore")]
