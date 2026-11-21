@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""重建 release-v2/（读者可见交付包）。
+"""重建 release/（读者可见交付包）。
 
 来源：
   output-v2/book.pdf / book-ereader.pdf / book.epub / book.html / book-ereader.html
@@ -8,7 +8,7 @@
   assets/charts/*.png            -> visuals/charts/
   assets/svg/part-*.svg          -> visuals/svg/
   assets/knowledge-map.html      -> visuals/
-  release-v2/README.md / 修订说明.md / 数据缺口与边界.md / cover.svg  （手写，保留）
+  release/README.md / 修订说明.md / 数据缺口与边界.md / cover.svg  （手写，保留）
 
 产出：
   12 个主文件 + visuals/；MANIFEST.txt（字节数＋SHA256 前 16 位）；SHA256SUMS（全 64 位）。
@@ -98,7 +98,7 @@ def main() -> int:
         for name, _, h in rows:
             fh.write(f"{h}  {name}\n")
 
-    print(f"release-v2: {len(rows)} files, "
+    print(f"release: {len(rows)} files, "
           f"visuals {len(list(vis.rglob('*')))} entries")
     return 0
 
