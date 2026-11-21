@@ -5,8 +5,8 @@
 
 > **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
 > **上一版本**：2026-11-20，DOI [10.5281/zenodo.24390257](https://doi.org/10.5281/zenodo.24390257)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
-> **本版 DOI**：[10.5281/zenodo.24393431](https://doi.org/10.5281/zenodo.24393431)（概念 DOI 10.5281/zenodo.24339909）
-> **当前版本**：**2026-11-21**——7 部分 **33 章**；正文 **323,420 汉字**；170 表／43 图；印刷版 **642 页**（EPUB／网页版／Markdown 齐备）
+> **本版 DOI**：[10.5281/zenodo.24413260](https://doi.org/10.5281/zenodo.24413260)（V3，750 页；概念 DOI 10.5281/zenodo.24339909 不变）
+> **当前版本**：**2026-11-21**——**8 部分 38 章**；正文 **385,969 汉字**；192 表／48 图；印刷版 **750 页**（阅读版 943 页）（EPUB／网页版／Markdown 齐备）
 > **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
 
 ---
@@ -38,8 +38,8 @@ v* = (T + λ) / (2w)        分辨率是「工夫 + 疲劳」与「错了有多�
 
 | 项 / Item | 值 / Value |
 |---|---|
-| 结构 Structure | 7 部分 33 章；正文 312 节 ＋ 附录 21 节 |
-| 正文 Body text | **323,420** 汉字（全书 358,362） |
+| 结构 Structure | 8 部分 38 章；正文 352 节 ＋ 附录 34 节（附论已并入第 18—22 章） |
+| 正文 Body text | **333,010** 汉字（全书 375,584） |
 | 表／图 Tables / figures | **169** 表 ／ **43** 图 |
 | 印刷版 Print edition | **639** 页（A4，含封面与四级目录书签） |
 | 证据分级 Evidence grades | A（官方可复现）／B（稳定公开估计）／C（稀疏·构造·思辨） |
@@ -95,7 +95,7 @@ failures and counterexamples are reported in the body; juxtaposition is not a te
 
 ```
 source/    正文唯一来源（book.json / parts.json / front_* / ch01–ch28 / appendix_a–f / back_*）
-assets/    css（paper / ereader / book）· svg · charts · knowledge-map.html（3D 交互版）
+assets/    css（paper / ereader / book）· svg · charts · knowledge-map.html（3D 交互版 ＋ 章节网络、演化环、极限退化矩阵、场域竞争四块）
 analysis/  推导、审计、协议、图件脚本（`INDEX.md` 是唯一入口）
 data/      raw（本地缓存，不入版本，账在 MANIFEST*.tsv）· derived · DIGEST*.md
 docs/      变量表、源登记簿、需求单、事件台账、工作日志
@@ -141,7 +141,7 @@ in `inventory.tsv` and **not** included in the 24-item collection.*
 **引用 ｜ Cite**
 
 > 李毅芃（2026）.《粗码：为什么越省力分得越粗，而核实为何总是追不上》. Zenodo.
-> https://doi.org/10.5281/zenodo.24393431
+> https://doi.org/10.5281/zenodo.24413260
 
 *Li, Y. (2026). Coarse Codes: How Saving Effort Reshapes Resolution, and Why Verification Trails Behind. Zenodo.*
 

@@ -17,7 +17,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "source-v2"
+SRC = ROOT / "source"
 OUT = ROOT / "analysis" / "REVIEW-FULL-MACHINE.md"
 
 BANNED = ["必然", "注定", "不可避免", "无法消除", "死路"]

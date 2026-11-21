@@ -3,7 +3,7 @@
 """source-v2 收口检查（V2 专用；lint.py 只校已登记的 24 件，本书不在内）。
 
 用法：
-    "$PY" analysis/check_v2_sources.py            # 全部 source-v2/ch*.html + front_*.html
+    "$PY" analysis/check_v2_sources.py            # 全部 source/ch*.html + front_*.html
     "$PY" analysis/check_v2_sources.py ch01.html  # 指定文件
 
 查六项：汉字数、节数（<h3 id="sec...">）、表号／图号、图片是否存在、
@@ -15,7 +15,7 @@ import sys
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SRC = ROOT / "source-v2"
+SRC = ROOT / "source"
 BANNED = ["必然", "注定", "不可避免", "无法消除", "死路"]
 TAGS = ("div", "p", "table", "figure", "ul", "ol", "li", "tr", "td", "th",
         "h2", "h3", "figcaption", "caption", "pre", "blockquote")

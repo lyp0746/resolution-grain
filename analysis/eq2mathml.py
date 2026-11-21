@@ -13,7 +13,7 @@
 
 用法：
   python analysis/eq2mathml.py --check          # 只打印转换结果，不写文件
-  python analysis/eq2mathml.py --apply          # 就地改写 source-v2/*.html 的 .mblock/.eq
+  python analysis/eq2mathml.py --apply          # 就地改写 source/*.html 的 .mblock/.eq
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "source-v2"
+SRC = ROOT / "source"
 
 GREEK = "αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΘΛΞΠΣΦΨΩ"
 OPS = set("=+-−·×÷/<>≤≥≠≡≈⇒⇔⟺→←↔∈∉∝∞∂∫∮Σ∏√±∓|()[]{},;:!'″")

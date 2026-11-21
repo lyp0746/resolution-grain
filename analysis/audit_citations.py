@@ -50,6 +50,11 @@ STOP = {
     # 非引用：产品名与记号（2026-11-19 加；均为正文里的物件或公式，不是文献）
     "Google", "Linux", "Glass", "Glasshole", "Explorer", "UqUw", "UwUq",
     "Julius", "Sextus", "Pierre", "Adam", "Christoph",
+    # 2026-11-21 加（搬号前先修引用审计的漏抓／误抓）：
+    #   Round   —— "European Social Survey, Round 8" 是调查轮次，不是人名；
+    #   TLGq    —— 二次型 qᵀLq 去掉上标标签后的串，不是人名。
+    # 只加这两个精确串，不放宽任何别的判据；加完重跑，缺口必须是 0。
+    "Round", "TLGq",
 }
 
 # 中文译名 → 拉丁姓（只收本书确实用到的）
@@ -119,7 +124,9 @@ def paras(s):
     return out
 
 
-NON_CITATION = ["比亚韦斯托克"]   # 地名，含“斯托克”；不是人名
+NON_CITATION = ["比亚韦斯托克",       # 地名，含“斯托克”；不是人名
+                 "Potamopyrgus", "Microphallus",   # 属名（泥螺／吸虫）；2026-11-21 加，以后每章的属名都往这里加
+                 "Gini", "OpenAlex", "EuropePMC"]   # 2026-11-21：指标名与数据库名，不是作者
 
 
 def strip_non_citation(t):
@@ -132,7 +139,7 @@ def latin_names(t):
     out = set()
     for m in re.finditer(r"[A-Z][A-Za-z'’\-]{2,}", t):
         w = m.group(0)
-        if w in STOP:
+        if w in STOP or w in NON_CITATION:      # NON_CITATION：地名与属名，不是作者
             continue
         out.add(w)
     return out
@@ -180,15 +187,18 @@ def main():
         refs_t = text_of(refs)
         body = re.sub(r'<div class="refs">.*?</div>', "", s, flags=re.S)
         t = text_of(body)
+        # 公式不是引用：去掉 <math> 之后再抽人名（否则 P^field_t 会变成 "Ptfield" 这种假人名）。
+        # 2026-11-21 加；机制检查仍用未去公式的 t。
+        t_cite = text_of(re.sub(r"<math.*?</math>", "", body, flags=re.S))
 
         # ---- 一、引用
-        pairs, books = body_citations(t)
+        pairs, books = body_citations(t_cite)
         missing = []
         for who, yr in sorted(pairs):
             first = who.split()[0]
             if first not in refs_t and first not in core:
                 missing.append(f"{who}（{yr}）")
-        for nm in sorted(latin_names(t)):
+        for nm in sorted(latin_names(t_cite)):
             if nm in refs_t:
                 continue
             # 只在“像人名”时才报：全大写缩写、常见词已在 STOP 里

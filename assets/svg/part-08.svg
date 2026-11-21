@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 794 1123" width="794" height="1123">
+<!-- 第五部分之后新增的第八张分部页母题（part-08）。
+     语言与 part-01—07 一致：暗底、金色细线、内框双线；不重生成旧图（已发布的几何不动）。
+     母题：一圈向外扩的弧（变异向外），与一条不动的横线（保留）——
+     第八部分是边界，所以弧到框边就停，不画满。 -->
+<defs>
+  <linearGradient id="bg8" x1="0" y1="0" x2="0.6" y2="1">
+    <stop offset="0" stop-color="#0e1117"/><stop offset="0.55" stop-color="#151a23"/><stop offset="1" stop-color="#0b0e14"/>
+  </linearGradient>
+  <radialGradient id="glow8" cx="0.5" cy="0.5" r="0.55">
+    <stop offset="0" stop-color="#b8862f" stop-opacity="0.10"/><stop offset="1" stop-color="#b8862f" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="794" height="1123" fill="url(#bg8)"/>
+<rect width="794" height="1123" fill="url(#glow8)"/>
+<g fill="none" stroke="#b8862f" stroke-width="1.1">
+  <path d="M397 458 A 92 92 0 0 1 397 642" stroke-opacity="0.55"/>
+  <path d="M397 428 A 122 122 0 0 1 397 672" stroke-opacity="0.44"/>
+  <path d="M397 398 A 152 152 0 0 1 397 702" stroke-opacity="0.33"/>
+  <path d="M397 368 A 182 182 0 0 1 397 732" stroke-opacity="0.24"/>
+  <path d="M397 338 A 212 212 0 0 1 397 762" stroke-opacity="0.16"/>
+</g>
+<line x1="120" y1="560" x2="674" y2="560" stroke="#b8862f" stroke-width="0.6" stroke-opacity="0.30"/>
+<g stroke="#b8862f" stroke-opacity="0.30" stroke-width="0.8">
+  <line x1="240" y1="546" x2="240" y2="574"/>
+  <line x1="300" y1="550" x2="300" y2="570"/>
+  <line x1="360" y1="553" x2="360" y2="567"/>
+  <line x1="434" y1="553" x2="434" y2="567"/>
+  <line x1="494" y1="550" x2="494" y2="570"/>
+  <line x1="554" y1="546" x2="554" y2="574"/>
+</g>
+<rect x="28" y="28" width="738" height="1067" fill="none" stroke="#b8862f" stroke-opacity="0.55" stroke-width="1"/>
+<rect x="40" y="40" width="714" height="1043" fill="none" stroke="#b8862f" stroke-opacity="0.22" stroke-width="0.6"/>
+</svg>

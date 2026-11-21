@@ -111,3 +111,7 @@ table.nat thead { break-after: avoid; page-break-after: avoid; }
   margin-bottom: .35em; color: #8a6d2f;
 }
 .part-summary p { margin: 0 0 .45em; text-indent: 2em; }
+/* 本章路线（2026-11 审阅轮）：一段导览，不抢正文 */
+.route { border-left: 2px solid #b8862f; padding: 1mm 0 1mm 5mm; margin: 4mm 0 5mm;
+         font-size: 9.4pt; line-height: 1.75; color: #3f3f3f; }
+.route b { color: #7a5a1e; }

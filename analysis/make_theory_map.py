@@ -9,7 +9,7 @@
 本版改成就支持图注的两句话：
 
   图 4.3  双联图
-      上：**书序弧线图**——28 章按阅读顺序排一行，7 部用底色分带；弧＝一次交叉引用，
+      上：**书序弧线图**——38 章按阅读顺序排一行，8 部用底色分带；弧＝一次交叉引用，
           同部内弧浅、跨部弧深；点大小＝被引次数；越靠前的章名直接标出来。
           图下方一小排橙点＝这一章把读者指向附录 A 的哪几节。
       下：**部×部矩阵**——把 277 条边按 7 部聚合成 7×7 计数，对角＝部内互引。
@@ -40,7 +40,7 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
 ROOT = Path(__file__).resolve().parents[1]
 import sys as _sys
-SRC = ROOT / ("source-v2" if "--src" in _sys.argv and "source-v2" in _sys.argv else "source")
+SRC = ROOT / ("source" if "--src" in _sys.argv and "source" in _sys.argv else "source")
 if "--src" in _sys.argv:
     SRC = ROOT / _sys.argv[_sys.argv.index("--src") + 1]
 OUT = ROOT / "assets" / "charts"
@@ -57,7 +57,18 @@ plt.rcParams.update({
     "axes.unicode_minus": False, "figure.dpi": 300, "font.size": 9,
 })
 
-PART_NAMES = ["一 舞台", "二 个人", "三 爱与好奇", "四 群体", "五 社会", "六 文明", "七 边界"]
+def part_names() -> list[str]:
+    """部名从 parts.json 推（2026-11-21 修：原先写死七条，8 个部时矩阵下标越界，
+      前端报 Cannot read properties of undefined (reading 'slice')）。"""
+    p = json.loads((SRC / "parts.json").read_text(encoding="utf-8"))
+    out = []
+    for i, part in enumerate(p, 1):
+        t = re.sub(r"^第[一二三四五六七八九十]+部分[\u3000 ]*", "", part["part"]).strip()
+        out.append(f"{'一二三四五六七八九十'[i-1]} {t}")
+    return out
+
+
+PART_NAMES = ["一 舞台", "二 个人", "三 爱与好奇", "四 群体", "五 社会", "六 文明", "七 边界"]  # 兜底，main 会用 part_names() 覆盖
 
 
 # ------------------------------------------------------------------ 解析
@@ -98,7 +109,7 @@ def parts_map() -> dict[int, int]:
 
 # ------------------------------------------------------------------ 图 4.3
 def fig_kgraph(ch: dict[int, dict], pm: dict[int, int]) -> dict:
-    n_ch = 33
+    n_ch = len(pm)   # 2026-11-21：不再写死 33；从 parts.json 推出章数（现为 38）
     deg = {n: 0 for n in range(1, n_ch + 1)}
     edges = []
     for n, d in ch.items():
@@ -107,7 +118,8 @@ def fig_kgraph(ch: dict[int, dict], pm: dict[int, int]) -> dict:
                 edges.append((n, r))
                 deg[n] += 1
                 deg[r] += 1
-    mat = np.zeros((7, 7))
+    n_part = len(set(pm.values()))
+    mat = np.zeros((n_part, n_part))
     for a, b in edges:
         mat[pm[a] - 1, pm[b] - 1] += 1
 
@@ -174,9 +186,10 @@ def fig_kgraph(ch: dict[int, dict], pm: dict[int, int]) -> dict:
             if v:
                 ax2.text(j, i, str(v), ha="center", va="center", fontsize=6.2,
                          color="white" if v > vmax * 0.55 else C_MAIN)
-    ax2.set_xticks(range(7)); ax2.set_yticks(range(7))
-    ax2.set_xticklabels([str(i + 1) for i in range(7)], fontsize=6.0)
-    ax2.set_yticklabels([PART_NAMES[i][0] for i in range(7)], fontsize=6.0)
+    n_part = len(PART_NAMES)
+    ax2.set_xticks(range(n_part)); ax2.set_yticks(range(n_part))
+    ax2.set_xticklabels([str(i + 1) for i in range(n_part)], fontsize=6.0)
+    ax2.set_yticklabels([PART_NAMES[i][0] for i in range(n_part)], fontsize=6.0)
     ax2.set_xlabel("被引的部", fontsize=6.6, labelpad=1)
     ax2.set_ylabel("引用的部", fontsize=6.6, labelpad=1)
     for sp in ax2.spines.values():
@@ -189,7 +202,7 @@ def fig_kgraph(ch: dict[int, dict], pm: dict[int, int]) -> dict:
     txt = ("怎么读\n"
            "· 一条弧是一次交叉引用：越长跨得越多；高度只为分开重叠，不代表强度。\n"
            "· 点越大被引越多。最多的四章：%s。\n"
-           "· 右下矩阵的对角线是部内互引；跨部集中在少数几格——七部不是并列的，"
+           "· 右下矩阵的对角线是部内互引；跨部集中在少数几格——八部不是并列的，"
            "而是几条线反复回到同一处。"
            % "、".join("第%d章（%d）" % (n, deg[n]) for n in hubs))
     ax3.text(0, 1.0, txt, va="top", ha="left", fontsize=6.4, color="#333", linespacing=1.8)
@@ -314,7 +327,7 @@ def fig_tmap(fname="c04_tmap") -> None:
 HTML = """<!doctype html>
 <html lang="zh-CN"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>《分辨的预算》· 知识图谱（3D）与理论地图</title>
+<title>《粗码》· 章节网络、演化环、极限退化与场域竞争</title>
 <style>
  :root{--ink:#1f3b57;--alt:#b5651d;--grey:#8c8c8c;--line:#e2dccd;--wash:#faf8f3}
  html,body{margin:0;background:#fbfaf7;color:#1c1c1c;
@@ -350,12 +363,12 @@ HTML = """<!doctype html>
  #tmtab th{white-space:nowrap}
 </style>
 <header>
- <h1>分辨的预算 · 知识图谱（3D）</h1>
- <div class="sub">28 章按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 15 章；一条线＝正文里的一次交叉引用。
+ <h1>粗码 · 章节网络与三张判据图</h1>
+ <div class="sub"><b>38 章、8 部分</b>按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 19 章；一条线＝正文里的一次交叉引用。
   可拖动旋转、滚轮缩放、悬停高亮；按部过滤，或只看跨部引用——线太密时先过滤。</div>
 </header>
 <div class="bar">
- <button data-f="all" class="on">全部 250 条</button>
+ <button data-f="all" class="on">全部 __NEDGE__ 条</button>
  <button data-f="cross">只看跨部</button>
  <button data-f="within">只看部内</button>
  <span style="width:14px"></span>
@@ -399,10 +412,26 @@ HTML = """<!doctype html>
  <table id="tmtab" style="margin-top:6px;max-width:980px"></table>
 </section>
 
+<section id="maps" style="padding:10px 24px 30px;border-top:1px solid var(--line)">
+ <h2>三张判据图</h2>
+ <div class="sub">画法不同，读法相同：<b>每张图都带一行“不能主张什么”</b>——可视化不是装饰，是判据的另一种写法。</div>
+
+ <h2 style="font-size:14px;margin-top:14px">① 演化环：四个箭头，四句判据</h2>
+ <img src="charts/v3_map_evoloop.png" style="width:100%;max-width:900px;border:1px solid var(--line);border-radius:12px" alt="演化环">
+ <p class="lg"><b>不能主张什么：</b>环上四步都不是必经之路；某一步可以长期停住（锁定、僵化、外生场域）。</p>
+
+ <h2 style="font-size:14px;margin-top:14px">② 极限退化矩阵（表 A.4 的图形版）</h2>
+ <img src="charts/v3_map_limits.png" style="width:100%;max-width:900px;border:1px solid var(--line);border-radius:12px" alt="极限退化矩阵">
+ <p class="lg"><b>不能主张什么：</b>点的大小只表示“退化强度”（示意），不标数值；每一行只说明“参数到边界时方程退成谁”，不说明谁更根本。</p>
+
+ <h2 style="font-size:14px;margin-top:14px">③ 场域竞争：三种竞争 × 三个参数</h2>
+ <img src="charts/v3_map_field.png" style="width:100%;max-width:900px;border:1px solid var(--line);border-radius:12px" alt="场域竞争">
+ <p class="lg"><b>不能主张什么：</b>三档只是序关系；同一时期常有两条同时跑，不能只用一个参数讲完；右下角那个环是形式位置，未跑过样本外检验。</p>
+</section>
 <script>
 const D = __DATA__;
 const LIMITS = __LIMITS__;
-const PART = ["一 形状","二 第一性","三 个人","四 群体","五 社会","六 历史","七 边界"];
+const PART = __PARTNAMES__;
 const chs = D.nodes.filter(n => n.id.startsWith('ch'));
 const idx = Object.fromEntries(chs.map((n, i) => [n.id, i]));
 const part = Object.fromEntries(chs.map(n => [n.id, n.part]));
@@ -546,7 +575,7 @@ function reset(){ yaw = 0.5; pitch = -0.30; zoom = 1; draw(); }
 const m = D.matrix, tb = document.getElementById('mat'), vmax = Math.max(...m.flat());
 let html = '<tr><th>引\\被引</th>' + PART.map((p, i) => `<th>${i + 1}</th>`).join('') + '</tr>';
 m.forEach((row, i) => {
-  html += `<tr><th>${i + 1} ${PART[i].slice(0, 3)}</th>` + row.map((v, j) => {
+  html += `<tr><th>${i + 1} ${(PART[i] || '').slice(0, 3)}</th>` + row.map((v, j) => {
     const sh = v ? Math.round(248 - 125 * v / vmax) : 252;
     return `<td style="background:rgb(${sh},${sh + 4},${sh + 10})"${i === j ? ' class="diag"' : ''}>${v || ''}</td>`;
   }).join('') + '</tr>';
@@ -682,13 +711,17 @@ resize();
 
 
 def main() -> None:
+    global PART_NAMES
+    PART_NAMES = part_names()
     ch = load_chapters()
     pm = parts_map()
     info = fig_kgraph(ch, pm)
     fig_tmap()
     data = json.loads((DER / "kgraph.json").read_text(encoding="utf-8"))
     html = (HTML.replace("__DATA__", json.dumps(data, ensure_ascii=False))
-                .replace("__LIMITS__", json.dumps(LIMITS, ensure_ascii=False)))
+                .replace("__NEDGE__", str(info["edges"]))
+                .replace("__LIMITS__", json.dumps(LIMITS, ensure_ascii=False))
+                .replace("__PARTNAMES__", json.dumps(PART_NAMES, ensure_ascii=False)))
     (ROOT / "assets" / "knowledge-map.html").write_text(html, encoding="utf-8")
     print("  knowledge-map.html")
     print(json.dumps({"nodes": info["nodes"], "edges": info["edges"]}, ensure_ascii=False))

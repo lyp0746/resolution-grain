@@ -262,10 +262,10 @@ h1.part-title{color:#1a1a1a;font-size:24pt;line-height:1.3;letter-spacing:1px;ma
 .co-map li{margin:0 0 1.2mm;break-inside:avoid;}
 
 .part-page{width:auto;margin:0;height:235mm;padding:0;box-sizing:border-box;overflow:hidden;}
-.part-body{padding:55mm 12mm 0;}
+.part-body{padding:92mm 12mm 0;}
 
-.part-big{position:absolute;right:16mm;bottom:10mm;font-family:"Times New Roman",serif;font-size:150pt;line-height:1;color:#efe8d8;letter-spacing:-4px;z-index:0;}
-.part-body{position:relative;z-index:1;}
+.part-big{position:absolute;right:12mm;top:6mm;font-family:"Times New Roman",serif;font-size:132pt;line-height:1;color:#efe8d8;letter-spacing:-4px;z-index:0;}
+.part-body{position:relative;z-index:1;top:auto;right:auto;bottom:auto;left:auto;}
 
 /* 本册补充（2026-11-18）：表体左对齐——本书的表大多是散文而非数字，居中会散架；
    数字列用 <td class="n"> 显式居中。 */
@@ -288,3 +288,7 @@ table.nat th { text-align: center; }
 .mblock { font-size: 10.8pt; }
 .eq .body i, .mblock i { font-style: italic; }
 .eq sub, .eq sup, .mblock sub, .mblock sup { font-size: 0.72em; }
+/* 本章路线（2026-11 审阅轮）：一段导览，不抢正文 */
+.route { border-left: 2px solid #b8862f; padding: 1mm 0 1mm 5mm; margin: 4mm 0 5mm;
+         font-size: 9.4pt; line-height: 1.75; color: #3f3f3f; }
+.route b { color: #7a5a1e; }

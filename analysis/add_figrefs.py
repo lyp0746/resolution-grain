@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "source-v2"
+SRC = ROOT / "source"
 
 
 def num_of(kind: str, seg: str) -> str | None:

@@ -283,6 +283,10 @@ def stamp_folios(pdf_path):
         except Exception:
             toc = []
         chapters = [(p, t) for p, lvl, t in toc if re.search(r"第\s*\d+\s*章", t or "")]
+        # 2026-11-21 修：部分扉页的**导语页**没有自己的书签，页眉会沿用上一章的章名
+        # （实测：第五部分导语页顶着"第 17 章 维护…"）。部分页与紧随其后的导语页一律不盖页眉。
+        part_pages = {p for p, lvl, t in toc
+                      if lvl == 1 and not re.search(r"第\s*\d+\s*章", t or "")}
         first_ch = min([p for p, _ in chapters], default=2)
         # 附录与后置：页眉不能一直停在“第 28 章”。取“结语与附录”之后的
         # 一级/二级书签（附录 A—F、参考文献、索引），按页选最近的一条。
@@ -329,7 +333,12 @@ def stamp_folios(pdf_path):
                                     big_title = True
                 except Exception:
                     pass
-                if cur and not fp_here and not short and not big_title:
+                after_part = (i + 1) in part_pages or i in part_pages
+                # 章前扉页（opener）：它没有自己的书签，页眉会沿用上一章；
+                # 而"短页"判据（<260 字）对扉页不可靠——扉页的"本章结构"列一长就过线
+                # （实测：第 20 章扉页顶着"第 19 章"）。用扉页必有的小标题"本章结构"认它。
+                is_opener = "本章结构" in page.get_text("text")
+                if cur and not fp_here and not short and not big_title and not after_part and not is_opener:
                     ttl = re.sub(r"\s+", " ", cur).strip()[:34]
                     page.insert_text((w - 85 - 7.4 * len(ttl), 40), ttl,
                                      fontsize=7.6, fontname="china-s",

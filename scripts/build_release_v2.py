@@ -21,8 +21,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "output-v2"
-REL = ROOT / "release-v2"
+OUT = ROOT / "output"
+REL = ROOT / "release"
 DATE = "2026-11-21"
 SLUG = "resolution-grain"
 
