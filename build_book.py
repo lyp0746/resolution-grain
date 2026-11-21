@@ -38,20 +38,18 @@ FRONT = [("题记", "front_epigraph.html", "epigraph"),
          ("怎么读这本书：两条轨，三条路线", "front_quickstart.html", "quickstart"),
          ("五个人，五张脸（故事轨）", "front_cast.html", "cast"),
          ("术语与符号", "front_terms.html", "terms"),
-         ("路线图", "front_roadmap.html", "roadmap"),
-         ("硬核入口：可跳过与不可跳过", "front_hardcore.html", "hardcore")]
+         ("路线图：八部分，三十八章", "front_roadmap.html", "roadmap")]
 BACK = [
-        ("结语　粗不是错", "back_epilogue.html", "apxe"),
-        ("通俗导读：四种读者，四条路", "back_popular_guide.html", "apxp"),
+        ("通俗导读：五种读者，五条路", "back_popular_guide.html", "apxp"),
         ("后记", "back_postscript.html", "apxq"),
         ("本系列", "back_series.html", "apxs"),
-        ("术语表与符号", "back_glossary.html", "apxg"),
+        ("术语表", "back_glossary.html", "apxg"),
         ("附录 A　形式化与证明", "appendix_a.html", "apxA"),
         ("附录 B　数据与复现", "appendix_b.html", "apxB"),
-        ("附录 C　稳健性与敏感性", "appendix_c.html", "apxC"),
+        ("附录 C　协议与稳健性", "appendix_c.html", "apxC"),
         ("附录 D　可证伪登记簿", "appendix_d.html", "apxD"),
-        ("附录 E　工具、清单与模板", "appendix_e.html", "apxE"),
-        ("附录 F　证据与数据缺口", "appendix_f.html", "apxF"),
+        ("附录 E　工具与清单", "appendix_e.html", "apxE"),
+        ("附录 F　否证线总表", "appendix_f.html", "apxF"),
         ("参考文献", "back_references.html", "apxr"),
 ]
 

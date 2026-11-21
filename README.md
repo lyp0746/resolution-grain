@@ -74,10 +74,10 @@ v* = (T + λ) / (2w)        分辨率是「工夫 + 疲劳」与「错了有多�
 ## 四、怎么读 ｜ How to read
 
 - **通识轨**：正文一路读下去；公式只在第 5 章出现一次，之后都可用文字替代。
-- **同行轨**：附录 A（形式化）、附录 F（缺口与预言台账）、`front_hardcore`（硬核轨）。
+- **同行轨**：附录 A（形式化）、附录 F（否证线总表）、附录 D（可证伪登记簿）。
 - **三种读者可以停的地方**：第 5 章的三行推导、第 7 章与理性疏忽的关系、附录 A。
 
-*Two tracks: the body for general readers; appendices A and F plus `front_hardcore` for specialists.
+*Two tracks: the body for general readers; appendices A, F and D for specialists.
 The formal core is three lines in chapter 5; everything after it can be read in words.*
 
 ---
