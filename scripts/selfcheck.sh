@@ -9,16 +9,16 @@ export PYTHONIOENCODING=utf-8
 fail=0
 say() { printf '\n== %s\n' "$1"; }
 
-say "1/6 结构：节号／表号／图号／禁词／markdown 残留"
+say "1/7 结构：节号／表号／图号／禁词／markdown 残留"
 "$PY" analysis/check_order.py --strict || fail=1
 
-say "2/6 引用：缺口必须 0"
+say "2/7 引用：缺口必须 0"
 "$PY" analysis/audit_citations.py --strict || fail=1
 
-say "3/6 目录：parts.json 与源文件对齐（只报差异）"
+say "3/7 目录：parts.json 与源文件对齐（只报差异）"
 "$PY" analysis/sync_sections.py || true
 
-say "4/6 密度：加粗、破折号、段落中位、每章节数"
+say "4/7 密度：加粗、破折号、段落中位、每章节数"
 "$PY" analysis/restyle.py --report | head -3
 "$PY" - <<'PY'
 import glob, io, re, statistics as st
@@ -36,7 +36,7 @@ print("正文 %d 字；段落中位 %.0f" % (body, st.median(paras)))
 print("节数不在 8—10 的章：", out or "无")
 PY
 
-say "5/6 产物：页数、字数、表图数"
+say "5/7 产物：页数、字数、表图数"
 "$PY" - <<'PY'
 import glob, io, re
 try:
@@ -49,7 +49,7 @@ fig = sum(len(re.findall("<figure", io.open(f, encoding="utf-8").read())) for f 
 print("印刷版 %s 页；%d 表／%d 图" % (n, tab, fig))
 PY
 
-say "6/6 标签平衡（<b>/<p>/<i>/<table>/<div> 计数与嵌套）"
+say "6/7 标签平衡（<b>/<p>/<i>/<table>/<div> 计数与嵌套）"
 "$PY" - <<'PY'
 import glob, io, re
 bad = 0
@@ -65,6 +65,9 @@ print("标签问题：", bad)
 raise SystemExit(1 if bad else 0)
 PY
 [ $? -ne 0 ] && fail=1
+
+say "7/7 命名：裸数字／路线图题名／区间／主题词（改号脚本抓不到的那一类）"
+"$PY" -X utf8 analysis/check_naming.py --strict || fail=1
 
 printf '\n== 结论：%s\n' "$([ $fail -eq 0 ] && echo '全过' || echo '有失败项')"
 exit $fail

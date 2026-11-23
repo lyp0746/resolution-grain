@@ -664,50 +664,14 @@ def fig_maint():
 
 # ---------------------------------------------------------------- 6j. verification lag (V2 ch15)
 def fig_tau():
-    """\u6838\u5b9e\u65f6\u5dee\uff1a\u5206\u5e03\uff08\u4e2d\u4f4d 6\u3001P90 26\uff09\u4e0e\u4e03\u65e5\u6307\u7eb9\u3002\u7248\u5fc3 6.4 in\u3002"""
-    fig, axes = plt.subplots(1, 2, figsize=(6.4, 3.0), gridspec_kw={"width_ratios": [1.2, 1]})
+    """核实时差：经验生存曲线＋七日指纹。
 
-    ax = axes[0]
-    s = (np.log(26) - np.log(6)) / 1.2816
-    mu = np.log(6)
-    x = np.linspace(0.4, 120, 600)
-    import math
-    erf = np.vectorize(math.erf)
-    surv = 1.0 - 0.5 * (1 + erf((np.log(x) - mu) / (s * np.sqrt(2))))
-    ax.plot(x, surv, color=INK, lw=2.0)
-    for v, lab, yv in [(6, "\u4e2d\u4f4d 6 \u5929\uff1a\u4e00\u534a", 0.5), (26, "P90 26 \u5929\uff1a\u4e00\u6210", 0.10)]:
-        ax.axvline(v, color=RED, ls=":", lw=1.0)
-        ax.plot([v], [yv], "o", color=RED, ms=4.5)
-        ax.text(v * 1.12, yv + 0.03, lab, fontsize=7.0, color=RED)
-    ax.fill_between(x, surv, where=(x <= 6), color=BLUE, alpha=0.12)
-    ax.set_xscale("log")
-    ax.set_xlabel("\u4ece\u51fa\u9519\u5230\u66f4\u6b63\u7684\u5929\u6570\uff08\u5bf9\u6570\u8f74\uff09", fontsize=7.8)
-    ax.set_ylabel("\u8fd8\u6ca1\u66f4\u6b63\u7684\u6bd4\u4f8b", fontsize=7.8)
-    ax.set_title("\u4e00\u534a\u4e00\u5468\u5185\uff0c\u4e00\u6210\u8d85\u8fc7\u4e00\u4e2a\u6708", fontsize=9.0, loc="left")
-    ax.set_ylim(0, 1.02)
-    ax.tick_params(labelsize=7)
-    for sp in ("top", "right"):
-        ax.spines[sp].set_visible(False)
-    ax.text(0.98, 0.92, "\u5f62\u72b6\u4e3a\u793a\u610f\uff1a\u5bf9\u6570\u6b63\u6001\uff0c\n\u53ea\u5bf9\u4e0a\u4e2d\u4f4d\u4e0e P90\u4e24\u4e2a\u70b9",
-            transform=ax.transAxes, ha="right", fontsize=6.2, color=GRAY, linespacing=1.4)
-
-    ax = axes[1]
-    days = ["7", "14", "21", "28"]
-    vals = [1.10, 1.09, 1.28, 1.17]
-    bars = ax.bar(days, vals, color=OCHRE, width=0.55)
-    ax.axhline(1.0, color=GRAY, ls="--", lw=1.0)
-    for b, v in zip(bars, vals):
-        ax.text(b.get_x() + b.get_width() / 2, v + 0.012, f"{v:.2f}", ha="center", fontsize=7.6)
-    ax.set_ylim(0.9, 1.36)
-    ax.set_xlabel("\u6ede\u540e\u5929\u6570\uff08\u5747\u4e3a 7 \u7684\u500d\u6570\uff09", fontsize=7.8)
-    ax.set_ylabel("\u6761\u6570 \u00f7 \u5de6\u53f3\u90bb\u683c\u5747\u503c", fontsize=7.8)
-    ax.set_title("\u6392\u73ed\u6307\u7eb9\uff1a7 \u7684\u500d\u6570\u504f\u9ad8", fontsize=9.0, loc="left")
-    ax.tick_params(labelsize=7)
-    for sp in ("top", "right"):
-        ax.spines[sp].set_visible(False)
-
-    fig.tight_layout()
-    save(fig, "v2_fig_tau")
+    2026-11-23 起委派给 `analysis/fig_tau_real.py`：左幅不再是对数正态示意，
+    而是 21,063 条记录的经验生存函数（步进）；右幅四个比值同源重算。
+    这样不论跑 build.sh 还是单跑本文件，出来的都是真实版。
+    """
+    import runpy
+    runpy.run_path(str(Path(__file__).with_name("fig_tau_real.py")), run_name="__main__")
 
 
 # ---------------------------------------------------------------- 6k. bills (V2 ch16)

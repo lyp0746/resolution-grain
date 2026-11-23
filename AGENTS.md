@@ -237,3 +237,6 @@ bash scripts/build.sh
 7. **跨源目录跑脚本前，先看它把结果写回哪儿**（2026-11-19）：`sync_sections.py` 的写回路径原先写死为 `source/parts.json`，一次对 `source-v2` 的运行把第一版的 parts.json 覆盖成 V2 结构。恢复只能靠构建产物（部分标题、导语、小结在 `output/book.html` 里逐字可取；`desc` 字段不渲染，取不回来）。现在所有脚本都跟随 `--src`；**改动任何一个“写回型”脚本后，先用一份临时副本跑一次**。
 8. **长 URL／长 `code` 会撑宽 min-content，整册缩放**（2026-11-21）：ch23 的 A 股案例把新浪接口的完整 URL 写进 `<code>`，全书从 654 页掉到 542 页；删掉 URL、只留脚本指针后恢复。凡在正文写接口、路径、命令，先量一行宽度；宁可写“见脚本文件头”，不要把长串塞进 `code`。
 9. **图别用无结构的力导向**：Kamada–Kawai 画 28 章引用网是一团毛线，且与图注说的“横着看是顺序”对不上。有顺序的数据用**弧线图＋矩阵**；3D 只放交互版。
+
+9. **裸数字的章号，改号脚本抓不到（2026-11-23 立）**：`plan_renumber_v4.py` 只认七类 token（第 N 章／§N.M／表N.M／图N.M／N.M 节／`id="secN-M"`／式(N.M)）。**表格里单独一列 `<td>25</td>`、路线图的章号列、"第 29—34 章"这种区间，它一律不认**——本书已因此踩过三次：附录 B 表 B.1、附录 F 章列、表 R.1 整表（第 25—38 行全错位）。规矩：**每次改号后必跑 `analysis/check_naming.py --strict`**（已并入 `selfcheck.sh` 第 7 项）；新写表格时章号列写"第N章"，不写裸数字。
+10. **用 Python 改 shell 脚本会带进 CRLF**：在 Windows 上 `open(p,"w")` 默认把 `\n` 写成 `\r\n`，bash 读到 `set -uo pipefail\r` 就报 `set: pipefail: invalid option`。改 `.sh` 时必须 `newline="\n"`，或改完跑一次 strips 掉 `\r`。

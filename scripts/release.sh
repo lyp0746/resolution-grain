@@ -36,7 +36,7 @@ fi
 copy README.md              "$REL/README.md"
 copy docs/RELEASE-NOTES.md   "$REL/修订说明.md"
 copy docs/DATA-GAPS.md       "$REL/数据缺口清单.md"
-copy docs/OPEN-CONTRIBUTION.md "$REL/欢迎补充数据.md"
+copy docs/REQUESTS.md         "$REL/欢迎补充数据.md"
 
 cat > "$REL/MANIFEST.txt" <<EOF
 $BASE — 发布包清单

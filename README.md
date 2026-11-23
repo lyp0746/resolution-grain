@@ -4,10 +4,47 @@
 *How Saving Effort Reshapes Resolution, and Why Verification Trails Behind*
 
 > **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
-> **上一版本**：2026-11-20，DOI [10.5281/zenodo.24390257](https://doi.org/10.5281/zenodo.24390257)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
-> **本版 DOI**：[10.5281/zenodo.24413735](https://doi.org/10.5281/zenodo.24413735)（V3，750 页；概念 DOI 10.5281/zenodo.24339909 不变）
-> **当前版本**：**2026-11-21**——**8 部分 38 章**；正文 **385,969 汉字**；192 表／48 图；印刷版 **750 页**（阅读版 944 页）（EPUB／网页版／Markdown 齐备）
+> **上一版本**：2026-11-21，DOI [10.5281/zenodo.24413735](https://doi.org/10.5281/zenodo.24473308)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
+> **本版 DOI**：[10.5281/zenodo.24473308](https://doi.org/10.5281/zenodo.24473308)（776 页；概念 DOI 10.5281/zenodo.24339909 不变）
+> **当前版本**：**2026-11-24**——**8 部分 39 章**；正文 **400,723 汉字**；196 表／49 图；印刷版 **776 页**（阅读版 975 页）（EPUB／网页版／Markdown 齐备）
+> **付印版**：**2026-11-24**（776 页）。此后若再有改动，只进电子版与 Zenodo 新版本，不再要求重印。
 > **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
+
+---
+
+## English summary
+
+**What it is.** A falsifiable popular-theory book, bilingual in apparatus but written in Chinese.
+One principle (partition minimisation under a budget), four interfaces (price, cut, group, ledger),
+four layers (person, group, society, civilisation) drawn as a graph with loops rather than a ladder.
+
+**The claim.** What a code costs is set by the decision it has to answer: the budget of time and
+attention, the price of being wrong, and the price of changing the code. From one stationarity
+condition, `v* = (T + λ) / (2w)`, the book derives: doubling coverage halves precision; writing the
+cost of cut points into the ledger gives two scaling laws; recoding costs once each way, so travel
+and return are asymmetric (bandwidth `2C`). Nothing is claimed beyond its evidence: every number is
+graded A/B/C, and every chapter ends with what would refute it.
+
+**What is new in the 2026-11-24 edition.** Eight parts, thirty-nine chapters, 776 pages.
+Part VI now runs "six rings, one conveyor belt, one ledger": *transfer* moved in from the closing
+part as ch. 25, and a new ch. 26 — *Crossbox: the person who signs in two ledgers* — gives a name to
+the beneficiary that the earlier editions left unnamed. The second principle is narrowed to its one
+non-redundant core ("weights can be negative"); "cost can be externalised" becomes a corollary, and
+its test becomes a cross-partial derivative rather than a parameter, so its verdict changes from
+"untested" to "two segments verified, the third not done". Seven new subsections, a new preface table
+(four pairs of words not to be confused), and a real-data replacement for the verification-lag figure
+(21,063 records, empirical survival curve).
+
+**What it does not claim.** No new first principle, no population parameters, no causal direction,
+no global universality, no policy prescription. The four layers are a formal analogy to
+renormalisation, not a theorem. The weakest layer is the selector: the model gives direction and
+position, not the person or the year.
+
+**Read it in five minutes.** Ch. 2 (§2.5.2 for the one non-redundant core), ch. 13 (shared codes),
+ch. 25 (transfer), ch. 26 (crossbox), ch. 38 (the verdict table), ch. 39 (nine gaps).
+
+**Cite.** Li Yipeng (2026). *粗码 / Coarse Codes*. Zenodo. https://doi.org/10.5281/zenodo.24473308
+(concept DOI 10.5281/zenodo.24339909).
 
 ---
 
@@ -38,16 +75,16 @@ v* = (T + λ) / (2w)        分辨率是「工夫 + 疲劳」与「错了有多�
 
 | 项 / Item | 值 / Value |
 |---|---|
-| 结构 Structure | 8 部分 38 章；正文 352 节 ＋ 附录与后置 39 节 |
-| 正文 Body text | **385,969** 汉字（全书 425,900） |
-| 表／图 Tables / figures | **192** 表 ／ **48** 图 |
-| 印刷版 Print edition | **750** 页（A4，含封面与四级目录书签） |
-| 阅读版 E-reader | **944** 页（重排；EPUB 3／网页／Markdown 齐备） |
-| 术语／索引 Terms / index | 术语 **123** 条 ／ 索引 **144** 条 |
+| 结构 Structure | 8 部分 39 章；正文 361 节 ＋ 附录与后置 55 节 |
+| 正文 Body text | **400,723** 汉字（全书 442,860） |
+| 表／图 Tables / figures | **196** 表 ／ **49** 图 |
+| 印刷版 Print edition | **776** 页（A4，含封面与四级目录书签） |
+| 阅读版 E-reader | **975** 页（重排；EPUB 3／网页／Markdown 齐备） |
+| 术语／索引 Terms / index | 术语 **138** 条 ／ 索引 **154** 条 |
 | 证据分级 Evidence grades | A（官方可复现）／B（稳定公开估计）／C（稀疏·构造·思辨） |
-| 否证线 Falsification lines | **18** 条在表（附录 F.1）＋ **20** 条在正文 |
-| 登记簿 Ledger | 附录 D **16** 行（append-only，D1—D15 未改） |
-| 空白 Gaps | **9** 处（第 38 章：缺数据／缺概念／边界／未验） |
+| 否证线 Falsification lines | **26** 条在表（附录 F.1）＋ 各章“反例与边界” |
+| 登记簿 Ledger | 附录 D **23** 行（append-only，D1—D23） |
+| 空白 Gaps | **9** 处（第 39 章：缺数据／缺概念／边界／未验） |
 | 题记 Epigraphs | **36** 处；部分导语 8 段 |
 
 ---
@@ -85,7 +122,7 @@ The formal core is three lines in chapter 5; everything after it can be read in 
 ## 五、诚实纪律 ｜ Honesty discipline
 
 1. **结论强度 ≤ 证据强度**；每个数字带 A/B/C，等级写在表注与图注里，不逐句挂。
-2. **不可测就说不可测**：第 38 章单列九处空白；附录 F 收 18 条否证线，正文另留 20 条；附录 D 的 16 行登记只追加、不改旧行。
+2. **不可测就说不可测**：第 39 章单列九处空白；附录 F 收 26 条否证线，各章另留“反例与边界”；附录 D 的 23 行登记只追加、不改旧行。
 3. **失败与反例写在正文**，不放进脚注；**并置不是检验**（把两套理论放一张表上只说明它有位置）。
 4. **反身性写「方向＋条件」**，不写宿命；凡需要第七个公设才讲得通的话，降为情景或删。
 
@@ -112,7 +149,7 @@ output/    build 产物（gitignore）      release/  组装产物（gitignore�
 
 ```bash
 PY="/mnt/d/0_Code/Iris Series/.venv/Scripts/python.exe"
-bash scripts/selfcheck.sh          # 六项自查：结构／引用／目录／密度／产物／标签
+bash scripts/selfcheck.sh          # 七项自查：结构／引用／目录／密度／产物／标签／命名
 "$PY" build_book.py --pdf          # 印刷版 → output/book.pdf
 "$PY" build_book.py --ereader --pdf
 "$PY" build_epub.py && "$PY" build_markdown.py
@@ -123,7 +160,7 @@ bash scripts/selfcheck.sh          # 六项自查：结构／引用／目录／�
 
 ## 七、数据与可核性 ｜ Data and verifiability
 
-- 定量结论都标了**快照日**（本版冻结于 2026-11-21；统计类 11-15/16、新闻类 11-16、文献类 11-19、A 股窗口 10-20 至 11-20）；原始文件的抓取时间（UTC）与 SHA256 在 `data/MANIFEST*.tsv`。
+- 定量结论都标了**快照日**（本版冻结于 2026-11-24；统计类 11-15/16、新闻类 11-16、文献类 11-19、A 股窗口 10-20 至 11-20）；原始文件的抓取时间（UTC）与 SHA256 在 `data/MANIFEST*.tsv`。
 - 原始数据不入版本；派生读数在 `data/derived/`，由脚本生成，不手改。
 - 主要公开来源：PolitiFact（21,063 条核实记录）、Seshat 古政体编码集（398 政体）、
   eCFR／Federal Register（266 个节级修订间隔）、历法采纳（125 国）、ESS／WVS、OEWN 义项清单（12.4 万条）。
@@ -144,7 +181,7 @@ in `inventory.tsv` and **not** included in the 24-item collection.*
 **引用 ｜ Cite**
 
 > 李毅芃（2026）.《粗码：为什么越省力分得越粗，而核实为何总是追不上》. Zenodo.
-> https://doi.org/10.5281/zenodo.24413735
+> https://doi.org/10.5281/zenodo.24473308
 
 *Li, Y. (2026). Coarse Codes: How Saving Effort Reshapes Resolution, and Why Verification Trails Behind. Zenodo.*
 
