@@ -2231,3 +2231,14 @@ ch10 补 10.3b「词表」与 10.5「年龄的效应里有一块是教育」，�
 ### 未做
 
 正文 0/24 章；前置后置各 6 件缺；附录 A–F 未写；DOI 未注册；`inventory.tsv` 未收录。
+
+## 2026-11-25　工作区清理（断舍离）
+
+派生件与旧快照不留副本；版本靠本文件与 Zenodo 记录追溯。本次删除：
+
+- `output/book-ereader.html`
+- `output/book.html`
+- `archive`
+
+重建：`build_book.py --pdf` / `--ereader --pdf`、`build_markdown.py`、`build_epub.py`；
+论文用 `generate_publication_suite.py`。

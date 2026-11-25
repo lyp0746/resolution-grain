@@ -38,7 +38,7 @@ FRONT = [("题记", "front_epigraph.html", "epigraph"),
          ("怎么读这本书：两条轨，三条路线", "front_quickstart.html", "quickstart"),
          ("五个人，五张脸（故事轨）", "front_cast.html", "cast"),
          ("术语与符号", "front_terms.html", "terms"),
-         ("路线图：八部分，三十八章", "front_roadmap.html", "roadmap")]
+         ("路线图：八部分，三十九章", "front_roadmap.html", "roadmap")]
 BACK = [
         ("通俗导读：五种读者，五条路", "back_popular_guide.html", "apxp"),
         ("后记", "back_postscript.html", "apxq"),
