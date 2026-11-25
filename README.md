@@ -4,8 +4,8 @@
 *How Saving Effort Reshapes Resolution, and Why Verification Trails Behind*
 
 > **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
-> **上一版本**：2026-11-21，DOI [10.5281/zenodo.24413735](https://doi.org/10.5281/zenodo.24473308)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
-> **本版 DOI**：[10.5281/zenodo.24473308](https://doi.org/10.5281/zenodo.24473308)（776 页；概念 DOI 10.5281/zenodo.24339909 不变）
+> **上一版本**：2026-11-21，DOI [10.5281/zenodo.24413735](https://doi.org/10.5281/zenodo.24535619)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
+> **本版 DOI**：[10.5281/zenodo.24535619](https://doi.org/10.5281/zenodo.24535619)（776 页；概念 DOI 10.5281/zenodo.24339909 不变）
 > **当前版本**：**2026-11-24**——**8 部分 39 章**；正文 **400,723 汉字**；196 表／49 图；印刷版 **776 页**（阅读版 975 页）（EPUB／网页版／Markdown 齐备）
 > **付印版**：**2026-11-24**（776 页）。此后若再有改动，只进电子版与 Zenodo 新版本，不再要求重印。
 > **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
@@ -43,7 +43,7 @@ position, not the person or the year.
 **Read it in five minutes.** Ch. 2 (§2.5.2 for the one non-redundant core), ch. 13 (shared codes),
 ch. 25 (transfer), ch. 26 (crossbox), ch. 38 (the verdict table), ch. 39 (nine gaps).
 
-**Cite.** Li Yipeng (2026). *粗码 / Coarse Codes*. Zenodo. https://doi.org/10.5281/zenodo.24473308
+**Cite.** Li Yipeng (2026). *粗码 / Coarse Codes*. Zenodo. https://doi.org/10.5281/zenodo.24535619
 (concept DOI 10.5281/zenodo.24339909).
 
 ---
@@ -181,7 +181,7 @@ in `inventory.tsv` and **not** included in the 24-item collection.*
 **引用 ｜ Cite**
 
 > 李毅芃（2026）.《粗码：为什么越省力分得越粗，而核实为何总是追不上》. Zenodo.
-> https://doi.org/10.5281/zenodo.24473308
+> https://doi.org/10.5281/zenodo.24535619
 
 *Li, Y. (2026). Coarse Codes: How Saving Effort Reshapes Resolution, and Why Verification Trails Behind. Zenodo.*
 
