@@ -35,13 +35,19 @@
  svg.tm{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:12px}
  #tmtab td,#tmtab th{text-align:left;font-size:12px;padding:5px 8px}
  #tmtab th{white-space:nowrap}
+.bar .toReader{font:12.5px/1 inherit;padding:7px 13px;background:#b5651d;color:#fff;border-radius:999px;text-decoration:none}
+
+html,body{max-width:100%;overflow-x:hidden}
+table{max-width:100%;overflow-x:auto}
+@media (max-width:640px){canvas{width:100%!important;max-width:100%!important;height:380px!important}
+ #stage{padding:0 6px 8px}.row{padding:4px 8px 18px;gap:12px}.row>div{flex:1 1 100%}}
 </style>
 <header>
  <h1>粗码 · 章节网络与三张判据图</h1>
  <div class="sub"><b>39 章、8 部分</b>按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 19 章；一条线＝正文里的一次交叉引用。
   可拖动旋转、滚轮缩放、悬停高亮；按部过滤，或只看跨部引用——线太密时先过滤。</div>
 </header>
-<div class="bar">
+<div class="bar"><a class="toReader" href="resolution-grain-reader.html">📖 正文阅读页 →</a>
  <button data-f="all" class="on">全部 309 条</button>
  <button data-f="cross">只看跨部</button>
  <button data-f="within">只看部内</button>
