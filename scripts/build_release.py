@@ -11,7 +11,7 @@
   output/book-ereader.html        -> resolution-grain-ereader.html
   output/markdown/                -> resolution-grain.md + resolution-grain-markdown/
   assets/svg/cover.svg            -> cover.svg
-  assets/charts|svg/knowledge-map -> visuals -> resolution-grain-visuals.zip
+  assets/charts|svg + 结构地图 -> visuals -> resolution-grain-visuals.zip
   README.md                       -> release/README.md      （同一份，不再另抄）
   docs/RELEASE-NOTES.md           -> release/修订说明.md
   docs/DATA-GAPS.md               -> release/数据缺口清单.md
@@ -65,7 +65,7 @@ DESC = {
     "resolution-grain.epub": "EPUB 3",
     "resolution-grain.md": "合并 Markdown",
     "resolution-grain-markdown.zip": "分章 Markdown（压缩包）",
-    "resolution-grain-visuals.zip": "可视化包（图件＋knowledge-map.html）",
+    "resolution-grain-visuals.zip": "可视化包（图件＋结构地图）",
     "修订说明.md": "本版改了什么",
     "数据缺口清单.md": "本书的缺口、边界与可改写条件",
     "欢迎补充数据.md": "想帮忙的话",
@@ -123,7 +123,7 @@ def main() -> int:
         shutil.copy2(p, vis / "charts" / p.name)
     for p in sorted((ROOT / "assets" / "svg").glob("*.svg")):
         shutil.copy2(p, vis / "svg" / p.name)
-    shutil.copy2(ROOT / "assets" / "knowledge-map.html", vis / "knowledge-map.html")
+    shutil.copy2(ROOT / "assets" / "resolution-grain-explorer.html", vis / "resolution-grain-explorer.html")
     zip_dir(vis, REL / "resolution-grain-visuals.zip")
 
     # 4) MANIFEST / SHA256SUMS

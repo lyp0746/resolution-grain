@@ -142,7 +142,7 @@ failures and counterexamples are reported in the body; juxtaposition is not a te
 
 ```
 source/    正文唯一来源（book.json / parts.json / front_* / ch01–ch38 / appendix_a–f / back_*）
-assets/    css（paper / ereader / book）· svg · charts · knowledge-map.html（3D 交互版 ＋ 章节网络、演化环、极限退化矩阵、场域竞争四块）
+assets/    css（paper / ereader / book）· svg · charts · resolution-grain-explorer.html（3D 交互版 ＋ 章节网络、演化环、极限退化矩阵、场域竞争四块）
 analysis/  推导、审计、协议、图件脚本（`INDEX.md` 是唯一入口）
 data/      raw（本地缓存，不入版本，账在 MANIFEST*.tsv）· derived · DIGEST*.md
 docs/      变量表、源登记簿、需求单、事件台账、工作日志
