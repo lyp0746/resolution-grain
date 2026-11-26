@@ -35,21 +35,14 @@
  svg.tm{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:12px}
  #tmtab td,#tmtab th{text-align:left;font-size:12px;padding:5px 8px}
  #tmtab th{white-space:nowrap}
- .chart3d{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:12px;cursor:grab;touch-action:none}
- .chart3d:active{cursor:grabbing}
- .chart3d-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0 2px}
- .chart3d-bar .hint{color:#8c8c8c;font-size:12px}
- .chart3d-table{margin-top:8px;max-width:980px}
- .chart3d-table td,.chart3d-table th{text-align:left;font-size:12px;padding:4px 7px}
- .eq-note{color:#6b6255;font-size:12.5px;margin:4px 0 0}
 </style>
 <header>
  <h1>粗码 · 章节网络与三张判据图</h1>
- <div class="sub"><b>38 章、8 部分</b>按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 19 章；一条线＝正文里的一次交叉引用。
+ <div class="sub"><b>39 章、8 部分</b>按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 19 章；一条线＝正文里的一次交叉引用。
   可拖动旋转、滚轮缩放、悬停高亮；按部过滤，或只看跨部引用——线太密时先过滤。</div>
 </header>
 <div class="bar">
- <button data-f="all" class="on">全部 283 条</button>
+ <button data-f="all" class="on">全部 309 条</button>
  <button data-f="cross">只看跨部</button>
  <button data-f="within">只看部内</button>
  <span style="width:14px"></span>
@@ -94,30 +87,25 @@
 </section>
 
 <section id="maps" style="padding:10px 24px 30px;border-top:1px solid var(--line)">
- <h2>三张判据图（3D）</h2>
- <div class="sub">画法不同，读法相同：<b>每张图都带一行“不能主张什么”</b>——可视化不是装饰，是判据的另一种写法。拖动＝旋转，滚轮＝缩放，悬停看判据。</div>
+ <h2>三张判据图</h2>
+ <div class="sub">画法不同，读法相同：<b>每张图都带一行“不能主张什么”</b>——可视化不是装饰，是判据的另一种写法。</div>
 
  <h2 style="font-size:14px;margin-top:14px">① 演化环：四个箭头，四句判据</h2>
- <svg id="evo3d" class="chart3d" viewBox="0 0 980 560" preserveAspectRatio="xMidYMid meet"></svg>
- <div class="chart3d-bar"><button id="evo-spin">自动旋转</button><span class="hint">拖动＝旋转 ／ 滚轮＝缩放 ／ 悬停看判据</span></div>
+ <img src="charts/v3_map_evoloop.png" style="width:100%;max-width:900px;border:1px solid var(--line);border-radius:12px" alt="演化环">
  <p class="lg"><b>不能主张什么：</b>环上四步都不是必经之路；某一步可以长期停住（锁定、僵化、外生场域）。</p>
 
- <h2 style="font-size:14px;margin-top:14px">② 极限退化：十三行，各自退回谁</h2>
- <svg id="lim3d" class="chart3d" viewBox="0 0 980 560" preserveAspectRatio="xMidYMid meet"></svg>
- <div class="chart3d-bar"><button id="lim-spin">自动旋转</button><span class="hint">高度与点的大小只表示“退化越彻底”（示意），不标数值；悬停看退回哪一支。</span></div>
- <table id="lim3dtab" class="chart3d-table"></table>
- <p class="lg"><b>不能主张什么：</b>这只是“参数到边界时方程退成谁”，不是“谁更根本”；点是示意，不标数值。</p>
+ <h2 style="font-size:14px;margin-top:14px">② 极限退化矩阵（表 A.4 的图形版）</h2>
+ <img src="charts/v3_map_limits.png" style="width:100%;max-width:900px;border:1px solid var(--line);border-radius:12px" alt="极限退化矩阵">
+ <p class="lg"><b>不能主张什么：</b>点的大小只表示“退化强度”（示意），不标数值；每一行只说明“参数到边界时方程退成谁”，不说明谁更根本。</p>
 
  <h2 style="font-size:14px;margin-top:14px">③ 场域竞争：三种竞争 × 三个参数</h2>
- <svg id="field3d" class="chart3d" viewBox="0 0 980 560" preserveAspectRatio="xMidYMid meet"></svg>
- <div class="chart3d-bar"><button id="field-spin">自动旋转</button><span class="hint">拖动＝旋转 ／ 滚轮＝缩放 ／ 悬停看“哪一种竞争、哪一个参数、哪一档”。</span></div>
- <p class="eq-note"><b>场域决定哪一种可用：</b>高 <i>H</i>、窄 <i>A</i> → 战争与模仿；宽 <i>A</i>、低 <i>C</i> → 贸易。　<b>Φ<sub>t+1</sub> = H<sub>Φ</sub>(P<sub>t</sub><sup>field</sup>)</b>：场域自己也是一个复制子。</p>
- <p class="lg"><b>不能主张什么：</b>三档只是序关系；同一时期常有两条同时跑，不能只用一个参数讲完。</p>
+ <img src="charts/v3_map_field.png" style="width:100%;max-width:900px;border:1px solid var(--line);border-radius:12px" alt="场域竞争">
+ <p class="lg"><b>不能主张什么：</b>三档只是序关系；同一时期常有两条同时跑，不能只用一个参数讲完；右下角那个环是形式位置，未跑过样本外检验。</p>
 </section>
 <script>
-const D = {"nodes": [{"id": "ch1", "degree": 8, "part": 1, "label": "第七天：五个人，一次删除"}, {"id": "ch2", "degree": 17, "part": 1, "label": "一条原理：分什么、分多细、错了谁疼"}, {"id": "ch3", "degree": 27, "part": 1, "label": "四个算子，一个泛函"}, {"id": "ch4", "degree": 13, "part": 2, "label": "μ：码围着什么建"}, {"id": "ch5", "degree": 16, "part": 2, "label": "七个人，七个动作"}, {"id": "ch6", "degree": 23, "part": 2, "label": "四个旋钮：一个人能改什么"}, {"id": "ch7", "degree": 15, "part": 2, "label": "记住：格子是被什么收走的"}, {"id": "ch8", "degree": 17, "part": 2, "label": "跟上：来不及，还是累了"}, {"id": "ch9", "degree": 20, "part": 3, "label": "爱：ν 的范围与期限"}, {"id": "ch10", "degree": 11, "part": 3, "label": "好奇：VOI 与压缩进展"}, {"id": "ch11", "degree": 6, "part": 3, "label": "审美：压缩×连贯×新颖"}, {"id": "ch12", "degree": 18, "part": 3, "label": "创造与保留：新码怎么生成、怎么过选择"}, {"id": "ch13", "degree": 27, "part": 4, "label": "共用码：为什么两个人必须用同一套切法"}, {"id": "ch14", "degree": 16, "part": 4, "label": "标签与榜：一比特的码，零和的位"}, {"id": "ch15", "degree": 14, "part": 4, "label": "讲述：谁有资格命名"}, {"id": "ch16", "degree": 19, "part": 4, "label": "权力：谁有资格说你是什么人"}, {"id": "ch17", "degree": 17, "part": 4, "label": "维护：为什么最省的那一种最伤人"}, {"id": "ch18", "degree": 15, "part": 5, "label": "变异与遗传：新码从哪里来，凭什么被抄下去"}, {"id": "ch19", "degree": 15, "part": 5, "label": "选择与红皇后：谁被留下，为什么停下来就是退"}, {"id": "ch20", "degree": 13, "part": 5, "label": "场域与竞争：谁有资格说这是胜利"}, {"id": "ch21", "degree": 13, "part": 5, "label": "文化与文明：第二种遗传，与场域的兴衰"}, {"id": "ch22", "degree": 11, "part": 5, "label": "收不进：演化的边界"}, {"id": "ch23", "degree": 15, "part": 6, "label": "核实：从出错到改对，隔了几天"}, {"id": "ch24", "degree": 14, "part": 6, "label": "账单：谁在为核实付钱"}, {"id": "ch25", "degree": 15, "part": 6, "label": "内卷与负卷：位固定时，投入去了哪儿"}, {"id": "ch26", "degree": 7, "part": 6, "label": "漂移：为什么有些标签越用越准，有些越用越偏"}, {"id": "ch27", "degree": 23, "part": 6, "label": "改码：每次都要付，来回各付一次"}, {"id": "ch28", "degree": 19, "part": 6, "label": "临界：为什么有些变化回不去"}, {"id": "ch29", "degree": 21, "part": 7, "label": "转型：换一次，还是换八次"}, {"id": "ch30", "degree": 14, "part": 7, "label": "长时段：哪些量几百年才动一次"}, {"id": "ch31", "degree": 13, "part": 7, "label": "分期：谁有权说这一段结束了"}, {"id": "ch32", "degree": 11, "part": 7, "label": "翻译：两套码之间，桥搭在哪里"}, {"id": "ch33", "degree": 16, "part": 7, "label": "边缘：新码为什么先在边上出现"}, {"id": "ch34", "degree": 11, "part": 7, "label": "语义：格没换，意思换了"}, {"id": "ch35", "degree": 6, "part": 8, "label": "边界：七条线，与线外的一句话"}, {"id": "ch36", "degree": 8, "part": 8, "label": "转移：省下来的那部分，记在谁的账上"}, {"id": "ch37", "degree": 7, "part": 8, "label": "判决：五条线，判了几条"}, {"id": "ch38", "degree": 15, "part": 8, "label": "结语：九处空白，与一句带走的话"}], "edges": [{"source": "ch1", "target": "ch3"}, {"source": "ch1", "target": "ch29"}, {"source": "ch1", "target": "ch30"}, {"source": "ch2", "target": "ch1"}, {"source": "ch2", "target": "ch3"}, {"source": "ch2", "target": "ch4"}, {"source": "ch2", "target": "ch5"}, {"source": "ch2", "target": "ch9"}, {"source": "ch2", "target": "ch16"}, {"source": "ch3", "target": "ch2"}, {"source": "ch3", "target": "ch4"}, {"source": "ch3", "target": "ch5"}, {"source": "ch3", "target": "ch6"}, {"source": "ch3", "target": "ch7"}, {"source": "ch3", "target": "ch8"}, {"source": "ch3", "target": "ch9"}, {"source": "ch3", "target": "ch10"}, {"source": "ch3", "target": "ch15"}, {"source": "ch3", "target": "ch16"}, {"source": "ch3", "target": "ch23"}, {"source": "ch3", "target": "ch24"}, {"source": "ch3", "target": "ch27"}, {"source": "ch3", "target": "ch28"}, {"source": "ch3", "target": "ch30"}, {"source": "ch4", "target": "ch3"}, {"source": "ch4", "target": "ch6"}, {"source": "ch4", "target": "ch21"}, {"source": "ch4", "target": "ch29"}, {"source": "ch5", "target": "ch2"}, {"source": "ch5", "target": "ch3"}, {"source": "ch5", "target": "ch4"}, {"source": "ch5", "target": "ch6"}, {"source": "ch5", "target": "ch9"}, {"source": "ch5", "target": "ch12"}, {"source": "ch5", "target": "ch13"}, {"source": "ch5", "target": "ch15"}, {"source": "ch5", "target": "ch18"}, {"source": "ch5", "target": "ch27"}, {"source": "ch6", "target": "ch1"}, {"source": "ch6", "target": "ch2"}, {"source": "ch6", "target": "ch4"}, {"source": "ch6", "target": "ch7"}, {"source": "ch6", "target": "ch8"}, {"source": "ch6", "target": "ch9"}, {"source": "ch6", "target": "ch15"}, {"source": "ch6", "target": "ch28"}, {"source": "ch7", "target": "ch2"}, {"source": "ch7", "target": "ch5"}, {"source": "ch7", "target": "ch8"}, {"source": "ch7", "target": "ch13"}, {"source": "ch7", "target": "ch17"}, {"source": "ch7", "target": "ch27"}, {"source": "ch7", "target": "ch28"}, {"source": "ch7", "target": "ch29"}, {"source": "ch8", "target": "ch2"}, {"source": "ch8", "target": "ch4"}, {"source": "ch8", "target": "ch5"}, {"source": "ch8", "target": "ch6"}, {"source": "ch8", "target": "ch7"}, {"source": "ch8", "target": "ch9"}, {"source": "ch8", "target": "ch13"}, {"source": "ch8", "target": "ch14"}, {"source": "ch8", "target": "ch16"}, {"source": "ch8", "target": "ch23"}, {"source": "ch8", "target": "ch27"}, {"source": "ch8", "target": "ch33"}, {"source": "ch9", "target": "ch10"}, {"source": "ch9", "target": "ch11"}, {"source": "ch9", "target": "ch19"}, {"source": "ch9", "target": "ch23"}, {"source": "ch10", "target": "ch6"}, {"source": "ch10", "target": "ch7"}, {"source": "ch10", "target": "ch9"}, {"source": "ch10", "target": "ch12"}, {"source": "ch10", "target": "ch13"}, {"source": "ch10", "target": "ch24"}, {"source": "ch10", "target": "ch25"}, {"source": "ch11", "target": "ch13"}, {"source": "ch12", "target": "ch8"}, {"source": "ch12", "target": "ch9"}, {"source": "ch12", "target": "ch10"}, {"source": "ch12", "target": "ch11"}, {"source": "ch12", "target": "ch18"}, {"source": "ch13", "target": "ch2"}, {"source": "ch13", "target": "ch3"}, {"source": "ch13", "target": "ch4"}, {"source": "ch13", "target": "ch6"}, {"source": "ch13", "target": "ch10"}, {"source": "ch13", "target": "ch11"}, {"source": "ch13", "target": "ch12"}, {"source": "ch13", "target": "ch19"}, {"source": "ch13", "target": "ch27"}, {"source": "ch13", "target": "ch33"}, {"source": "ch14", "target": "ch3"}, {"source": "ch14", "target": "ch6"}, {"source": "ch14", "target": "ch11"}, {"source": "ch14", "target": "ch13"}, {"source": "ch15", "target": "ch1"}, {"source": "ch15", "target": "ch2"}, {"source": "ch15", "target": "ch7"}, {"source": "ch15", "target": "ch8"}, {"source": "ch15", "target": "ch14"}, {"source": "ch15", "target": "ch16"}, {"source": "ch15", "target": "ch23"}, {"source": "ch15", "target": "ch27"}, {"source": "ch15", "target": "ch29"}, {"source": "ch16", "target": "ch3"}, {"source": "ch16", "target": "ch5"}, {"source": "ch16", "target": "ch12"}, {"source": "ch16", "target": "ch13"}, {"source": "ch16", "target": "ch14"}, {"source": "ch16", "target": "ch15"}, {"source": "ch16", "target": "ch20"}, {"source": "ch17", "target": "ch6"}, {"source": "ch17", "target": "ch12"}, {"source": "ch17", "target": "ch13"}, {"source": "ch17", "target": "ch14"}, {"source": "ch17", "target": "ch15"}, {"source": "ch17", "target": "ch16"}, {"source": "ch18", "target": "ch3"}, {"source": "ch18", "target": "ch12"}, {"source": "ch18", "target": "ch13"}, {"source": "ch18", "target": "ch17"}, {"source": "ch18", "target": "ch19"}, {"source": "ch18", "target": "ch21"}, {"source": "ch18", "target": "ch22"}, {"source": "ch19", "target": "ch3"}, {"source": "ch19", "target": "ch9"}, {"source": "ch19", "target": "ch13"}, {"source": "ch19", "target": "ch18"}, {"source": "ch19", "target": "ch20"}, {"source": "ch19", "target": "ch23"}, {"source": "ch19", "target": "ch25"}, {"source": "ch19", "target": "ch27"}, {"source": "ch20", "target": "ch13"}, {"source": "ch20", "target": "ch16"}, {"source": "ch20", "target": "ch18"}, {"source": "ch20", "target": "ch19"}, {"source": "ch20", "target": "ch22"}, {"source": "ch20", "target": "ch25"}, {"source": "ch20", "target": "ch26"}, {"source": "ch20", "target": "ch31"}, {"source": "ch21", "target": "ch7"}, {"source": "ch21", "target": "ch12"}, {"source": "ch21", "target": "ch17"}, {"source": "ch21", "target": "ch18"}, {"source": "ch21", "target": "ch19"}, {"source": "ch21", "target": "ch20"}, {"source": "ch21", "target": "ch22"}, {"source": "ch21", "target": "ch29"}, {"source": "ch21", "target": "ch31"}, {"source": "ch22", "target": "ch12"}, {"source": "ch22", "target": "ch16"}, {"source": "ch22", "target": "ch18"}, {"source": "ch22", "target": "ch19"}, {"source": "ch22", "target": "ch20"}, {"source": "ch22", "target": "ch21"}, {"source": "ch23", "target": "ch2"}, {"source": "ch23", "target": "ch14"}, {"source": "ch23", "target": "ch18"}, {"source": "ch24", "target": "ch14"}, {"source": "ch24", "target": "ch17"}, {"source": "ch24", "target": "ch23"}, {"source": "ch24", "target": "ch27"}, {"source": "ch25", "target": "ch6"}, {"source": "ch25", "target": "ch9"}, {"source": "ch25", "target": "ch13"}, {"source": "ch25", "target": "ch14"}, {"source": "ch25", "target": "ch16"}, {"source": "ch25", "target": "ch17"}, {"source": "ch25", "target": "ch19"}, {"source": "ch25", "target": "ch23"}, {"source": "ch25", "target": "ch24"}, {"source": "ch26", "target": "ch14"}, {"source": "ch26", "target": "ch16"}, {"source": "ch26", "target": "ch17"}, {"source": "ch26", "target": "ch24"}, {"source": "ch27", "target": "ch2"}, {"source": "ch27", "target": "ch3"}, {"source": "ch27", "target": "ch6"}, {"source": "ch27", "target": "ch9"}, {"source": "ch27", "target": "ch12"}, {"source": "ch27", "target": "ch13"}, {"source": "ch27", "target": "ch16"}, {"source": "ch27", "target": "ch17"}, {"source": "ch27", "target": "ch18"}, {"source": "ch27", "target": "ch25"}, {"source": "ch28", "target": "ch4"}, {"source": "ch28", "target": "ch6"}, {"source": "ch28", "target": "ch9"}, {"source": "ch28", "target": "ch17"}, {"source": "ch28", "target": "ch23"}, {"source": "ch28", "target": "ch24"}, {"source": "ch28", "target": "ch25"}, {"source": "ch28", "target": "ch26"}, {"source": "ch28", "target": "ch27"}, {"source": "ch28", "target": "ch29"}, {"source": "ch29", "target": "ch2"}, {"source": "ch29", "target": "ch9"}, {"source": "ch29", "target": "ch11"}, {"source": "ch29", "target": "ch12"}, {"source": "ch29", "target": "ch27"}, {"source": "ch29", "target": "ch28"}, {"source": "ch29", "target": "ch30"}, {"source": "ch29", "target": "ch31"}, {"source": "ch30", "target": "ch3"}, {"source": "ch30", "target": "ch4"}, {"source": "ch30", "target": "ch6"}, {"source": "ch30", "target": "ch14"}, {"source": "ch30", "target": "ch28"}, {"source": "ch30", "target": "ch29"}, {"source": "ch30", "target": "ch33"}, {"source": "ch31", "target": "ch6"}, {"source": "ch31", "target": "ch12"}, {"source": "ch31", "target": "ch14"}, {"source": "ch31", "target": "ch17"}, {"source": "ch31", "target": "ch28"}, {"source": "ch31", "target": "ch29"}, {"source": "ch31", "target": "ch30"}, {"source": "ch32", "target": "ch13"}, {"source": "ch32", "target": "ch17"}, {"source": "ch32", "target": "ch24"}, {"source": "ch32", "target": "ch26"}, {"source": "ch32", "target": "ch27"}, {"source": "ch32", "target": "ch29"}, {"source": "ch32", "target": "ch30"}, {"source": "ch32", "target": "ch31"}, {"source": "ch33", "target": "ch12"}, {"source": "ch33", "target": "ch13"}, {"source": "ch33", "target": "ch14"}, {"source": "ch33", "target": "ch23"}, {"source": "ch33", "target": "ch24"}, {"source": "ch33", "target": "ch27"}, {"source": "ch33", "target": "ch29"}, {"source": "ch33", "target": "ch30"}, {"source": "ch33", "target": "ch32"}, {"source": "ch34", "target": "ch6"}, {"source": "ch34", "target": "ch12"}, {"source": "ch34", "target": "ch13"}, {"source": "ch34", "target": "ch22"}, {"source": "ch34", "target": "ch23"}, {"source": "ch34", "target": "ch24"}, {"source": "ch34", "target": "ch29"}, {"source": "ch34", "target": "ch30"}, {"source": "ch34", "target": "ch31"}, {"source": "ch34", "target": "ch32"}, {"source": "ch34", "target": "ch33"}, {"source": "ch35", "target": "ch9"}, {"source": "ch35", "target": "ch24"}, {"source": "ch35", "target": "ch27"}, {"source": "ch35", "target": "ch29"}, {"source": "ch35", "target": "ch31"}, {"source": "ch35", "target": "ch33"}, {"source": "ch36", "target": "ch9"}, {"source": "ch36", "target": "ch14"}, {"source": "ch36", "target": "ch16"}, {"source": "ch36", "target": "ch17"}, {"source": "ch36", "target": "ch23"}, {"source": "ch36", "target": "ch24"}, {"source": "ch36", "target": "ch28"}, {"source": "ch36", "target": "ch33"}, {"source": "ch37", "target": "ch1"}, {"source": "ch37", "target": "ch6"}, {"source": "ch37", "target": "ch9"}, {"source": "ch37", "target": "ch16"}, {"source": "ch37", "target": "ch28"}, {"source": "ch37", "target": "ch29"}, {"source": "ch37", "target": "ch32"}, {"source": "ch38", "target": "ch1"}, {"source": "ch38", "target": "ch2"}, {"source": "ch38", "target": "ch3"}, {"source": "ch38", "target": "ch4"}, {"source": "ch38", "target": "ch5"}, {"source": "ch38", "target": "ch7"}, {"source": "ch38", "target": "ch9"}, {"source": "ch38", "target": "ch13"}, {"source": "ch38", "target": "ch20"}, {"source": "ch38", "target": "ch21"}, {"source": "ch38", "target": "ch22"}, {"source": "ch38", "target": "ch23"}, {"source": "ch38", "target": "ch25"}, {"source": "ch38", "target": "ch28"}, {"source": "ch38", "target": "ch33"}], "ap_edges": [{"source": "ch30", "target": "apA7"}, {"source": "ch33", "target": "apA7"}], "matrix": [[4, 7, 3, 3, 0, 4, 3, 0], [7, 12, 4, 8, 2, 6, 3, 0], [0, 3, 7, 2, 2, 3, 0, 0], [6, 7, 6, 10, 2, 3, 2, 0], [2, 1, 4, 7, 16, 5, 3, 0], [3, 4, 4, 14, 3, 11, 1, 0], [2, 4, 6, 8, 1, 12, 17, 0], [4, 4, 4, 5, 3, 9, 7, 0]]};
+const D = {"nodes": [{"id": "ch1", "degree": 8, "part": 1, "label": "第七天：五个人，一次删除"}, {"id": "ch2", "degree": 20, "part": 1, "label": "一条原理：分什么、分多细、错了谁疼"}, {"id": "ch3", "degree": 27, "part": 1, "label": "四个算子，一个泛函"}, {"id": "ch4", "degree": 13, "part": 2, "label": "μ：码围着什么建"}, {"id": "ch5", "degree": 16, "part": 2, "label": "七个人，七个动作"}, {"id": "ch6", "degree": 24, "part": 2, "label": "四个旋钮：一个人能改什么"}, {"id": "ch7", "degree": 16, "part": 2, "label": "记住：格子是被什么收走的"}, {"id": "ch8", "degree": 18, "part": 2, "label": "跟上：来不及，还是累了"}, {"id": "ch9", "degree": 22, "part": 3, "label": "爱：ν 的范围与期限"}, {"id": "ch10", "degree": 11, "part": 3, "label": "好奇：VOI 与压缩进展"}, {"id": "ch11", "degree": 6, "part": 3, "label": "审美：压缩×连贯×新颖"}, {"id": "ch12", "degree": 19, "part": 3, "label": "创造与保留：新码怎么生成、怎么过选择"}, {"id": "ch13", "degree": 28, "part": 4, "label": "共用码：为什么两个人必须用同一套切法"}, {"id": "ch14", "degree": 20, "part": 4, "label": "标签与榜：一比特的码，零和的位"}, {"id": "ch15", "degree": 17, "part": 4, "label": "讲述：谁有资格命名"}, {"id": "ch16", "degree": 19, "part": 4, "label": "权力：谁有资格说你是什么人"}, {"id": "ch17", "degree": 18, "part": 4, "label": "维护：为什么最省的那一种最伤人"}, {"id": "ch18", "degree": 15, "part": 5, "label": "变异与遗传：新码从哪里来，凭什么被抄下去"}, {"id": "ch19", "degree": 15, "part": 5, "label": "选择与红皇后：谁被留下，为什么停下来就是退"}, {"id": "ch20", "degree": 13, "part": 5, "label": "场域与竞争：谁有资格说这是胜利"}, {"id": "ch21", "degree": 13, "part": 5, "label": "文化与文明：第二种遗传，与场域的兴衰"}, {"id": "ch22", "degree": 12, "part": 5, "label": "收不进：演化的边界"}, {"id": "ch23", "degree": 17, "part": 6, "label": "核实：从出错到改对，隔了几天"}, {"id": "ch24", "degree": 15, "part": 6, "label": "账单：谁在为核实付钱"}, {"id": "ch25", "degree": 26, "part": 6, "label": "转移：省下来的那部分，记在谁的账上"}, {"id": "ch26", "degree": 14, "part": 6, "label": "跨格：两本账上都签名的人"}, {"id": "ch27", "degree": 18, "part": 6, "label": "内卷与负卷：位固定时，投入去了哪儿"}, {"id": "ch28", "degree": 10, "part": 6, "label": "漂移：为什么有些标签越用越准，有些越用越偏"}, {"id": "ch29", "degree": 24, "part": 6, "label": "改码：每次都要付，来回各付一次"}, {"id": "ch30", "degree": 20, "part": 6, "label": "临界：为什么有些变化回不去"}, {"id": "ch31", "degree": 22, "part": 7, "label": "转型：换一次，还是换八次"}, {"id": "ch32", "degree": 13, "part": 7, "label": "长时段：哪些量几百年才动一次"}, {"id": "ch33", "degree": 14, "part": 7, "label": "分期：谁有权说这一段结束了"}, {"id": "ch34", "degree": 8, "part": 7, "label": "翻译：两套码之间，桥搭在哪里"}, {"id": "ch35", "degree": 9, "part": 7, "label": "边缘：新码为什么先在边上出现"}, {"id": "ch36", "degree": 10, "part": 7, "label": "语义：格没换，意思换了"}, {"id": "ch37", "degree": 6, "part": 8, "label": "边界：七条线，与线外的一句话"}, {"id": "ch38", "degree": 7, "part": 8, "label": "判决：五条线，判了几条"}, {"id": "ch39", "degree": 15, "part": 8, "label": "结语：九处空白，与一句带走的话"}], "edges": [{"source": "ch1", "target": "ch3"}, {"source": "ch1", "target": "ch31"}, {"source": "ch1", "target": "ch32"}, {"source": "ch2", "target": "ch1"}, {"source": "ch2", "target": "ch3"}, {"source": "ch2", "target": "ch4"}, {"source": "ch2", "target": "ch5"}, {"source": "ch2", "target": "ch9"}, {"source": "ch2", "target": "ch16"}, {"source": "ch2", "target": "ch25"}, {"source": "ch3", "target": "ch2"}, {"source": "ch3", "target": "ch4"}, {"source": "ch3", "target": "ch5"}, {"source": "ch3", "target": "ch6"}, {"source": "ch3", "target": "ch7"}, {"source": "ch3", "target": "ch8"}, {"source": "ch3", "target": "ch9"}, {"source": "ch3", "target": "ch10"}, {"source": "ch3", "target": "ch15"}, {"source": "ch3", "target": "ch16"}, {"source": "ch3", "target": "ch23"}, {"source": "ch3", "target": "ch24"}, {"source": "ch3", "target": "ch29"}, {"source": "ch3", "target": "ch30"}, {"source": "ch3", "target": "ch32"}, {"source": "ch4", "target": "ch3"}, {"source": "ch4", "target": "ch6"}, {"source": "ch4", "target": "ch21"}, {"source": "ch4", "target": "ch31"}, {"source": "ch5", "target": "ch2"}, {"source": "ch5", "target": "ch3"}, {"source": "ch5", "target": "ch4"}, {"source": "ch5", "target": "ch6"}, {"source": "ch5", "target": "ch9"}, {"source": "ch5", "target": "ch12"}, {"source": "ch5", "target": "ch13"}, {"source": "ch5", "target": "ch15"}, {"source": "ch5", "target": "ch18"}, {"source": "ch5", "target": "ch29"}, {"source": "ch6", "target": "ch1"}, {"source": "ch6", "target": "ch2"}, {"source": "ch6", "target": "ch4"}, {"source": "ch6", "target": "ch7"}, {"source": "ch6", "target": "ch8"}, {"source": "ch6", "target": "ch9"}, {"source": "ch6", "target": "ch15"}, {"source": "ch6", "target": "ch30"}, {"source": "ch7", "target": "ch2"}, {"source": "ch7", "target": "ch5"}, {"source": "ch7", "target": "ch8"}, {"source": "ch7", "target": "ch13"}, {"source": "ch7", "target": "ch17"}, {"source": "ch7", "target": "ch25"}, {"source": "ch7", "target": "ch29"}, {"source": "ch7", "target": "ch30"}, {"source": "ch7", "target": "ch31"}, {"source": "ch8", "target": "ch2"}, {"source": "ch8", "target": "ch4"}, {"source": "ch8", "target": "ch5"}, {"source": "ch8", "target": "ch6"}, {"source": "ch8", "target": "ch7"}, {"source": "ch8", "target": "ch9"}, {"source": "ch8", "target": "ch13"}, {"source": "ch8", "target": "ch14"}, {"source": "ch8", "target": "ch16"}, {"source": "ch8", "target": "ch23"}, {"source": "ch8", "target": "ch25"}, {"source": "ch8", "target": "ch28"}, {"source": "ch8", "target": "ch29"}, {"source": "ch9", "target": "ch10"}, {"source": "ch9", "target": "ch11"}, {"source": "ch9", "target": "ch19"}, {"source": "ch9", "target": "ch23"}, {"source": "ch9", "target": "ch25"}, {"source": "ch10", "target": "ch6"}, {"source": "ch10", "target": "ch7"}, {"source": "ch10", "target": "ch9"}, {"source": "ch10", "target": "ch12"}, {"source": "ch10", "target": "ch13"}, {"source": "ch10", "target": "ch24"}, {"source": "ch10", "target": "ch27"}, {"source": "ch11", "target": "ch13"}, {"source": "ch12", "target": "ch8"}, {"source": "ch12", "target": "ch9"}, {"source": "ch12", "target": "ch10"}, {"source": "ch12", "target": "ch11"}, {"source": "ch12", "target": "ch18"}, {"source": "ch12", "target": "ch25"}, {"source": "ch13", "target": "ch2"}, {"source": "ch13", "target": "ch3"}, {"source": "ch13", "target": "ch4"}, {"source": "ch13", "target": "ch6"}, {"source": "ch13", "target": "ch10"}, {"source": "ch13", "target": "ch11"}, {"source": "ch13", "target": "ch12"}, {"source": "ch13", "target": "ch19"}, {"source": "ch13", "target": "ch23"}, {"source": "ch13", "target": "ch29"}, {"source": "ch14", "target": "ch3"}, {"source": "ch14", "target": "ch6"}, {"source": "ch14", "target": "ch11"}, {"source": "ch14", "target": "ch13"}, {"source": "ch14", "target": "ch15"}, {"source": "ch14", "target": "ch25"}, {"source": "ch14", "target": "ch28"}, {"source": "ch15", "target": "ch1"}, {"source": "ch15", "target": "ch2"}, {"source": "ch15", "target": "ch7"}, {"source": "ch15", "target": "ch8"}, {"source": "ch15", "target": "ch14"}, {"source": "ch15", "target": "ch16"}, {"source": "ch15", "target": "ch23"}, {"source": "ch15", "target": "ch25"}, {"source": "ch15", "target": "ch29"}, {"source": "ch15", "target": "ch31"}, {"source": "ch16", "target": "ch3"}, {"source": "ch16", "target": "ch5"}, {"source": "ch16", "target": "ch12"}, {"source": "ch16", "target": "ch13"}, {"source": "ch16", "target": "ch14"}, {"source": "ch16", "target": "ch15"}, {"source": "ch16", "target": "ch20"}, {"source": "ch17", "target": "ch6"}, {"source": "ch17", "target": "ch12"}, {"source": "ch17", "target": "ch13"}, {"source": "ch17", "target": "ch14"}, {"source": "ch17", "target": "ch15"}, {"source": "ch17", "target": "ch16"}, {"source": "ch17", "target": "ch28"}, {"source": "ch18", "target": "ch3"}, {"source": "ch18", "target": "ch12"}, {"source": "ch18", "target": "ch13"}, {"source": "ch18", "target": "ch17"}, {"source": "ch18", "target": "ch19"}, {"source": "ch18", "target": "ch21"}, {"source": "ch18", "target": "ch22"}, {"source": "ch19", "target": "ch3"}, {"source": "ch19", "target": "ch9"}, {"source": "ch19", "target": "ch13"}, {"source": "ch19", "target": "ch18"}, {"source": "ch19", "target": "ch20"}, {"source": "ch19", "target": "ch23"}, {"source": "ch19", "target": "ch27"}, {"source": "ch19", "target": "ch29"}, {"source": "ch20", "target": "ch13"}, {"source": "ch20", "target": "ch16"}, {"source": "ch20", "target": "ch18"}, {"source": "ch20", "target": "ch19"}, {"source": "ch20", "target": "ch22"}, {"source": "ch20", "target": "ch27"}, {"source": "ch20", "target": "ch30"}, {"source": "ch20", "target": "ch33"}, {"source": "ch21", "target": "ch7"}, {"source": "ch21", "target": "ch12"}, {"source": "ch21", "target": "ch17"}, {"source": "ch21", "target": "ch18"}, {"source": "ch21", "target": "ch19"}, {"source": "ch21", "target": "ch20"}, {"source": "ch21", "target": "ch22"}, {"source": "ch21", "target": "ch31"}, {"source": "ch21", "target": "ch33"}, {"source": "ch22", "target": "ch12"}, {"source": "ch22", "target": "ch16"}, {"source": "ch22", "target": "ch18"}, {"source": "ch22", "target": "ch19"}, {"source": "ch22", "target": "ch20"}, {"source": "ch22", "target": "ch21"}, {"source": "ch22", "target": "ch25"}, {"source": "ch23", "target": "ch2"}, {"source": "ch23", "target": "ch14"}, {"source": "ch23", "target": "ch18"}, {"source": "ch24", "target": "ch14"}, {"source": "ch24", "target": "ch17"}, {"source": "ch24", "target": "ch23"}, {"source": "ch24", "target": "ch29"}, {"source": "ch25", "target": "ch9"}, {"source": "ch25", "target": "ch14"}, {"source": "ch25", "target": "ch16"}, {"source": "ch25", "target": "ch17"}, {"source": "ch25", "target": "ch23"}, {"source": "ch25", "target": "ch24"}, {"source": "ch25", "target": "ch26"}, {"source": "ch25", "target": "ch27"}, {"source": "ch25", "target": "ch30"}, {"source": "ch26", "target": "ch2"}, {"source": "ch26", "target": "ch6"}, {"source": "ch26", "target": "ch9"}, {"source": "ch26", "target": "ch13"}, {"source": "ch26", "target": "ch14"}, {"source": "ch26", "target": "ch15"}, {"source": "ch26", "target": "ch16"}, {"source": "ch26", "target": "ch23"}, {"source": "ch26", "target": "ch24"}, {"source": "ch26", "target": "ch25"}, {"source": "ch26", "target": "ch33"}, {"source": "ch27", "target": "ch6"}, {"source": "ch27", "target": "ch9"}, {"source": "ch27", "target": "ch13"}, {"source": "ch27", "target": "ch14"}, {"source": "ch27", "target": "ch16"}, {"source": "ch27", "target": "ch17"}, {"source": "ch27", "target": "ch19"}, {"source": "ch27", "target": "ch23"}, {"source": "ch27", "target": "ch24"}, {"source": "ch27", "target": "ch25"}, {"source": "ch27", "target": "ch26"}, {"source": "ch28", "target": "ch14"}, {"source": "ch28", "target": "ch16"}, {"source": "ch28", "target": "ch17"}, {"source": "ch28", "target": "ch24"}, {"source": "ch28", "target": "ch25"}, {"source": "ch29", "target": "ch2"}, {"source": "ch29", "target": "ch3"}, {"source": "ch29", "target": "ch6"}, {"source": "ch29", "target": "ch9"}, {"source": "ch29", "target": "ch12"}, {"source": "ch29", "target": "ch13"}, {"source": "ch29", "target": "ch16"}, {"source": "ch29", "target": "ch17"}, {"source": "ch29", "target": "ch18"}, {"source": "ch29", "target": "ch25"}, {"source": "ch29", "target": "ch27"}, {"source": "ch30", "target": "ch4"}, {"source": "ch30", "target": "ch6"}, {"source": "ch30", "target": "ch9"}, {"source": "ch30", "target": "ch17"}, {"source": "ch30", "target": "ch23"}, {"source": "ch30", "target": "ch24"}, {"source": "ch30", "target": "ch27"}, {"source": "ch30", "target": "ch28"}, {"source": "ch30", "target": "ch29"}, {"source": "ch30", "target": "ch31"}, {"source": "ch31", "target": "ch2"}, {"source": "ch31", "target": "ch9"}, {"source": "ch31", "target": "ch11"}, {"source": "ch31", "target": "ch12"}, {"source": "ch31", "target": "ch25"}, {"source": "ch31", "target": "ch29"}, {"source": "ch31", "target": "ch30"}, {"source": "ch31", "target": "ch32"}, {"source": "ch31", "target": "ch33"}, {"source": "ch32", "target": "ch3"}, {"source": "ch32", "target": "ch4"}, {"source": "ch32", "target": "ch6"}, {"source": "ch32", "target": "ch14"}, {"source": "ch32", "target": "ch30"}, {"source": "ch32", "target": "ch31"}, {"source": "ch33", "target": "ch6"}, {"source": "ch33", "target": "ch12"}, {"source": "ch33", "target": "ch14"}, {"source": "ch33", "target": "ch17"}, {"source": "ch33", "target": "ch30"}, {"source": "ch33", "target": "ch31"}, {"source": "ch33", "target": "ch32"}, {"source": "ch34", "target": "ch13"}, {"source": "ch34", "target": "ch17"}, {"source": "ch34", "target": "ch24"}, {"source": "ch34", "target": "ch28"}, {"source": "ch34", "target": "ch29"}, {"source": "ch34", "target": "ch31"}, {"source": "ch34", "target": "ch32"}, {"source": "ch34", "target": "ch33"}, {"source": "ch35", "target": "ch12"}, {"source": "ch35", "target": "ch13"}, {"source": "ch35", "target": "ch14"}, {"source": "ch35", "target": "ch23"}, {"source": "ch35", "target": "ch24"}, {"source": "ch35", "target": "ch25"}, {"source": "ch35", "target": "ch29"}, {"source": "ch35", "target": "ch31"}, {"source": "ch35", "target": "ch32"}, {"source": "ch36", "target": "ch6"}, {"source": "ch36", "target": "ch12"}, {"source": "ch36", "target": "ch13"}, {"source": "ch36", "target": "ch22"}, {"source": "ch36", "target": "ch23"}, {"source": "ch36", "target": "ch24"}, {"source": "ch36", "target": "ch26"}, {"source": "ch36", "target": "ch31"}, {"source": "ch36", "target": "ch32"}, {"source": "ch36", "target": "ch33"}, {"source": "ch37", "target": "ch9"}, {"source": "ch37", "target": "ch24"}, {"source": "ch37", "target": "ch25"}, {"source": "ch37", "target": "ch29"}, {"source": "ch37", "target": "ch31"}, {"source": "ch37", "target": "ch33"}, {"source": "ch38", "target": "ch1"}, {"source": "ch38", "target": "ch2"}, {"source": "ch38", "target": "ch6"}, {"source": "ch38", "target": "ch9"}, {"source": "ch38", "target": "ch25"}, {"source": "ch38", "target": "ch30"}, {"source": "ch38", "target": "ch31"}, {"source": "ch39", "target": "ch1"}, {"source": "ch39", "target": "ch2"}, {"source": "ch39", "target": "ch3"}, {"source": "ch39", "target": "ch4"}, {"source": "ch39", "target": "ch5"}, {"source": "ch39", "target": "ch7"}, {"source": "ch39", "target": "ch9"}, {"source": "ch39", "target": "ch13"}, {"source": "ch39", "target": "ch20"}, {"source": "ch39", "target": "ch21"}, {"source": "ch39", "target": "ch22"}, {"source": "ch39", "target": "ch23"}, {"source": "ch39", "target": "ch25"}, {"source": "ch39", "target": "ch27"}, {"source": "ch39", "target": "ch30"}], "ap_edges": [{"source": "ch32", "target": "apA7"}, {"source": "ch35", "target": "apA7"}], "matrix": [[4, 7, 3, 3, 0, 5, 3, 0], [7, 12, 4, 8, 2, 9, 2, 0], [0, 3, 7, 2, 2, 5, 0, 0], [6, 7, 6, 11, 2, 8, 1, 0], [2, 1, 4, 7, 16, 6, 3, 0], [4, 5, 6, 21, 3, 23, 2, 0], [2, 4, 6, 8, 1, 15, 13, 0], [5, 4, 3, 1, 3, 9, 3, 0]]};
 const LIMITS = [["一致性 γ", "γ → 0", "Sims 的理性疏忽", "P3 的第二项消失：势函数退化为单人泛函，v*=(T+λ)/2w 原样回来", "一个人的最优码", "in"], ["一致性 γ", "γ → ∞", "制度锁定（诺斯那一支）", "全体同码、k*→1：“锁死”是 γ 的极限，不是一种文化", "身份／职业路径的锁死", "in"], ["网络 A", "网络＝完全图", "Granovetter 的阈值模型", "A_ij→1：平均场 γz>δ 成立，“阈值分布”是它的投影", "规范／共同语／正统", "in"], ["网络 A", "网络有 k 个分量", "偏好伪造与双稳（Kuran）", "分量之间 γ 不传导：各自成篇＝图不连通", "沉默的螺旋／突然崩盘", "in"], ["换码 C", "C → 0", "新古典的弹性世界", "带宽 2C→0：去程回程同一阈值，没有迟滞", "一次重新优化", "in"], ["换码 C", "C → ∞", "路径依赖（历史制度主义）", "带宽→∞：换码永不发生，码冻结", "制度惯性／旧账重做", "in"], ["外置 ν", "ν = 0", "庇古式外部性", "w_i = w_i(自己)：P6 的第二项消失，只剩“你受损但我不在乎”", "罚款／赔偿的常规读法", "in"], ["外置 ν", "ν < 0", "无对应——这是第二条原理本身", "w_i = w_i(自己) + ν·w_i(别人)：目标失去势结构，解跑到边界", "代价外置／粗码＋全责", "out"], ["预算 R, Δ", "R 固定、Δ → ∞", "快而省的启发式（Gigerenzer）", "δ = Δ/2^R → ∞：整段压粗，“匹配”取代“越细越好”", "口号／刻板印象／MBTI", "in"], ["预算 R, Δ", "R → ∞", "标准统计决策", "δ → 0：精度上限不再是理论问题，是预算问题", "法律条文／诊断标准", "in"]];
-const PART = ["一 舞台：五个人，一场冲突", "二 个人：码围着什么建", "三 两笔预算：爱与好奇", "四 群体：为什么两个人必须用同一套切法", "五 演化：变异、选择、场域", "六 社会：六个环，一条传送带", "七 文明：六个尺度", "八 边界：这本书在哪里停"];
+const PART = ["一 舞台：五个人，一场冲突", "二 个人：码围着什么建", "三 两笔预算：爱与好奇", "四 群体：为什么两个人必须用同一套切法", "五 演化：变异、选择、场域", "六 社会：六个环，一条传送带，一笔账", "七 文明：六个尺度", "八 边界：这本书在哪里停"];
 const chs = D.nodes.filter(n => n.id.startsWith('ch'));
 const idx = Object.fromEntries(chs.map((n, i) => [n.id, i]));
 const part = Object.fromEntries(chs.map(n => [n.id, n.part]));
@@ -390,169 +378,6 @@ tb.innerHTML = html;
   tb.innerHTML = html;
 })();
 
-/* ---------- 三张判据图（3D） ---------- */
-const NS3='http://www.w3.org/2000/svg';
-function el3(t,a){const e=document.createElementNS(NS3,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
-function tipShow(html,e){const t=document.getElementById('tip');t.innerHTML=html;t.style.left=(e.clientX+14)+'px';t.style.top=(e.clientY+12)+'px';t.style.opacity=1;}
-function tipHide(){document.getElementById('tip').style.opacity=0;}
-function p3(p,v,W,H,f=1500,d=300){
-  const cy=Math.cos(v.yaw),sy=Math.sin(v.yaw);
-  let x=p.x*cy-p.z*sy,z=p.x*sy+p.z*cy;
-  const cp=Math.cos(v.pitch),sp=Math.sin(v.pitch);
-  let y=p.y*cp-z*sp;z=p.y*sp+z*cp;
-  const s=f/(f+z+d)*v.zoom;
-  return {x:W/2+x*s,y:H/2-y*s,s,z};
-}
-function bind3(svg,v,draw,nearest,tipFor,W,H){
-  svg.addEventListener('pointerdown',e=>{v.drag={x:e.clientX,y:e.clientY};svg.setPointerCapture(e.pointerId);svg.style.cursor='grabbing';});
-  svg.addEventListener('pointerup',()=>{v.drag=null;svg.style.cursor='grab';});
-  svg.addEventListener('pointerleave',()=>{v.drag=null;v.hover=-1;draw();tipHide();});
-  svg.addEventListener('pointermove',e=>{
-    if(v.drag){v.yaw+=(e.clientX-v.drag.x)*0.008;v.pitch+=(e.clientY-v.drag.y)*0.005;v.pitch=Math.max(-1.1,Math.min(0.7,v.pitch));v.drag={x:e.clientX,y:e.clientY};draw();return;}
-    const r=svg.getBoundingClientRect();
-    const mx=(e.clientX-r.left)*W/r.width,my=(e.clientY-r.top)*H/r.height;
-    const h=nearest(mx,my);
-    if(h!==v.hover){v.hover=h;draw();}
-    if(h>=0)tipShow(tipFor(h),e);else tipHide();
-  });
-  svg.addEventListener('wheel',e=>{e.preventDefault();v.zoom*=e.deltaY<0?1.08:0.93;v.zoom=Math.max(0.55,Math.min(3,v.zoom));draw();},{passive:false});
-  svg.addEventListener('dblclick',()=>{v.yaw=v.yaw0;v.pitch=v.pitch0;v.zoom=1;draw();});
-}
-function spinButton(id,v,draw){
-  const b=document.getElementById(id);let raf=0;
-  b.addEventListener('click',()=>{v.spin=!v.spin;b.classList.toggle('on',v.spin);if(v.spin&&!raf)loop();});
-  function loop(){if(!v.spin){raf=0;return;}v.yaw+=0.004;draw();raf=requestAnimationFrame(loop);}
-}
-
-/* ① 演化环 */
-(function(){
-  const svg=document.getElementById('evo3d'),W=980,H=560;
-  const v={yaw:0.55,pitch:-0.45,zoom:1,yaw0:0.55,pitch0:-0.45,drag:null,hover:-1,spin:false};
-  const R=235;
-  const N=[
-    {a:0,name:'K：变异核',sub:'新码从哪来',col:'#6b7f3a',lines:['判据：场域自己也被选','→ 这一环是引擎，不是背景']},
-    {a:Math.PI/2,name:'π：适应度',sub:'谁留下',col:'#2E86AB',lines:['判据：无新码、只有频率变化','→ 这一环是选择，不是变异']},
-    {a:Math.PI,name:'ρ_ret：保留',sub:'凭什么抄下去',col:'#8c6d3f',lines:['判据：去掉保留，累积停下','→ 这一环是保留，不是选择']},
-    {a:3*Math.PI/2,name:'Φ / H / A',sub:'谁有资格说胜利',col:'#b5651d',lines:['判据：桌子不随码变','→ 这一环是场域，不是适应度']}
-  ].map(n=>({...n,x:Math.cos(n.a)*R,y:0,z:Math.sin(n.a)*R}));
-  function P(){return N.map(n=>p3(n,v,W,H));}
-  function draw(){
-    svg.innerHTML='';
-    const Q=P(),C=p3({x:0,y:0,z:0},v,W,H);
-    const ring=[];for(let i=0;i<=96;i++){const a=i/96*Math.PI*2;ring.push(p3({x:Math.cos(a)*R,y:0,z:Math.sin(a)*R},v,W,H));}
-    svg.appendChild(el3('polyline',{points:ring.map(q=>q.x+','+q.y).join(' '),fill:'none',stroke:'#d8d0c0','stroke-width':1.2,'stroke-opacity':.7}));
-    N.forEach(n=>{const q=p3(n,v,W,H);svg.appendChild(el3('line',{x1:C.x,y1:C.y,x2:q.x,y2:q.y,stroke:'#c9c0ae','stroke-width':.8,'stroke-opacity':.45}));});
-    for(let i=0;i<N.length;i++){
-      const A=Q[i],B=Q[(i+1)%N.length],dx=B.x-A.x,dy=B.y-A.y,L=Math.hypot(dx,dy)||1,ux=dx/L,uy=dy/L;
-      const t=.62,mx=A.x+dx*t,my=A.y+dy*t,bx=mx-ux*9,by=my-uy*9;
-      svg.appendChild(el3('line',{x1:A.x,y1:A.y,x2:B.x,y2:B.y,stroke:N[i].col,'stroke-width':2,'stroke-opacity':.55}));
-      svg.appendChild(el3('polygon',{points:`${mx+ux*3},${my+uy*3} ${bx-uy*5},${by+ux*5} ${bx+uy*5},${by-ux*5}`,fill:N[i].col,opacity:.9}));
-    }
-    svg.appendChild(el3('circle',{cx:C.x,cy:C.y,r:9*C.s,fill:'#1f3b57'}));
-    const ct=el3('text',{x:C.x,y:C.y-16*C.s,'text-anchor':'middle',fill:'#1f3b57','font-size':13,'font-weight':700});ct.textContent='P_t：码的分布';svg.appendChild(ct);
-    const ct2=el3('text',{x:C.x,y:C.y+22*C.s,'text-anchor':'middle',fill:'#8c8c8c','font-size':10.5});ct2.textContent='一圈，不是一条线';svg.appendChild(ct2);
-    Q.forEach((q,i)=>{
-      const n=N[i],hot=i===v.hover,r=(hot?15:11)*q.s;
-      svg.appendChild(el3('circle',{cx:q.x,cy:q.y,r,fill:hot?'#b5651d':n.col,stroke:'#fff','stroke-width':1.4,'fill-opacity':.95}));
-      const right=q.x>=W/2;
-      const t1=el3('text',{x:q.x+(right?r+6:-(r+6)),y:q.y+4,'text-anchor':right?'start':'end',fill:hot?'#8f4c12':n.col,'font-size':13,'font-weight':700});t1.textContent=n.name;svg.appendChild(t1);
-      const t2=el3('text',{x:q.x+(right?r+6:-(r+6)),y:q.y+18,'text-anchor':right?'start':'end',fill:'#6b6255','font-size':10.5});t2.textContent=n.sub;svg.appendChild(t2);
-    });
-  }
-  function nearest(mx,my){let best=-1,bd=1e9;P().forEach((q,i)=>{const d=(q.x-mx)**2+(q.y-my)**2;if(d<bd){bd=d;best=i;}});return bd<900?best:-1;}
-  bind3(svg,v,draw,nearest,i=>{const n=N[i];return `<b>${n.name}</b>　${n.sub}<br><span style="color:#6b6255">${n.lines[0]}</span><br><span style="color:#8c8c8c">${n.lines[1]}</span>`;},W,H);
-  spinButton('evo-spin',v,draw);
-  draw();
-})();
-
-/* ② 极限退化：十三行 */
-(function(){
-  const svg=document.getElementById('lim3d'),W=980,H=560;
-  const v={yaw:0.6,pitch:-0.34,zoom:.95,yaw0:0.6,pitch0:-0.34,drag:null,hover:-1,spin:false};
-  const CAT=['变异与保留','场域与换码','外置与网络','生态与冲击'];
-  const X=[-300,-100,100,300];
-  const COL=['#6b7f3a','#2E86AB','#8c6d3f','#1f3b57'];
-  const D=[
-    {c:0,lim:'K→0',ret:'复制子',note:'无新码，只改频率',w:1.0},
-    {c:0,lim:'ρ_ret→0',ret:'无保留',note:'累积失败、工具集变薄',w:1.0},
-    {c:0,lim:'β→0',ret:'中性漂移',note:'份额随机走',w:.8},
-    {c:0,lim:'β→∞',ret:'最佳回应',note:'多态消失',w:.9},
-    {c:0,lim:'ζ→0',ret:'单层选择',note:'群体选择项关掉',w:.75},
-    {c:0,lim:'ζ→1',ret:'纯群体选择',note:'层内差异被压平',w:.75},
-    {c:1,lim:'Φ 固定',ret:'场域外生',note:'场域不随码变',w:.85},
-    {c:1,lim:'C→0',ret:'无迟滞',note:'2C 带消失',w:1.0},
-    {c:1,lim:'C→∞',ret:'锁定',note:'只有外生冲击能改',w:1.0},
-    {c:2,lim:'ν=0/>0/<0',ret:'冷漠/亲缘/榨取',note:'别人的错不进账/正/负',w:1.0,out:true},
-    {c:2,lim:'A→0/∞',ret:'孤立/全球',note:'桥少/桥多',w:.8},
-    {c:3,lim:'G→0',ret:'无生态构建',note:'环境不随码变',w:.9},
-    {c:3,lim:'ε_t→0',ret:'无冲击',note:'时刻全由内生环定',w:.95}
-  ];
-  CAT.forEach((_,c)=>{const a=D.filter(d=>d.c===c);a.forEach((d,i)=>{d.x=X[c];d.z=(i-(a.length-1)/2)*70;d.h=100+190*d.w;d.col=d.out?'#b5651d':COL[c];});});
-  function draw(){
-    svg.innerHTML='';
-    CAT.forEach((name,c)=>{
-      const a=D.filter(d=>d.c===c),z0=Math.min(...a.map(d=>d.z))-35,z1=Math.max(...a.map(d=>d.z))+35;
-      const pts=[[X[c]-65,z0],[X[c]+65,z0],[X[c]+65,z1],[X[c]-65,z1]].map(([x,z])=>p3({x,y:0,z},v,W,H));
-      svg.appendChild(el3('polygon',{points:pts.map(q=>q.x+','+q.y).join(' '),fill:'none',stroke:'#d8d0c0','stroke-width':1,'stroke-opacity':.6}));
-    });
-    const bars=D.map(d=>({d,base:p3({x:d.x,y:0,z:d.z},v,W,H),top:p3({x:d.x,y:d.h,z:d.z},v,W,H)}));
-    bars.sort((a,b)=>b.top.z-a.top.z);
-    bars.forEach(({d,base,top})=>{
-      const hot=D.indexOf(d)===v.hover;
-      svg.appendChild(el3('line',{x1:base.x,y1:base.y,x2:top.x,y2:top.y,stroke:d.col,'stroke-width':Math.max(2,5*top.s),'stroke-opacity':hot?.95:.45,'stroke-linecap':'round'}));
-      svg.appendChild(el3('ellipse',{cx:base.x,cy:base.y,rx:9*base.s,ry:3*base.s,fill:d.col,'fill-opacity':.18}));
-      svg.appendChild(el3('circle',{cx:top.x,cy:top.y,r:(hot?9:6)*top.s,fill:hot?'#b5651d':d.col,stroke:'#fff','stroke-width':1.1}));
-    });
-    CAT.forEach((name,c)=>{const x=18+c*132;svg.appendChild(el3('circle',{cx:x,cy:22,r:5,fill:COL[c]}));const t=el3('text',{x:x+10,y:26,fill:'#6b6255','font-size':10.5});t.textContent=name;svg.appendChild(t);});
-    svg.appendChild(el3('circle',{cx:546,cy:22,r:5,fill:'#b5651d'}));
-    {const t=el3('text',{x:556,y:26,fill:'#8f4c12','font-size':10.5});t.textContent='ν<0（例外）';svg.appendChild(t);}
-    const note=el3('text',{x:18,y:44,fill:'#9a9186','font-size':10.5});note.textContent='高度 / 点大小 ＝ 退化越彻底（示意）；悬停看每根柱的极限，下表列全 13 行';svg.appendChild(note);
-  }
-  function nearest(mx,my){let best=-1,bd=1e9;D.forEach((d,i)=>{const q=p3({x:d.x,y:d.h,z:d.z},v,W,H);const dd=(q.x-mx)**2+(q.y-my)**2;if(dd<bd){bd=dd;best=i;}});return bd<700?best:-1;}
-  bind3(svg,v,draw,nearest,i=>{const d=D[i];return `<b>${d.lim}</b> → ${d.ret}<br><span style="color:#6b6255">${d.note}</span>`;},W,H);
-  const tb=document.getElementById('lim3dtab');let html='<tr><th>极限</th><th>退回到</th><th>可查判据</th></tr>';
-  D.forEach(d=>{html+=`<tr><td><b>${d.lim}</b></td><td>${d.ret}</td><td style="color:#8c8c8c">${d.note}</td></tr>`;});
-  tb.innerHTML=html;
-  spinButton('lim-spin',v,draw);
-  draw();
-})();
-
-/* ③ 场域竞争：三种竞争 × 三个参数 */
-(function(){
-  const svg=document.getElementById('field3d'),W=980,H=560;
-  const v={yaw:0.38,pitch:-0.55,zoom:1.0,yaw0:0.38,pitch0:-0.55,drag:null,hover:-1,spin:false};
-  const TYPES=['战争','贸易','模仿'];
-  const PARAMS=[{k:'C',n:'C 换码成本',c:'#8c6d3f'},{k:'K',n:'K 变异核',c:'#6b7f3a'},{k:'ρ',n:'ρ_ret 保留',c:'#2E86AB'}];
-  const LV={'高':155,'中':105,'中低':78,'低':45};
-  const DATA=[{t:'战争',C:'高',K:'低',ρ:'高'},{t:'贸易',C:'中低',K:'高',ρ:'中'},{t:'模仿',C:'低',K:'中',ρ:'高'}];
-  const X=[-180,0,180],Z=[-120,0,120],bars=[];
-  DATA.forEach((row,ti)=>PARAMS.forEach((p,pi)=>{const lv=row[p.k];bars.push({t:TYPES[ti],p:p.k,pn:p.n,lv,col:p.c,x:X[ti],z:Z[pi],h:LV[lv]});}));
-  function draw(){
-    svg.innerHTML='';
-    const corners=[[-270,-170],[270,-170],[270,170],[-270,170]].map(([x,z])=>p3({x,y:0,z},v,W,H));
-    svg.appendChild(el3('polygon',{points:corners.map(q=>q.x+','+q.y).join(' '),fill:'none',stroke:'#d8d0c0','stroke-width':1.2}));
-    X.forEach(x=>{const a=p3({x,y:0,z:-170},v,W,H),b=p3({x,y:0,z:170},v,W,H);svg.appendChild(el3('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:'#e2dccd','stroke-width':1}));});
-    Z.forEach(z=>{const a=p3({x:-270,y:0,z},v,W,H),b=p3({x:270,y:0,z},v,W,H);svg.appendChild(el3('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:'#e2dccd','stroke-width':1}));});
-    const ax0=p3({x:-270,y:0,z:170},v,W,H),ax1=p3({x:270,y:0,z:170},v,W,H);
-    svg.appendChild(el3('line',{x1:ax0.x,y1:ax0.y,x2:ax1.x,y2:ax1.y,stroke:'#b9ae9b','stroke-width':1.4}));
-    const az0=p3({x:-270,y:0,z:-170},v,W,H),az1=p3({x:-270,y:0,z:170},v,W,H);
-    svg.appendChild(el3('line',{x1:az0.x,y1:az0.y,x2:az1.x,y2:az1.y,stroke:'#b9ae9b','stroke-width':1.4}));
-    TYPES.forEach((t,i)=>{const q=p3({x:X[i],y:0,z:-190},v,W,H);const tx=el3('text',{x:q.x,y:q.y-6,'text-anchor':'middle',fill:'#1f3b57','font-size':12,'font-weight':700});tx.textContent=t;svg.appendChild(tx);});
-    PARAMS.forEach((p,j)=>{const q=p3({x:-300,y:0,z:Z[j]},v,W,H);const tx=el3('text',{x:q.x,y:q.y+4,'text-anchor':'end',fill:p.c,'font-size':11.5,'font-weight':700});tx.textContent=p.n;svg.appendChild(tx);});
-    bars.slice().sort((a,b)=>b.z-a.z).forEach(d=>{
-      const hot=bars.indexOf(d)===v.hover,base=p3({x:d.x,y:0,z:d.z},v,W,H),top=p3({x:d.x,y:d.h,z:d.z},v,W,H);
-      svg.appendChild(el3('line',{x1:base.x,y1:base.y,x2:top.x,y2:top.y,stroke:d.col,'stroke-width':Math.max(2,5*top.s),'stroke-opacity':hot?.95:.55,'stroke-linecap':'round'}));
-      svg.appendChild(el3('ellipse',{cx:base.x,cy:base.y,rx:10*base.s,ry:3*base.s,fill:d.col,'fill-opacity':.18}));
-      svg.appendChild(el3('circle',{cx:top.x,cy:top.y,r:(hot?9:6)*top.s,fill:hot?'#b5651d':d.col,stroke:'#fff','stroke-width':1.1}));
-      const t=el3('text',{x:top.x,y:top.y-10*top.s,'text-anchor':'middle',fill:hot?'#8f4c12':'#6b6255','font-size':9.5});t.textContent=d.lv;svg.appendChild(t);
-    });
-    const note=el3('text',{x:18,y:26,fill:'#9a9186','font-size':11});note.textContent='X：竞争类型（战争/贸易/模仿）　Z：参数（C/K/ρ）　Y：序关系（低→高）';svg.appendChild(note);
-  }
-  function nearest(mx,my){let best=-1,bd=1e9;bars.forEach((d,i)=>{const q=p3({x:d.x,y:d.h,z:d.z},v,W,H);const dd=(q.x-mx)**2+(q.y-my)**2;if(dd<bd){bd=dd;best=i;}});return bd<700?best:-1;}
-  bind3(svg,v,draw,nearest,i=>{const d=bars[i];return `<b>${d.t} · ${d.pn}</b>：${d.lv}<br><span style="color:#6b6255">三档只是序关系，不是读数</span>`;},W,H);
-  spinButton('field-spin',v,draw);
-  draw();
-})();
 resize();
 </script>
 </html>

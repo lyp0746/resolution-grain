@@ -6,8 +6,9 @@
 > **系列**：《有限系统的取舍》第十册（未入 `inventory.tsv`、不进合集）
 > **上一版本**：2026-11-21，DOI [10.5281/zenodo.24413735](https://doi.org/10.5281/zenodo.24535619)（概念 DOI [10.5281/zenodo.24339909](https://doi.org/10.5281/zenodo.24339909)）
 > **本版 DOI**：[10.5281/zenodo.24535619](https://doi.org/10.5281/zenodo.24535619)（776 页；概念 DOI 10.5281/zenodo.24339909 不变）
-> **当前版本**：**2026-11-24**——**8 部分 39 章**；正文 **400,723 汉字**；196 表／49 图；印刷版 **776 页**（阅读版 975 页）（EPUB／网页版／Markdown 齐备）
-> **付印版**：**2026-11-24**（776 页）。此后若再有改动，只进电子版与 Zenodo 新版本，不再要求重印。
+> **当前版本**：**2026-11-26**（本地修订，**尚未发布**）——**8 部分 39 章**；正文 **406,453 汉字**；199 表／49 图；印刷版 **786 页**（合一版 812 页，阅读版 987 页）（EPUB／网页版／Markdown 齐备）
+> **本版新增**：§33.6 由五个动作扩为**六个**（新增「纲领型」：锚搬进一份可按期修改的纲领，纠错取决于条文里有没有「判自己错」的程序），并补**表 33.5「六个动作，四格：锚、分类器、纠错、代价」**；此后两张表顺延为表 33.6／33.7。
+> **付印版**：**2026-11-26**（786 页；合一版 812 页）。不发布，不覆盖已发布 DOI；要发布时概念 DOI 不变、版本 DOI 另取。
 > **许可**：CC BY 4.0 ｜ **下载**：见 [Releases](../../releases)，**先看 `resolution-grain-print.pdf`**（印刷版，默认预览）
 
 ---
@@ -25,7 +26,12 @@ cost of cut points into the ledger gives two scaling laws; recoding costs once e
 and return are asymmetric (bandwidth `2C`). Nothing is claimed beyond its evidence: every number is
 graded A/B/C, and every chapter ends with what would refute it.
 
-**What is new in the 2026-11-24 edition.** Eight parts, thirty-nine chapters, 776 pages.
+**What is new in the 2026-11-26 local revision.** Eight parts, thirty-nine chapters, 786 pages
+(812 in the bound-in edition with the prefatory essay, 987 in the e-reader layout). §33.6 gains a
+sixth action — *programme-type* codes, where the anchor moves into a revisable document and error
+correction depends on whether that document contains a clause letting the code judge itself —
+with a four-fold comparison table (T33.5: anchor, classifier, correction, who pays). Two tables
+that followed are renumbered 33.6 and 33.7.
 Part VI now runs "six rings, one conveyor belt, one ledger": *transfer* moved in from the closing
 part as ch. 25, and a new ch. 26 — *Crossbox: the person who signs in two ledgers* — gives a name to
 the beneficiary that the earlier editions left unnamed. The second principle is narrowed to its one
@@ -75,11 +81,12 @@ v* = (T + λ) / (2w)        分辨率是「工夫 + 疲劳」与「错了有多�
 
 | 项 / Item | 值 / Value |
 |---|---|
-| 结构 Structure | 8 部分 39 章；正文 361 节 ＋ 附录与后置 55 节 |
-| 正文 Body text | **400,723** 汉字（全书 442,860） |
-| 表／图 Tables / figures | **196** 表 ／ **49** 图 |
-| 印刷版 Print edition | **776** 页（A4，含封面与四级目录书签） |
-| 阅读版 E-reader | **975** 页（重排；EPUB 3／网页／Markdown 齐备） |
+| 结构 Structure | 8 部分 39 章；正文 362 节 ＋ 附录与后置 55 节 |
+| 正文 Body text | **406,453** 汉字（全书 449,091） |
+| 表／图 Tables / figures | **199** 表 ／ **49** 图 |
+| 印刷版 Print edition | **786** 页（A4，含封面与四级目录书签） |
+| 合一版 Bound-in edition | **812** 页（A4，卷首《得鹿梦鱼》26 ＋ 正文 786） |
+| 阅读版 E-reader | **987** 页（重排；EPUB 3／网页／Markdown 齐备） |
 | 术语／索引 Terms / index | 术语 **138** 条 ／ 索引 **154** 条 |
 | 证据分级 Evidence grades | A（官方可复现）／B（稳定公开估计）／C（稀疏·构造·思辨） |
 | 否证线 Falsification lines | **26** 条在表（附录 F.1）＋ 各章“反例与边界” |
@@ -122,7 +129,7 @@ The formal core is three lines in chapter 5; everything after it can be read in 
 ## 五、诚实纪律 ｜ Honesty discipline
 
 1. **结论强度 ≤ 证据强度**；每个数字带 A/B/C，等级写在表注与图注里，不逐句挂。
-2. **不可测就说不可测**：第 39 章单列九处空白；附录 F 收 26 条否证线，各章另留“反例与边界”；附录 D 的 23 行登记只追加、不改旧行。
+2. **不可测就说不可测**：第 39 章单列九处空白；附录 F 收 27 条否证线，各章另留“反例与边界”；附录 D 的 25 行登记只追加、不改旧行。
 3. **失败与反例写在正文**，不放进脚注；**并置不是检验**（把两套理论放一张表上只说明它有位置）。
 4. **反身性写「方向＋条件」**，不写宿命；凡需要第七个公设才讲得通的话，降为情景或删。
 

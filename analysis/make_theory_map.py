@@ -364,7 +364,7 @@ HTML = """<!doctype html>
 </style>
 <header>
  <h1>粗码 · 章节网络与三张判据图</h1>
- <div class="sub"><b>38 章、8 部分</b>按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 19 章；一条线＝正文里的一次交叉引用。
+ <div class="sub"><b>__NCH__ 章、__NPART__ 部分</b>按书序盘成一条螺旋：<b>往下走＝往后读</b>，一圈约 19 章；一条线＝正文里的一次交叉引用。
   可拖动旋转、滚轮缩放、悬停高亮；按部过滤，或只看跨部引用——线太密时先过滤。</div>
 </header>
 <div class="bar">
@@ -720,6 +720,8 @@ def main() -> None:
     data = json.loads((DER / "kgraph.json").read_text(encoding="utf-8"))
     html = (HTML.replace("__DATA__", json.dumps(data, ensure_ascii=False))
                 .replace("__NEDGE__", str(info["edges"]))
+                .replace("__NCH__", str(info["nodes"]))
+                .replace("__NPART__", str(len(PART_NAMES)))
                 .replace("__LIMITS__", json.dumps(LIMITS, ensure_ascii=False))
                 .replace("__PARTNAMES__", json.dumps(PART_NAMES, ensure_ascii=False)))
     (ROOT / "assets" / "knowledge-map.html").write_text(html, encoding="utf-8")
